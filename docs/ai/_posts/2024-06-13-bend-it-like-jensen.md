@@ -58,7 +58,7 @@ I copied one of the examples from Bend Lang's repo and scripted it to run 3 diff
 ```
 ### Recording 5/22
 
-Watch my demo video to see it run with my resources monitor open. ([bend_demo_parallelism.mp4](https://github.com/hoopdad/bendlang/raw/main/bend_demo_parallelism.mp4))
+Watch my [demo video](https://github.com/hoopdad/bendlang/raw/main/bend_demo_parallelism.mp4) to see it run with my resources monitor open. 
 
 ## Results 5/22
 
@@ -120,7 +120,7 @@ What I see is that this tool successfully compiles to run on a GPU, on a single 
 
 ## References
 
-- Higher Order - creator of Bend: https://github.com/HigherOrderCO/bend
+- Higher Order - creator of Bend: [https://github.com/HigherOrderCO/bend]
 
 
 
