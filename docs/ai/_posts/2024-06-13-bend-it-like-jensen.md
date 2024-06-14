@@ -114,9 +114,9 @@ sudo apt-get -y autoremove
 
 ## Conclusion
 
-Keep an eye on this one! The results I am sharing are not what I had hoped. But it could be my own hardware setup, a gaming laptop but nonetheless a laptop. And there is a devoted team working on this. 
+Keep an eye on this one! The performance results I am sharing are not what I had hoped. But it could be my own hardware setup, a gaming laptop but nonetheless a laptop. And there is a devoted team working on this. 
 
-What I see is that this tool successfully compiles to run on a GPU, on a single thread on a GPU, and on multiple threads on a GPU. I am sure in the right platforms today, and my laptop in the future, this is getting math done faster.
+What I see is that this tool successfully compiles to run on a GPU, on a single thread on a GPU, and on multiple threads on a GPU. With only writing code once! I am sure in the right platforms today, and my laptop in the future, this is getting math done faster.
 
 ## References
 
