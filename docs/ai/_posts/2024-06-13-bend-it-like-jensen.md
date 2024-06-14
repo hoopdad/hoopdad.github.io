@@ -120,7 +120,7 @@ What I see is that this tool successfully compiles to run on a GPU, on a single 
 
 ## References
 
-- Higher Order - creator of Bend: [https://github.com/HigherOrderCO/bend]
+- Higher Order - creator of Bend: (HigherOrderCO)[https://github.com/HigherOrderCO/bend]
 
 
 
