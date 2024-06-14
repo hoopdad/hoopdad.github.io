@@ -21,7 +21,7 @@ Bend is a high level language like python that easily runs on CPUs or GPUs, with
 
 I am running this through WSL2 on Windows 11, on a laptop with an Intel i5 processor and an NVidia RTX-2050 graphics card. It is likely that other platforms have similar but different installation procedures and different hardware configurations give different results.
 
- - Install the NVIDIA CUDA toolkit. Reference [NVidia's CUDA site](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local) 
+ - Install the NVIDIA CUDA toolkit. 
 ```
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
 sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -121,6 +121,4 @@ What I see is that this tool successfully compiles to run on a GPU, on a single 
 ## References
 
 - Higher Order - creator of Bend: [HigherOrderCO](https://github.com/HigherOrderCO/bend)
-
-
-
+- [NVidia's CUDA site](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local) 
