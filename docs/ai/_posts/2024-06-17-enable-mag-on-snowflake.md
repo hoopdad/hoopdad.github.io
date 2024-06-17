@@ -12,7 +12,7 @@ have a big friendly golden retriever to bark when someone arrives and to greet t
 Likewise, with your Cloud accounts, no matter the provider, you have a few common, basic layers.
 
 - User ID and password that you would know in your head which no one else knows.
-- Role based authorization to make sure you can do and see exactly what you need - no more, no less.
+- Role based authorization to make sure you can do and see exactly what you need - no more, no less. This way if the other two layers fail, the risk or "blast radius" is limited to what that one user can do.
 - An authenticator tool such as Duo, Microsoft Authenticator or Google Authenticator (there are many.) The code provided is something you have that no one else has.
 
 ## One Way Cloud Breaches Happen 
