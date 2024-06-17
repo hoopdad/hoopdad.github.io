@@ -31,4 +31,11 @@ Access keys that aren't secured properly and insexure permissions (role based au
 
 Go to your phone's app store and look for Duo Mobile. Doenload and install. We will come baxk to the app later.
 
-### 
+### Configure Your Account
+
+
+## References
+
+- Snowflake's documentation about MFA: (https://docs.snowflake.com/en/user-guide/security-mfa)[https://docs.snowflake.com/en/user-guide/security-mfa]
+
+
