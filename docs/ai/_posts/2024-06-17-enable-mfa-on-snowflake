@@ -8,7 +8,7 @@ This article defines the "how to" and some of the "why's" about enabling multi-f
 
 Directions as of June 17, 2024.
 
-### Install Duo
+### Install Duo Mobile
 
 Go to your phone's app store and search for Duo Mobile. Download and install. When it asks, make sure to give it permissions for using your camera and sending notifications. We will come back to the app later.
 
@@ -16,18 +16,21 @@ Go to your phone's app store and search for Duo Mobile. Download and install. Wh
 
 I don't think you'll need screenshots; they make this pretty easy. But if it would be helpful, let me know as I am happy to add.
 
-- Once logged into Snowflake on your computer (not phone), on the left navigation at the bottom you will see your user ID. Click the up caret next to your user name.
-- A menu will pop up. Click on "My Profile".
-- Scroll down and look for the "Multi-factor authentication" section. Click "Enroll".
-- Click on "start setup"
-- The next screen asks you what device you are using. Pick mobile phone.
-- Enter your phone number.
-- Pick if you are using an iPhone, Android, etc.
-- When it asks if you have Duo installed, since we did that before, click through on "I have Duo Mobile Installed"
-- A screen with a 2d barcode will be presented. At this time you are opening the Duo Mobile app on your phone.
-- If this is the first account you have with Duo Mobile, click "continue" to set up the first account.Then click "Use QR Code".
-- If you already have an account, click on "Add" in the top right corner and pick "Use QR Code".
-- Hold your phone up to scan the QR code on your computer screen.
+- On your Computer and on Snowflake's UI, Snowsight
+  - Once logged into Snowflake on your computer (not phone), on the left navigation at the bottom you will see your user ID. Click the up caret next to your user name.
+  - A menu will pop up. Click on "My Profile".
+  - Scroll down and look for the "Multi-factor authentication" section. Click "Enroll".
+  - Click on "start setup"
+  - The next screen asks you what device you are using. Pick mobile phone.
+  - Enter your phone number.
+  - Pick if you are using an iPhone, Android, etc.
+  - When it asks if you have Duo installed, since we did that before, click through on "I have Duo Mobile Installed"
+  - A screen with a 2d barcode will be presented. At this time you are opening the Duo Mobile app on your phone.
+- On your phone
+  - If this is the first account you have with Duo Mobile, click "continue" to set up the first account.Then click "Use QR Code".
+  - If you already have an account, click on "Add" in the top right corner and pick "Use QR Code".
+  - Hold your phone up to scan the QR code on your computer screen.
+- Conclusion
 - Once scanned, your Snowflake account is now linked. 
 - You can send a test push on the first connection. This allows you to see what the MFA experience is like; you will be prompted on your phone to approve the login.
 
