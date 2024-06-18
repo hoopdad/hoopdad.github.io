@@ -31,12 +31,12 @@ I don't think you'll need screenshots; they make this pretty easy. But if it wou
   - If you already have an account, click on "Add" in the top right corner and pick "Use QR Code".
   - Hold your phone up to scan the QR code on your computer screen.
 - Conclusion
-- Once scanned, your Snowflake account is now linked. 
-- You can send a test push on the first connection. This allows you to see what the MFA experience is like; you will be prompted on your phone to approve the login.
+  - Once scanned, your Snowflake account is now linked. 
+  - You can send a test push on the first connection. This allows you to see what the MFA experience is like; you will be prompted on your phone to approve the login.
 
 That's all there is to making it harder for your account to be compromised.
 
-### For administrators
+### For Administrators
 
 There are multiple use cases for MFA such as CLI, JDBC connections and the legacy UI. Look in the Snowflake docs for handling these other combinations.
 
