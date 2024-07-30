@@ -145,7 +145,10 @@ FROM @STOCK_TRADES_STAGE file_format=(type=csv, skip_header=1);
 
 ## Conclusion
 
-You now have 50,000 records in your table, thanks to the 40,000 we just added. Notice how fast these operations are completing.
+You now have 50,000 records in your table, thanks to the 40,000 we just added. 
+
+Notice how fast Snowflake (in a Snowflake-AWS subscription) is processing 10,000 records at a shot, once in the S3 bucket. Real workloads may includes millions of rows, but this gives you an idea of how quickly this system can process data.
 
 ![Successful Imports](/assets/2024-07-30-file-success.png)
+
 ![Table Count](/assets/2024-07-30-file-success2.png)
