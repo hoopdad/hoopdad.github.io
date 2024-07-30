@@ -3,14 +3,12 @@ layout: post
 title:  "File Loading with AWS and Snowflake"
 ---
 
-# Push Local Files to S3 to Snowflake
-
 This follows a hypotehtical use case of creating a CSV file locally, then using Amazon S3 to stage the file for Snowflake, finally importing it into Snowflake.
 
 ## Benefits of the Approach
 
-- By creating the S3 bucket it configures a place for subsequent uploads to be staged as well, so that each time there is a new file, you don't have to re-do the whole stack.
-- By using the Snowflake Stage, you are moving the file close to the target without needing to really clean it, for load-time reduction of potential network errors like timeouts or overall slowness from network latency.
+- By creating the S3 bucket and related constructs in Snowflake, it sets up easier future loads. Each time there is a new file, you don't have to re-do the whole stack.
+- By using the Snowflake Stage, you are moving the file close to the target, to see a reduction of the risk of network errors like timeouts or overall slowness from network latency.
 
 ## The AWS Non-Human User
 
