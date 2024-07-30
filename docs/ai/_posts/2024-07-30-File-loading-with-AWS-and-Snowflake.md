@@ -2,6 +2,7 @@
 layout: post
 title:  "File Loading with AWS and Snowflake"
 ---
+
 # Push Local Files to S3 to Snowflake
 
 This follows a hypotehtical use case of creating a CSV file locally, then using Amazon S3 to stage the file for Snowflake, finally importing it into Snowflake.
