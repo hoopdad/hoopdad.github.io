@@ -3,7 +3,7 @@ layout: post
 title:  "File Loading with AWS and Snowflake"
 ---
 
-This follows a hypotehtical use case of creating a CSV file locally, then using Amazon S3 to stage the file for Snowflake, finally importing it into Snowflake.
+This follows a hypothetical use case of creating a CSV file locally, then using Amazon S3 to stage the file for Snowflake, finally importing it into Snowflake.
 
 ## Benefits of the Approach
 
@@ -37,6 +37,15 @@ sudo ./aws/install
 ```bash
 aws s3 cp <local-csv-file> s3://<bucket-name>/<csv-file>
 ```
+
+For my test, I wrote a python program to generate random data in several files with 10,000 rows each.
+
+![File Uploads to S3](/assets/cli-upload-to-s3.png)
+
+This is the familiar s3 interace showing the successful uploads.
+
+![Files in S3](/assets/files-in-s3.png)
+
 
 ## Install snowsql
 
@@ -93,7 +102,18 @@ CREATE OR REPLACE STAGE THIRD_PARTY_TRADES_STAGE
   CREDENTIALS=(AWS_KEY_ID='<aws_key_id>' AWS_SECRET_KEY='<aws_secret_key>');
 ```
 
-## Directly Load from S3
+You can now browse your databases in the Snowflake web UI to see all of these created. Here's what mine looked like.
+
+![Snowflake screenshot](/assets/snowflake_objects.png)
+
+
+## Loading Files
+
+You now have all the structures in place. Here's what mine looked like.
+
+![File Moves in SQL](/assets/file-moves.png)
+
+### Directly Load from S3
 
 ```sql
 COPY INTO FIN_TXN.STOCK_TRADES.ROOT_DEPTH
@@ -101,24 +121,24 @@ FROM @THIRD_PARTY_TRADES_STAGE/<csv-file>
 FILE_FORMAT = (TYPE = 'CSV', skip_header=1);
 ```
 
-## Copy the file to your stage from the external stage
+### Copy the file to your stage from the external stage
 
 ```sql
 COPY files into @STOCK_TRADES_STAGE
 FROM @THIRD_PARTY_TRADES_STAGE/<csv-file>;
 ```
 
-## Validate the file in Stage
+### Validate the file in Stage
 
 ```sql
-COPY INTO THIRD_PARTY_TRADES
+COPY INTO ROOT_DEPTH
 FROM @STOCK_TRADES_STAGE file_format=(type=csv, skip_header=1)
 validation_mode=RETURN_ALL_ERRORS;
 ```
 
-## Load your table
+### Load your table
 
 ```sql
-COPY INTO THIRD_PARTY_TRADES
+COPY INTO ROOT_DEPTH
 FROM @STOCK_TRADES_STAGE file_format=(type=csv, skip_header=1);
 ```
