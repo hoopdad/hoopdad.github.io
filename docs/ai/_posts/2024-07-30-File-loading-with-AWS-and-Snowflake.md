@@ -40,11 +40,11 @@ aws s3 cp <local-csv-file> s3://<bucket-name>/<csv-file>
 
 For my test, I wrote a python program to generate random data in several files with 10,000 rows each.
 
-![File Uploads to S3](/assets/cli-upload-to-s3.png)
+![File Uploads to S3](/assets/2024-07-30-cli-upload-to-s3.png)
 
 This is the familiar s3 interace showing the successful uploads.
 
-![Files in S3](/assets/files-in-s3.png)
+![Files in S3](/assets/2024-07-30-files-in-s3.png)
 
 
 ## Install snowsql
@@ -104,14 +104,14 @@ CREATE OR REPLACE STAGE THIRD_PARTY_TRADES_STAGE
 
 You can now browse your databases in the Snowflake web UI to see all of these created. Here's what mine looked like.
 
-![Snowflake screenshot](/assets/snowflake_objects.png)
+![Snowflake screenshot](/assets/2024-07-30-snowflake_objects.png)
 
 
 ## Loading Files
 
 You now have all the structures in place. Here's what mine looked like.
 
-![File Moves in SQL](/assets/file-moves.png)
+![File Moves in SQL](/assets/2024-07-30-file-moves.png)
 
 ### Directly Load from S3
 
@@ -142,3 +142,10 @@ validation_mode=RETURN_ALL_ERRORS;
 COPY INTO ROOT_DEPTH
 FROM @STOCK_TRADES_STAGE file_format=(type=csv, skip_header=1);
 ```
+
+## Conclusion
+
+You now have 50,000 records in your table, thanks to the 40,000 we just added. Notice how fast these operations are completing.
+
+![Successful Imports](/assets/2024-07-30-file-success.png)
+![Table Count](/assets/2024-07-30-file-success2.png)
