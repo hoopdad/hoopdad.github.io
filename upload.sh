@@ -4,3 +4,4 @@ git fetch && \
     git push && \
     gh pr create && \
     gh pr merge --admin
+
