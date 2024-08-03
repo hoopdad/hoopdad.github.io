@@ -5,7 +5,7 @@ title:  "Azure Managed Identity for Service Accounts"
 
 ## Why am I writing about Managed Identities on this lovely summer Saturday afternoon?
 
-![Azure Managed Identities](/assets/Azure_Public_Service_Icons/Icons/identity/10227-icon-service-Managed-Identities)
+![Azure Managed Identities](/assets/Azure_Public_Service_Icons/Icons/identity/10227-icon-service-Managed-Identities.svg)
 
 As a developer who has survived and learned from generations of distributing computing, I like how Managed Identities solve a few key problems. From application code, I need to access other services and databases, but we can't leave those other services and databases wide open with no authentication or authorization. They need some auth mechanisms. And I don't want passwords stored in files, cumbersome encryption algorithms which we wrote back in the day, and I can't ask for any more favors of my operations team in password management. The "service account" concept helped with a lot but didn't get us all the way. Managed Identities simplify all of this.
 
