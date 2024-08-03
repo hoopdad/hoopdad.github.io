@@ -139,7 +139,7 @@ The point of doing all this is so we can write code that uses an identity to do 
 
 This example uses the .NET Core Identity library to simplify getting the token for you, basically in a single object constructor: `new DefaultAzureCredential()`. To get a feel for what it does under the cover, see the REST API example below this one.
 
-```C#
+```csharp
 using Azure;
 using Azure.Core;
 using Azure.Identity;
