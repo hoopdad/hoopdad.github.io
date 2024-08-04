@@ -22,7 +22,7 @@ I hope you can see by now that developers need a secure way to access various se
 Good thought went into the concept of the Managed Identity. It solves the above problems in a few ways.
 
 - Managed Identities are clearly not user accounts, managed separately and can auto-cleanup when resources are deleted.
-- Password rotation is fully automated and one-time or short-term (minutes or seconds) passwords are used.
+- Password rotation is not needed since the system uses a just-in-time token mechanism.
 - A clever environment variable injection method puts the authentication information exactly and only where it needs to be.
 
 ## How To Use a Managed Identity
@@ -31,7 +31,7 @@ Good thought went into the concept of the Managed Identity. It solves the above 
 
 You can choose to use a system-assigned managed identity, convenient for limited number of resource configurations, or a "user-assigned" managed identity, great for conveniently connecting a few resources.
 
-I'll show you how to do a simple setup in Terraform using the azurerm provider. There are two main concepts you are covering in your Infrastructure configuration.
+I'll show you how to do a simple setup in Terraform and a couple of different ways to write code to take advantage of the built-in security.
 
 #### Assign the Managed Identity
 
@@ -39,7 +39,7 @@ When you define a resource, you can also tell Azure to configure a managed ident
 
 Assign roles to the managed identity on another resource such as a storage account or a key vault. This will enable processes running on your VM or Function App to get a Certificate from a Key Vault or write to certain storage objects.
 
-Here's an example that creates a User Assigned Identity, a VM, and a storage account, then enables the managed identity to be a Contributor to the storage account and write files to a blob.
+Here's an example that creates a User Assigned Identity with `azurerm_user_assigned_identity`, a VM, and a storage account. It then enables the managed identity to be a Contributor to the storage account and write files to a blob using the `azurerm_role_assignment` object.
 
 ```hcl
 
@@ -129,7 +129,7 @@ resource "azurerm_role_assignment" "identity_storage_contributor" {
 }
 ```
 
-Run that terraform against your subscription as a starting point. You would need to add in your specific VNET, Subnet, and NIC details for the VM.
+This serves as a starting point, and then you would need to add in your specific VNET, Subnet, and NIC details for the VM. Apply that terraform to your subscription.
 
 #### Write your Code - SDK Example
 
@@ -269,4 +269,4 @@ python script.py examplestorageacct content myfile.txt myfile.txt
 
 ## Conclusion
 
-In Azure, take advantage of these to greatly simplify a secure programming environment with low operational overhead! It's available for any programming language, with .NET SDK or not, using the methods above.
+In Azure, take advantage of Managed Identities to greatly simplify a secure programming environment with low operational overhead! It's available for any programming language, with .NET SDK or not, using the methods above. And it can run on a lot of Azure services beyond VM's including Function App, Event Grid, and many container environments. Now, back to my summer afternoon sunshine...
