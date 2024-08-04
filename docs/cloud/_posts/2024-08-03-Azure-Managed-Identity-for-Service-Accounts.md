@@ -22,7 +22,7 @@ I hope you can see by now that developers need a secure way to access various se
 Good thought went into the concept of the Managed Identity. It solves the above problems in a few ways.
 
 - Managed Identities are clearly not user accounts, managed separately and can auto-cleanup when resources are deleted.
-- Password rotation is fully automated and one-time or short-term (minutes or seconds) passwords are used.
+- Password rotation is not needed since the system uses a just-in-time token mechanism.
 - A clever environment variable injection method puts the authentication information exactly and only where it needs to be.
 
 ## How To Use a Managed Identity
