@@ -5,7 +5,7 @@ title:  "Azure Managed Identity for Service Accounts"
 
 ## Why am I writing about Managed Identities on this lovely summer Saturday afternoon?
 
-![Azure Managed Identities](/assets/Azure_Public_Service_Icons/Icons/identity/10227-icon-service-Managed-Identities.svg) As a developer who has survived and learned from generations of distributing computing, I like how Managed Identities solve a few key problems. From application code, I need to access other services and databases, but we can't leave those other services and databases wide open with no authentication or authorization. They need some auth mechanisms. And I don't want passwords stored in files, cumbersome encryption algorithms which we wrote back in the day, and I can't ask for any more favors of my operations team in password management. The "service account" concept helped with a lot but didn't get us all the way. Managed Identities simplify all of this.
+![Azure Managed Identities](/assets/Azure_Public_Service_Icons/Icons/identity/10227-icon-service-Managed-Identities.svg) As a developer who has survived and learned from generations of distributing computing, I like how Managed Identities solve a few key problems. From application code, I need to access other services and databases, but we can't leave those other services and databases wide open with no authentication or authorization. They need some auth mechanisms. And I don't want passwords stored in files, cumbersome encryption algorithms which we wrote back in the day, and I can't ask for any more favors of my token team in password management. The "service account" concept helped with a lot but didn't get us all the way. Managed Identities simplify all of this.
 
 ## What is a Managed Identity used for?
 
@@ -201,7 +201,7 @@ Key Concept: injected environment variables
 Azure will add these to your local environment whenever you have a managed identity assigned. As a developer you can use these to get the token that will be passed on to other Azure services for authentication and authorization.
 
 - IDENTITY_ENDPOINT - the endpoint of the identity service that you will use to get your auth token
-- IDENTITY_HEADER - the one-time token to pass to the identity service to get your next token that you'll use for accessing services
+- IDENTITY_HEADER - the limited-time token to pass to the identity service to get your next token that you'll use for accessing services (some token caching is allowed but beyond the scope of this article)
 
 ```python
 import sys
@@ -269,4 +269,6 @@ python script.py examplestorageacct content myfile.txt myfile.txt
 
 ## Conclusion
 
-In Azure, take advantage of Managed Identities to greatly simplify a secure programming environment with low operational overhead! It's available for any programming language, with .NET SDK or not, using the methods above. And it can run on a lot of Azure services beyond VM's including Function App, Event Grid, and many container environments. Now, back to my summer afternoon sunshine...
+In Azure, take advantage of Managed Identities to greatly simplify a secure programming environment with low operational overhead! It's available for any programming language, with .NET SDK or not, using the methods above. And it can run on a lot of Azure services beyond VM's including Function App, Event Grid, and many container environments.
+
+Now, back to my summer afternoon sunshine...
