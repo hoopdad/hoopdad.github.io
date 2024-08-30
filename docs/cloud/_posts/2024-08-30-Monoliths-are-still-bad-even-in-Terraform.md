@@ -21,7 +21,7 @@ You will find an inverse correlation between the numbers of kinds of resources c
 
 It seems like a judgement call as to when to add on to the module and when to create a new one. We can put some guidelines around how much is too much in a Terraform module by looking at what those variations might be and their impacts.
 
-![line graph showing inverse relationship of numbers of items versus reuse occurrences](reuse.png)
+![line graph showing inverse relationship of numbers of items versus reuse occurrences](/assets/reuse.png)
 
 ## Hardened Modules
 
