@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "Monoliths are still bad, even in Terraform"
+title:  "Monoliths Are Still Bad, Even In Terraform"
 ---
 
 ## Reusability in Infrastructure as Code
 
-I want to dive into what makes good reusable Terraform, To do that, I'm reflecting on the benefits and pitfalls of designing reusable code of any kind. What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past?
+I want to dive into what makes good reusable Terraform code and share what I have seen that limits reuse. I'm reflecting on the benefits and pitfalls of designing reusable code of any kind based on almost 30 years working in technology. 
 
-Regardless of the language, certain attributes of the resulting reusable assets are critical. Reusabilty is the clear intent of this post. With it we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning.
+What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical. 
+
+Reusabilty is clearly the intent of this post. With it we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning.
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
 
