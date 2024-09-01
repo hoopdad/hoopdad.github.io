@@ -5,7 +5,7 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 ## Reusability in Infrastructure as Code
 
-This article reflects on the benefits and pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture and management. 
+This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture and management. 
 
 The author hopes that the key take-aways are in the discussion of using the Terraform module object intentionally as either a hardened module or a deployment pattern, as well as the importance of keeping them distinct in code.
 
@@ -43,7 +43,7 @@ It seems like a judgement call as to when to add on to the module and when to cr
 
 An example of hardened modules would be a Linux Web App in Azure. It needs to be configured with encryption, a range of allowed capacities for cost reasonableness, and authentication. But also, to actually be useful, that web app needs storage and a managed identity (service principal in Azure lingo) to communicate with that storage.
 
-So here are two scenarios - one that builds the monolith, an opinionated construct of all the things I need for a web app, versus independent components. Here are two approaches to building hardened modules and how without planning that hardened module becomes a deployment pattern.
+So here are two scenarios - one that builds the monolith, an opinionated construct of all the things I need for a web app, versus independent components. These demonstrate how, without planning, that module becomes an complex, unstable, unmaintainable, fragile, and unreusable burden.
 
 ### The Monolith
 
