@@ -11,11 +11,21 @@ The author hopes that the key take-aways are in the discussion of using the Terr
 
 What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical. 
 
-Reusabilty is clearly the intent of this post. The challenges are in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skillset levels, and volume of work are different between every company. 
+### Why Reusability is Important
 
-With reusability we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
+Reusabilty is clearly the intent of this post. The challenges are in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skillset levels, and volume of work are different between every company.
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
+
+### Maintainability is Longevity
+
+With reusability we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Building a lot of things in one code package is complex and can be hard to follow. Complex code is fragile; it breaks easily! 
+
+### Stability Breeds Confidence!
+
+Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
+
+### Hardended Module or Deployment Pattern?
 
 We can also differentiate two main types of Terraform modules: hardened modules and implementation patterns. A hardened module is focused on a small set of resources that are configured to a set of non-functional requirements, while an implementation pattern is a composition of multiple resources that are commonly implemented as wired together to achieve a certain platform model.
 
