@@ -7,7 +7,7 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management. 
 
-The author hopes that the key take-aways are in the discussion of using the Terraform module object intentionally as either a hardened module or a deployment pattern, as well as the importance of keeping them distinct in code.
+The key recommendation of this post is to use the Terraform module construct intentionally to classify and create modules that are clearly either hardened modules or deployment patterns. A single module should not play both roles.
 
 What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical. 
 
@@ -16,6 +16,8 @@ What is commonly true about C++ code, microservices, and Terraform? And how can 
 Reusabilty is clearly the intent of this post. The challenges are in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skillset levels, and volume of work are different between every company.
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
+
+The parallel to the "composability" attribute of SOA and microservices design should be drawn. A hardened module supports a composable architecture by being atomic in nature while the deployment pattern serves as the composer, pulling together the atomic units to solve business problems. 
 
 ### Maintainability is Longevity
 
