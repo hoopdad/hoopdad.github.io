@@ -7,7 +7,7 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management. 
 
-The key recommendation of this post is to use the Terraform module construct intentionally to classify and create modules that are clearly either hardened modules or deployment patterns. A single module should not play both roles.
+The key recommendation of this post is to use the Terraform module construct intentionally so that a module can be easily classified as either a hardened module or a deployment pattern, but not both. A single module should not play both roles.
 
 What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical. 
 
