@@ -137,7 +137,7 @@ Here's what that code would look like. You would use it by saving in its own fol
 Save it in its own folder called `webapp_module`. Parameterize what you'd like. To implement, reference it using syntax like this.
 
 ```HCL
-module "db" {
+module "app" {
     source = "webapp_module/"
     ... params ...
 }
