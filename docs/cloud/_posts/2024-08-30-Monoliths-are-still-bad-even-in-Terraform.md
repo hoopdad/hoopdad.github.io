@@ -3,7 +3,7 @@ layout: post
 title:  "Monoliths Are Still Bad, Even In Terraform"
 ---
 
-{:toc}
+#TOC
 
 ## Reusability in Infrastructure as Code
 
