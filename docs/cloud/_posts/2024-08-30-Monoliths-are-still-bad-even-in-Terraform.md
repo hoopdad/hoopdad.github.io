@@ -155,7 +155,7 @@ module "app" {
 
 ### Re-use of the Monolith
 
-Our monolith is a thorough and complete solution for a very specific bundling of a Linux Function App with the resources it requires: a particular kind of storage, a single managed identity, and a single way to set up diagnostics. In other words, we have just provided a hardened implementation pattern, in the form of a songle body of complex code. If requirements are exactly all true for the next project, we'll get reuse out of the monolith. 
+Our monolith is a thorough and complete solution for a very specific bundling of a Linux Function App with the resources it requires: a particular kind of storage, a single managed identity, and a single way to set up diagnostics. In other words, we have just provided a hardened implementation pattern, in the form of a single body of complex code. If requirements are exactly all true for the next project, we'll get reuse out of the monolith. 
 
 But very likely there are other outcomes like the following that mean you can't use that monolith.
 
