@@ -5,7 +5,7 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 ## Reusability in Infrastructure as Code
 
-This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture and management. 
+This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management. 
 
 The author hopes that the key take-aways are in the discussion of using the Terraform module object intentionally as either a hardened module or a deployment pattern, as well as the importance of keeping them distinct in code.
 
@@ -155,7 +155,7 @@ module "app" {
 
 ### Re-use of the Monolith
 
-Our monolith is a thorough and complete solution for an MS SQL database that requires this particular kind of storage, a single managed identity, and a single way to set up diagnostics. In other words, we have just provided an implementation pattern! If those assumptions are all true for the next project, we'll get reuse out of the monolith.
+Our monolith is a thorough and complete solution for a very specific bundling of a Linux Function App with the resources it requires: a particular kind of storage, a single managed identity, and a single way to set up diagnostics. In other words, we have just provided a hardened implementation pattern, in the form of a songle body of complex code. If requirements are exactly all true for the next project, we'll get reuse out of the monolith. 
 
 But very likely there are other outcomes like the following that mean you can't use that monolith.
 
