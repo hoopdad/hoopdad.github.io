@@ -27,7 +27,7 @@ With reusability we need to consider maintainability and code stability. Maintai
 
 Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
 
-### Hardended Module or Deployment Pattern?
+### Hardened Module or Deployment Pattern?
 
 We can also differentiate two main types of Terraform modules: hardened modules and implementation patterns. A hardened module is focused on a small set of resources that are configured to a set of non-functional requirements, while an implementation pattern is a composition of multiple resources that are commonly implemented as wired together to achieve a certain platform model.
 
@@ -163,7 +163,7 @@ But very likely there are other outcomes like the following that mean you can't 
 
 - The next project uses a Windows Web App instead of a Linux Function App, so you can't reuse the storage, identity or settings which we configure.
 - Another project requires re-use of an existing storage object and managed identity. That same storage is to be accessed directly by another service and the identity is also created and configured to that other service first.
-- Another project needs advanced features to plug into an Application Setvice Environment for hosting which is more expensive than the other projects', and require an exception to run in your company's environment.
+- Another project needs advanced features to plug into an Application Service Environment for hosting which is more expensive than the other projects', and require an exception to run in your company's environment.
 
 You might actually get some re-use, and for those instances, wow, it has exactly what they need with no changes. This is one way to build deployment patterns. Hold that thought and let's come back to deployment patterns.
 
@@ -290,7 +290,7 @@ Because we built the modules to include fewer resources, we can compose them dif
 
 - Project needs Windows Web App instead of Linux Function App - create a new app module, and re-use the rest
 - Project needs to re-use storage and identity - well, just re-use it. The application provides the glue in this mod anyways, so it can re-glue in any way it needs.
-- Advanced features of an Application Service Environment - you can create a new module fornthe ASE or provide variables to drive inclusion of those more expensive features. Judgement call.
+- Advanced features of an Application Service Environment - you can create a new module for the ASE or provide variables to drive inclusion of those more expensive features. Judgement call.
 
 What you didn't have to do was vigorously re-test the modules that didn't change. Those are in a known, good state.
 
