@@ -5,11 +5,15 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 ## Reusability in Infrastructure as Code
 
-I want to dive into what makes good reusable Terraform code and share what I have seen that limits reuse. I'm reflecting on the benefits and pitfalls of designing reusable code of any kind based on almost 30 years working in technology. 
+I want to dive into what makes good reusable Terraform code and share what I have seen that limits reuse. This article reflects on the benefits and pitfalls of designing reusable code of any kind through the lens of about 30 years of software development, architecture and management. 
+
+The author hopes that the key take-aways are in the discussion of using the Terraform module object intentionally as either a hardened module or a deployment pattern, as well as the importance of keeping them distinct in code.
 
 What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical. 
 
-Reusabilty is clearly the intent of this post. With it we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning.
+Reusabilty is clearly the intent of this post. The challenges are in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skillset levels, and volume of work are different between every company. 
+
+With reusability we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
 
@@ -145,9 +149,9 @@ Our monolith is a thorough and complete solution for an MS SQL database that req
 
 But very likely there are other outcomes like the following that mean you can't use that monolith.
 
-- The next project uses PostgreSQL instead of MSSQL, so you can't reuse the storage, identity or settings which were tricky to configure.
+- The next project uses a Windows Web App instead of a Linux Function App, so you can't reuse the storage, identity or settings which we configure.
 - Another project requires re-use of an existing storage object and managed identity. That same storage is to be accessed directly by another service and the identity is also created and configured to that other service first.
-- Another project needs advanced features on the database which are more expensive than the other projects', and require an exception to run in your company's environment.
+- Another project needs advanced features to plug into an Application Setvice Environment for hosting which is more expensive than the other projects', and require an exception to run in your company's environment.
 
 You might actually get some re-use, and for those instances, wow, it has exactly what they need with no changes. This is one way to build deployment patterns. Hold that thought and let's come back to deployment patterns.
 
@@ -272,9 +276,9 @@ Here's the same essential list of needed products, but flipped upside down.
 
 Because we built the modules to include fewer resources, we can compose them differently in an application.
 
-- Project needs PostgreSQL instead of MSSQL - create a new database module for PG, and re-use the rest
-- Project needs to re-use storage and identity - well, just re-use it. The application provided the glue, so it can re-glue in any way it needs.
-- Advanced features on teh MSSQL database - you can create a new database module or provide variables to drive those more expensive features. Judgement call.
+- Project needs Windows Web App instead of Linux Function App - create a new app module, and re-use the rest
+- Project needs to re-use storage and identity - well, just re-use it. The application provides the glue in this mod anyways, so it can re-glue in any way it needs.
+- Advanced features of an Application Service Environment - you can create a new module fornthe ASE or provide variables to drive inclusion of those more expensive features. Judgement call.
 
 What you didn't have to do was vigorously re-test the modules that didn't change. Those are in a known, good state.
 
