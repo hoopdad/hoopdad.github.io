@@ -21,11 +21,19 @@ Reusabilty is clearly the intent of this post. The challenges are in getting con
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
 
+Let's address the kinds of things that go into such a library to maximize reuse.
+
+### Composable Architecture
+
 The parallel to the "composability" attribute of SOA and microservices design should be drawn. A hardened module supports a composable architecture by being atomic in nature while the deployment pattern serves as the composer, pulling together the atomic units to solve business problems.
 
 Compare below the cases of a monolith and a composite structure. Note how the monolith suits the needs of one application. The others might choose to use it but likely will not, because it creates resources that they don't need. And then notice how the composite provides smaller, less complex modules that are easier to code and test.
 
+#### Monoliths Detract from Reusability
+
 ![Components of a Monolith](/assets/monolith.png)
+
+#### A Composable Architecture Promotes Quality Reuse
 
 ![Composite Architecture](/assets/composite.png)
 
