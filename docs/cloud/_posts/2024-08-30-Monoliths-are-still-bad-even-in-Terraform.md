@@ -5,19 +5,19 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 ## Reusability in Infrastructure as Code
 
-This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will dive into what makes good reusable Terraform code and share what I have seen that limits reuse. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management.
+This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will share some concepts and code as well as a simple framework to guide coding. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management, using lessons from the past to solve current problems.
 
-Those 30 years have witnessed many failed attempts to create reusable code. Those failures often occurred due to complexity of code (hard to understand how to reuse it or how to maintain it), lack of confidence due to code quality, and adaptability to new requirements. We can minimize those deterrents to greatly increase chances of reuse.
+Those 30 years have witnessed many failed attempts to create reusable code. Those failures often occurred due to complexity of code (hard to understand how to reuse it or how to maintain it), lack of confidence due to code quality, and adaptability to new requirements. We see those in large-scale infrastructure efforts currently, but can minimize those issues.
 
-The key recommendation of this post is to use the Terraform module construct intentionally so that a module can be easily classified as either a hardened module or a deployment pattern, but not both. A single module should not play both roles. When modules are not written with these two classifications in mind reuse is reduced, because engineers will not consistently decide to include Terraform resources. See the chart that illustrates the relationship between how many components are in a module versus likelihood of reuse, based on years of observation.
+The key recommendation of this post is to use the Terraform module construct intentionally to define use cases for it, which guides engineers on what goes into their code. A module should be easily classified as either a hardened module or a deployment pattern, but not both. A single module should not play both roles. This article defines both archetypes. 
+
+When modules are not written with these two classifications in mind reuse is reduced, because engineers will not consistently decide to include Terraform resources. See the chart that illustrates the relationship between how many components are in a module versus likelihood of reuse, based on years of observation.
 
 ![Likelihood of Reuse as Built Objects Increase](/assets/reuse.png)
 
-What is commonly true about C++ code, microservices, and Terraform? And how can we apply to Terraform all the learning from well-developed coding practices of the past? Regardless of the language, certain attributes of the resulting reusable assets are critical.
-
 ### Why Reusability is Important
 
-Reusabilty is clearly the intent of this post. The challenges are in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skill sets, and volume of work are different between every company.
+The challenges in reuse start in getting configurations just so for your unique infrastructure environment, where security policies, financial priorities, skill sets, and volume of work are different between every company. And then are compounded when clear guidelines don't exist.
 
 We want to write reusable Terraform in cases where it is particularly tricky or errors can occur. These may include incorporating corporate security policies, FinOps requirements, or other Cloud Engineering best practices. Getting a library of these helps an organization more easily support infrastructure management.
 
@@ -25,7 +25,7 @@ Let's address the kinds of things that go into such a library to maximize reuse.
 
 ### Composable Architecture
 
-The parallel to the "composability" attribute of SOA and microservices design should be drawn. A hardened module supports a composable architecture by being atomic in nature while the deployment pattern serves as the composer, pulling together the atomic units to solve business problems.
+The parallel to the "composability" attribute of SOA and microservices design should be drawn. This concept helped developers avoid fragile monolithic services and build for their businesses faster. A hardened module supports a composable architecture by being atomic in nature while the deployment pattern serves as the composer, pulling together the atomic units to solve business problems.
 
 Compare below the cases of a monolith and a composite structure. Note how the monolith suits the needs of one application. The others might choose to use it but likely will not, because it creates resources that they don't need. And then notice how the composite provides smaller, less complex modules that are easier to code and test.
 
@@ -41,7 +41,7 @@ Compare below the cases of a monolith and a composite structure. Note how the mo
 
 With reusability we need to consider maintainability and code stability. Maintainability is how we make sure that others understand what we did, and that we did it consistently. Building a lot of things in one code package is complex and can be hard to follow. Complex code is fragile; it breaks easily!
 
-### Stability Breeds Confidence!
+### Stability Breeds Confidence
 
 Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
 
@@ -49,15 +49,9 @@ Stability means that when we want to use code, there is a version of it that is 
 
 We can also differentiate two main types of Terraform modules: hardened modules and implementation patterns. A hardened module is focused on a small set of resources that are configured to a set of non-functional requirements, while an implementation pattern is a composition of multiple resources that are commonly implemented as wired together to achieve a certain platform model.
 
-## Too much of a Good Thing
+Without this differentiation, it seems like a judgement call as to when to add on to the module and when to create a new one.
 
-You develop a great module, and people like how it simplified their life. But then, different variations of this are needed. It is tempting to add that next new thing into the existing thing. You already have a code repository, a pipeline to deploy it, procedures to support it. Those "ease" aspects are the counterbalance to separating code into modules.
-
-You will find an inverse correlation between the numbers of kinds of resources created in a module and reusability. If your module builds too many things, the likelihood that someone else needs that code to build all of those same things goes down. They don't want extra!
-
-It seems like a judgement call as to when to add on to the module and when to create a new one. We can put some guidelines around how much is too much in a Terraform module by looking at what those variations might be and their impacts.
-
-## Hardened Modules
+## Code Examples
 
 An example of hardened modules would be a Linux Web App in Azure. It needs to be configured with encryption, a range of allowed capacities for cost reasonableness, and authentication. But also, to actually be useful, that web app needs storage and a managed identity (service principal in Azure lingo) to communicate with that storage.
 
