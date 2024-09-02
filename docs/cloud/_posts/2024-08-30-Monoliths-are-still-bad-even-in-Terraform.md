@@ -5,7 +5,7 @@ title:  "Monoliths Are Still Bad, Even In Terraform"
 
 ## Reusability in Infrastructure as Code
 
-This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will share some concepts and code as well as a simple framework to guide coding. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management, using lessons from the past to solve current problems.
+This article reflects on the benefits and avoidable pitfalls of designing reusable Infrastructure as Code modules written in Terraform. I will share some concepts and code as well as a simple framework to guide coding. It is written through the lens of about 30 years immersion in professional software development, engineering, architecture, and management, using lessons from the past to solve current problems. Chief among them is monolothic code that evolves rather than is designed, and becomes all-encompassing.
 
 Those 30 years have witnessed many failed attempts to create reusable code. Those failures often occurred due to complexity of code (hard to understand how to reuse it or how to maintain it), lack of confidence due to code quality, and adaptability to new requirements. We see those in large-scale infrastructure efforts currently, but can minimize those issues.
 
