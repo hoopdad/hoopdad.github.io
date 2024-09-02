@@ -45,9 +45,9 @@ With reusability we need to consider maintainability and code stability. Maintai
 
 Stability means that when we want to use code, there is a version of it that is known to be well-tested and functioning. Without these, your code will be abandoned because it is not clear how to support it or shunned due to low quality.
 
-### Hardened Module or Deployment Pattern?
+### The Framework: Hardened Modules and Deployment Patterns
 
-We can also differentiate two main types of Terraform modules: hardened modules and implementation patterns. A hardened module is focused on a small set of resources that are configured to a set of non-functional requirements, while an implementation pattern is a composition of multiple resources that are commonly implemented as wired together to achieve a certain platform model.
+We can differentiate two main types of Terraform modules: hardened modules and implementation patterns. A hardened module is focused on a small set of resources that are configured to a set of non-functional requirements, while an implementation pattern is a composition of multiple resources that are commonly implemented as wired together to achieve a certain platform model.
 
 Without this differentiation, it seems like a judgement call as to when to add on to the module and when to create a new one.
 
