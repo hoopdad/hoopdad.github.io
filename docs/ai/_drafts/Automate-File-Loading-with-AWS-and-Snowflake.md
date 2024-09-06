@@ -17,7 +17,7 @@ You'll see we hop back and forth between AWS and Snowflake quite a bit to set up
 
 1. AWS: Configure AWS Permissions - Create a Role
 2. Snowflake: Create a storage integration with outputs from step 1
-3. AWS: Configure AWS Permissions - Createa  policy with outputs from step 2
+3. AWS: Configure AWS Permissions - Create a policy with outputs from step 2
 4. Snowflake: Setup the STAGE, PIPE, and a ROLE
 5. AWS: Configure the S3 Event Notifications
 6. Send your files to AWS and automatically ingest them into your table.
@@ -78,7 +78,7 @@ CREATE STORAGE INTEGRATION my_s3_integration
   TYPE = EXTERNAL_STAGE
   STORAGE_PROVIDER = 'S3'
   ENABLED = TRUE
-  STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::704855531002:role/mike-snowflake-s3-test'
+  STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123123123123:role/my-snowflake-s3-test'
   STORAGE_ALLOWED_LOCATIONS = ('s3://<bucket-name>/')
   [ STORAGE_BLOCKED_LOCATIONS = ('s3://<bucket-name>/') ]
 
@@ -159,13 +159,13 @@ ALTER PIPE s3pipe SET PIPE_EXECUTION_PAUSED = TRUE;
 GRANT OWNERSHIP ON PIPE FIN_TXN.STOCK_TRADES.s3pipe TO ROLE snowpipe_role;
 
 -- Grant the role to a user
-GRANT ROLE snowpipe_role TO USER MIKEO-SB;
+GRANT ROLE snowpipe_role TO USER "MYUSER";
 
 -- Set the role as the default role for the user
-ALTER USER MIKEO-SB SET DEFAULT_ROLE = snowpipe_role;
+ALTER USER "MYUSER" SET DEFAULT_ROLE = snowpipe_role;
 
 -- Resume the pipe
-ALTER PIPE mypipe SET PIPE_EXECUTION_PAUSED = FALSE;
+ALTER PIPE s3pipe SET PIPE_EXECUTION_PAUSED = FALSE;
 ```
 
 ## Final Setup in AWS
@@ -186,6 +186,7 @@ For purposes of this post, I had ChatGPT write a program to generate files for m
 python datafile.py 10000 data.csv
 aws s3 cp data.csv s3://<bucket-name>/
 ```
+
 When you send that file up to S3 from your workstation, give it a little time to process. Even though the processing itself can be less than a second for 10,000 records, it might take 30-40 seconds (or more) for the file to get picked up.
 
 Check your tables to see them being loaded up!
