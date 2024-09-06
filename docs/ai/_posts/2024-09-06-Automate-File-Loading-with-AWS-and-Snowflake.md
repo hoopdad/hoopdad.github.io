@@ -7,6 +7,8 @@ title:  "Automate File Loading with AWS and Snowflake"
 
 This is part 2 of a series that shows the ease and speed of aggregating files into Snowflake. Snowflake is a powerful platform that will enable your AI and Analytics efforts. One of the most challenging barriers to these efforts is getting data from your other systems into your analytics platform. Using automation and principles outlined in this post remove unnecessary constraints and grow your platform fast.
 
+![Your Analytics Platform](/assets/easy-agg.png)
+
 Imagine a "set it and forget it" model where you can tell your various application's DBA's to just send a file whenever you want, however often you want. Don't worry about a schedule because our drive-through is open 24/7. Don't worry about how small the file is. And it can be in a simple CSV or JSON format: no proprietary file formatting needed.
 
 This represents removing constraints put upon you by frameworks that require proprietary or clunky file formats, clock schedules that can be missed causing loss of visibility and confidence, and waiting until your file is "big enough" to make it worth while.
