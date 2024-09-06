@@ -89,7 +89,6 @@ DESC INTEGRATION my_s3_integration;
 
 ![Get the ARN for Snowflake Role](/assets/2024-09-04-aws-arn-for-snowflake.png)
 
-
 ## Configure AWS Permissions - Part 2 - Create a Policy
 
 Head back over to AWS with your new STORAGE INTEGRATION's `STORAGE_AWS_ROLE_ARN` and `STORAGE_AWS_EXTERNAL_ID`. Navigate back to the IAM Role you created and edit the policy with Snowflake's values.
