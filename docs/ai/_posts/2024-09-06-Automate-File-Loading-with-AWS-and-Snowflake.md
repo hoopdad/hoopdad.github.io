@@ -5,11 +5,11 @@ title:  "Automate File Loading with AWS and Snowflake"
 
 ## About this Post
 
-This is part 2 of a series that shows the ease and speed of aggregating files into Snowflake.
-
-In this post, we'll add an effort-saving automation which removes the constraints of space and time. Ok, not space, but time. The "space" part will come in once quantum computing is here but until then we are limited by the directional flow of electrons.
+This is part 2 of a series that shows the ease and speed of aggregating files into Snowflake. Snowflake is a powerful platform that will enable your AI and Analytics efforts. One of the most challenging barriers to these efforts is getting data from your other systems into your analytics platform. Using automation and principles outlined in this post remove unnecessary constraints and grow your platform fast.
 
 Imagine a "set it and forget it" model where you can tell your various application's DBA's to just send a file whenever you want, however often you want. Don't worry about a schedule because our drive-through is open 24/7. Don't worry about how small the file is. And it can be in a simple CSV or JSON format: no proprietary file formatting needed.
+
+This represents removing constraints put upon you by frameworks that require proprietary or clunky file formats, clock schedules that can be missed causing loss of visibility and confidence, and waiting until your file is "big enough" to make it worth while.
 
 Using AWS's S3 Simple Queue Service with Snowflake pipes, we'll have AWS sending notifications to Snowflake to get files as they are uploaded.
 
@@ -170,9 +170,9 @@ ALTER PIPE s3pipe SET PIPE_EXECUTION_PAUSED = FALSE;
 
 ## Final Setup in AWS
 
-![S3 Notification 1](/assets/2024-09-04-2024-09-04-notify1.png)
-![S3 Notification 2](/assets/2024-09-04-2024-09-04-notify2.png)
-![S3 Notification 3](/assets/2024-09-04-2024-09-04-notify3.png)
+![S3 Notification 1](/assets/2024-09-04-notify1.png)
+![S3 Notification 2](/assets/2024-09-04-notify2.png)
+![S3 Notification 3](/assets/2024-09-04-notify3.png)
 
 ## Get Started
 
