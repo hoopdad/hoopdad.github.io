@@ -5,7 +5,7 @@ title:  "Automate File Loading with AWS and Snowflake"
 
 ## About this Post
 
-This is part 2 of a series that shows the ease and speed of aggregating files into Snowflake. This is particularly interesting for gathering data from many sources so that Analysts and Data Scientists can find new insights. The [first post]{% post_url /ai/2024-07-30-File-loading-with-AWS-and-Snowflake %} works well for use cases of one-time or infrequent loads. This post presents a great way to automate ongoing operations.
+This is part 2 of a series that shows the ease and speed of aggregating files into Snowflake. This is particularly interesting for gathering data from many sources so that Analysts and Data Scientists can find new insights. The [first post]({% post_url /ai/2024-07-30-File-loading-with-AWS-and-Snowflake %}) works well for use cases of one-time or infrequent loads. This post presents a great way to automate ongoing operations.
 
 Using Snowflake and AWS automation and principles outlined in this post remove unnecessary constraints and grow your platform fast. One of the most challenging barriers to past analytics efforts was getting regular data feeds from multiple data sources. Sure, one core system, but if you've seen it, think of all the others systems that wouldn't or couldn't conform. That's because solutions tended to be database vendor-centric. This resulted in fractured analytics properties throughout your portfolio and incomplete analytics. But, with Snowflake and your cloud provider there is a better way that removes those barriers.
 
