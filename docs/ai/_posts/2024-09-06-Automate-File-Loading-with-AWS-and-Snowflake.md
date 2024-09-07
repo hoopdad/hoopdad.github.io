@@ -184,7 +184,7 @@ In case you have any files already staged there, you wouldn't get a notification
 
 ![Refresh Pipe](/assets/2024-09-04-refresh-after-enable.png)
 
-For purposes of this post, I had ChatGPT write a program to generate files for me. I just told it to generate a python script that creates a CSV file with columns that match my column headings and some randomization. `datafile.py` generates the number of rows I want in the file name I want. And then I upload that to AWS via s3 cp. (I have already configured my AWS CLI and logged in.)
+In the real world, the next step is to get your individual transactional system to dump key data to CSV files and copy it to your cloud storage. For purposes of this post, I had ChatGPT write a simulation program to generate files for me. I just told it to generate a python script that creates a CSV file with columns that match my column headings and some randomization. `datafile.py` generates the number of rows I want in the file name I want. And then I upload that to AWS via s3 cp. (I have already configured my AWS CLI and logged in.)
 
 ```bash
 python datafile.py 10000 data.csv
