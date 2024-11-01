@@ -5,7 +5,7 @@ title:  "A More Secure PaaS Environment in Azure - ASE Build and Deploy"
 
 ## Objective
 
-This post walks through building an Azure Application Service Environment v3. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. These configurations were differentiated in my [previous post about ASE]({% post_url /cloud/2024-11-01-Secure-PaaS-in-Azure-ASE-configuration-options %}).
+This post walks through building an Azure Application Service Environment v3 in Terraform. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. These configurations were differentiated in my [previous post about ASE]({% post_url /cloud/2024-11-01-Secure-PaaS-in-Azure-ASE-configuration-options %}).
 
 Note the reference to "v3" Application Service Environment throughout. This is because v1 and v2 docs and structures that you may find are incompatible with v3, which is the only supported version since August of 2024 and the writing of this post.
 

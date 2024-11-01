@@ -7,6 +7,8 @@ title:  "A More Secure PaaS Environment in Azure - ASE Configuration Options"
 
 In Microsoft Azure, an Application Service Environment (ASE) is an enhanced PaaS platform for web and serverless applications. It bundles many features including load balancing, TLS certificates, and DNS management. This article focuses on the choice between the “zone redundancy” or “dedicated hosts” hosting options for ASE. The “dedicated hosts” model provides slightly more security, while the “zone redundancy” model provides more availability.
 
+See a [subsequent post]({% post_url /cloud/2024-11-01-Secure-PaaS-in-Azure-Terraform-Build-and-Deploy %}) to learn how this can be built with Terraform.
+
 Note that when I discuss virtual machines (VM's), these are not VM’s that you have any direct control over. ASE’s are an abstraction running on top of the VM’s in question. ASE is very nicely wrapped as a PaaS product which simplifies management, deployment, and operations of these kinds of workloads.
 
 Disclaimer - the below diagram is for a generalized understanding only. While it demonstrates the likelihood and difficulty of cyber attacks, it is conceptual so that you can see the primary difference between the two ASE modes. Typical deployment and deployment configurations are included to help illustrate more of the stack.
