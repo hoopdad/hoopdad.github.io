@@ -1,17 +1,11 @@
 ---
 layout: post
-title:  "A More Secure PaaS Environment in Azure, Part 3 - Build and Deploy"
+title:  "A More Secure PaaS Environment in Azure - ASE Build and Deploy"
 ---
-
-This is part 3 of a 3 part series about Microsoft's Application Service Environment.
-
-1. Application Service Environment's Infrastructure Modes
-2. Application Service Environment's Compute Isolation
-3. Building and Deploying to an Application Service Environment (this post)
 
 ## Objective
 
-This post walks through building an Azure Application Service Environment v3, and then deploying a simple Hello World timer-based Function. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. See the prior articles which help guide you to decide which mode you need for your use case.
+This post walks through building an Azure Application Service Environment v3. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. These configurations were differentiated in my [previous post about ASE]({% post_url /cloud/2024-11-01-Secure-PaaS-in-Azure-ASE-configuration-options %}).
 
 Note the reference to "v3" Application Service Environment throughout. This is because v1 and v2 docs and structures that you may find are incompatible with v3, which is the only supported version since August of 2024 and the writing of this post.
 
@@ -23,7 +17,6 @@ Create a directory structure like the below and we'll add files as we go.
 /infrastructure/base
 /infrastructure/asev3
 /infrastructure/functionapp
-/app
 ```
 
 If you haven't yet logged into Azure via the [AZ CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows), make sure to download that and run the following.
@@ -35,7 +28,7 @@ az account set --subscription <your subscription UUID>
 
 ## Dependency Objects
 
-Start with identifying your Azure Subscription, signing up for your free trial if necessary. Ideally you are storing these in a git repo like GitHub and running your Terraform in CI/CD pipelines, but for example purposes we are using bash (or Windows Subsystem for Linux, WSL.) 
+Start with identifying your Azure Subscription, signing up for your free trial if necessary. Ideally you are storing these in a git repo like GitHub and running your Terraform in CI/CD pipelines, but for example purposes we are using bash (or Windows Subsystem for Linux, WSL.)
 
 We'll put Terraform files into 3 subdirectories under "infrastructure". You'll need to run them in order and make sure each run is successful before moving to the next.
 
@@ -98,10 +91,10 @@ Run your Terraform code with the following. Check the output of each and resolve
 
 ```bash
 cd infrastructure/base
-Terraform init
-Terraform validate
-Terraform plan
-Terraform apply
+terraform init
+terraform validate
+terraform plan
+terraform apply
 ```
 
 The Terraform messages will tell you success or failure, and I recommend logging into the Azure Portal to visually inspect the resources to make sure. Once you see the Resource Group, Network Security Group, Subnet, and NSG rules all created per spec, then move onto the ASE.
@@ -167,11 +160,11 @@ resource "azurerm_service_plan" "ase" {
 Run your Terraform code with the following. Check the output of each and resolve any errors before going onto the next section.
 
 ```bash
-cd infrastructure/base
-Terraform init
-Terraform validate
-Terraform plan
-Terraform apply
+cd infrastructure/asev3
+terraform init
+terraform validate
+terraform plan
+terraform apply
 ```
 
 As with the first section, visit your Azure Portal to verify that the components were built successful. You may note that while the ASE is building, it is in a "Preparing" state. When completed, it should be in a "Ready" state.
@@ -184,7 +177,7 @@ To find out, make sure you can resolve  <DNS Suffix>.appserviceenvironment.net a
 nslookup my-asev3.appserviceenvironment.net
 ```
 
-If you want nice Terraform outputs, you can use `internal_inbound_ip_addresses` and `dns_suffix` from the `azurerm_app_service_environment_v3` object. All traffic to the ASE and its hosted service go to the one IP address; it cleverly uses hostnames to route to the correct one. For example, our Function App will be `funcapp.my-asev3.appserviceenvironment.net`. This will resolve to the same address as `my-asev3.appserviceenvironment.net` and `funcapp2.my-asev3.appserviceenvironment.net` since the Load Balancer is the entry point to all.
+If you want nice Terraform outputs, you can use `internal_inbound_ip_addresses` and `dns_suffix` from the `azurerm_app_service_environment_v3` object as your output objects. All traffic to the ASE and its hosted service go to the one IP address; it cleverly uses hostnames to route to the correct one. For example, our Function App will be `funcapp.my-asev3.appserviceenvironment.net`. This will resolve to the same address as `my-asev3.appserviceenvironment.net` and `funcapp2.my-asev3.appserviceenvironment.net` since the Load Balancer is the entry point to all.
 
 ## Function App
 
@@ -233,19 +226,15 @@ resource "azurerm_linux_function_app" "example" {
 Run your Terraform code with the following. Check the output of each and resolve any errors before going onto the next section.
 
 ```bash
-cd infrastructure/base
-Terraform init
-Terraform validate
-Terraform plan
-Terraform apply
+cd infrastructure/functionapp
+terraform init
+terraform validate
+terraform plan
+terraform apply
 ```
 
 You should be able to log into the Azure Portal, see the Function App in a "Running" state.
 
-## Python Function Code
-
-## Code Deployment
-
-## See it run
-
 ## Summary
+
+You now have an Application Service Environment, replicated in 3 data centers of the Central US region and ready for your code. You can use the Portal-based editor to add a Function App. You could use plug-ins for your IDE or CLI tools for deployments. GitHub Actions (CI/CD workflows) and Azure Dev Ops pipelines both have built-in actions to deploy your Function App, too.
