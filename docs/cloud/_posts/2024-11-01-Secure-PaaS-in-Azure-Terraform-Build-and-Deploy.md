@@ -171,7 +171,7 @@ As with the first section, visit your Azure Portal to verify that the components
 
 Part of the activities while in "Preparing" state is internal Azure DNS registration. You may also want custom DNS names for your environment, and that is supported though out of scope of this article. The ASE deployment will create a new subdomain based on the name you provided and the Microsoft-owned "appserviceenvironment.net" domain. It will also  allocate IP addresses. Some corporate environments do not use the DNS entries created by Microsoft. In that case, you would need to add these per your organization's standards. There are many ways to do this so it is not documented here.
 
-To find out, make sure you can resolve  <DNS Suffix>.appserviceenvironment.net at this point. If you cannot, likely you need to follow the Microsoft instructions on setting up DNS. Here's how you could test our example:
+To find out, make sure you can resolve  \<DNS Suffix\>.appserviceenvironment.net at this point. If you cannot, likely you need to follow the Microsoft instructions on setting up DNS. Here's how you could test our example:
 
 ```bash
 nslookup my-asev3.appserviceenvironment.net
