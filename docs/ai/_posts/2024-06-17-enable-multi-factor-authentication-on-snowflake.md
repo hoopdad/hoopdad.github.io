@@ -31,7 +31,7 @@ I don't think you'll need screenshots; they make this pretty easy. But if it wou
   - If you already have an account, click on "Add" in the top right corner and pick "Use QR Code".
   - Hold your phone up to scan the QR code on your computer screen.
 - Conclusion
-  - Once scanned, your Snowflake account is now linked. 
+  - Once scanned, your Snowflake account is now linked.
   - You can send a test push on the first connection. This allows you to see what the MFA experience is like; you will be prompted on your phone to approve the login.
 
 That's all there is to making it harder for your account to be compromised.
@@ -60,10 +60,9 @@ Snowdlake does in fact have all these layers.
 
 When you hear about cloud data breaches, usually someone gets their hands on user IDs and passwords via spyware that steals passwords. It is exponentially harder for that person to get your "what you know" amd "what you have" because they are different systems. Unfortunately it is never impossible but our security layers are about probabilities. So if they break through one layer, we want to make sure there are other layers, and that is what MFA is.
 
-Access keys that aren't secured properly and insexure permissions (role based auth) are another couple pf common failures leading to breach. These are beyond the scope of this post but may become the topic of future posts. (Let me know your interest!)
+Access keys that aren't secured properly and insecure permissions (role based auth) are another couple pf common failures leading to breach. These are beyond the scope of this post but may become the topic of future posts. (Let me know your interest!)
 
 ## References
 
 - Snowflake's documentation about MFA: [https://docs.snowflake.com/en/user-guide/security-mfa](https://docs.snowflake.com/en/user-guide/security-mfa)
 - Sridhar Ramaswamy's [post](https://www.linkedin.com/posts/sridhar-ramaswamy_since-our-founding-in-2012-the-security-activity-7208537215449141249-rGoW?utm_source=share&utm_medium=member_desktop)
-

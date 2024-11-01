@@ -7,7 +7,7 @@ title:  "Bend it like Jensen"
 
 The need for the massively parallel processing provided by GPU's is plain as the nose on my face if you follow the tech or business news. Under Jensen Huang's leadership for many years, the last several months have seen the business value of NVidia grow $1 trillion. One trillion dollars. 
 
-That leads to the technical question of, how can I actually do my complex math for data science in a way that leverages that GPU horsepower? (Or, how can I support my technical customers with that need.) There are some very interesting approaches out there. Mainstream code compilers default to a CPU. Can any compiler alsooutput GPU code? No. Does the code look the same? I don't think so.
+That leads to the technical question of, how can I actually do my complex math for data science in a way that leverages that GPU horsepower? (Or, how can I support my technical customers with that need.) There are some very interesting approaches out there. Mainstream code compilers default to a CPU. Can any compiler also output GPU code? No. Does the code look the same? I don't think so.
 
 The one about which this article was written is called Bend. Bend's target is to be one language and set of tools that can run on CPU's or GPU's. I heard about this from a colleague and friend, Gus, who shared a YouTube video that touted mind boggling claims, so I set out to see the truth of the claims.
 
@@ -82,7 +82,7 @@ time to run: 29694
 
 ## Results 5/23
 
-I though that it could do better so upgrade libraries from the defaults on my system to the latest CUDA compiler. Here's the output of 5/23/2024 using version 12.5 of NVIDIA Cuda Compiler. Note, on 6/13/2024 I downloaded the latest versions of everythingn and saw essentially the same results.
+I though that it could do better so upgrade libraries from the defaults on my system to the latest CUDA compiler. Here's the output of 5/23/2024 using version 12.5 of NVIDIA Cuda Compiler. Note, on 6/13/2024 I downloaded the latest versions of everything and saw essentially the same results.
 ```txt
 nvcc: NVIDIA (R) Cuda compiler driver
 Copyright (c) 2005-2024 NVIDIA Corporation
@@ -114,7 +114,7 @@ sudo apt-get -y autoremove
 
 ## Conclusion
 
-Keep an eye on this one! The performance results I am sharing are not what I had hoped. But it could be my own hardware setup, a gaming laptop but nonetheless a laptop. And there is a devoted team working on this. 
+Keep an eye on this one! The performance results I am sharing are not what I had hoped. But it could be my own hardware setup, a gaming laptop but nonetheless a laptop. And there is a devoted team working on this.
 
 What I see is that this tool successfully compiles to run on a GPU, on a single thread on a GPU, and on multiple threads on a GPU. With only writing code once! I am sure in the right platforms today, and my laptop in the future, this is getting math done faster.
 
