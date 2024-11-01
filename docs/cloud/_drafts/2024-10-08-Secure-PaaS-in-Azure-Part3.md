@@ -11,7 +11,7 @@ This is part 3 of a 3 part series about Microsoft's Application Service Environm
 
 ## Objective
 
-This post walks through building an Azure Application Service Environment v3, and then deploying a simple Hello World timer-based Function. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. See the prior articles which help guide you to deicde which mode you need for your use case.
+This post walks through building an Azure Application Service Environment v3, and then deploying a simple Hello World timer-based Function. We will use the Zone Redundant mode for this example but will call out the 2 different parameters that differentiate the two modes. See the prior articles which help guide you to decide which mode you need for your use case.
 
 Note the reference to "v3" Application Service Environment throughout. This is because v1 and v2 docs and structures that you may find are incompatible with v3, which is the only supported version since August of 2024 and the writing of this post.
 
