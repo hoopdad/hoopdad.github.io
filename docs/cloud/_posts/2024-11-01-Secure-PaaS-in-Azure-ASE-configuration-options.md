@@ -5,7 +5,7 @@ title:  "A More Secure PaaS Environment in Azure - ASE Configuration Options"
 
 ## What is an Application Service Environment?
 
-In Microsoft Azure, an Application Service Environment (ASE) is an enhanced PaaS platform for web and serverless applications. It bundles many features including load balancing, TLS certificates, DNS management. This article focuses on the choice of “dedicated hosts” or “zone redundancy”. Think of these as options put forward as “secure” and “more secure” configurations.
+In Microsoft Azure, an Application Service Environment (ASE) is an enhanced PaaS platform for web and serverless applications. It bundles many features including load balancing, TLS certificates, and DNS management. This article focuses on the choice between the “zone redundancy” or “dedicated hosts” hosting options for ASE. The “dedicated hosts” model provides slightly more security, while the “zone redundancy” model provides more availability.
 
 Note that when I discuss virtual machines (VM's), these are not VM’s that you have any direct control over. ASE’s are an abstraction running on top of the VM’s in question. ASE is very nicely wrapped as a PaaS product which simplifies management, deployment, and operations of these kinds of workloads.
 
