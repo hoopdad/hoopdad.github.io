@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "Azure Managed Identities with Event Hub's Kafka"
+---
+
+## Objective
+
+## Set up Infrastructure
+
+### Terraform
+
+## Important Validations
+
+Make sure your Managed Identity has the right roles assigned to the Event Hub, and that it is assigned to your Azure Container App.
+
+![managed identity role assignment](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafka/managed-identity-role-assignments.png)
+
+![identity assignment](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafk/identity-assignments.png)
+
+## Java Code and Configuration
+
+### Configure Callback Handler
+
+Replace \<managedIdentityClientId\> in CustomAuthenticateCallbackHander.java
+
+### Configure Topic Name
+
+Default topic is TOPIC="test" in TestProducer.java. Change if you need to.
+
+### Configure Properties
+
+Config file is loaded from filesystem not jar, tweak that if you prefer or just add the config file to your DOckerfile with given example
+IN producer.config, change \<your event hub namespace\> to the value for yours. It builds a URL which is displayed on the Event Hub Namespace overview page.
+
+## Deploy the Service
+
+## Quick Start
+
+in build.sh, set ACR_NAME="\<my acr name\>" and IMAGE_NAME="\<app name\>"
+
+### Build the Jar
+
+### Build the Image
+
+### Push the Image
+
+## Validate Results
+
+### Event Hub Monitor
+
+You can see the messages flowing by going to the Event Hub Namespace and viewing the monitor on the Overview page.
+
+![event hub monitor](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafk/event-hub-monitor.png)
+
+### Consumer Code
+
+You most likely will also be writing a companion consumer or streaming client. That code, beyond the scope of this article, will provide proof that your messages are flowing.
+
+### Log output
+
