@@ -34,19 +34,19 @@ Define your provider; update your subscription. Use the data block of azurerm_cl
         features {}
     }
 
-    data "azurerm_client_config" "mikeo" {}
+    data "azurerm_client_config" "myapp" {}
 
-    resource "azurerm_resource_group" "mikeo" {
-        name     = "mikeo-resources"
+    resource "azurerm_resource_group" "myapp" {
+        name     = "myapp-resources"
         location = "East US"
     }
 
-    resource "azurerm_key_vault" "mikeo" {
-        name                = "mikeokeyvault2"
-        resource_group_name = azurerm_resource_group.mikeo.name
-        location            = azurerm_resource_group.mikeo.location
+    resource "azurerm_key_vault" "myapp" {
+        name                = "myappkeyvault2"
+        resource_group_name = azurerm_resource_group.myapp.name
+        location            = azurerm_resource_group.myapp.location
         sku_name            = "standard"
-        tenant_id           = data.azurerm_client_config.mikeo.tenant_id
+        tenant_id           = data.azurerm_client_config.myapp.tenant_id
     }
 
 ```
@@ -56,18 +56,18 @@ Define your provider; update your subscription. Use the data block of azurerm_cl
 Reference your resource group created above and define an ACR. We also will store that ACR's admin password securely in a key vault, so we can use it later.
 
 ```hcl
-    resource "azurerm_container_registry" "mikeo" {
-        name                = "mikeoregistry"
-        resource_group_name = azurerm_resource_group.mikeo.name
-        location            = azurerm_resource_group.mikeo.location
+    resource "azurerm_container_registry" "myapp" {
+        name                = "myappregistry"
+        resource_group_name = azurerm_resource_group.myapp.name
+        location            = azurerm_resource_group.myapp.location
         sku                 = "Basic"
         admin_enabled       = true
     }
 
     resource "azurerm_key_vault_secret" "reg_pw" {
-        key_vault_id = azurerm_key_vault.mikeo.id
-        name         = "mikeoregistry-pw"
-        value        = azurerm_container_registry.mikeo.admin_password
+        key_vault_id = azurerm_key_vault.myapp.id
+        name         = "myappregistry-pw"
+        value        = azurerm_container_registry.myapp.admin_password
     }
 ```
 
@@ -76,10 +76,10 @@ Reference your resource group created above and define an ACR. We also will stor
 Event Hub is really a hierarchy of objects and services. We define a top level Namespace, and it contains a single hub for our test. You will likely be splitting out messages into many Hubs.
 
 ```hcl
-resource "azurerm_eventhub_namespace" "mikeo_ns" {
-  name                = "mikeo-namespace"
-  location            = azurerm_resource_group.mikeo.location
-  resource_group_name = azurerm_resource_group.mikeo.name
+resource "azurerm_eventhub_namespace" "myapp_ns" {
+  name                = "myapp-namespace"
+  location            = azurerm_resource_group.myapp.location
+  resource_group_name = azurerm_resource_group.myapp.name
   sku                 = "Standard"
   local_authentication_enabled = false  # disables access keys
   capacity            = 1
@@ -89,10 +89,10 @@ resource "azurerm_eventhub_namespace" "mikeo_ns" {
 }
 
 # Create the Event Hub within the namespace
-resource "azurerm_eventhub" "mikeo_hub" {
-  name                = "mikeo-eventhub"
-  namespace_name      = azurerm_eventhub_namespace.mikeo_ns.name
-  resource_group_name = azurerm_resource_group.mikeo.name
+resource "azurerm_eventhub" "myapp_hub" {
+  name                = "myapp-eventhub"
+  namespace_name      = azurerm_eventhub_namespace.myapp_ns.name
+  resource_group_name = azurerm_resource_group.myapp.name
   partition_count     = 2
   message_retention   = 1
 }
@@ -103,24 +103,24 @@ resource "azurerm_eventhub" "mikeo_hub" {
 This is a key part here. First, define a User Assigned Managed Identity. We will later assign that to the ACA. We also need to make sure it has roles to connect to the ACR to get images and access the Event Hub.
 
 ```hcl
-resource "azurerm_user_assigned_identity" "mikeo" {
-  name                = "mikeo-identity"
-  resource_group_name = azurerm_resource_group.mikeo.name
-  location            = azurerm_resource_group.mikeo.location
+resource "azurerm_user_assigned_identity" "myapp" {
+  name                = "myapp-identity"
+  resource_group_name = azurerm_resource_group.myapp.name
+  location            = azurerm_resource_group.myapp.location
 }
 
 resource "azurerm_role_assignment" "acr_pull" {
   for_each             = { AcrPull = "", Reader = "" }
-  principal_id         = azurerm_user_assigned_identity.mikeo.principal_id
+  principal_id         = azurerm_user_assigned_identity.myapp.principal_id
   role_definition_name = each.key
-  scope                = azurerm_container_registry.mikeo.id
+  scope                = azurerm_container_registry.myapp.id
 }
 
  Grant the User Assigned Identity Data Owner permissions to the Event Hub Namespace
-resource "azurerm_role_assignment" "mikeo_eventhub_data_owner" {
-  scope                = azurerm_eventhub_namespace.mikeo_ns.id
+resource "azurerm_role_assignment" "myapp_eventhub_data_owner" {
+  scope                = azurerm_eventhub_namespace.myapp_ns.id
   role_definition_name = "Azure Event Hubs Data Owner"
-  principal_id         = azurerm_user_assigned_identity.mikeo.principal_id
+  principal_id         = azurerm_user_assigned_identity.myapp.principal_id
 }
 ```
 
@@ -129,35 +129,35 @@ resource "azurerm_role_assignment" "mikeo_eventhub_data_owner" {
 Create a minimally configured Container App Environment, and then an app. The image definition won't really work until you publish an image, but the ACA should create. In our case we are allowing access to services on our container's port 8080, though in this example we aren't really using that. Note where we are assigning the user assigned identity.
 
 ```hcl
-resource "azurerm_container_app_environment" "mikeo" {
-  name                = "mikeo-environment"
-  resource_group_name = azurerm_resource_group.mikeo.name
-  location            = azurerm_resource_group.mikeo.location
+resource "azurerm_container_app_environment" "myapp" {
+  name                = "myapp-environment"
+  resource_group_name = azurerm_resource_group.myapp.name
+  location            = azurerm_resource_group.myapp.location
 }
 
-resource "azurerm_container_app" "mikeo" {
+resource "azurerm_container_app" "myapp" {
   name                         = "myapp"
-  container_app_environment_id = azurerm_container_app_environment.mikeo.id
-  resource_group_name          = azurerm_resource_group.mikeo.name
+  container_app_environment_id = azurerm_container_app_environment.myapp.id
+  resource_group_name          = azurerm_resource_group.myapp.name
   revision_mode                = "Single"
 
   template {
     container {
       name   = "myapp"
-      image  = "${azurerm_container_registry.mikeo.login_server}/myapp:latest"
+      image  = "${azurerm_container_registry.myapp.login_server}/myapp:latest"
       cpu    = 0.25
       memory = "0.5Gi"
     }
   }
   registry {
-    server               = azurerm_container_registry.mikeo.login_server
-    username             = azurerm_container_registry.mikeo.admin_username
+    server               = azurerm_container_registry.myapp.login_server
+    username             = azurerm_container_registry.myapp.admin_username
     password_secret_name = "registry"    
   }
 
   secret {
     name  = "registry"
-    value = azurerm_container_registry.mikeo.admin_password
+    value = azurerm_container_registry.myapp.admin_password
   }
 
   ingress {
@@ -171,10 +171,10 @@ resource "azurerm_container_app" "mikeo" {
   }
   identity {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.mikeo.id]
+    identity_ids = [azurerm_user_assigned_identity.myapp.id]
   }
 
-  depends_on = [azurerm_user_assigned_identity.mikeo, azurerm_role_assignment.acr_pull, azurerm_key_vault_secret.reg_pw]
+  depends_on = [azurerm_user_assigned_identity.myapp, azurerm_role_assignment.acr_pull, azurerm_key_vault_secret.reg_pw]
 }
 ```
 
@@ -183,23 +183,23 @@ resource "azurerm_container_app" "mikeo" {
 You'll want Log Analytics Workspace, App Insights and Diagnostic settings enabled for debugging and troubleshooting.
 
 ```hcl
-resource "azurerm_log_analytics_workspace" "mikeo" {
-  name                = "mikeo-law"
-  resource_group_name = azurerm_resource_group.mikeo.name
-  location            = azurerm_resource_group.mikeo.location
+resource "azurerm_log_analytics_workspace" "myapp" {
+  name                = "myapp-law"
+  resource_group_name = azurerm_resource_group.myapp.name
+  location            = azurerm_resource_group.myapp.location
   retention_in_days   = 30
 }
-resource "azurerm_application_insights" "mikeo" {
-  name                = "mikeoappinsights"
-  resource_group_name = azurerm_resource_group.mikeo.name
-  location            = azurerm_resource_group.mikeo.location
+resource "azurerm_application_insights" "myapp" {
+  name                = "myappappinsights"
+  resource_group_name = azurerm_resource_group.myapp.name
+  location            = azurerm_resource_group.myapp.location
   application_type    = "web"
 }
 
-resource "azurerm_monitor_diagnostic_setting" "mikeo" {
-  name                       = "mikeo-diagnostic-setting"
-  target_resource_id         = azurerm_application_insights.mikeo.id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.mikeo.id
+resource "azurerm_monitor_diagnostic_setting" "myapp" {
+  name                       = "myapp-diagnostic-setting"
+  target_resource_id         = azurerm_application_insights.myapp.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.myapp.id
 
   metric {
     category = "AllMetrics"
@@ -245,11 +245,11 @@ Review all your resources in the Azure Portal before proceeding, Particularly, m
 
 ![managed identity role assignment](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafka/managed-identity-role-assignments.png)
 
-![identity assignment](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafka/identity-assignments.png)
+![identity assignment](/assets/2025/Azure-Managed-Identities-with-Event-Hubs-Kafka/identity-assignment.png)
 
 ## Java Code and Configuration
 
-Use the source code from [https://github.com/hoopdad/spring-eventhub-kafka/]. Clone that repo, and now we are going to customize it to your environment.
+Use the source code from [spring-eventhub-kafka](https://github.com/hoopdad/spring-eventhub-kafka/). Clone that repo, and now we are going to customize it to your environment.
 
 ### Configure Callback Handler
 
