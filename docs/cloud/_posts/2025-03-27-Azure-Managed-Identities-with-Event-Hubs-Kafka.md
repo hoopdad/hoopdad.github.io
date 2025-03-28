@@ -5,11 +5,11 @@ title:  "Azure Managed Identities with Event Hub's Kafka"
 
 ## More Secure Integrations for Event-Driven Applications in Azure
 
-Event Hub is an event processing services for high volumes of events and data. Event-driven applications can take advantage of this service to enable a highly responsive application or integration architecture. Kafka is a mature, open-source service for data stream processing, widely adopted over more than 15 years. Event Hub offers an interface to make it compatible with applications written for Kafka.
+Azure Event Hub is an event processing service built for high volumes of events and data. Event-driven applications can take advantage of this service to enable a highly responsive application or integration architecture. Kafka is a mature, open-source service for data stream processing, widely adopted over more than 15 years. Event Hub offers an interface to make it compatible with applications written for Kafka.
 
-In a modern zero-trust application architecture systems need to authenticate with each other to prevent unauthorized access. Azure offers a solution for managing "non human" accounts that are needed for this kind of authentication. Managed Identities offer passwordless access whose internal keys are rotated by Azure. Access to those keys is enabled programmatically so they are never stored. This means the non human account's password can't be accidentally shared with a bad actor, and won't be misused by a well-meaning person who can't wait for another account to be provisioned.
+In a modern zero-trust application architecture, systems need to authenticate with each other to prevent unauthorized access. Azure offers a solution for managing "non human" accounts that are needed for this kind of authentication. Managed Identities offer passwordless access whose internal keys are rotated by Azure. Access to those keys is enabled programmatically when needed so they are never stored. This means the non human account's password can't be accidentally shared with a bad actor, and won't be misused by a well-meaning person who can't wait for another account to be provisioned.
 
-This article describes how to use Kafka's API in Event Hubs with a Managed Identity, from the context of Java code running in Azure Container Apps. We will build and then leverage the below Azure resources. These concepts and code can be adopted to other situations.
+This article describes how to use Kafka's API in Event Hubs with a Managed Identity, from the context of Java Spring code running in Azure Container Apps. We will build and then leverage the below Azure resources. These concepts and code can be adopted to other situations.
 
 - Azure Event Hubs with Kafka enabled
 - Azure Container Environment and Azure Container Apps (ACA)
@@ -18,11 +18,11 @@ This article describes how to use Kafka's API in Event Hubs with a Managed Ident
 
 ## Set up Infrastructure
 
-We rely on Terraform, it's azurerm provider, and, to support that, the Azure Command Line Interface (AZ CLI). You should install those from the Hashicorp (Terraform) and Microsoft sites first.
+We rely on Terraform, it's azurerm provider, and the Azure Command Line Interface (AZ CLI). You should install those from the Hashicorp (Terraform) and Microsoft sites first.
 
 ### Terraform
 
-To keep it short and sweet, we will use the below Terraform code to build the environment.
+The below Terraform code will define the environment.
 
 #### The Foundation
 
@@ -42,7 +42,7 @@ Define your provider; update your subscription. Use the data block of azurerm_cl
     }
 
     resource "azurerm_key_vault" "myapp" {
-        name                = "myappkeyvault2"
+        name                = "myappkeyvault"
         resource_group_name = azurerm_resource_group.myapp.name
         location            = azurerm_resource_group.myapp.location
         sku_name            = "standard"
