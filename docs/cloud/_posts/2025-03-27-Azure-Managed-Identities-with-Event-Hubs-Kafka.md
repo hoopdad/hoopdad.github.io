@@ -3,6 +3,8 @@ layout: post
 title:  "Azure Managed Identities with Event Hub's Kafka"
 ---
 
+A How-To guide with code examples, screenshots, and explanations.
+
 ## More Secure Integrations for Event-Driven Applications in Azure
 
 Azure Event Hub is an event processing service built for high volumes of events and data. Event-driven applications can take advantage of this service to enable a highly responsive application or integration architecture. Kafka is a mature, open-source service for data stream processing, widely adopted over more than 15 years. Event Hub offers an interface to make it compatible with applications written for Kafka.
