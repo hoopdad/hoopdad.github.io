@@ -100,7 +100,7 @@ resource "azurerm_eventhub" "myapp_hub" {
 }
 ```
 
-#### Define the Managed Idnetity and its Roles
+#### Define the Managed Identity and its Roles
 
 This is a key part here. First, define a User Assigned Managed Identity. We will later assign that to the ACA. We also need to make sure it has roles to connect to the ACR to get images and access the Event Hub.
 
