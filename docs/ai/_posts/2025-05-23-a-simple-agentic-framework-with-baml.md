@@ -3,7 +3,7 @@ layout: post
 title:  "A Simple Agentic Framework with BAML"
 ---
 
-This article gives practical, simplified definitions of AI Agents, Agentic Models, and an example of an application that might be useful for DevOps issues.
+This article gives practical, simplified definitions of AI Agents, Agentic Models, and an example of an application that might be useful for DevOps issues. If you're looking for example code, scroll down past the first few paragraphs.
 
 ## AI Agents
 
