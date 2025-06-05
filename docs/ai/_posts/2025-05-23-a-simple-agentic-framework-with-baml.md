@@ -65,9 +65,9 @@ function GetLogProblems(log_output: string) -> GHLogProblems {
 
     Log Excerpt:
     [START_LOG]
-    Log Output: {{ log_output }}
+    Log Output: \{\{ log_output \}\}
     [END_LOG]
-    {{ ctx.output_format }}
+    \{\{ ctx.output_format \}\}
   "#
 }
 ```
