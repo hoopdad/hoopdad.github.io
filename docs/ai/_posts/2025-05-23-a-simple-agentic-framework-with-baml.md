@@ -5,31 +5,22 @@ title:  "A Simple Agentic Framework with BAML"
 
 This article gives practical, simplified definitions of AI Agents, Agentic Models, and an example of an application that might be useful for DevOps issues. If you're looking for example code, scroll down past the first few paragraphs.
 
-## AI Agents
+## AI Agents and an example for Improving DevOps
 
 AI Agents and Agentic models are popular topics in the current maturing of AI. Large Language Models (LLMs) like ChatGPT have enormous capabilities to understand and analyze, which you know from interacting with ChatGPT. Think of agents as code libraries with pre-defined jobs, and some awareness of their context.
 
-As an example of an AI Agent that is about improving conversations, imagine a Python program that flows like this.
+For DevOps, what if we had a flow of functions that gave us summaries of problems from related but distinct areas, then let our LLM put two and two together to come up with overall recommendations?
 
-- Using the conversation transcript, determine the tone of a conversation.
-- Using the conversation transcript, fact consistency analyzer to determine if each person was consistent throughout the conversation.
-- Using the conversation transcript, communication style profiler to determine if the person is speaking directly, with empathy, and with clear goals.
-- Using outputs from the prior steps, suggest how the person can improve their communication skills.
+- Using a GitHub Action log file, identify problems that occurred while the workflow was running, like slowness or error messages.
+- Using the GitHub Action source code, identify coding problems such as inefficiencies in which reusable action was used or repeated steps.
+- Putting the output together from the prior two steps, what are overall recommendations that could explain how to update code to increase speed and resolve the error messages.
 
-We have to break this down into multiple steps for two reasons.
+We break this down into multiple steps for two reasons.
 
-- The amount of data or processing can be too much for the LLM to process at once.
-- We can refine the overall process as time goes on, and these discrete steps enable iterating in an Agile fashion.
+- The amount of data or processing can be too much for the LLM to process at once. Passing a lengthy log file along with lengthy workflow code may be too much for the LLM.
+- We will likely refine the overall process as time goes on, and these discrete steps enable iterating in an Agile fashion. We can add more steps and refine others.
 
-To go a little deeper into our example, the "tone" component of the agent might flow like this.
-
-- Input is a conversation transcript.
-- The program sends that conversation with a prompt like, "Identify the tone of each of the conversation participants".
-- The LLM returns a set of adjectives like "happy, friendly" for person 1 and "silly" for person 2. 
-
-Practically speaking, this Python program becomes an agent when this chaining of steps brings value and some decision support. (Decision making and taking action is the next level! But hard to do in this example because we can't make the person take the recommendations.)
-
-To make this an Agentic Model, you write a program that takes a single, common input and chains the 4 components together. The final request is a a consolidated view of the 3 different perspectives provided by the first AI outputs. Depending on how complex the components are you, you might introduce a Planning component that decides which components to string together.
+Practically speaking, this Python program becomes an agent when this chaining of steps brings value and some decision support. I'm not illustrating what could be next here but my imagination says we could have an AI function to rewrite our code based on the recommendations.
 
 ## Components of a Simplified Agentic Model using BAML
 
