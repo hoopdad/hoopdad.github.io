@@ -7,7 +7,7 @@ This article gives practical, simplified definitions of AI Agents, Agentic Model
 
 ## AI Agents and an example for Improving DevOps
 
-AI Agents and Agentic models are popular topics in the current maturing of AI. Large Language Models (LLMs) like ChatGPT have enormous capabilities to understand and analyze, which you know from interacting with ChatGPT. Think of agents as code libraries with pre-defined jobs, and some awareness of their context.
+AI Agents and Agentic models are popular topics in the current maturing of AI. Large Language Models (LLMs) like ChatGPT have enormous capabilities to understand and analyze, which you know from interacting with ChatGPT. Think of agents as code libraries with pre-defined jobs, and awareness of their context. But these scale where typing all of this into ChatGPT would not be practical.
 
 For DevOps, what if we had a flow of functions that gave us summaries of problems from related but distinct areas, then let our LLM put two and two together to come up with overall recommendations?
 
