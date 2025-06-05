@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
 ## Conclusion
 
-With a very small amount of code, the BAML library and standard Python constructs, along with our Open AI account, we can create an Agentic Model.
+With a very small amount of code, the BAML library and standard Python constructs, along with our Open AI account, the article described construction of an Agentic Model and provided some basic but functional source code to illustrate the concepts. This model could be used to improve DevOps reliability and costs.
 
 Some benefits of this simplified framework include:
 
