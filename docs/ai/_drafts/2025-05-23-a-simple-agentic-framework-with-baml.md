@@ -87,7 +87,7 @@ The final steps with BAML are to run `BAML-cli generate` and then reference the 
 
 ## Orchestrating the Agents
 
-Let's say you write the above agent and then several more to flesh out the many perspectives of DevOps workflow tuning. So, next you need code to run agents in series. Assume we have the above `GetLogRecommendation`as well as a similar `GetWorkflowProblems` that takes the workflow as input, and `GetDevOpsRecommendation` which takes the output from the first two as its input.
+Let's say you write the above agent and then several more to flesh out the many perspectives of DevOps workflow tuning. So, next you need code to run agents in series. Assume we have the above `GetLogProblems`as well as a similar `GetWorkflowProblems` that takes the workflow as input, and `GetDevOpsRecommendation` which takes the output from the first two as its input.
 
 Our inputs:
 
