@@ -5,7 +5,7 @@ title:  "Retrieval Augmented Generation (RAG) with BAML and PostgreSQL"
 
 Leverage the increased reliability and lower maintenance of BAML in a solution that takes advantage of PostgreSQL's add-on capabilities for RAG solutions!
 
-The full source code for this solution is at [https://github.com/hoopdad/rag_in_python_postgresql/](https://github.com/hoopdad/rag_in_python_postgresql/)
+The full source code for this proof of concept is at [https://github.com/hoopdad/rag_in_python_postgresql/](https://github.com/hoopdad/rag_in_python_postgresql/)
 
 ## Why RAG
 
