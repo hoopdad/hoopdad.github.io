@@ -76,7 +76,7 @@ Then see how we define the connection to our AI Service in [clients.baml](https:
 
 Once we edit the baml files, we run `baml-cli generate` to generate our python code.
 
-Define our input model. By using the BAML library, the type definition is approximately 1/4 the size of JSON, saving more tokens. And the description is used to comment your code while defining the field for the LLM. You can see a similar definition for the output in [workflow_completion.baml](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/baml_src/workflow_completion.baml).
+Define our input model. By using the BAML library, the type definition used by BAML is approximately 1/4 the size of a JSON schema we might otherwise use, saving more tokens. And the description is used to comment your code while defining the field for the LLM. You can see a similar definition for the output in [workflow_completion.baml](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/baml_src/workflow_completion.baml).
 
 ```jinja
 class WorkflowAnalysisDetails {
@@ -97,18 +97,18 @@ function DetermineWorkflowCompletionStatus(input: WorkflowAnalysisDetails) -> Wo
         You are a helpful DevOps engineer with expertise in Terraform, AWS and GitHub Actions. 
         Use the following log context to answer the question.
         Question:
-        {{input.question}}
+        \{\{input.question\}\}
 
         Context:
 
         {% for logChunk in input.logs %}
         ----
         LOG CHUNK
-        {{ logChunk }}
+        \{\{ logChunk \}\}
         ----
         {% endfor %}
     
-    {{ ctx.output_format }}
+    \{\{ ctx.output_format \}\}
   "#
 }
 ```
