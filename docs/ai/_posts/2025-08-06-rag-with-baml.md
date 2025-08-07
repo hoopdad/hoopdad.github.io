@@ -98,18 +98,18 @@ function DetermineWorkflowCompletionStatus(input: WorkflowAnalysisDetails) -> Wo
         You are a helpful DevOps engineer with expertise in Terraform, AWS and GitHub Actions. 
         Use the following log context to answer the question.
         Question:
-        \{\{input.question\}\}
+        { {input.question} }
 
         Context:
 
         {% for logChunk in input.logs %}
         ----
         LOG CHUNK
-        \{\{ logChunk \}\}
+        {{ logChunk }}
         ----
         {% endfor %}
     
-    \{\{ ctx.output_format \}\}
+    {{ ctx.output_format \}}
   "#
 }
 ```
