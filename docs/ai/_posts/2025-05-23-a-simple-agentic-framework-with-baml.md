@@ -46,6 +46,7 @@ A tool called BAML makes this come together, along with some native Python struc
 Define a function in BAML. We define the data structure and a function containing the prompt, in a language that is similar to JavaScript with Jinja. Here's what that code looks like.
 
 ```javascript
+{% raw %}
 class GHLogProblems {
   problem_summary string? @description(#"
     1. Identify repeated errors or warnings.
@@ -70,11 +71,13 @@ function GetLogProblems(log_output: string) -> GHLogProblems {
     \{\{ ctx.output_format \}\}
   "#
 }
+{% endraw %}
 ```
 
 Define a configuration that defines how to connect to your LLM.
 
 ```javascript
+{% raw %}
 client<llm> CustomGPT4o {
   provider openai
   options {
@@ -82,6 +85,7 @@ client<llm> CustomGPT4o {
     api_key env.OPENAI_API_KEY
   }
 }
+{% endraw %}
 ```
 
 The final steps with BAML are to run `BAML-cli generate` and then reference the generated files from your main program.

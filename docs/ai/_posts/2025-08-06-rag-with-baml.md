@@ -79,6 +79,7 @@ Once we edit the baml files, we run `baml-cli generate` to generate our python c
 Define our input model. By using the BAML library, the type definition used by BAML is approximately 1/4 the size of a JSON schema we might otherwise use, saving more tokens. And the description is used to comment your code while defining the field for the LLM. You can see a similar definition for the output in [workflow_completion.baml](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/baml_src/workflow_completion.baml).
 
 ```javascript
+{% raw %}
 class WorkflowAnalysisDetails {
   logs string[] @description(#"
   Chunks of logs deemed by a vector proximity to be relevant to the question
@@ -87,6 +88,7 @@ class WorkflowAnalysisDetails {
   The key analysis question to consider when reviewing these log chunks
   "#)
 }
+{% endraw %}
 ```
 
 Define our prompt.
