@@ -92,13 +92,14 @@ class WorkflowAnalysisDetails {
 Define our prompt.
 
 ```javascript
+{% raw %}
 function DetermineWorkflowCompletionStatus(input: WorkflowAnalysisDetails) -> WorkflowCompletionStatus {
   client "Azure_openai"
   prompt #"
         You are a helpful DevOps engineer with expertise in Terraform, AWS and GitHub Actions. 
         Use the following log context to answer the question.
         Question:
-        { {input.question} }
+        {{input.question}}
 
         Context:
 
@@ -112,6 +113,7 @@ function DetermineWorkflowCompletionStatus(input: WorkflowAnalysisDetails) -> Wo
     {{ ctx.output_format \}}
   "#
 }
+{% endraw %}
 ```
 
 Notice how this is very focused just on the prompt. If the prompt changes, this file changes and not your other source code, decreasing code brittleness.
