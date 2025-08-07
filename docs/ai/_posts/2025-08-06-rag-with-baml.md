@@ -86,6 +86,7 @@ class WorkflowAnalysisDetails {
   question string @description(#"
   The key analysis question to consider when reviewing these log chunks
   "#)
+}
 ```
 
 Define our prompt.

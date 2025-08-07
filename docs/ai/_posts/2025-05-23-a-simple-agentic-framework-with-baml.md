@@ -81,6 +81,7 @@ client<llm> CustomGPT4o {
     model "gpt-4o"
     api_key env.OPENAI_API_KEY
   }
+}
 ```
 
 The final steps with BAML are to run `BAML-cli generate` and then reference the generated files from your main program.
