@@ -53,7 +53,7 @@ The file [embeddings_persistence_postgres.py](https://github.com/hoopdad/rag_in_
 
 ### Prompt Layer
 
-This is BAML. You can see how it's used in the `query_logs` function in [embed_on_postgres.py](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/embed_on_postgres.py). We don't have to write a lot of code for this!
+This is calling  BAML. You can see how it's used in the `query_logs` function in [embed_on_postgres.py](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/embed_on_postgres.py). We don't have to write a lot of code for this!
 
 #### Calling the Client
 
@@ -75,6 +75,45 @@ Check out [workflow_completion.baml](https://github.com/hoopdad/rag_in_python_po
 Then see how we define the connection to our AI Service in [clients.baml](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/baml_src/clients.baml). Note the use of an Azure Open AI service, my Open AI instance that is hosted on Azure, along with the retry policy. Retry is so important in cloud design that it is built into the BAML framework.
 
 Once we edit the baml files, we run `baml-cli generate` to generate our python code.
+
+Define our input model. By using the BAML library, the type definition is approximately 1/4 the size of JSON, saving more tokens. And the description is used to comment your code while defining the field for the LLM. You can see a similar definition for the output in [workflow_completion.baml](https://github.com/hoopdad/rag_in_python_postgresql/blob/main/baml_src/workflow_completion.baml).
+
+```jinja
+class WorkflowAnalysisDetails {
+  logs string[] @description(#"
+  Chunks of logs deemed by a vector proximity to be relevant to the question
+  "#)
+  question string @description(#"
+  The key analysis question to consider when reviewing these log chunks
+  "#)
+```
+
+Define our prompt.
+
+```jinja
+function DetermineWorkflowCompletionStatus(input: WorkflowAnalysisDetails) -> WorkflowCompletionStatus {
+  client "Azure_openai"
+  prompt #"
+        You are a helpful DevOps engineer with expertise in Terraform, AWS and GitHub Actions. 
+        Use the following log context to answer the question.
+        Question:
+        {{input.question}}
+
+        Context:
+
+        {% for logChunk in input.logs %}
+        ----
+        LOG CHUNK
+        {{ logChunk }}
+        ----
+        {% endfor %}
+    
+    {{ ctx.output_format }}
+  "#
+}
+```
+
+Notice how this is very focused just on the prompt. If the prompt changes, this file changes and not your other source code, decreasing code brittleness.
 
 #### Putting it all together
 
