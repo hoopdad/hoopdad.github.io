@@ -13,6 +13,8 @@ RAG is a solution that allows for faster, smaller interactions with a Large Lang
 
 If you run many prompts against the same source, it's worth converting your data to vectors, a process called embedding, and saving them to a database for retrieval later. If you are going to ask more than 1 question about a certain document, this is probably going to reduce your cost. By focusing the prompts on a subset of focused data, you are sending less data to your AI service and asking it to do less work, translating to fewer tokens of data exchanged and lower cost. It also means a lot less processing time for the AI service.
 
+![RAG Flow](/assets/2025/rag-with-postgresql/rag-with-postgresql.png)
+
 The scenario used in this proof of concept is asking an LLM to determine a failure cause for a workflow log file. This is the output from a series of steps. It is a mix of random bits of information about the process, results from steps within that process, and a collection of warnings and possibly errors. While it will have a single pass/fail decision at the end, more resolution on the reasons behind it, but not too much narrative, will help a team understand failures and prioritize fixes.
 
 Note: lengthy log files often need to be consumed as a single document to get the full context. This scenario seems to work because it asks AI about any failures found; sections with anything like a failure are sent to the LLM without needing to know the entire sequential flow.
