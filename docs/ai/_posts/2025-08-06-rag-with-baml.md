@@ -3,7 +3,17 @@ layout: post
 title:  "Retrieval Augmented Generation (RAG) with BAML and PostgreSQL"
 ---
 
-Leverage the increased reliability and lower maintenance of BAML in a solution that takes advantage of PostgreSQL's add-on capabilities for RAG solutions!
+Leverage advanced features widely available in PostgreSQL alongside the increased reliability and lower maintenance of BAML for prompts in a RAG solutions!
+
+Here's the situation when you want to know about this.
+
+- You are introducing AI capabilities to your organization.
+- You need a jump start on scaling automated prompts.
+- You also need to understand capabilities of databases that are available for your use.
+
+One approach is to use best of breed databases for the various uses of your project. For example,  your sql database helps with some of your project data; your NoSQL database helps with your front-end development; and you expect to need a vector database for RAG. But if you do three separate servers, you risk adding too much foundational work before you can start to deliver.
+
+The proof of concept docuemnted here is an attempt to use a reliable, scalable, secure, low-cost database for all three to avoid that overhead. This simplifies the landscape in the short-term and may server long-term purposes.
 
 The full source code for this proof of concept is at [https://github.com/hoopdad/rag_in_python_postgresql/](https://github.com/hoopdad/rag_in_python_postgresql/)
 
