@@ -11,7 +11,7 @@ Here's the situation when you want to know about this.
 - You need a jump start on scaling automated prompts.
 - You also need to understand capabilities of databases that are available for your use.
 
-One approach is to use best of breed databases for the various uses of your project. For example,  your sql database helps with some of your project data; your NoSQL database helps with your front-end development; and you expect to need a vector database for RAG. But if you do three separate servers, you risk adding too much foundational work before you can start to deliver. Introducing a new database requires approvals and a plan to support that kind of database.s
+One approach is to use best of breed databases for the various uses of your project. For example,  your sql database helps with some of your project data; your NoSQL database helps with your front-end development; and you expect to need a vector database for RAG. But if you do three separate servers, you risk adding too much foundational work before you can start to deliver. Introducing a new database often requires approvals and a plan to support that kind of database.
 
 The proof of concept docuemnted here is an attempt to use a reliable, scalable, secure, low-cost database for all three to avoid that overhead. This simplifies the landscape in the short-term and may server long-term purposes.
 
@@ -19,7 +19,7 @@ The full source code for this proof of concept is at [https://github.com/hoopdad
 
 ## Why RAG
 
-RAG is a solution that allows for faster, smaller interactions with a Large Language Model (LLM). It takes advantage of re-use strategies and vector math. Your AI service tracks data within a massive multi-dimensional world, and can tell you using a process called "embedding" where both your question and the relevant document information fit in that world. Using that vector math, you can find the closest data that answers that question, simplifying the prompt that you then send to the AI service for an expanded answer.
+RAG is a solution that allows for faster, smaller interactions with a Large Language Model (LLM). It takes advantage of re-use strategies and vector math. Your AI service tracks data within a massive multi-dimensional world, and can tell you using a process called "embedding" where both your question and the relevant document information fit in that world, their coordinates so to speak. Closer items mean higher relevance. Using that vector math, you can find the closest data that answers that question, simplifying the prompt that you then send to the AI service for an expanded answer.
 
 If you run many prompts against the same source, it's worth converting your data to vectors, a process called embedding, and saving them to a database for retrieval later. If you are going to ask more than 1 question about a certain document, this is probably going to reduce your cost. By focusing the prompts on a subset of focused data, you are sending less data to your AI service and asking it to do less work, translating to fewer tokens of data exchanged and lower cost. It also means a lot less processing time for the AI service.
 
