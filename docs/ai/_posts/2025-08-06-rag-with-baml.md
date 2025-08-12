@@ -11,7 +11,7 @@ Here's the situation when you want to know about this.
 - You need a jumpstart on scaling automated prompts.
 - You also need to understand capabilities of databases that are available for your use.
 
-One approach is to use best-of-breed databases for the various uses of your project. For example,  your SQL database helps with some of your project data; your NoSQL database helps with your front-end development; and you expect to need a vector database for RAG. But if you do three separate servers, you risk adding too much foundational work before you can start to deliver. Introducing a new database often requires approvals and a plan to support that kind of database.
+One approach is to use best-of-breed databases for the various uses of your project. For example,  your SQL database helps with some of your project data; your NoSQL database helps with your front-end development; and you expect to need a vector database for RAG. But if you do three separate servers, you risk adding too much foundational work before you can start to deliver. Introducing a new database often requires approvals and a plan to support that kind of database. This aprosch gets your project off the ground while working through those approvals, and it might even suit your needs in production.
 
 The proof of concept documented here is an attempt to use a reliable, scalable, secure, low-cost database for all three to avoid that overhead. This simplifies the landscape in the short-term and may server long-term purposes.
 
