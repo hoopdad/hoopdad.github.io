@@ -39,7 +39,7 @@ Previous posts in this blog about BAML covered some of the benefits of BAML, sum
 - Resiliency with built-in features like retry policies
 - Ability to communicate with API's from many AI vendors, running in the cloud, on-premises, or locally
 
-This is a key piece of a framework that allows scaling up and reusing prompts. Using the DSL lets a person focus on the Prmopt itself, separating system programming with prompt development.
+This is a key piece of a framework that allows scaling up and reusing prompts. Using the DSL lets a person focus on the prompt itself, separating system programming with prompt development.
 
 ## Layers of this Solution
 
