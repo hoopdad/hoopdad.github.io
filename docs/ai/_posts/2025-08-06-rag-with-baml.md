@@ -153,4 +153,4 @@ It proved that BAML can remain not just a player in the single prompt, in the mu
 
 It also proved that RAG can be implemented quickly without too many moving parts.
 
-There are certainly opportunities to improve on the scalability and resiliency of this RAG platform. For example, document and model versions and dates could be included as metadata that would enhance the relevance of pre-saved embeddings. Line numbers for document chunks could be included for easier reference. And actually it should be developed as a service that can run on a server somewhere, not under my desk. Most importantly, however, this is a great foundation to iterate on.
+There are certainly opportunities to improve on the scalability and resiliency of this RAG proof of concept. For example, document and model versions and dates could be included as metadata that would enhance the relevance of pre-saved embeddings. Line numbers for document chunks could be included for easier reference. And actually it should be developed as a service that can run on a server somewhere, not under my desk. Most importantly, however, this is a great foundation to iterate on.
