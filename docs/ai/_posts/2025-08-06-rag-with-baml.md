@@ -3,7 +3,7 @@ layout: post
 title:  "Retrieval Augmented Generation (RAG) with BAML and PostgreSQL"
 ---
 
-Leverage advanced features widely available in PostgreSQL alongside the increased reliability and lower maintenance of BAML for prompts in a RAG solutions!
+Leverage advanced features widely available in PostgreSQL alongside the increased reliability and smarter maintenance of BAML for prompts in RAG solutions!
 
 Here's the situation when you want to know about this.
 
