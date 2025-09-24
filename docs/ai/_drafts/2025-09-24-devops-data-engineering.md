@@ -5,7 +5,7 @@ title:  "Data Engineering of DevOps Data - Jenkins"
 
 The first step in any AI or data project is to identify the sources of data and triggers that cause change. This article is about one way to gather data from Jenkins so that it can trigger other activities such as running logs or code through AI agents.
 
-The source code for a demonstration of this plugin is here: [https://github.com/hoopdad/jenkins-plugin-reference)[https://github.com/hoopdad/jenkins-plugin-reference]
+The source code for a demonstration of this plugin is here: [https://github.com/hoopdad/jenkins-plugin-reference](https://github.com/hoopdad/jenkins-plugin-reference)
 
 ## The Solution
 
