@@ -49,10 +49,12 @@ Deliberative Alignment, a methodology to teach models safety specifications and 
 The other kind of Safe AI solution involves putting guardrails around the inference stage.
 Inference can be considered the request->response lifecycle: send a request to a Large
 Language Model, a bunch of stuff happens, and you get a response. Organizations can wrap
-the beginning and end with AI prompts to analyze inputs and outputs to make sure that:
+the beginning and end with AI prompts to validate inputs and outputs.
 
 - Inputs don't contain sensitive information, attempts to jailbreak, or prompt injections
 - Outputs from a prompt are safe(r) from misinformation, toxic content, hallucinations, etc.
+
+![Guardrails around Inference](/assets/2025/safe_ai.png)
 
 While there isn't a perfect solution, like in many complex technology problems we can
 apply solutions in layers: matching models that have been trained with the Safe AI and
