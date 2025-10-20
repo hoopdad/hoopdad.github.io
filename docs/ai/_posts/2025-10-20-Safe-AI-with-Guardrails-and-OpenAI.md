@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Safe AI with Guardrails.ai and OpenAI on Azure - Part 1"
+title:  "Safe AI using Guardrails - Part 1"
 ---
 
 This is the first part of a pair of articles about AI Safety and ways to
 mitigate some kinds of risks of Large Language Model (LLM) responses. The
 intent is to share the concept of Safe AI and some simple techniques for
 solution implementors to greatly reduce risks of using AI to solve core problems.
-This post describes "why Safe AI" and a subsequent post will demonstrate a proof
+This post describes "why Safe AI" and subsequent posts will demonstrate proofs
 of concept.
 
 ## Is AI Safe?
@@ -67,5 +67,5 @@ that can help focus AI solutions on the intended problem domain.
 
 ## What's Next
 
-The next post will contain a working proof of concept that leverages resources commonly
-available in enterprises where I work: open source Guardrails.ai tooling and a popular LLM.
+The next posts will contain a working proof of concept that leverages resources commonly
+available in enterprises: open source Guardrails.ai tooling and popular LLMs.
