@@ -68,5 +68,4 @@ that can help focus AI solutions on the intended problem domain.
 ## What's Next
 
 The next post will contain a working proof of concept that leverages resources commonly
-available in enterprises where I work: open source Guardrails.ai tooling and a model
-that may or may not have been trained with Constitutional AI.
+available in enterprises where I work: open source Guardrails.ai tooling and a popular LLM.
