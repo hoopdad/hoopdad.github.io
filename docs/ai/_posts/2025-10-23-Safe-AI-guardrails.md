@@ -228,5 +228,5 @@ it was Guardrails  that had the false positive, while OpenAI succeeded.
 - [https://www.constitutional.ai/](https://www.constitutional.ai/)
 - [https://github.com/guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails)
 - [Azure AI Foundry](https://ai.azure.com/)
-- [Guardrails Hub](https://hub.guardrailsai.com/)
-- [hoopdad's AI Safety rep](https://github.com/hoopdad/safe-ai-poc)
+- [Guardrails AI Hub](https://hub.guardrailsai.com/)
+- [hoopdad's AI Safety repo](https://github.com/hoopdad/safe-ai-poc)
