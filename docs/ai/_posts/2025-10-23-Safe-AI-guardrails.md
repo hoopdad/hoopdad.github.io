@@ -193,7 +193,7 @@ You can see that the response has been blocked by validation. Success!
 
 Guardrails gives us 98% certainty that the response is biased. The author
 can identify at least one sentence in the response that perpetuates a bias or
-construed systematically as biased.
+could be construed systematically as biased.
 
 The tolerance for scoring can be controlled programmatically. The bias threshold
 in this case was set to 10%, which is a very low tolerance. This would be the
