@@ -56,7 +56,6 @@ the experiments.
 The libraries on which the code relies are imported.
 
 ```python
-from openai import AzureOpenAI, APIError, APIConnectionError, RateLimitError, APITimeoutError
 from guardrails import Guard
 from guardrails.hub import BiasCheck
 ```
@@ -88,7 +87,7 @@ info from AI Foundry about our deployment.
 
 - AZURE_API_KEY: Key from AI Foundry
 - AZURE_API_BASE: does not include the deployment as that is a
- separate parameter, such as "https://<my hostname>.openai.azure.com/"
+ separate parameter, such as "https://my-hostname.openai.azure.com/"
 - AZURE_API_VERSION: API from AI Foundry such as "2024-12-01-preview"
 
 ## Run Experiment 1 - Expected to Return a Result
@@ -138,6 +137,8 @@ So, instead of a direct popular vote, the Electoral College is like a point syst
 09:50:40 - INFO - Completed successfully
 ```
 
+You can see above a description of the prompt result. Success.
+
 ## Run Experiment 2 - Expected to Return a Validation Error
 
 Now run the experiment with our provocative prompt.
@@ -154,8 +155,8 @@ Run the code and see the response.
 
 ```bash
 python3 AzureOpenAIClientSimple.py 
-10:51:51 - INFO - Initializing Azure OpenAI Client
-2025-10-23 10:51:52.374561: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+16:07:41 - INFO - Initializing Azure OpenAI Client
+2025-10-23 16:07:41.892289: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
 TensorFlow and JAX classes are deprecated and will be removed in Transformers v5. We recommend migrating to PyTorch classes or pinning your version of Transformers.
 All model checkpoint layers were used when initializing TFDistilBertForSequenceClassification.
 
@@ -163,18 +164,41 @@ All the layers of TFDistilBertForSequenceClassification were initialized from th
 If your task is similar to the task the model of the checkpoint was trained on, you can already use TFDistilBertForSequenceClassification for predictions without further training.
 TensorFlow and JAX classes are deprecated and will be removed in Transformers v5. We recommend migrating to PyTorch classes or pinning your version of Transformers.
 Device set to use 0
-10:51:57 - INFO - Client ready: gpt-4.1, bias_threshold=0.7
-10:51:57 - INFO - Sending prompt (length=97)
-10:52:01 - LiteLLM:INFO: utils.py:3388 - 
+16:07:46 - INFO - Client ready: gpt-4.1, bias_threshold=0.1
+16:07:46 - INFO - Sending prompt (length=97)
+16:07:49 - LiteLLM:INFO: utils.py:3388 - 
 LiteLLM completion() model= gpt-4.1; provider = azure
-10:52:01 - INFO - 
+16:07:49 - INFO - 
 LiteLLM completion() model= gpt-4.1; provider = azure
-10:52:04 - LiteLLM:INFO: utils.py:1297 - Wrapper: Completed Call, calling success_handler
-10:52:04 - INFO - Wrapper: Completed Call, calling success_handler
+16:07:53 - LiteLLM:INFO: utils.py:1297 - Wrapper: Completed Call, calling success_handler
+16:07:53 - INFO - Wrapper: Completed Call, calling success_handler
 TensorFlow and JAX classes are deprecated and will be removed in Transformers v5. We recommend migrating to PyTorch classes or pinning your version of Transformers.
-10:52:05 - ERROR - ============================================================
-10:52:05 - INFO - Validation blocked the response (as expected)
+16:07:54 - ERROR - Error during prompt processing: Validation failed for field with errors: The original response contains potentially biased messages:
+The idea that women are “naturally better” at nursing than men is a stereotype that doesn't fully reflect scientific evidence or the realities of modern healthcare. Let’s break down the biological and emotional aspects:
+
+**Biological Perspective:**
+- There is little scientific evidence that women are biologically predisposed to be better nurses. Both men and women can develop the skills required for nursing—such as critical thinking, dexterity, and medical knowledge—through education and practice.
+- Some suggest that, on average, women may have higher levels of certain hormones (like oxytocin) associated with nurturing behaviors, but these differences are small and do not determine individual capability in professional settings.
+- Humans of all genders are capable of empathy, compassion, and care.
+
+**Emotional and Social Perspective:**
+- Societal expectations and traditional gender roles have long associated women with caregiving professions, such as nursing, leading to more women entering the field and receiving social support for these roles.
+- Girls are often social
+ (Message scores: 0.9882194995880127)
+16:07:54 - ERROR - 🚫 VALIDATION FAILED - Bias Score: 0.9882
+16:07:54 - INFO - Validation blocked the response
 ```
+
+You can see that the response has been blocked by validation. Success!
+
+Guardrails gives us 98% certainty that the response is biased. The author
+can identify at least one sentence in the response that perpetuates a bias or
+construed systematically as biased.
+
+The tolerance for scoring can be controlled programmatically. The bias threshold
+in this case was set to 10%, which is a very low tolerance. This would be the
+area to do a lot of testing and evaluation of results. Ironically, that would be
+subject to the tester's own biases!
 
 ## Implementation notes
 
