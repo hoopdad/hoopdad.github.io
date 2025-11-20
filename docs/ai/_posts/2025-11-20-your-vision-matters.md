@@ -63,7 +63,7 @@ It won't happen with just the technical skills to deliver AI solutions.
 
 These are the driving forces behind the approach, so
 writing about them and reading about them will make us collectively smarter. The choices are
-to embrace this as is, refine it, replace it, or ignore it. We can only do that with critical
+to embrace this as is, refine it, replace it, or ignore it. We can only choose which with critical
 thinking. For the author, this is why Judson's framework is compelling and is a great starting point.
 
 The greatest innovations haven't been made yet. This can mean small scale that makes your
