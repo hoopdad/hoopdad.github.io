@@ -43,6 +43,8 @@ Success will come for those who understand how AI will help.
 
 He spelled out 3 traits of Frontier Transformation. These should be true to attain those goals.
 
+![Three Traits of Frontier Transformation](/assets/2025/frontier-transformation1.png)
+
 - Put AI in the Flow of Human Ambition: Make AI seamlessly accessible to get real work done.
 Democratize intelligence!
 - Ubiquitous Innovation: There's a maker in every one of us, so put tools in the hands of
@@ -51,6 +53,8 @@ the people closest to the problem who are the best to solve it. Obsolesce the mu
 many agents you have, how many people access them daily, and what the results are.
 
 He defined the fundamental building blocks of Frontier.
+
+![Building Blocks of Frontier](/assets/2025/frontier-transformation2.png)
 
 - Intelligence - put the "i" back into "AI". AI needs to know how you work,
 with whom you work, and the concepts over which you reason.
@@ -79,6 +83,8 @@ evolving ideas that grew from the user's vision, and uncover new outcomes
 - AI can then reach new conclusions, and users can introduce vision that only exists in the mind
 - New conclusions will lead to new approaches and more new ideas
 
+![AI as Collaborator](/assets/2025/ai-as-collaborator.png)
+
 Human brains are the ultimate champions of "connecting the dots". This is where your differentiating
 vision is the key to the next big thing. We humans can skip steps sometimes based on intuition. As we
 commonly say about an innovation, it went from a to c without stopping at b: a non-linear leap that
@@ -100,3 +106,4 @@ their fortunes into AI, and the author hopes this brings humanity to its next hi
 
 - Blog post: [Becoming Frontier: How human ambition and AI-first differentiation are helping Microsoft customers go further with AI](https://blogs.microsoft.com/blog/2025/10/28/becoming-frontier-how-human-ambition-and-ai-first-differentiation-are-helping-microsoft-customers-go-further-with-ai/)
 - Video: [Microsoft Ignite 2025: Opening Keynote](https://ignite.microsoft.com/en-US/sessions/KEY01)
+
