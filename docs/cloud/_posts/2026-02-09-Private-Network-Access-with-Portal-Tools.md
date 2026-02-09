@@ -97,7 +97,7 @@ Managing DNS configurations with PEP is an important key. Not only does PEP rely
 and network security groups to allow access to the private endpoint, but the name
 has to resolve to a private IP address. Red flag if you see a public IP address!
 
-### What Must be true
+### What Must Be True: DNS Configuration
 
 Examples to follow.
 
