@@ -20,7 +20,7 @@ Private networks still come into play, such as for storage and virtual machines 
 
 Many Azure environments are secured to not allow public internet access. This makes
 sense as a significant security layer. Preventing access of any kind from outside
-an organization's network reduces attack surface, especially important when 
+an organization's network reduces your attack surface, especially important when 
 learning the basics of a new system. Disabling public access can be enforced by
 Azure Policy, but overriding that isn't always necessary. That disabling is the situation
 that I am in.
@@ -45,9 +45,7 @@ With private endpoints (PEPs) added, and a few requisite items set up including 
 and using a VPN to have an IP address internal to my network, I would still see similar 
 errors. 
 
-```txt
-Access to fetch at '[pep url] from origin 'https://ml.azure.com' has been blocked by CORS policy: Permission was denied for this request to access the `local` address space."
-```
+`Access to fetch at '[pep url] from origin 'https://ml.azure.com' has been blocked by CORS policy: Permission was denied for this request to access the 'local' address space.`
 
 Researching this item, I found this to be known as a Private Network Access or PNA 
 error. Our browsers are making sure that public websites aren't able to exploit
@@ -57,12 +55,12 @@ but that doesn't seem to be the case in Chrome, Edge or Firefox browsers current
 ## What Was Really Happening and the Solution
 
 - MLWS was deployed successfully and showed as healthy in the Azure Portal.
-- Private DNS Zones were created for `privatelink.blob.core.windows.net`, `privatelink.vaultcore.azure.net`, `privatelink.api.azureml.ms` and `privatelink.notebooks.azure.net`. There were others too as required by MLWS but this list is getting long and I have miles to go before I sleep. See a Terraform variable reference below the Local Network Setting screenshot.
+- Private DNS Zones were created for `privatelink.blob.core.windows.net`, `privatelink.vaultcore.azure.net`, `privatelink.api.azureml.ms` and `privatelink.notebooks.azure.net`. There were others too as required by MLWS but this list is getting long and I have miles to go before I sleep. See a Terraform variable reference below the Local Network Setting screenshot. (And look up Robert Frost if the "miles to go" reference is intriguing!)
 - The DNS Zones were linked to the virtual network in which the Private Endpoints were to be deployed.
-- Private endpoints were created for `blob` in `privatelink.blob.core.windows.net`, `keyvault` in `privatelink.vaultcore.azure.net`,`amlapi` resources in `privatelink.api.azureml.ms` and `amlnotebooks` resources in `privatelink.notebooks.azure.net`. Like with Private DNS Zones, there are a couple more that you'll need to create. See the Terraform snippet to see which I did.
+- Private endpoints were created for `blob` storage resources in `privatelink.blob.core.windows.net`, `keyvault` resources in `privatelink.vaultcore.azure.net`,`amlapi` resources in `privatelink.api.azureml.ms` and `amlnotebooks` resources in `privatelink.notebooks.azure.net`. Like with Private DNS Zones, there are a couple more that you'll need to create. See the Terraform snippet to see which I did.
 - An Azure Private DNS Resolver was created with an internal inbound address on the VNet.
 - To simulate an on-premise environment, an Azure Site to Site (S2S) VPN was deployed in one of my home networks with split-routing.
-- DNS in that home network was also configured to hit the Azure DNS Resolver before hitting the default DNS from my ISP.
+- DNS in that home network was also configured to hit the Azure DNS Resolver before hitting the default DNS from my ISP, for traffic routed through it only.
 - My browser popped up a question: "allow this site to discover resources on your local network?" Story below, but answer yes on this one!
 
 The "site discovery" browser configuration was the final piece for me. You see, 
