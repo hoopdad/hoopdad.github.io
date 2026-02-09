@@ -71,6 +71,7 @@ and I probably need a therapist to help me trust more. (Kidding aside, I find ne
 this level of paranoia in today's cyber world!) In my exact scenario, my local network
 is the network where the MLWS Private Endpoint lives. Oops. To
 set this (in Edge) assuming you answered wrong the first time, here's a screenshot.
+Change "Blocked" to "Allow".
 
 ![Connect to Local Network Setting](/assets/2026/connect-to-local-network-setting.png)
 
