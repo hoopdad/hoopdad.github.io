@@ -254,7 +254,8 @@ describe authentication. A tool is going to do some task for you or look up
 some specialized data. In this case, it was simply a local HTTPS server that 
 used some existing Python libraries, so the definition is simple. This is 
 done in the deployment script's python code. It actually authenticates with 
-Entra via the browser.
+Entra via the browser. Strong suggestion: time should be spent in secure 
+coding practices with this one for sure, which was not done for this demo.
 
 ```py
 mcp_tool = MCPTool(
@@ -331,11 +332,11 @@ business process.
 
 Take note of a few key features.
 
-- Enable "Voice mode" in the top left corner for agents where you want to interact with your voice and have the agent read back to you.
-- The small Instructions pane expands but, for Enterprise-grade, you likely are working with file-based agent instructions so you can use versioning and source control.
+- Enable "Voice mode" in the top left corner for agents where you want to interact with your voice and have the agent read back to you. Some people might like algorithms read back to them but I chose to not.
+- The small Instructions pane expands but, for Enterprise-grade, you likely are working with file-based agent instructions so you can use versioning and source control. You might actually start with your favorite AI Assistant to get a rough framework for instructions as I did.
 - Tools is below Instructions. You can set up MCP servers as done in this demo, Web Search, SharePoint search for internal Enterprise searching, amd grounding on many different document source types.
 - The Chat window is intended as a playground to help building and refining but is full-featured.
-- A YAML extract from the "YAML" tab can be used with Terraform and other tools if you want to build in the Portal and save a file.
+- A YAML extract from the "YAML" tab can be used with Terraform and other tools if you want to build in the Portal and save a file, instead of using a cool and stylish Jinja implementation like I did.
 - Python code can also be generated on the "Code" tab.
 - Add in start prompts to illustrate to users how it works.
 - Publishing agents makes them available to Teams and Microsoft 365 Pilot.
