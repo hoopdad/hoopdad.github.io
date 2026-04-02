@@ -250,8 +250,11 @@ Keep explanations concise, factual, and structured.
 #### Tools in the Agent
 
 In Foundry, define access to a tool by including a reference to it and
-describe authentication. In this case, it was simply a local HTTPS server so
-the definition is simple. This is done in the deployment script's python code. It actually authenticates with Entra via the browser.
+describe authentication. A tool is going to do some task for you or look up
+some specialized data. In this case, it was simply a local HTTPS server that 
+used some existing Python libraries, so the definition is simple. This is 
+done in the deployment script's python code. It actually authenticates with 
+Entra via the browser.
 
 ```py
 mcp_tool = MCPTool(
