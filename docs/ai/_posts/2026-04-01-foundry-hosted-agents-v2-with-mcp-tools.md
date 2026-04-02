@@ -9,8 +9,9 @@ explores one way of doing that in an Enterprise, using Microsoft Foundry's
 new v2 Agents along with a custom MCP tool. It contains some code examples
 and a screenshot of the portal in use at the end. The concept was set up as
 a learning exercise and there are some new ideas included that are hopefully
-as useful to you. A link to the repo where you can find the code that was 
-used to build and run it.
+as useful to you. At the very very end, you'll see a link to the repo where 
+you can find the code that was used to build and run it, for those who
+can't wait to get their hands on it.
 
 ## Separation of Concerns for Agent Composition
 
