@@ -95,8 +95,8 @@ The theme is splitting the work up to run where it is optimally run for
 availability, performance, and cost reasons. This is about smaller 
 components of a system that can be designed, built,
 deployed, tested, and improved separately while keeping the entire system
-running. Use the trickiest, best-performing tool or your favorite
-Integration works with either!
+running. Use the trickiest, best-performing tool or your favorite. 
+The point is: integration works with many!
 
 ## Solution Components
 
