@@ -103,15 +103,16 @@ The point is: integration works with many!
 This solution required a few components.
 
 - Azure Infrastructure, including a Foundry account, storage, a key vault, 
-an app service to run the MCP service, and network configuration.
+an app service to run the MCP service, and network configuration
 - A Foundry project
 - A commercial or open source LLM deployed into that project
 - An agent deployed as a set of text instructions and linked to tools.
-Others will add knowledge sources that were not done with this project.
+Others will add knowledge sources that were not done with this project
 - An MCP server written in Python with FastMCP
 
 Ideally, deployment scripts to pull it all together and automate it, but the
-author didn't get through 100% of the automation before writing. Python 
+author didn't get through 100% of the automation before writing. It was 
+deployed into a secure, hub-and-spoke lab network with Private Link. Python 
 deployment scripts were rolled out with the Azure AI SDK and seem to provide
 all the deployment capabilities needed. This is changing code pipelines!
 
