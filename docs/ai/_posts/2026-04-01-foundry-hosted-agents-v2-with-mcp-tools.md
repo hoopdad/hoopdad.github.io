@@ -17,10 +17,11 @@ can't wait to get their hands on it.
 
 ### What We Can Do With This
 
-The idea behind this implementation is that we can use natural language to
-uncover new algorithms and optimize them. Let the user explain an idea for
-an algorithm to the agent, tweak it, and gauge it's performance from one
-place.
+A good and interesting demo has some relevance to the person doing it, even 
+if his friends call him a nerd for it. So this seemed interesting to me and you will call me a nerd. All good. The idea behind this implementation 
+is that we can use natural language to uncover new algorithms and optimize 
+them. Let the user explain an idea for an algorithm to the agent, tweak it, 
+and gauge it's performance from one place.
 
 For example:
 
