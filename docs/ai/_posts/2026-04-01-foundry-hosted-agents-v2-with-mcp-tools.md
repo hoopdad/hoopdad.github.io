@@ -3,10 +3,14 @@ layout: post
 title:  "Foundry Hosted Agents v2 with MCP Tools"
 ---
 
-This article explores using Microsoft Foundry's new v2 Agents along with a 
-custom MCP tool. It contains some code examples and screenshots. It was a
-learning for the author and there are some new ideas included that are
-hopefully as useful to the reader.
+Agents are becoming more mainstream and implementation patterns are starting
+to cement for building massive numbers of useful agents. This article 
+explores one way of doing that in an Enterprise, using Microsoft Foundry's
+new v2 Agents along with a custom MCP tool. It contains some code examples
+and a screenshot of the portal in use at the end. The concept was set up as
+a learning exercise and there are some new ideas included that are hopefully
+as useful to you. A link to the repo where you can find the code that was 
+used to build and run it.
 
 ## Separation of Concerns for Agent Composition
 
@@ -14,14 +18,18 @@ hopefully as useful to the reader.
 
 The idea behind this implementation is that we can use natural language to
 uncover new algorithms and optimize them. Let the user explain an idea for
-an algorithm to the agent.
+an algorithm to the agent, tweak it, and gauge it's performance from one
+place.
+
+For example:
 
 ```txt
 Prompt: Design an algorithm that discovers the first 6 prime numbers, then execute it.
 ```
 
 The agent can use an LLM to translate that into a language that some in
-mathematics use for expressing algorithms, PARI/GP. 
+mathematics use for expressing algorithms, PARI/GP. Here is output from one
+real run.
 
 ```pari
 // Function to find the first n primes
@@ -42,7 +50,7 @@ first_n_primes(n) = {
 print(first_n_primes(6));
 ```
 
-The MCP tool can save this code as a file and run it to examine it, to benchmark it, and improve on it.
+The MCP tool can save this code as a file and run it to examine it, to benchmark it, and improve on it. Here's a snippet from that output.
 
 ```txt
 Execution results:
@@ -53,10 +61,11 @@ Execution time: approximately 20 ms
 MCP Server: mcp_PARIGPMCPServer
 ```
 
-### Old Theories Meet New Implementations
+### Old Theories Meet New Implementation Patterns
 
-A pattern is emerging for construction and management of AI tools and
-applications: let the agent be the center point for user interactions,
+Here's the esoteric part. A pattern is emerging for construction and 
+management of AI tools and
+applications: let the agent be the center point for user or API interactions,
 integrating with Large Language Models (LLMs), connecting to 
 knowledge sources, and deciding when to call tools that are deployed
 elsewhere. This separation of concerns enables these new kinds of systems
@@ -70,13 +79,20 @@ us we need.
 - Distributable across networks to put resources where they need to be or where they can be
 
 These are just a few benefits of the distributed, loosely coupled
-architectures favored in Agent construction that the author also saw in
-object-oriented design (90's), distributed compute like CORBA (90's),
-service-oriented architecture (00's), REST API's and microservices (10's). 
-The theme is smaller components of a system that can be designed, built,
-deployed, tested, and improved separately from the greater system. Use the
-trickiest, best-performing tool or your favorite; integration works with
-either.
+architectures favored in Agent construction previously seen in various app
+architectures from the past decades of distributed computing.
+
+- Object-oriented design (90's)
+- Distributed compute like CORBA and IBM DOM (90's)
+- Service-oriented architecture (00's)
+- REST API's and microservices (10's and 20's)
+
+The theme is splitting the work up to run where it is optimally run for 
+availability, performance, and cost reasons. This is about smaller 
+components of a system that can be designed, built,
+deployed, tested, and improved separately while keeping the entire system
+running. Use the trickiest, best-performing tool or your favorite
+Integration works with either!
 
 ## Solution Components
 
@@ -91,22 +107,30 @@ Others will add knowledge sources that were not done with this project.
 - An MCP server written in Python with FastMCP
 
 Ideally, deployment scripts to pull it all together and automate it, but the
-author didn't get through 100% of the automation before writing.
+author didn't get through 100% of the automation before writing. Python 
+deployment scripts were rolled out with the Azure AI SDK and seem to provide
+all the deployment capabilities needed. This is changing code pipelines!
 
 ### Infrastructure
 
 Follow standard Infrastructure as Code patterns, with Terraform or Bicep and
 your favorite pipeline of choice. If you just want to get this up and
 running for learning purposes, you may opt to deploy these things in the
-portal. This article will focus on the application construction.
+portal. This article will however focus on the application construction.
 
 ### The Agent
 
-An agent is written in plain text, typed into the Azure portal. This example
+An agent is written in plain text, typed into the Azure portal for the first
+version, then iterated on in a file. The file is laoded as part of a
+Python deployment process. This example
 uses a Jinja template in case a future iteration gets fancy, maybe updating
-tool names dynamically. It has guardrails clearly defined about what it does
-versus what the MCP tools do. It features an automatic self-critique to
-improve upon its first try. And it sets clear expectations for output format.
+tool names dynamically. 
+
+Some key features of what goes into the agent instructions include these points. 
+
+- Clearly-defined guardrails about what it does versus what the MCP tools do. 
+- An automatic self-critique step to improve upon its first try. 
+- Clear expectations for output format.
 
 ```jinja
 You are a PARI/GP code generation agent.
@@ -220,8 +244,8 @@ Keep explanations concise, factual, and structured.
 #### Tools in the Agent
 
 In Foundry, define access to a tool by including a reference to it and
-describe authentication. In this case, it was simply a local HTTP server so
-the definition is simple. This is done in the deployment script's python code.
+describe authentication. In this case, it was simply a local HTTPS server so
+the definition is simple. This is done in the deployment script's python code. It actually authenticates with Entra via the browser.
 
 ```py
 mcp_tool = MCPTool(
@@ -292,4 +316,22 @@ access to this portal. You can use the Azure AI Projects SDK from Python or
 .NET if you want to programmatically call it, from your own web site or 
 business process.
 
-iamges!!!
+## The Foundry Portal
+
+![Visual of Foundry](/assets/2026/foundryagent/foundry-agent.png)
+
+Take note of a few key features.
+
+- Enable "Voice mode" in the top left corner for agents where you want to interact with your voice and have the agent read back to you.
+- The small Instructions pane expands but, for Enterprise-grade, you likely are working with file-based agent instructions so you can use versioning and source control.
+- Tools is below Instructions. You can set up MCP servers as done in this demo, Web Search, SharePoint search for internal Enterprise searching, amd grounding on many different document source types.
+- The Chat window is intended as a playground to help building and refining but is full-featured.
+- A YAML extract from the "YAML" tab can be used with Terraform and other tools if you want to build in the Portal and save a file.
+- Python code can also be generated on the "Code" tab.
+- Add in start prompts to illustrate to users how it works.
+- Publishing agents makes them available to Teams and Microsoft 365 Pilot.
+
+## References
+
+- [Hoopdad's Foundry Agent v2 Repo](https://github.com/hoopdad/foundry-agent-v2) - note the mcp server in the 'mcp' folder and the agent definition plus deployment in 'foundry-agent-v2-python-deployment'
+
