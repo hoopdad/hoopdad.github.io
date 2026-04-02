@@ -126,16 +126,17 @@ portal. This article will however focus on the application construction.
 ### The Agent
 
 An agent is written in plain text, typed into the Azure portal for the first
-version, then iterated on in a file. The file is laoded as part of a
-Python deployment process. This example
-uses a Jinja template in case a future iteration gets fancy, maybe updating
-tool names dynamically. 
+version, then iterated on in a file. The file is loaded as part of a
+code pipeline built with Python and the Azure AI SDK, azure.ai.projects. 
+This example uses a Jinja template in case a future iteration gets fancy, 
+maybe updating tool names dynamically.
 
 Some key features of what goes into the agent instructions include these points. 
 
-- Clearly-defined guardrails about what it does versus what the MCP tools do. 
-- An automatic self-critique step to improve upon its first try. 
-- Clear expectations for output format.
+- Clear communication, like you were delegating to a human who knows a lot of facts but isn't very wise
+- Clearly-defined guardrails about what it does versus what the MCP tools do
+- An automatic self-critique step to improve upon its first try
+- Clear expectations for output format
 
 ```jinja
 You are a PARI/GP code generation agent.
