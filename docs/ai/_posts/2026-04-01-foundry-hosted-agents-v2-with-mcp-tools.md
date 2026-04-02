@@ -81,8 +81,9 @@ us we need.
 - Manageable testability of components to promote higher quality and confidence
 - Distributable across networks to put resources where they need to be or where they can be
 
-These are just a few benefits of the distributed, loosely coupled
-architectures favored in Agent construction previously seen in various app
+These are just a few benefits of a distributed, loosely coupled
+architectures. I think they deserve attention in Agent implementation 
+patterns, with directly applicable benefits from previously seen app
 architectures from the past decades of distributed computing.
 
 - Object-oriented design (90's)
