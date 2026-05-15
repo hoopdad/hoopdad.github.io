@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Copilot Instructions for Writing Tone"
+title:  "Copilot Instructions to Adapt Tone of Writing"
 ---
 
 Here's a post about adapting the writing styles that Copilot uses. I had it write the post at the end, and it is a lot closer to how I would write after I followed this process.
