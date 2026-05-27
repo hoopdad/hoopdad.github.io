@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Token Efficiency - Part 2 - Design Patterns"
+hidden: true
 ---
 
 This is the second post in a three-part series on token efficiency. In Part 1, I framed tokens as an engineering budget: latency, cost, accuracy, and team flow all degrade when we waste context. This post is the architectural follow-through for leaders and architects who want AI systems that stay useful after the demo and the bill arrives.

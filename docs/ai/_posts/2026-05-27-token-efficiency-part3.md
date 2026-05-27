@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Token Efficiency - Part 3 - An Operational Playbook"
+hidden: true
 ---
 
 This is the practical post in the series. In Parts 1 and 2 I argued that token efficiency is not just about shaving prompt length, but about designing engineering systems so the model spends tokens on useful work instead of rediscovering your environment every turn. This final post is the playbook.
