@@ -7,7 +7,7 @@ This is the first post in a three-part series on token efficiency. It is aimed a
 
 My view: token usage has crossed into architecture. This means there is a need tools, frameworks, and principles to maximize the asset. If you design AI-heavy systems as though tokens are effectively free, you will make avoidable mistakes in cost, speed, system shape, and operational trust.
 
-![Token Efficiency as Architectural Constraint](token-efficiency-architectural-constraint-32x9-v2.png)
+![Token Efficiency as Architectural Constraint](/assets/2026/token-efficiency/token-efficiency-architectural-constraint-32x9-v2.png)
 
 ## The forcing function: usage-based billing
 
@@ -23,7 +23,7 @@ This does not mean every team needs microscopic token accounting. It does mean l
 
 ![The behavioral shift](/assets/2026/token-efficiency/token-efficiency-behavioral-shift-32x9-v2.png)
 
-## The behavioral shift
+## The Behavioral Shift
 
 The most interesting change is how we adapt our behaviors to make sure we can keep realizing this value.
 
