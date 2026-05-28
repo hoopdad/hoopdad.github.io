@@ -9,7 +9,7 @@ My view: token usage has crossed into architecture. This means there is a need t
 
 ![Token Efficiency as Architectural Constraint](/assets/2026/token-efficiency/token-efficiency-architectural-constraint-32x9-v2.png)
 
-## The forcing function: usage-based billing
+## The Forcing Function: Usage-Based Billing
 
 Usage-based billing makes this real in a practical sense, not just theoretical. The old model hid a lot: a quick question, a long autonomous coding run, and a messy prompt that re-sent half a repository could feel roughly equivalent because the billing abstraction blurred the difference.
 
@@ -45,7 +45,7 @@ That is the novel signal: not the billing change by itself, but engineers adapti
 
 ![A philosophy for token-efficient AI work](/assets/2026/token-efficiency/token-efficiency-philosophy-32x9-v2.png)
 
-## A philosophy for token-efficient AI work
+## A Philosophy for Token-efficient AI Work
 
 The answer is not to squeeze every prompt until it squeaks. Over-optimization can make systems brittle and unpleasant. But teams do need a working philosophy.
 
@@ -63,7 +63,7 @@ If your model spends tokens rediscovering stable facts every few turns, you have
 
 Token efficiency and trust reinforce each other. A deterministic control is often cheaper than a long prompt trying to persuade a model to behave. It is also easier to audit when something goes wrong.
 
-## What's next
+## What's Next
 
 In Part 2, I will move from principle to design patterns: concrete ways to shape repositories, agents, artifacts, and workflows so token-efficient behavior happens by default instead of by constant human vigilance.
 
