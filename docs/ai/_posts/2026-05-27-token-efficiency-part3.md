@@ -246,7 +246,7 @@ We spent years learning that reliable systems come from turning intent into arti
 
 ## References
 
-- [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/)
+- [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/){:target="_blank" rel="noopener noreferrer"}
 
 ## Continue the Series
 
