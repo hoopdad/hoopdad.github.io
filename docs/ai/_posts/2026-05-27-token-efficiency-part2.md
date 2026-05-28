@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Token Efficiency - Part 2 - Design Patterns"
-hidden: true
 ---
 
 ![Token Efficiency - Part 2 - Design Patterns](/assets/2026/token-efficiency/token-efficiency-design-patterns-32x9-v1.png)
@@ -20,46 +19,62 @@ If a repository contains only one bounded capability, the AI starts with less no
 
 That does not mean every team should carve a monolith into fifty tiny repos because an LLM prefers a clean room. We already made that mistake once for other reasons. The point is narrower: when you create boundaries, include AI context efficiency in the tradeoff analysis along with deployability, ownership, and runtime coupling.
 
-### The Orchestrator and Specialist Pattern
+## Token-Efficient Language Choices
 
+Language choice affects token efficiency more than many teams expect. Some languages simply require more syntax, ceremony, or framework scaffolding to express the same unit of behavior. That extra structure is not always bad; sometimes it buys safety or clarity. But it does increase context noise.
+
+To illustrate, here is an example of the same basic, tiniest microservice endpoint with two different stacks.
+
+```go
+package main
+
+import (
+    "encoding/json"
+    "net/http"
+)
+
+type Status struct {
+    Service string `json:"service"`
+    OK      bool   `json:"ok"`
+}
+
+func statusHandler(w http.ResponseWriter, _ *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    _ = json.NewEncoder(w).Encode(Status{Service: "billing", OK: true})
+}
+```
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/status")
+def status() -> dict[str, object]:
+    return {"service": "billing", "ok": True}
+```
+
+The Python version is shorter. For fast iteration, data work, or library-heavy AI integration, that is an advantage. The Go version is also concise by industry standards and in a larger service can create less framework sprawl than some dynamic stacks. It depends.
+
+I would not make language decisions on token count alone any more than I would choose a database solely by benchmark charts. The better rule is to be intentional. If a service benefits from a concise, performant stack, say so and use it. If the problem lives or dies on library depth, notebooks, or model SDK support, Python is often the practical answer.
+
+If you can use Rust, it's even more concise and easier for AI to manage. Unfortunately I found that libraries I wanted to use weren't available yet in Rust, so for now I am sticking with Python. (Rust also is considered faster to execute and more secure, so let's hope those libraries come along soon.)
+
+I think this is where engineering leaders need to stay disciplined. "Use Python for AI" is too simplistic. "Never use Python because it gets messy" is also too simplistic. Pick the stack that reduces total system friction, including what the humans maintain and what the model must absorb.
+
+### The Orchestrator and Specialist Pattern
 
 ![The Orchestrator and Specialist Pattern](/assets/2026/token-efficiency/orchestrator-specialist-pattern-32x9-v1.png)
 
 A pattern I like here is one orchestrator agent paired with specialist agents that each work inside a narrow scope. Think fleet mode, but with architecture behind it.
 
-The orchestrator owns the goal: "implement this API change," "audit the migration plan," or "trace the regression." It delegates to specialists with constrained views of the world: one agent for the payment service, one for the deployment templates, one for the test harness, one for the ADRs. Each specialist gets a smaller slice of the repo and a more specific instruction set.
+The orchestrator is launched from within a parent repo. The orchestrator then understands the natural language request to change the system, creating and updating design artifacts. It then splits the artifacts by the specialists that will execute the work.
+
+The orchestrator then delegates to specialists with constrained views of the world: one agent for the TypeScript route changes that is launched from within the web repo, one agent for the deployment templates that is launched from within the infra repo, one for the python API changes that is launched from within the API repo. Each specialist gets a smaller slice of the repo and a more specific instruction set.
 
 That is very close to service decomposition thinking from the SOA era. A coordinator handles workflow. Specialized services own clearly bounded responsibilities. We used to do this to reduce coupling and let systems evolve independently. Now we also do it so the AI does not drag half the company into its prompt.
 
-A concrete example might look like this:
-
-```yaml
-agents:
-  - name: orchestrator
-    scope:
-      - docs/architecture
-      - plans
-    responsibilities:
-      - break work into subproblems
-      - gather specialist outputs
-      - produce final implementation plan
-  - name: billing-specialist
-    scope:
-      - services/billing
-      - contracts/billing.openapi.yaml
-    responsibilities:
-      - update billing API and tests
-  - name: infra-specialist
-    scope:
-      - infra/terraform
-      - .github/workflows
-    responsibilities:
-      - update deployment and policy checks
-```
-
-The file is simple on purpose. It is auditable, easy to reason about, and captures the operating model: each agent sees only what it needs.
-
-That changes repository design in a subtle way. We used to ask, "How should humans organize this code?" Now we should also ask, "What does an AI need to see to solve a bounded problem well?" Those are not identical questions.
+That changes repository design in a subtle way. We used to ask, "How should humans organize this code?" Now we should also ask, "What does an AI need to see to solve a bounded problem well?" Those are not identical questions. Though, I might add, this would have been easier for humans, too, with tighter context and an outcome that is easier to focus on.
 
 ![File-Based Artifacts as Durable Memory](/assets/2026/token-efficiency/file-based-artifacts-durable-memory-32x9-v1.png)
 
@@ -71,7 +86,7 @@ The principal from one of my children's schools would say, "if it's important, w
 
 I mean the boring, durable things: architecture decision records, interface contracts, migration plans, requirements, known constraints, and handoff notes. Write it once because re-explaining the same system from scratch burns tokens and introduces drift.
 
-This pattern has deep roots. Configuration management, infrastructure as code, and docs-as-code all came from the same realization: if a fact matters operationally, it should exist as a durable artifact rather than tribal memory. AI work benefits from the same discipline.
+This pattern has deep roots. Configuration management, infrastructure as code, and docs-as-code all came from the same realization: if a fact matters operationally, it should exist as a durable artifact rather than tribal memory.
 
 A lightweight ADR is often enough:
 
@@ -114,51 +129,6 @@ In practice, that usually means:
 - runbooks for operational steps you do not want improvised
 
 None of this is glamorous, and it reduces your chances to have a snarky argument with AI about what you meant. But it is still the right move.
-
-## Token-Efficient Language Choices (Pragmatically)
-
-Language choice affects token efficiency more than many teams expect. Some languages simply require more syntax, ceremony, or framework scaffolding to express the same unit of behavior. That extra structure is not always bad; sometimes it buys safety or clarity. But it does increase context noise.
-
-To illustrate, here is an example of the same basic, tiniest microservice endpoint with two different stacks.
-
-```go
-package main
-
-import (
-    "encoding/json"
-    "net/http"
-)
-
-type Status struct {
-    Service string `json:"service"`
-    OK      bool   `json:"ok"`
-}
-
-func statusHandler(w http.ResponseWriter, _ *http.Request) {
-    w.Header().Set("Content-Type", "application/json")
-    _ = json.NewEncoder(w).Encode(Status{Service: "billing", OK: true})
-}
-```
-
-```python
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/status")
-def status() -> dict[str, object]:
-    return {"service": "billing", "ok": True}
-```
-
-The Python version is shorter. Often much shorter. For fast iteration, data work, or library-heavy AI integration, that is an advantage. The Go version is also concise by industry standards and in a larger service can create less framework sprawl than some dynamic stacks. It depends.
-
-I would not make language decisions on token count alone any more than I would choose a database solely by benchmark charts. The better rule is to be intentional. If a service benefits from a concise, performant stack, say so and use it. If the problem lives or dies on library depth, notebooks, or model SDK support, Python is often the practical answer.
-
-If you can use Rust, it's even more concise and easier for AI to manage. I found that libraries I wanted to use weren't available yet in Rust, so for now I am sticking with Python.
-
-This is the same polyglot architecture lesson many of us learned over the last twenty years: right tool for the job beats ideological purity. AI adds one more input to the decision matrix. The language is not just for the runtime and the developers anymore. It is also part of the model's working set.
-
-I think this is where engineering leaders need to stay disciplined. "Use Python for AI" is too blunt. "Never use Python because it gets messy" is too blunt too. Pick the stack that reduces total system friction, including what the humans maintain and what the model must absorb.
 
 ![Use LLMs for Their Strengths](/assets/2026/token-efficiency/use-llms-for-their-strengths-32x9-v1.png)
 
@@ -238,7 +208,7 @@ These patterns are not separate tricks. They reinforce each other.
 
 Smaller scope reduces context load. Durable artifacts preserve context across sessions. Intentional language choices reduce incidental noise. LLM-first-for-generation and deterministic-first-for-control keeps the model where it is strong and the system where it is trustworthy. Put together, they create AI systems that are cheaper to operate, easier to reason about, and less likely to wander off into expensive nonsense.
 
-I have seen this movie before, just with different props. Distributed systems forced us to care about coupling, failure domains, contracts, and operational discipline. AI systems force the same habits back onto the table, with tokens now standing in for bandwidth and memory.
+I've seen this film before, just with different props. Distributed systems forced us to care about coupling, failure domains, contracts, and operational discipline. AI systems force the same habits back onto the table, with tokens now standing in for bandwidth and memory.
 
 That is why I think token efficiency is not a prompt-engineering hobby. It is architecture. If you treat it that way, the decisions become clearer.
 

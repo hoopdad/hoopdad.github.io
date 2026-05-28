@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Token Efficiency - Part 3 - An Operational Playbook"
-hidden: true
 ---
 
 ![Token Efficiency - Part 3 - An Operational Playbook](/assets/2026/token-efficiency/token-efficiency-operational-playbook-32x9-v1.png)
