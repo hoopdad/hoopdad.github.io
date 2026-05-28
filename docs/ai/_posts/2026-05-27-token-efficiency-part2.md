@@ -4,6 +4,8 @@ title: "Token Efficiency - Part 2 - Design Patterns"
 hidden: true
 ---
 
+![Token Efficiency - Part 2 - Design Patterns](/assets/2026/token-efficiency/token-efficiency-design-patterns-32x9-v1.png)
+
 This is the second post in a three-part series on token efficiency. In Part 1, I framed tokens as an engineering budget: latency, cost, accuracy, and team flow all degrade when we waste context. This post is the architectural follow-through for leaders and architects who want AI systems that stay useful after the demo and the bill arrives.
 
 ## Manage Context by Managing Scope
@@ -14,13 +16,14 @@ That sounds obvious, but teams still point AI tooling at monorepos with six lang
 
 This is the old microservices lesson in new clothing: scope is a design decision. In the SOA and microservices years, we learned that service boundaries were not just organizational niceties. They controlled blast radius, deployment independence, and failure modes. AI adds one more reason to care. Boundaries now also control context load.
 
-If a repository contains only one bounded capability, the AI starts with less noise. Fewer irrelevant files. Fewer adjacent concerns. Less ambiguity between similarly named handlers, DTOs, or test fixtures. The model has a better chance of staying on task because the system has already done some filtering.
+If a repository contains only one bounded capability, the AI starts with less noise, fewer irrelevant files, fewer adjacent concerns, and less ambiguity. The model has a better chance of staying on task because the system has already done some filtering.
 
 That does not mean every team should carve a monolith into fifty tiny repos because an LLM prefers a clean room. We already made that mistake once for other reasons. The point is narrower: when you create boundaries, include AI context efficiency in the tradeoff analysis along with deployability, ownership, and runtime coupling.
 
 ### The Orchestrator and Specialist Pattern
 
-![Orchestrator has wide shallow context; specialists have narrow deep expertise](/assets/2026/token-efficiency/orchestrator-specialist-comparison.png)
+
+![The Orchestrator and Specialist Pattern](/assets/2026/token-efficiency/orchestrator-specialist-pattern-32x9-v1.png)
 
 A pattern I like here is one orchestrator agent paired with specialist agents that each work inside a narrow scope. Think fleet mode, but with architecture behind it.
 
@@ -57,6 +60,8 @@ agents:
 The file is simple on purpose. It is auditable, easy to reason about, and captures the operating model: each agent sees only what it needs.
 
 That changes repository design in a subtle way. We used to ask, "How should humans organize this code?" Now we should also ask, "What does an AI need to see to solve a bounded problem well?" Those are not identical questions.
+
+![File-Based Artifacts as Durable Memory](/assets/2026/token-efficiency/file-based-artifacts-durable-memory-32x9-v1.png)
 
 ## File-Based Artifacts as Durable Memory
 
@@ -154,6 +159,8 @@ If you can use Rust, it's even more concise and easier for AI to manage. I found
 This is the same polyglot architecture lesson many of us learned over the last twenty years: right tool for the job beats ideological purity. AI adds one more input to the decision matrix. The language is not just for the runtime and the developers anymore. It is also part of the model's working set.
 
 I think this is where engineering leaders need to stay disciplined. "Use Python for AI" is too blunt. "Never use Python because it gets messy" is too blunt too. Pick the stack that reduces total system friction, including what the humans maintain and what the model must absorb.
+
+![Use LLMs for Their Strengths](/assets/2026/token-efficiency/use-llms-for-their-strengths-32x9-v1.png)
 
 ## Use LLMs for Their Strengths
 
