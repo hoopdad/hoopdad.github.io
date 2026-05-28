@@ -195,10 +195,12 @@ There is one caveat. Keywords only work when the assistant has been configured t
 
 ### Pro Tip - Red Team
 
-For security risk analysis and remediation, I am having good luck telling the LLM to "Red Team" a design. 
+For security risk analysis and remediation, I am having good luck telling the LLM to "Red Team" a design.
 
 ```txt
-/fleet I need a new user flow that does xxxxx. Design it using our best practices. Red Team it. Build it, test it, and follow our devops procedure to ship it.
+/fleet I need a new user flow that does xxxxx. Design it using our best 
+practices. Red Team it. Build it, test it, and follow our devops procedure to 
+ship it.
 ```
 
 ## Remind the Agent
