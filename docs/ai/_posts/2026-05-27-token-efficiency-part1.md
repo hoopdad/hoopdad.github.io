@@ -73,3 +73,8 @@ For now, the main point is simple: usage-based billing did not create token effi
 
 - GitHub Blog, [GitHub Copilot is moving to usage-based billing](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/)
 - Ars Technica, [GitHub will start charging Copilot users based on their actual AI usage](https://arstechnica.com/ai/2026/04/github-will-start-charging-copilot-users-based-on-their-actual-ai-usage/)
+
+## Continue the Series
+
+- [Part 2: Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})
+- [Part 3: An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})

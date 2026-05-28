@@ -236,8 +236,6 @@ That distinction matters.
 
 ## Closing: The Compound Effect
 
-![Token Efficiency Flywheel](/assets/2026/token-efficiency/token-efficiency-flywheel.png)
-
 Token efficiency compounds in the same way operational discipline compounds. A shorter prompt is nice. A better system is better.
 
 Codified infrastructure means fewer requirements to restate. Reusable artifacts mean fewer workflows to rediscover. Scripts and modules beat clever one-off command sequences. Shorthand vocabulary reduces prompt chatter. Brief reminders handle normal drift without starting over.
@@ -248,4 +246,9 @@ We spent years learning that reliable systems come from turning intent into arti
 
 ## References
 
-- Azure Verified Modules: https://azure.github.io/Azure-Verified-Modules/
+- [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/)
+
+## Continue the Series
+
+- [Part 1: An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
+- [Part 2: Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})

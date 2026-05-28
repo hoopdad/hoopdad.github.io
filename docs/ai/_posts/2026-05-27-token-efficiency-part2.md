@@ -215,3 +215,8 @@ That is why I think token efficiency is not a prompt-engineering hobby. It is ar
 ## What's Next
 
 Part 3 will move from patterns to operations: how to turn these ideas into a practical playbook for teams and delivery pipelines. That is where the tradeoffs get less theoretical. The interesting question is whether teams will treat token efficiency as temporary tuning or as a permanent architectural constraint.
+
+## Continue the Series
+
+- [Part 1: An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
+- [Part 3: An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})
