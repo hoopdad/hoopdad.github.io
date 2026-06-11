@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 900" role="img" aria-labelledby="title desc">
+  <title id="title">Seven-step practical AI-assisted delivery flow</title>
+  <desc id="desc">A horizontal flowchart showing rules, user flow, design, Red Team review, build and test, critic validation, and deployment feedback.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9fc"/>
+      <stop offset="1" stop-color="#eef6fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f2742" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .title { font: 700 40px "Segoe UI", Arial, sans-serif; fill: #12324a; }
+      .label { font: 700 25px "Segoe UI", Arial, sans-serif; fill: #12324a; }
+      .small { font: 500 18px "Segoe UI", Arial, sans-serif; fill: #5b7083; }
+      .num { font: 800 22px "Segoe UI", Arial, sans-serif; fill: #ffffff; }
+      .micro { font: 700 17px "Segoe UI", Arial, sans-serif; fill: #2b6cb0; letter-spacing: 0.8px; }
+      .card { fill: #ffffff; stroke: #bfd6eb; stroke-width: 3; }
+      .arrow { stroke: #7aa7d4; stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <rect width="1800" height="900" fill="url(#bg)"/>
+  <circle cx="1570" cy="170" r="260" fill="#dbeafe" opacity="0.55"/>
+  <circle cx="250" cy="740" r="230" fill="#cce9ec" opacity="0.42"/>
+  <text x="900" y="95" text-anchor="middle" class="micro">PRACTICAL DELIVERY FLOW</text>
+  <text x="900" y="150" text-anchor="middle" class="title">Rules, agents, checks, deployment, and feedback</text>
+
+  <path class="arrow" d="M 242 450 L 306 450"/>
+  <path class="arrow" d="M 306 450 L 287 437 M 306 450 L 287 463"/>
+  <path class="arrow" d="M 474 450 L 538 450"/>
+  <path class="arrow" d="M 538 450 L 519 437 M 538 450 L 519 463"/>
+  <path class="arrow" d="M 706 450 L 770 450"/>
+  <path class="arrow" d="M 770 450 L 751 437 M 770 450 L 751 463"/>
+  <path class="arrow" d="M 938 450 L 1002 450"/>
+  <path class="arrow" d="M 1002 450 L 983 437 M 1002 450 L 983 463"/>
+  <path class="arrow" d="M 1170 450 L 1234 450"/>
+  <path class="arrow" d="M 1234 450 L 1215 437 M 1234 450 L 1215 463"/>
+  <path class="arrow" d="M 1402 450 L 1466 450"/>
+  <path class="arrow" d="M 1466 450 L 1447 437 M 1466 450 L 1447 463"/>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(70 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#2b6cb0"/><text x="86" y="66" text-anchor="middle" class="num">1</text>
+      <text x="86" y="124" text-anchor="middle" class="label">Rules</text>
+      <text x="86" y="164" text-anchor="middle" class="small">procedures</text>
+      <text x="86" y="191" text-anchor="middle" class="small">standards</text>
+      <text x="86" y="218" text-anchor="middle" class="small">guardrails</text>
+    </g>
+    <g transform="translate(302 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#2b6cb0"/><text x="86" y="66" text-anchor="middle" class="num">2</text>
+      <text x="86" y="124" text-anchor="middle" class="label">User flow</text>
+      <text x="86" y="164" text-anchor="middle" class="small">ideas as</text>
+      <text x="86" y="191" text-anchor="middle" class="small">interactions</text>
+    </g>
+    <g transform="translate(534 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#2b6cb0"/><text x="86" y="66" text-anchor="middle" class="num">3</text>
+      <text x="86" y="124" text-anchor="middle" class="label">Design</text>
+      <text x="86" y="164" text-anchor="middle" class="small">components</text>
+      <text x="86" y="191" text-anchor="middle" class="small">roles</text>
+      <text x="86" y="218" text-anchor="middle" class="small">repos</text>
+    </g>
+    <g transform="translate(766 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#1a9aa2"/><text x="86" y="66" text-anchor="middle" class="num">4</text>
+      <text x="86" y="124" text-anchor="middle" class="label">Red Team</text>
+      <text x="86" y="164" text-anchor="middle" class="small">security</text>
+      <text x="86" y="191" text-anchor="middle" class="small">risk loop</text>
+    </g>
+    <g transform="translate(998 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#2b6cb0"/><text x="86" y="66" text-anchor="middle" class="num">5</text>
+      <text x="86" y="124" text-anchor="middle" class="label">Build</text>
+      <text x="86" y="164" text-anchor="middle" class="small">code</text>
+      <text x="86" y="191" text-anchor="middle" class="small">tests</text>
+      <text x="86" y="218" text-anchor="middle" class="small">specs</text>
+    </g>
+    <g transform="translate(1230 305)">
+      <rect width="172" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#1a9aa2"/><text x="86" y="66" text-anchor="middle" class="num">6</text>
+      <text x="86" y="124" text-anchor="middle" class="label">Critic</text>
+      <text x="86" y="164" text-anchor="middle" class="small">validate</text>
+      <text x="86" y="191" text-anchor="middle" class="small">what was</text>
+      <text x="86" y="218" text-anchor="middle" class="small">requested</text>
+    </g>
+    <g transform="translate(1462 305)">
+      <rect width="268" height="290" rx="28" class="card"/>
+      <circle cx="86" cy="58" r="25" fill="#2b6cb0"/><text x="86" y="66" text-anchor="middle" class="num">7</text>
+      <text x="134" y="124" text-anchor="middle" class="label">Deploy + learn</text>
+      <text x="134" y="164" text-anchor="middle" class="small">cloud, API, web</text>
+      <text x="134" y="191" text-anchor="middle" class="small">logs and feedback</text>
+    </g>
+  </g>
+
+  <path d="M 1596 610 C 1370 760, 760 770, 390 610" fill="none" stroke="#1a9aa2" stroke-width="5" stroke-dasharray="12 14" opacity="0.75"/>
+  <text x="900" y="760" text-anchor="middle" class="small">Feedback turns delivery into an operating loop, not a one-way handoff.</text>
+</svg>

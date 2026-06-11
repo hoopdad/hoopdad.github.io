@@ -1,5 +1,7 @@
 # The New Management Problem
 
+![A visionary enterprise manager setting direction and guardrails without micromanaging](/assets/2026/coding-assistants-enterprise/visionary-manager-leader.svg)
+
 AI coding assistants do not remove management from software delivery. They move management into new places.
 
 The work becomes more about setting direction, defining scope, writing clear requirements, checking outputs, and designing feedback loops. That may sound familiar because it is.

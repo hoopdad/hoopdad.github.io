@@ -1,5 +1,7 @@
 # The Risk Surface
 
+![People communicating in a corporate setting around risk signals and controls](/assets/2026/coding-assistants-enterprise/corporate-communication-risk-surface.svg)
+
 Every useful technology creates a new risk surface. AI coding assistants are no different.
 
 The practical risks are not only science-fiction concerns. They are ordinary delivery risks moving faster: unclear instructions, excessive scope, stale documentation, repeated failed attempts, and the assistant confidently doing the wrong thing.

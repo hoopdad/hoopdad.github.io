@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Humans guiding a coordinated team of AI agents</title>
+  <desc id="desc">A restrained enterprise technology illustration with a human decision maker on each side of a coordinated agent team.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f8fb"/>
+      <stop offset="1" stop-color="#edf4fb"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#edf6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f2742" flood-opacity="0.14"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#d8e3ef" stroke-width="1"/>
+    </pattern>
+    <style>
+      .navy { fill: #12324a; }
+      .muted { fill: #5b7083; }
+      .line { stroke: #8fb4d9; stroke-width: 4; fill: none; stroke-linecap: round; }
+      .accent { fill: #2b6cb0; }
+      .teal { fill: #1a9aa2; }
+      .node { fill: #ffffff; stroke: #9fc2e4; stroke-width: 3; }
+      .label { font: 600 30px "Segoe UI", Arial, sans-serif; fill: #12324a; }
+      .small { font: 500 22px "Segoe UI", Arial, sans-serif; fill: #5b7083; }
+      .micro { font: 600 18px "Segoe UI", Arial, sans-serif; fill: #2b6cb0; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)" opacity="0.42"/>
+  <circle cx="1270" cy="140" r="250" fill="#cfe7f6" opacity="0.45"/>
+  <circle cx="280" cy="760" r="260" fill="#dbeafe" opacity="0.55"/>
+
+  <rect x="310" y="150" width="980" height="600" rx="42" fill="url(#panel)" filter="url(#shadow)"/>
+  <text x="800" y="215" text-anchor="middle" class="micro">ENTERPRISE OPERATING MODEL</text>
+  <text x="800" y="260" text-anchor="middle" class="label">Humans set direction. Agents coordinate the work.</text>
+
+  <path class="line" d="M 455 452 C 560 360, 650 360, 735 445"/>
+  <path class="line" d="M 865 445 C 950 360, 1040 360, 1145 452"/>
+  <path class="line" d="M 455 452 C 590 548, 705 548, 800 472"/>
+  <path class="line" d="M 1145 452 C 1010 548, 895 548, 800 472"/>
+
+  <g transform="translate(185 353)">
+    <circle cx="75" cy="60" r="42" fill="#12324a"/>
+    <path d="M 22 178 C 34 112, 116 112, 128 178 Z" fill="#2b6cb0"/>
+    <rect x="1" y="181" width="148" height="20" rx="10" fill="#8fb4d9"/>
+    <text x="75" y="245" text-anchor="middle" class="label">Leader</text>
+    <text x="75" y="278" text-anchor="middle" class="small">intent + guardrails</text>
+  </g>
+
+  <g transform="translate(1265 353)">
+    <circle cx="75" cy="60" r="42" fill="#12324a"/>
+    <path d="M 22 178 C 34 112, 116 112, 128 178 Z" fill="#1a9aa2"/>
+    <rect x="1" y="181" width="148" height="20" rx="10" fill="#8fb4d9"/>
+    <text x="75" y="245" text-anchor="middle" class="label">Reviewer</text>
+    <text x="75" y="278" text-anchor="middle" class="small">judgment + approval</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <circle class="node" cx="800" cy="470" r="78"/>
+    <rect x="755" y="431" width="90" height="70" rx="18" fill="#e8f2ff" stroke="#2b6cb0" stroke-width="3"/>
+    <circle cx="782" cy="466" r="7" class="accent"/>
+    <circle cx="818" cy="466" r="7" class="accent"/>
+    <path d="M 775 492 C 795 506, 815 506, 835 492" fill="none" stroke="#2b6cb0" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <circle class="node" cx="610" cy="355" r="58"/>
+    <text x="610" y="349" text-anchor="middle" class="small">Design</text>
+    <text x="610" y="377" text-anchor="middle" class="small">agent</text>
+    <circle class="node" cx="990" cy="355" r="58"/>
+    <text x="990" y="349" text-anchor="middle" class="small">Security</text>
+    <text x="990" y="377" text-anchor="middle" class="small">agent</text>
+    <circle class="node" cx="610" cy="585" r="58"/>
+    <text x="610" y="579" text-anchor="middle" class="small">Build</text>
+    <text x="610" y="607" text-anchor="middle" class="small">agent</text>
+    <circle class="node" cx="990" cy="585" r="58"/>
+    <text x="990" y="579" text-anchor="middle" class="small">Critic</text>
+    <text x="990" y="607" text-anchor="middle" class="small">agent</text>
+  </g>
+
+  <path d="M 331 454 L 420 454" stroke="#2b6cb0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 420 454 L 401 441 M 420 454 L 401 467" stroke="#2b6cb0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 1180 454 L 1269 454" stroke="#1a9aa2" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 1269 454 L 1250 441 M 1269 454 L 1250 467" stroke="#1a9aa2" stroke-width="5" stroke-linecap="round"/>
+</svg>

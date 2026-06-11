@@ -1,5 +1,7 @@
 # What These Tools Can Actually Do
 
+![Ideas and requirements flowing through an AI-assisted delivery system to enterprise outcomes](/assets/2026/coding-assistants-enterprise/ideas-requirements-outcome-flow.svg)
+
 Before deciding how to adopt AI coding assistants, enterprise leaders need a practical view of their capabilities.
 
 The important point is not that they can generate code. That is now table stakes. The more important point is that modern technical environments are full of things expressed as language: application code, configuration, policy, infrastructure, tests, requirements, scripts, and runbooks.

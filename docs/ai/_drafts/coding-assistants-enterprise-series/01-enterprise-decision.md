@@ -1,5 +1,7 @@
 # The Enterprise Decision Is Not Whether to Use AI Coding Assistants
 
+![Humans guiding a coordinated team of AI agents](/assets/2026/coding-assistants-enterprise/enterprise-decision-agent-team.svg)
+
 For enterprise leaders, the AI coding assistant conversation has moved past curiosity. The useful question is not whether these tools can write code. They can.
 
 The better question is what kind of operating model you want around them: who uses them, what they can touch, how quality is checked, and where human judgment still has to sit in the loop.
