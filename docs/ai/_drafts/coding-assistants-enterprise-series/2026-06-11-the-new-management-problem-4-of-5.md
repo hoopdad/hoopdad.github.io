@@ -19,6 +19,7 @@ My role in this was to set up coding assistants to do the work. What I did:
 - Communicated the flow from the user perspective
 - Wrote implementation patterns and system requirements and made the assistant refer to them
 - Manual setup tasks with no tools like log in to Apple and Google developer sites
+- Reviewing outcomes, Spot checking code (fine for my POC stuff but you might consider more rigor)
 - When there was a problem and AI couldn't fix it quickly, reviewed code and log files, then steered AI
 
 Those are not fringe activities. They are the practical work of keeping delivery pointed at the right outcome.
