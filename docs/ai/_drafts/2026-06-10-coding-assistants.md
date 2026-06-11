@@ -3,21 +3,25 @@ layout: post
 title: "Coding Assistants - Part 1 - Decisions, Capabilities, and Expertise"
 ---
 
-The technology world has turned to AI coding assistants. It's here, it's not "going" to happen because it already has. Enterprise leaders need to make decisions about who, what, how, and why. You know, the usual suspects of any major decision. This is timely because one of the leading AI model companies recently announced that 80% of its code - critical corporate assets, its very lifeblood in that industry! - is written by AI.
+ideas for splitting the posts:  capabilities, limitations,  perspective on effective management and usage of these tools, patterns, wrangling an AI assistant
 
-In this post, part 1 of 3, I'm sharing capabilities, limitations, and perspective on effective management and usage of these tools. Subsequent posts will show the 3 patterns I worked out and what wrangling an AI assistance looks like in practice.
+Key topics: AI coding assistant capabilities; agentic workflows and end-to-end delivery patterns; Red Team, TDD, critic agents, and Infrastructure as Code; managing AI assistants with clear rules, scope, and feedback; human expertise needed for effective use; areas where AI assistants are strongest; failure modes and recovery patterns.
+
+
+The technology world has turned to AI coding assistants. It's here, it's not "going" to happen because it already has. Enterprise leaders need to make decisions about who, what, how, and why. You know, the usual suspects of any major decision. This is timely because one of the leading AI model companies recently announced that 80% of its code - critical corporate assets, its  lifeblood in that industry! - is written by AI.
+
 
 ## Teeing up with Individual Capabilities
 
 Let's lay out some of the speciic capabilities the tools have, then in the next section implications for putting them all together. This section is level set with those who haven't worked much or at all with these tools.
 
-First, you'll see that I am using AI Coding Assistant and various AI agents interchangeably in this conversation. Most of the time here, the capabilities I describe go beyond "an assistant" into  specialized agency - software doing things with knowledge and intention.
+First, you'll see that I am using the terms AI Coding Assistant and various AI agents interchangeably in this conversation. Most of the time here, the capabilities I describe go beyond "an assistant" into  specialized agency - software doing things with knowledge and intention.
 
 AI coding assistants can write code, sure. No sweat. Code is just language after all, and these assistants are backed by some serious large language models (LLMs). The perspective I'm sharing is that we define far more than web pages with code: back-end API's, cloud infrastructure, security policy, network configurations, and even other agents. In other words, any thing in your technical environment that is expressed in a formatted file, or connected to with an API or tool, is fair game.
 
-So let's bulid on that, because these are first class agents. They run tools. Tools exist for just about all of the functions of modern platorms: clouds, databases, issue tracking systems, quality testing. And some tools are smart enough to work from screens where tools don't exist. Coding agents can be permitted to run these. 
+Let's bulid on that, because these are first class agents. They run tools. Tools exist for just about all of the functions of modern platorms: clouds, databases, issue tracking systems, quality testing. And some tools are smart enough to work from screens where tools don't exist. Coding agents can be permitted to run these. 
 
-With enough of a clue for input, ai coding assistants can even design end-to-end flows. Based on established patterns written about by dopes like me sharing all their knowledge for free, an LLM can figure out all the system components needed, the roles for each component, and how they wire up together. 
+With enough of a clue for input, ai coding assistants can even design end-to-end flows. Based on established patterns either from Internet sources or one's own Enterprise standards, an LLM can figure out all the system components needed, the roles for each component, and how they wire up together. The same goes for requirements: write them as a concise guide and your agents can build to them. For example, one pattern for internal applications requires public networking disabled and another for public-facing requires a Web Application Firewall. Put those into a file in a shareable place, and your starting with clarity that is closer to your target.
 
 I'll tack on "follow instructions" as a capability, though this is where it can get a little wild. These tools are built to start up and look for instructions files as their guide. Instructions can steer the flow of events, that code must be tested before going to the next step, to log all decisions to a file, to always keep a regression test when a bug is found. Compliance depends on how well aligned the instructions as written are to the tasks the assistant encounters. Well-written isntructions will fire when the same thing happens in different contexts. For example, always write a regression test when a bug is fixed, but do you mean bugs that you find or the assistant finds or both?
 
@@ -41,9 +45,9 @@ Shout out to some keywords that have big meaning:
 - Critic: A Critic agent evaluates what something should be versus what it is, and provides that candid, direct feedback like it wants a podcast.
 - Infrastructure as Code (IaC): instead of issuing ad hoc commands, using IaC lets LLM's use language to define cloud resources, and then use basic tool execution patterns to deploy your stuff.
 
-## Examples of Things I Built
+## Approach to Building with AI Assistants
 
-Over the last couple of months I have been zealously figuring out how best to work with these tools as if I were writing Enterprise or commercial software. But I didn't write any code, not a line. That was the test: can GitHub Copilot write code that maintained high quality, adhered to standards, took actions that were traceable and auditable, and follow a logical workflow? Yes. Not to understate, but yes! It takes a good manager, but yes. It was exhausting with 15 minute follow-ups rather than the dailiy standups a people manager would have, but yes. 
+Over the last couple of months I have been zealously figuring out how best to work with these tools as if I were writing Enterprise or commercial software. I needed some example applications and wanted to be at least a little ambitious. But I didn't write any code, not a line. That was the test: can GitHub Copilot write code that maintained high quality, adhered to standards, took actions that were traceable and auditable, and follow a gated workflow? Yes. Not to understate, but yes! It takes a good manager, but yes. It was sometimes exhausting having 15 minute follow-ups with a team of agents, rather than the dailiy standups a people manager would have, but yes. 
 
 My role in this was to set up coding assistants to do the work. What I did:
 
@@ -58,16 +62,16 @@ The outcomes varied from fully functional to almost-there but break-fix loops ti
 - An application that analyzes a resume against a job description, rewrites it in the language of the target employer (web firewall, website, android app, api, database, agent)
 - An application that remembers what TV shows I was streaming (web firewall, website, android app, alexa integration, iOS app, database)
 
-## Abstractions
+## Agentic Workflow Implementations
 
-More than any software development lifecycle I've done, this lends itself to end-to-end automated workflows. It pushes back to the left and out to the right. 
+More than any software development lifecycle I've done, this tooling lends itself to end-to-end automated workflows. It pushes back to the left and out to the right. Every stage has an evaluation by a separate agent, checking to make sure it makes sense. And that is a feedback loop. So, designs, coding, testing all get checked by expert agents.
 
-I created 4 reusable frameworks for different scenarios I found. I kept iterating and they kept getting better. They are rough and at a minimum I will share concepts but not likely reusable in their current state.
+I created 4 frameworks for different scenarios I found. I kept iterating and they kept getting better. They are still rough and if you want to use them you will have to make them work in your environment. (Pro tip: use an AI coding assistant to help!)
 
-1. For a small app, with a single repository, maybe this would be a script. Define the sprint in `.github/copilot-instructions.md` and tell it to follow `OPERATOR_RUNBOOK.md`. Prompt it with some boilerplate with sprint goals and acceptance criteria, as if you were an Agile scrum master.
-2. For an app with multiple repositories, one per layer, what I called the Enterprise Copilot Fleet Controller. One agent coordinates and designs and has only access to design and work items. Many specialist agents write code and deployment procedures. Critics everywhere like in real life keep them in check.
-3. An alternative for an app with multiple repositories, one per layer: a parent repository tracks the layers' respositories as git submodules and has access to read all of them. Keeping scope limited for token count reasons was challenging. I found that the coordinator agent tended to micromanage, doing work itself instead of delegating. Costs to this are to quality and effort - with that much scope the coordinator would get overhwhelmed. (Any managers in the room right now, feeling that?) But it churned through many sprints successfully before falling down.
-4. Custom workflows. This is not really working yet. I had AI design and write it with workflows that I delivered, but implementing all the details in this will take more time. Not there yet but offers deterministic gates that give temporary control to indeterministic agents.
+1. For a small app, with a single repository, maybe this would be a script. Define the sprint in `.github/copilot-instructions.md` and tell it to follow `OPERATOR_RUNBOOK.md`. Prompt it with some boilerplate with sprint goals and acceptance criteria, as if you were an Agile scrum master. See [Lightweight Sprint](https://github.com/hoopdad/agentic-harness/tree/main/lightweight-sprint)
+2. For an app with multiple repositories, one per layer, what I called the Enterprise Copilot Fleet Controller. One agent coordinates and designs and has only access to design and work items. Many specialist agents write code and deployment procedures. Critics everywhere like in real life keep them in check. [Enterprise Copilot Fleet Controller](https://github.com/hoopdad/enterprise-copilot-fleet-controller)
+3. An alternative for an app with multiple repositories, one per layer: a parent repository tracks the layers' respositories as git submodules and has access to read all of them. Keeping scope limited for token count reasons was challenging. I found that the coordinator agent tended to micromanage, doing work itself instead of delegating. Costs to this are to quality and effort - with that much scope the coordinator would get overhwhelmed. (Any managers in the room right now, feeling that?) But it churned through many sprints successfully before falling down. See [Multi Repo](https://github.com/hoopdad/agentic-harness/tree/main/multi-repo)
+4. Custom workflows. This is not really working yet. I had AI design and write it with workflows that I delivered, but implementing all the details in this will take more time. Not there yet but offers deterministic gates that give temporary control to indeterministic agents. Link to follow!
 
 ## Human Expertise
 
@@ -103,4 +107,3 @@ Working with old libraries, like Jenkins in one project I had, can confuse thing
 If it fails twice at something, you need to adapt. It won't. You will burn countless tokens with that midnight oil, and you will feel like you got yourself in a jam. Step back, restate the problem. Coach it and let it coach you to get prerequisites set up.
 
 Redoing the same task over and over. It won't automatically look for ways to re-run your terraform locally. If you watch, you will see it try to search for all the `*.tf` files even though you know it knows where it put them, before running `terraform validate`. Have it write scripts, instruct it to look for scripts, and watch carefully for satements like `Search (glob)` which means it doesn't think it knows where something is. If you can get it to use scripts, templates, and MCP servers, a lot of the repetitive, wasteful churning goes away.
-
