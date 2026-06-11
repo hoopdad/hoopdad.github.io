@@ -21,6 +21,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://hoopdad.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  hoopdad
 feedback_repository: hoopdad/hoopdad.github.io
+feedback_discussion_category_helpful: helpful
+feedback_discussion_category_needs_clarity: needs-clarity
+feedback_discussion_category_found_issue: found-an-issue
 
 # Build settings
 markdown: kramdown

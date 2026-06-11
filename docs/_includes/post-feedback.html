@@ -1,5 +1,8 @@
 {%- assign feedback_repo = site.feedback_repository | default: "hoopdad/hoopdad.github.io" -%}
 {%- assign page_link = page.url | absolute_url -%}
+{%- assign cat_helpful = site.feedback_discussion_category_helpful | default: "helpful" -%}
+{%- assign cat_clarity = site.feedback_discussion_category_needs_clarity | default: "needs-clarity" -%}
+{%- assign cat_issue = site.feedback_discussion_category_found_issue | default: "found-an-issue" -%}
 
 {%- capture helpful_title -%}Helpful: {{ page.title }}{%- endcapture -%}
 {%- capture helpful_body -%}Page: {{ page_link }}
@@ -23,10 +26,10 @@ What issue did you find?
   <h2 id="post-feedback-title">Was this helpful?</h2>
   <p>Share quick feedback on GitHub:</p>
   <p>
-    <a href="https://github.com/{{ feedback_repo }}/issues/new?title={{ helpful_title | url_encode }}&body={{ helpful_body | url_encode }}">Helpful</a>
+    <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_helpful | url_encode }}&title={{ helpful_title | url_encode }}&body={{ helpful_body | url_encode }}">Helpful</a>
     ·
-    <a href="https://github.com/{{ feedback_repo }}/issues/new?title={{ clarity_title | url_encode }}&body={{ clarity_body | url_encode }}">Needs clarity</a>
+    <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_clarity | url_encode }}&title={{ clarity_title | url_encode }}&body={{ clarity_body | url_encode }}">Needs clarity</a>
     ·
-    <a href="https://github.com/{{ feedback_repo }}/issues/new?title={{ issue_title | url_encode }}&body={{ issue_body | url_encode }}">Found an issue</a>
+    <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_issue | url_encode }}&title={{ issue_title | url_encode }}&body={{ issue_body | url_encode }}">Found an issue</a>
   </p>
 </section>
