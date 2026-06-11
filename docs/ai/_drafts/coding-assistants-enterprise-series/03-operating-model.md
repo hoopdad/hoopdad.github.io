@@ -1,6 +1,6 @@
 # The Operating Model: Rules, Agents, Critics, and Deployment
 
-![Seven-step practical delivery flow for AI-assisted enterprise software delivery](/assets/2026/coding-assistants-enterprise/practical-delivery-flow.svg)
+![Seven-step practical delivery flow for AI-assisted enterprise software delivery](/assets/2026/coding-assistants-enterprise/practical-delivery-flow.png)
 
 Once AI coding assistants can work across code, infrastructure, tools, and requirements, the enterprise question becomes operational.
 

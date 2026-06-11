@@ -1,6 +1,6 @@
 # What These Tools Can Actually Do
 
-![Ideas and requirements flowing through an AI-assisted delivery system to enterprise outcomes](/assets/2026/coding-assistants-enterprise/ideas-requirements-outcome-flow.svg)
+![Ideas and requirements flowing through an AI-assisted delivery system to enterprise outcomes](/assets/2026/coding-assistants-enterprise/ideas-requirements-outcome-flow.png)
 
 Before deciding how to adopt AI coding assistants, enterprise leaders need a practical view of their capabilities.
 

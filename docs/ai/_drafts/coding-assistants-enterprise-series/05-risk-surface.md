@@ -1,6 +1,6 @@
 # The Risk Surface
 
-![People communicating in a corporate setting around risk signals and controls](/assets/2026/coding-assistants-enterprise/corporate-communication-risk-surface.svg)
+![People communicating in a corporate setting around risk signals and controls](/assets/2026/coding-assistants-enterprise/corporate-communication-risk-surface.png)
 
 Every useful technology creates a new risk surface. AI coding assistants are no different.
 
