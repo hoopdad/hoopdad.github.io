@@ -1,6 +1,6 @@
 # The Operating Model: Rules, Agents, Critics, and Deployment
 
-![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-i    n-the-enterprise.png)
+![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 
 Once AI coding agents can work across code, infrastructure, tools, and requirements, the enterprise question becomes operational.
 

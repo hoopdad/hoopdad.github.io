@@ -1,6 +1,6 @@
 # The New Management Problem
 
-![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-i    n-the-enterprise.png)
+![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 
 AI coding agents do not remove management from software delivery by any means. They move management into new places.
 

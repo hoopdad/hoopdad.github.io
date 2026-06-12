@@ -1,6 +1,6 @@
 # The Risk Surface
 
-![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-i    n-the-enterprise.png)
+![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 
 Every useful technology creates a new risk surface. AI coding agents are no different.
 

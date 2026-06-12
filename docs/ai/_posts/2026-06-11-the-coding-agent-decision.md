@@ -1,6 +1,6 @@
 # The Enterprise Decision Is Not Whether to Use AI Coding Agents
 
-![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-i    n-the-enterprise.png)
+![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 
 For enterprise leaders, the AI coding agent conversation has moved past curiosity. The useful question is not whether these tools can write code. They can.
 
@@ -16,7 +16,7 @@ That does not mean every enterprise should rush into an unmanaged rollout. It me
 
 Let's lay out some of the speciic capabilities the tools have, then in the next section implications for putting them all together. This section is to level set with those who haven't worked much or at all with these tools.
 
-When I am using the term AI Coding Agent, I mean the capabilities I describe go beyond "an agent" into specialized agency: software doing things with knowledge and intention.
+When I am using the term AI Coding Agent, I imply the capabilities that go beyond an assistant into specialized agency: software doing things with knowledge and intention.
 
 That distinction matters for executives. If the tool only completed code inside a developer's editor, the decision would mostly sit with engineering managers. Once the tool can operate across code, infrastructure, policy, requirements, and deployment workflows, the decision becomes broader.
 
