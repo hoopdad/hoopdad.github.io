@@ -1,16 +1,16 @@
 # The Operating Model: Rules, Agents, Critics, and Deployment
 
-![Seven-step practical delivery flow for AI-assisted enterprise software delivery](/assets/2026/coding-assistants-enterprise/practical-delivery-flow.png)
+![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-i    n-the-enterprise.png)
 
-Once AI coding assistants can work across code, infrastructure, tools, and requirements, the enterprise question becomes operational.
+Once AI coding agents can work across code, infrastructure, tools, and requirements, the enterprise question becomes operational.
 
-How should the work flow? Who checks it? Where do security and quality enter? What evidence shows that the assistant did the right thing?
+How should the work flow? Who checks it? Where do security and quality enter? What evidence shows that the agent did the right thing?
 
 ## A practical delivery flow
 
 You probably have already connected the dots, so I'll sum this up.
 
-1. Give the ai coding assistant rules and procedures.
+1. Give the AI coding agent rules and procedures.
 2. In a standard way, tell your ideas to AI as flows of interactions between a user and the system.
 3. AI does the technical design and parcels out work between code repositories, one per layer.
 4. A Red Team agent iterates with AI to identify cyber security risks and fix them.
@@ -40,6 +40,6 @@ The new part is that agents can participate in each stage.
 
 More than any software development lifecycle I've done, this tooling lends itself to end-to-end automated workflows. It pushes back to the left and out to the right. Every stage has an evaluation by a separate agent, checking to make sure it makes sense. And that is a feedback loop. So, designs, coding, testing all get checked by expert agents.
 
-That is the opportunity, and the caution. The better enterprise pattern is not one assistant with broad authority and no review. It is a workflow where authority is scoped, outputs are checked, and feedback is built into the system.
+That is the opportunity, and the caution. The better enterprise pattern is not one agent with broad authority and no review. It is a workflow where authority is scoped, outputs are checked, and feedback is built into the system.
 
-The assistant can move quickly. The operating model decides whether quickly is useful.
+The agent can move quickly. The operating model decides whether quickly is useful.
