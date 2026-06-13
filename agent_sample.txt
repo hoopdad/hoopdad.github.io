@@ -1,0 +1,59 @@
+/allow-all
+/fleet Build an application to create and deploy auto insurance. 
+
+Features include: 
+- Landing page that lists policies
+- Policy create page that allows selection of year, make and model of vehicle, coverage and deductible selection.
+- Vehicles are exotic sports cars.
+- Pricing calculator feature to allow user decision before creation of the policy
+- Pricing calculator uses random numbers between 5 and 500 per coverage
+- Creating a policy generates a unique identifier and a six month policy term that starts tomorrow.
+- Clicking a policy from the landing page shows a policy page with a read-only description of vehicles and coverages.
+- An edit button on the policy page allows changing the vehicle and coverages, with a recalculation on save. Expiry dates stay the same.
+
+Requirements Include:
+- Responsive, accessible design
+- Authentication with Entra
+- Storage Access Keys are disabled, and managed identities are used
+- Secure communication over the latest TLS is allowed but no other
+- all infrastructure is managed with Terraform IaC
+- use local az cli tools to inspect current state to validate decisions before making any changes in the cloud
+- existing network details are in /home/mike/source/mikeo-lab/cidr.txt
+- Public network is disabled for all services
+- A database is used for persistent storage
+- The database is encrypted at rest using cloud-provided keys
+- The database has backup disabled for cost reasons
+- Storage quotas for database and disks are 2GB for data only
+- Free SKUs are preferred; lowest cost possible
+- Lives in a spoke of our hub-and-spoke network. Consult with and updated cidr.txt to get the best fit, available address space.
+- Stored in https://github.com/hoopdad/example-webapp.git
+- Document feature requests and bug reports, including those that you decide or find
+- Work in a feature branch. Only merge to main when all tests are passing, using a PR
+- Test with best practices for unit, integration, smoke, and functional test automation
+- Use GitHub actions to enforce tests before merge to main
+- use the locally logged in az cli, including to setup OIDC and federated credentials for github-azure authorization
+- Use static security scanning tools such as Checkov
+- Format all code with a standard tool before commit
+- Create Diagnostics for all available settings. Keep diagnostics and logs for as short as possible to keep storage costs low, but at least 4 hours.
+- Create email alerts for outages or serious warnings using cloud service provider mechanisms
+- every approved PR / merge to main results in a new version number
+- Use semantic versioning and best practices for that. Start with 0.1.0
+- Expose the version via every service in a health check service along with other simple diagnostics. The version only changes as the code of a specific service changes.
+- Show the version near the App Title. It should change only when the UI build changes.
+- install local tooling as needed
+- document the final architecture as if for an Enterprise Architecture Review Board complete with mermaid diagrams.
+- Document every architecture decisions, including decisions that are later changed, with a status, the timestam and name of the agent that created it
+- Every agent should report back how many tokens it used with which model, and how many turns with the model. The orchestrator should log all of this with start and end timestamps in a way that I can read it later and see when it started, what was accomplished by which agent and at what cost, and when it was completed.
+- Use persistent, consolidate memory at the end of an agent's task
+- The orchestrator should plan this, watch for all agents to unexpectedly fail so it can be restarted, and start the agent with an accurate, steamlined task and any existing memories.
+
+
+
+Enhancements
+- add NSG rules for allow-list access only
+- enable AFD for public access
+- separate repo per component, not monorepo; use a GH Project
+- tag branches with semantic version
+- features should be GH features
+- Agents should do a blameless postmortem before completing - how can the prompt be made better in the future for more efficient, faster path to completion
+- exactly what tools are used in a way that we don't have to use allow-all
