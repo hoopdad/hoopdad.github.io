@@ -1,13 +1,18 @@
 ---
 layout: post
-title:  "Token Efficiency: How Loop Engineering Works - Part 1"
+title:  "Token Efficiency: Which Loops are you Engineering - Part 1"
 ---
 
 To understand where agents are given "too much" is to understand how 
 to optimize communication with an LLM. This is 100% connected to the 
 token efficiency articles I've written, and was the basis for a lot 
-of the learning I gained in writing those. I'm going to share with you
-how I made "Loop Engineering" work, and the lessons I gained from it.
+of the learning I gained in writing those. In this
+prequel series, I'm going to share 
+how I got different versions of "Loop Engineering" work
+with GitHub Copilot CLI, 
+efficiency of different loops 
+I am seeing and hearing about and whixh
+are wasteful, plus lessons I gained from it.
 
 This article covers
 
@@ -19,9 +24,24 @@ This article covers
 
 When I started this quest to make agents do big things, that phrase 
 didn't exist. It's only in June of 2026 that it's becoming a phrase,
-from one of the Anthropic guys I think. I didn't do loop engineering
+from one of the Anthropic or OpenClaw guys I think. I didn't do loop engineering
 the way Anthropic markets it though. And I took on a really ambitious
-goal that really stretch the limits of what agents can do. 
+goal that really stretch the limits of what agents can do.
+
+A loop in the AI agent world can refer to many things, but
+is generally rooted in the concept of feedack loops: 
+do something, get feedback from another perspectice,
+incorporate feedback, get more feedback, and so on.
+Earlier this year "Ralph Loops" were a big idea, but for most uses 
+(not all) seem to
+waste tokens as compared to letting a human put some 
+upfront thought into it. I mean, their bumbling namesake Ralph Wiggum of The Simpsons
+isn't exactly known for his thinking. Maybe Lisa (Simpson) Loops 
+would offer potential if it exists.
+
+Loop Engineering as shared on socials usually refers to a dpecific "/loop" mode
+of Claude Code that will put your prompt into a feedback loop.
+The good idea out of this is to make these feedback loops more accessible to anyone.
 
 With this understanding of Loop Engineering under my belt, and soon
 with your knowledge of it as well, we can all decide upon good and
