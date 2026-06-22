@@ -1,0 +1,36 @@
+---
+# Front matter (empty) so Jekyll processes this Sass file into /assets/main.css
+---
+
+@charset "utf-8";
+
+// Load open-source, screen-optimized fonts (SIL Open Font License).
+// Inter for readable body/heading text; JetBrains Mono for code.
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+// Override Minima typography defaults (each Minima variable uses !default,
+// so defining them here takes precedence).
+$base-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$base-font-size:   18px;
+$base-line-height: 1.7;
+
+// Pull in the Minima theme with our overrides applied.
+@import "minima";
+
+// Improve on-screen reading: better rendering and tighter, balanced headings.
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+// Monospace family for inline code and code blocks.
+code, pre {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, Monaco, "Liberation Mono", monospace;
+}
