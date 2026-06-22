@@ -169,18 +169,6 @@ synonyms.
 
 ![Team Brain](/assets/2026/loop-engineering/team-brain.png)
 
-### Score That Job - Resume Scoring
-
-> **Multi-Repo** - **Fleet Mode** - **Sprint Prompt**
-
-The concept behind this is to compare one's resume against keywords in job descriptions. 
-You've seen these elsewhere on the Internet, so this was an example to help build a multi-tier
-app with complex logic.
-
-![architecture diagram including Web Application Firewall -- React UI -- Python API with Cosmos DB   -- Python Agent with a Foundry-hosted Model](/assets/2026/loop-engineering/azure-container-apps-agent-architecture-32x9-v1.png)
-
-![Score That Job](/assets/2026/loop-engineering/score-that-job.png)
-
 ### Marginalia
 
 > **Single-Repo** - **Squad** - **Conversational Prompting**
