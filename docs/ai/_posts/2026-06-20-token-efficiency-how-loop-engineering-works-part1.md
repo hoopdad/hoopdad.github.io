@@ -162,10 +162,10 @@ And then I saw them need to improve even more throughout the course of the build
 > **Multi-Repo** - **Fleet Mode** - **Sprint Prompt**
 
 This was a concept to enable people to share information they gained, ask questions of others
-who had that knowledge, using Cosmos as a graph database to connect ideas and an LLM to match 
+who had that knowledge, using Cosmos and a graph database to connect ideas and an LLM to match 
 synonyms.
 
-![architecture diagram including Web Application Firewall -- React UI -- Python API with Cosmos DB including Graph/Gremlin API   -- Python Agent with a Foundry-hosted Model](/assets/2026/loop-engineering/azure-container-apps-agent-architecture-graph-gremlin-32x9-v1.png)
+![architecture diagram including Web Application Firewall -- React UI -- Python API with Cosmos DB and Neo4j databases -- Python Agent with a Foundry-hosted Model](/assets/2026/loop-engineering/azure-container-apps-agent-architecture-graph-gremlin-32x9-v1.png)
 
 ![Team Brain](/assets/2026/loop-engineering/team-brain.png)
 
