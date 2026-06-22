@@ -5,7 +5,7 @@ title:  "Token Efficiency: Which Loops are you Engineering? - Part 1"
 
 Optimizing your token use comes down to a disciplined approach. It is easy
 to start off with the right configurations and, by way of reacting to
-how things are turning out, take wrong turn down Overly Chatty Street, 
+how things are turning out, take a wrong turn down Overly Chatty Street, 
 costing you a fortune in tokens.
 
 This article is kind of a "Prequel" to the trilogy of articles I wrote
@@ -32,6 +32,15 @@ didn't exist. It's only in June of 2026 that it's becoming a phrase,
 from one of the Anthropic or OpenClaw guys I think. I didn't do loop 
 engineering the way Anthropic markets it though. And I took on a really 
 ambitious goal that really stretch the limits of what agents can do.
+
+![Diagram of a complex system of multiple agents with different jobs](/assets/2026/loop-engineering/loops-within-loops-v13-final-16x9.png)
+
+The Product Owner and Technical Architect (AKA the people) collaborate on respective inputs: user flows,
+personas, cloud requirements, security requirements, etc. They feed this into the agentic
+flow and examine the final outputs. Ideally, steering, clarifying, and redirecting are
+minimized. This saves clock time and tokens. 
+
+> That graphic was a clean-up done by Microsoft Scout using a critic loop. It's 1,000,000 times better than my artwork, but taking the moment to call out another Loop use case.
 
 ### Feedback Loops: Good for People and Agents
 
@@ -209,3 +218,9 @@ agents, skills, and MCP tools. I want to share how important
 solid software engineering remains with all of this, and that
 you can do awesome things with the right expertise. Relying on 
 AI alone for your business or livelihood is perilous.
+
+## Token Efficiency Series
+
+- [Token Efficiency - Part 1 - An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
+- [Token Efficiency - Part 2 - Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})
+- [Token Efficiency - Part 3 - An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})
