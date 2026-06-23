@@ -24,15 +24,15 @@ What issue did you find?
 
 <section class="post-feedback" aria-labelledby="post-feedback-title">
   <h2 id="post-feedback-title">Was this helpful?</h2>
-  <p>Your feedback is requested! This will require you to login to GitHub first.</p>
+  <p class="post-feedback-linkedin">
+    <a href="https://www.linkedin.com/in/mikeolivieri1/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn</a>
+  </p>
+  <p>Your feedback is requested! GitHub login required.</p>
   <p>
     <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_helpful | url_encode }}&title={{ helpful_title | url_encode }}&body={{ helpful_body | url_encode }}">Helpful</a>
     ·
     <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_clarity | url_encode }}&title={{ clarity_title | url_encode }}&body={{ clarity_body | url_encode }}">Needs clarity</a>
     ·
     <a href="https://github.com/{{ feedback_repo }}/discussions/new?category={{ cat_issue | url_encode }}&title={{ issue_title | url_encode }}&body={{ issue_body | url_encode }}">Found an issue</a>
-  </p>
-  <p class="post-feedback-linkedin">
-    <a href="https://www.linkedin.com/in/mikeolivieri1/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn</a>
   </p>
 </section>

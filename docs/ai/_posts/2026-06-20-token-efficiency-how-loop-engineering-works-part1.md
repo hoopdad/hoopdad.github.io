@@ -1,7 +1,9 @@
 ---
 layout: post
-title:  "Token Efficiency: Which Loops are you Engineering? - Part 1"
+title:  "Token Efficiency Lessons From Loop Engineering Part 1"
 ---
+
+# Which Loops are you Engineering?
 
 Optimizing your token use comes down to a disciplined approach. It is easy
 to start off with the right configurations and, by way of reacting to
