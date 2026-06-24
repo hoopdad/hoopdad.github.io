@@ -2,20 +2,24 @@
 layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 2"
 ---
+*Updated after initial publish with GPT-5.3-Codex additional info - see below*
+
+This is a deep-dive with plenty of screenshots. I'm writing to consolidate
+my knowledge on this topic and share with you what I am learning so we can collectively 
+understand the technology better from every perspective.
 
 # Our First Autonomous Build
 
-In the first article of this series I shared what I know about Loop Engineering. Ideally the takeaway was that feedback loops enable Teams of agents to autonomously build. 
+In the first article of this series I shared what I know about Loop Engineering. Ideally the takeaway was that feedback loops enable teams of agents to autonomously build. 
 
-In this article I will show you how 1 prompt led to building the whole application.
-
-I'll keep it real but I will also start with the biggest positive outcome.
+In this article I will show you how one prompt (plus a little bit) led to building the whole application. I'll keep it real but I will also start with the biggest positive outcome. And speaking of keeping it real, I have a few
+thoughts about implications of doing this kind of thing, at the end.
 
 ## Look What They Made!
 
-![Screenshot of Functional AI Assistant Built By AI](/assets/2026/marginalia/marginalia-8.png)
+![Screenshot of Functional AI Assistant Built By AI with Opus 4.8](/assets/2026/marginalia/marginalia-8.png)
 
-This is a screenshot of the application that my one prompt built with GitHub Copilot CLI and Squad. You are seeing the screenshot of an AI Assistant. 
+This is a screenshot of the application that my one prompt built with GitHub Copilot CLI, Squad, and Opus 4.8. You are seeing the screenshot of an AI Assistant. 
 
 - The main chat pane features a text box and button at the bottom for sending prompts.
 - Right-clicking on a word or phrase in the output area allows you to ask a follow-up question. 
@@ -31,13 +35,34 @@ Here's the inventory of infrastructure resources created by this process. It use
 
 One prompt, and minor deployment tweaks (details below). It ran from 8:28AM to 3:42PM completely unattended, 6 hours and 44 minutes. It consumed 5,458 AI Credits of Opus 4.8. 
 
+*Update for GPT-5.3-Codex*
+GPT-5.3-Codex was selected for a second run. It ran much faster, but with a lower quality outcome.
+It ran from 6:40PM to 9:11PM, also completely unattended, for 2 hours and 31 minutes. It consumed 
+1,012 AI credits in producing a mostly runnable product. I also added one sentence to the 
+testing requirements to the prompt in hopes of avoiding the network access issues, but this second 
+version also had an issue with that. That typically means my language wasn't clear enough.
+
+`One final test must be validating that the local workstation can access the site.`
+
+A little awkward, don't you think? Do better, hoopdad.
+
+It also had the "access from outside cluster" feature disabled, incorrect like the first run, 
+and it had a TypeScript bug. I reported both bugs to Squad which had both bugs fixed in the 
+time it took me to write this update. The fixes 
+and re-deployments took an additional 284 AI credits and 57 minutes, including 2 turns with my help troubleshooting.
+
+This is a screenshot of the application that my one prompt built with GitHub Copilot CLI, Squad, and GPT-5.3-Codex. 
+
+![Screenshot of Functional AI Assistant Built By AI with GPT 5.3 Codex](/assets/2026/marginalia/codex-5.png)
+
 ## The Reality
 
 ### Quality of What It Produced
 
 Squad is inherently using loops to quality check itself. It even includes a Responsible AI Reviewer, named Rai in my squad! I watched it cycle through many tests until it was dialed in to a really good state. I did not even have to configure it to work this way.
 
-With a couple of caveats, all application functionality was built and it worked how I envisioned. There were three deployment issues that could be fixed with a moderate amount of looping. 
+With a couple of caveats, all application functionality was built and it worked how I envisioned. 
+Visually, to me, the Opus app looks much nicer and behaves better than the Codex one. There were three deployment issues that could be fixed with a moderate amount of looping. 
 
 **What Worked**
 
@@ -123,23 +148,32 @@ Was that too easy?
 
 ## Take-aways
 
-Building autonomously is possible. With further clarity in instructions I believe I could have gotten those last few tweaks ironed out. If I had said, simulate a user accessing the app from this workstation in your tests, it would have come across the issues I did and fixed them.
+Building autonomously is possible. With further clarity in instructions I believe I could have gotten those last few tweaks ironed out. The hardest part was letting it churn and watching the AI credit meter rolling by. 
 
-The hardest part was letting it churn and watching the AI credit meter rolling by. For a real business application, you want to have a couple of things lined up before you set this to go.
+For a real business application, you want to have a couple of things lined up before you set this to go.
 
-1. A business plan. How are you going to earn revenue to pay for AI credits and the operation?
-2. Well, if you did #1, you're ahead of me so let me know what else.
+1. A business plan. How are you going to earn revenue to pay for AI credits and operating the application?
+2. Well, if you did #1, you're ahead of me so let me know what else. I just know there's more than one thing.
 
 I'll explore a couple other methods for more complex applications in subsequent articles.
 
 ### Token Efficiency
 
-My hyopthesis is that if I can get an agent to build something with a single prompt, it requires efficient use of tokesn. I am reconsidering that as a time-box and AI Credit limit should guide this. Callibrating what is a reasonable time box and amount of credits is the part that experience and benchmarking can teach.
+My hyopthesis is that if I can get an agent to build something with a single prompt, 
+the build system would have had to manage context, scope, and quality. And that would mean it requires efficient use of tokens. I think that needs refinement as a time-box and AI Credit limit should guide this. Taking that one step further, callibrating to what is a reasonable time box and amount of credits is the part that experience and benchmarking can teach.
 
-I used a sophisticated model, Opus 4.8. I do wonder if a Codex like GPT-Codex5.3 could have accomplished the same for lower cost or shorter time. I may try to re-do this with that model instead. It's just typing a toggle in copilot, `/model gpt-5.3-codex` . Stay tuned and I will update this post if I do that. (Yes, it's already running.)
+I used a sophisticated model, Opus 4.8, for the first run. After first publishing, I wondered if a Codex like GPT-Codex5.3 could have accomplished the same for lower cost or shorter time. It's just typing a toggle in copilot, `/model gpt-5.3-codex` and letting it rip.
+
+### Implications
+
+Some questions that need answering. 
+
+- Can a person maintain an application written like this?
+- Can *AI* maintain an application written like this?
+- With additional gates and loops, would either of those answers change?
+- What are the real risks (big picture and local to the app) and are we willing to accept them?
 
 ## References
 
 - [GitHub Copilot CLI](https://github.com/features/copilot)
 - [Squad](https://bradygaster.github.io/squad/)
-
