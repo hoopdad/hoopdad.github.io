@@ -153,7 +153,7 @@ they can reference your notes.
 
 ### The Architecture
 
-![System Architecture](/assets/2026/loop-engineering/thought-connections-archiecture.png)
+![System Architecture](/assets/2026/loop-engineering/thought-connections-architecture-v8.drawio.png)
 
 The Azure environment I work in has strict security policies, so this architecture required 
 intentional configuration.
