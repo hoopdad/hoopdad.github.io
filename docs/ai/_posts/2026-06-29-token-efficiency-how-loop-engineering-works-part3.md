@@ -123,8 +123,8 @@ frustrating hours of turns of deployment fixes and a smooth one-shot send-up is 
 defining requirements.
 
 I identified [user flows and system requirements](https://github.com/hoopdad/thought-connections/blob/main/docs/requirements/system-def.md){:target="_blank"} to be able to deploy it in my controlled 
-Azure cloud environment. If you look in [tier-specific requirements](https://github.com/hoopdad/thought-connections/blob/main/docs/requirements/https://github.com/hoopdad/thought-connections/tree/main/docs/requirements){:target="_blank"} you will see more requirements
-that were intentionally parcelled out in smaller chunks for context management reasons.
+Azure cloud environment. If you look in [tier-specific requirements](https://github.com/hoopdad/thought-connections/tree/main/docs/requirements){:target="_blank"} you will see more requirements
+that were intentionally parceled out in smaller chunks for context management reasons.
 
 I created a script for a non-interactive run of GitHub Copilot CLI, [`go.sh`](https://github.com/hoopdad/thought-connections/blob/main/go.sh){:target="_blank"}
 
@@ -161,7 +161,7 @@ intentional configuration.
 - A Web Application Firewall (WAF) as a security layer to minimize impact of a breach.
 - Azure Container Apps with ingress from other containers only for most, but from the VNet for the WAF as the single entry point, using a Private Endpoint.
 - A Cosmos DB for NoSQL, with a Private Endpoint.
-- A Cosmos DB with Gremlin API for graph database capabilities, with a a Private Endpoint.
+- A Cosmos DB with Gremlin API for graph database capabilities, with a Private Endpoint.
 - A spoke vnet that attaches to the existing Hub for routing over a VPN.
 - Entra ID authentication required for the application.
 - Managed identities and RBAC assignments for all the above components to use for authorization to communicate with each other.
@@ -199,7 +199,10 @@ produced results that are really good. In
 my earlier iterations with this before landing on the yml loop method, I saw some
 really lousy screens and flows that didn't make sense before I added the loops.
 
-**This is where the ROI conversation has to happen.** It used a lot of tokens, yes, but it also produced
+> Note if you are reading this after initial publishing. When I first published this, I did not remember that I was using a different new tool that hit the same budget. I used a lot of tokens with that other tool, and that accounted for a lot of tokens. So in fact this method did not use much more if any than other methods - but was far more successful.
+
+
+**This is where the ROI conversation has to happen.** It used a fair amount of tokens, yes, but it also produced
 the highest-quality product in terms of user experience and infrastructure deployment. Budgets are real,
 and delivering value to our customers is also real.
 
@@ -211,5 +214,18 @@ Is it worth spending a higher amount of tokens for a little utility I'm writing 
 Is it worth spending a higher amount of tokens for faster GTM and a better overall look?
 I think you can tell a loaded question or two when you see it.
 
-More to come - please let me know if this is helpful, if you want to steer me away 
+## One Clear Opportunity - Tools and MCP
+
+![Screenshot showing high numbers of SHELL calls](/assets/2026/loop-engineering/shelling-out.png)
+
+The above screenshot shows many calls to SHELL. This is recognized usually as a sign of inefficient
+tool use. Instead of writing scripts or MCP tools to accomplish tasks, the platform is generating
+new command line calls to accomplish similar tasks. An opportunity here is to write MCP Tools. Or,
+better yet, as I'll show in my next post, have GitHub Copilot make itself more efficient by identifying
+the best opportunities then writing code and configuring itself to use these tools.
+
+## More to Come
+
+Next up, we'll dial it in even further with definitions of Agents, Skills, and MCP Tools.
+Please let me know if this is helpful, if you want to steer me away 
 from some conclusion above or you have ideas to share!
