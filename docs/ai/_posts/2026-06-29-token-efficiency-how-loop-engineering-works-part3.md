@@ -58,6 +58,11 @@ a web developer to stop using a certain library because it limits accessibility,
 it checks all the requirement boxes in the developer's primary focus. An API engineer will
 have to work with a UX designer to get the best user flow, not the easiest API code to manage.
 
+While I'm talking in this post about AI Coding Agents, this could be that opportunity for
+cross-functional team collaboration that is already on your resume/CV. Imagine the value of contributions
+to agentic team definitions and evaluations if experts and visionaries from multiple fields, reviewed by each other to make them
+even better. That is one way for humans with diverse perspectives to come together for a common cause.
+
 ### The Loop of Loops
 
 ![Diagram of a Release Loop with all the incumbent inner loops](/assets/2026/loop-engineering/release-loop-serpentine-v2.drawio.png)
