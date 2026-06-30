@@ -191,11 +191,11 @@ accurate requirements with findings up front in the design stage.
 
 ### ROI and Value
 
-This method led me to use the most tokens I ever used in a week by a factor of 2.3x. And yet, the fewest
-interactions: I spent less time standing at my computer waiting to answer the next prompt. 
+This method led me to the fewest interactions of experimentation I've done to date.
+I spent less time standing at my computer waiting to answer the next prompt.
 I typically have been running experiments most days of the week for the past few months, so while it's 
-experiential and not totally scientific, it is a reasonable conclusion to say, this method spends 
-tokens like it's playing penny slots at a casino. But seriously, the results are really good. In
+experiential and not totally scientific, it is a reasonable conclusion to say, this method 
+produced results that are really good. In
 my earlier iterations with this before landing on the yml loop method, I saw some
 really lousy screens and flows that didn't make sense before I added the loops.
 
