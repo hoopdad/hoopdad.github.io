@@ -1,7 +1,97 @@
 ---
 layout: post
-title:  "Agentic Workflow with Copilot CLI - Single Repo"
+title:  "Token Efficiency Lessons From Loop Engineering Part 4"
 ---
+
+This is a deep-dive with plenty of screenshots. I'm writing to consolidate
+my knowledge on this topic and share with you what I am learning so we can collectively 
+understand the technology better from every perspective.
+
+## Customizing Agents, Skills, and Tools for Focused Effort
+
+```md
+---
+name: word-game-api-specialist
+description: "Backend specialist that implements and validates FastAPI + Azure SDK changes in word-game-api under contract and guardrail constraints."
+tools: ["scaffold-generator", "lint-local", "contract-compliance", "security-scanner", "usage-tracker"]
+---
+
+You are the backend specialist for word-game-api (../word-game-api).
+...
+## Your Scope
+- Repository: ../word-game-api
+- Stack: Python 3 / FastAPI (src-layout package `word_game_api`) with Azure SDK; managed via pyproject.toml, linted with ruff, tested with pytest
+- Validation: `ruff check . && pytest`
+
+```
+
+```md
+---
+name: container-app-troubleshoot
+description: Diagnose and fix Azure Container Apps deployment failures — activation failures, image pull errors, crash loops, health probe failures, and ingress misconfigurations. Use when container apps show "Activation failed", replicas won't start, or deployments aren't healthy.
+---
+```
+
+```md
+    "contract-compliance": {
+      "description": "Compare implemented routes to .contracts/*.yml endpoint definitions.",
+    "scaffold-generator": {
+      "description": "Generate non-overwriting FastAPI/TypeScript stubs from contracts.",
+    "azure-inspector": {
+      "description": "Read Container Apps, Cosmos DB, and ACR state via Azure CLI.",
+    "container-app-diagnostics": {
+      "description": "Deep troubleshooting for Container Apps \u2014 diagnose activation failures, pull logs, inspect revisions/replicas, verify image pulls, compare app configs.",
+    "azure-resource-status": {
+      "description": "Inventory Azure resources and inspect status/error events for troubleshooting.",
+
+```
+
+```sh
+═══ Phase 6: Running initial Copilot prompt ═══
+  → Installed child MCP config into word-game-waf/.github/mcp.json
+  → Installed child MCP config into word-game-web/.github/mcp.json
+  → Installed child MCP config into word-game-api/.github/mcp.json
+  → Installed child MCP config into word-game-agent/.github/mcp.json
+  → Installed child MCP config into word-game-infra/.github/mcp.json
+  → Installed child-scoped MCP config into 5 child repo(s)
+  → Running orchestration preflight checks...
+  → Preflight debug: shell_cwd=/home/mike/source/word-game/word-game-harness
+  → Preflight debug: target_dir=/home/mike/source/word-game/word-game-harness
+  → Preflight debug: mcp_enabled=true mcp_config=/home/mike/source/word-game/word-game-harness/.github/mcp.json
+  → Preflight debug: mcp_servers repo-index=yes child-agent-runner=yes usage-tracker=yes
+Installed skills into:
+  /home/mike/source/word-game/word-game-harness/.github/skills
+
+Installed selection:
+  hub-skill
+
+Source repository:
+  hoopdad/infra-skills@main
+
+Next steps:
+  1. Confirm the skills under /home/mike/source/word-game/word-game-harness/.github/skills
+  2. Open Copilot Chat in the target repo
+  3. Invoke the installed skill by name
+```
+
+# Container App Troubleshoot Skill
+
+## Purpose
+
+Use this skill to systematically diagnose and remediate Azure Container Apps
+deployment failures. It uses the `container-app-diagnostics` MCP tools to gather
+evidence, then applies a structured triage process to identify root causes.
+
+## Invoke When
+
+Use this skill when the user mentions any of:
+
+- "Activation failed" on a container app
+- Container app not starting / not healthy
+- Deployment failed / deploy not working
+```
+
+
 
 Ready for an end-to-end agentic workflow that takes you from idea to deployment? I start with a single repository in this post, and, in future posts, will introduce ways to do the same thing with more complex repository layouts.
 
