@@ -3,15 +3,14 @@ layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 4"
 ---
 
+![relationship between agents, skills, tools, instructions, and github copilot cli](/assets/2026/loop-engineering/github-copilot-cli-ecosystem-wide-32x9-v3-final-preview.jpg)
+
 ## Learning about AI from AI
 
-This is a deep-dive with plenty of screenshots. I'm writing to consolidate
-my knowledge on this topic and share with you what I am learning so we can 
-collectively understand the technology better from every perspective.
-
-AI efficiency is an engineering discipline, not just better prompting. 
-With token billing, we all need to not use Copilot harder but, instead, 
-shape the operating environment so Copilot wastes less effort.
+This is a deep-dive with plenty of screenshots, code examples, and links to repos.
+I'm writing to consolidate my knowledge on this topic and share with you what 
+I am learning so we can collectively understand the technology better from every
+perspective.
 
 Efficiency comes from expertise with a tool. AI tools come built in with
 ways to answer your hardest, most thought-provoking questions. Ask AI how
@@ -20,7 +19,7 @@ tools you need to use. And install them. I used more loop engineering in this
 experiment. But the real story is about using AI to learn about AI to be 
 more efficient (and save tokens).
 
-End of series bonus: check out a self-teaching trick I've started doing that I 
+**End of series bonus:** check out a self-teaching trick I've started doing that I 
 share somewhere mysteriously in this post. Possibly the end, but I wouldn't leap 
 to conclusions.
 
@@ -283,9 +282,11 @@ protected servers, so I see the confusion.)
 
 Eventually it built. I shared the screenshot on the first post, and it was mostly
 working. Now I'm re-doing it, applying new learnings to see if it goes better. 
-The jury is still deliberating.
+The jury is still deliberating and the agents are still looping. I will update here
+when it is finally done. I am eager to wrap this up and think the main points
+have been taken.
 
-But the learnings about efficient use of AI are real.
+The learnings about efficient use of AI are real.
 
 ## Bonus Learning
 
