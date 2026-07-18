@@ -1,35 +1,70 @@
 ---
 layout: post
-title:  "Stop Asking Agents for Dashboards"
+title:  "Don't Make Me Look: Agents, Outcomes, and the End of the Dashboard"
 ---
 
-<!--
-Working title options:
-- Stop Asking Agents for Dashboards
-- The Dashboard Is a Level 2 Answer to a Level 7 Question
-- Dashboards Are Where Agent Capability Goes to Die
-- If Your Agent Made a Dashboard, You Under-used Your Agent
-- The Anti-Pattern of Agentic Dashboards
-- Don't Make Me Look: Agents, Outcomes, and the End of the Dashboard
-- From Dashboards to Decisions: The Surface Problem in Agent Adoption
-
-Reference: Every, "The Eight Levels of AI Adoption"
-(Chatbot -> Copilot -> Agent -> Autopilot -> Workflows -> Assistant -> Multi-agent -> Orchestrator)
-https://every.to/guides/the-eight-levels-of-ai-adoption
--->
+I'll start with the provocative idea, then get into an example.
 
 ## The surface argument
 
-<!-- Core thesis: a dashboard is a Level 1-2 surface (human reads, interprets, decides,
-acts). Pointing a Level 4-8 agent at a problem and getting back a chart re-inserts the
-human bottleneck. The anti-pattern is the level mismatch, not the dashboard itself. -->
+Dashboards were a universal target when we were in our data era, but now 
+we are in the AI Agent era. The goal of a dashboard is gathering related data 
+that leads to action or insight. That still sounds like a good idea, doesn't
+it? 
 
-## A monument to the pre-agent constraint
+Your agents don't need to look at dashboards, and we need them to do work,
+not you. The surface has changed from browser to agentic workspace.
 
-<!-- Dashboards exist because compute couldn't reason over data, so we offloaded reasoning
-to human eyeballs. Agents remove that constraint. -->
+For an individual contributor (IC), dashboards create more work, not less. 
+I have seen people with access to agent workspaces start to build out
+dashboards. They look fantastic, better than the past of most PPT's 
+or web pages created by people who don't design websites or presentations.
 
-## From pull to push-on-exception
+At first glance, that person has enough action-oriented information to take
+over the world. but now that person has lots of new places to look to read, 
+interpret, decide and act. But our agents can do that. 
+
+For taking action on their work, the surface used by that IC should be 
+the agent workspace, not a web browser. Otherwise, the human remains the
+bottleneck in the workflow.
+
+## Agent Capabilities for Workflow Improvement
+
+Agents can gather data, and assemble it into data stores or data visualizations.
+No dispute there.
+
+1. Agents can **gather** data or, when its consistent and structured data, agents can
+write code to gather data (saving tokens).
+2. Agents can **interpret** data, too. This is the reasoning stage: given the IC's 
+instructions and context, it understands what data means for the IC, what thresholds are good and which are bad. 
+3. Agents can **decide**, again with rules and context given by the IC, which of its 
+available actions are appropriate for the conditions.
+4. Agents can **take action** within the bounds of the instructions and permissions.
+
+## Our Use Case: Planning for our Day
+
+As a knowledge worker, I have a love/hate relationship with my calendar. There
+are so many opportunities to do things, so many pulls from non-priority work.
+Focusing on the right things is the most important skill to proving value and
+finding fulfillment in work.
+
+I will show the transition from Dashboard First to Agent First.
+
+## Build a dashboard
+
+Here's a prompt I could use to build a dashboard to look at my calendar and
+point out to me which items drive value for my employer and which are things
+that match my goals.
+
+> Review my calendar for the next week. For each meeting and task, evaluate:
+> 1. Does this directly contribute to my Q1 metric for delivering value to customers for 70% of my time?
+> 2. Is this a commitment I made to someone else that I need to honor?
+> 3. Does this align with my goal to work on topics that advance my career?
+> 
+> Flag anything that's neither urgent nor aligned with these priorities.
+> Create a visual dashboard showing meetings by value category: High Priority, 
+> Committed, Developmental, and Low Priority. Highlight any conflicts or back-to-back sessions. 
+> Show it day-by-day.
 
 <!-- The interface shifts from scanning green tiles to a brief: "here are the 3 things that
 need you; here's what I handled for the other 40." -->
@@ -63,3 +98,33 @@ DELIVERABLE = anti-pattern. Flag the open question: the transition surface (brie
 approval queue vs. silent action) is still unsettled. -->
 
 ## Takeaway
+
+
+
+<!-- Dashboards exist because compute couldn't reason over data, so we offloaded reasoning
+to human eyeballs. Agents remove that constraint. -->
+
+## 
+
+If the IC had an Agent First mindset, they would discover that the amount of 
+time spent on instructing an agent to create a dashboard is the same as the 
+amount of time instructing their agent to create a new loop.
+
+An IC with 23 dashboards has 23 places to look, 23 screenfuls of information 
+to wrap their head around, 23 super-useful, highly aggregated visuals to fuss over 
+and perfect, then administer and maintain.
+
+23 data sets that their agent could be crunching, finding insights and actions
+without all that fuss.
+
+
+
+Agent-created dashboards are becoming an anti-pattern because they create
+work for humans, and stop short of the promise of agentic AI.
+
+
+
+<!-- Core thesis: a dashboard is a Level 1-2 surface (human reads, interprets, decides,
+acts). Pointing a Level 4-8 agent at a problem and getting back a chart re-inserts the
+human bottleneck. The anti-pattern is the level mismatch, not the dashboard itself. -->
+
