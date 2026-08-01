@@ -12,8 +12,9 @@ enough. But I wasn't sure how much more power that a large language model used.
 
 I discovered that there's a library, `pynvml`, from NVIDIA that would help me measure energy consumption from 
 my laptop's GPU, a "value" product a few years ago, GeForce RTX 2050 with 4GB of VRAM. 
-To have real data to illustrate the concept is extremely valuable. We might run it A 100 times and 
-get different answers, a few runs, or a few hundred runs in this case, are probably directionally correct.
+To have real data to illustrate the concept is extremely valuable. We might run it a 100 times and 
+get different answers. But with just a few runs, or a few hundred runs in this case, are probably 
+directionally correct enough to draw attention to the importance of this decision.
 
 With all of this in mind I asked a powerful language model to build me a test to compare all three.
 And I would note for the wise guys like me, generating 3 similar programs for purposes of experimentation
