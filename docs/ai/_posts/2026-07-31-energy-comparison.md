@@ -3,19 +3,25 @@ layout: post
 title:  "Energy Comparison: CPU, GPU+ML, GPU+LLM"
 ---
 
-Here's a way that may save you a fortunate in computing costs: don't use AI for everything. Just because 
+Here's a way that may save you a fortune in computing costs: don't use AI for everything. Just because 
 it can do so much doesn't mean you should be using it for everything. There are limitations of other
 computing types, which is why AI exists, but the fallback option to use AI for everything is widespread,
 and wasteful.
 
-From my own observations I know that AI and large language models are very energy hungry. 
-We need specialized computer resources to run them because the usual CPU resources aren't powerful 
-enough. But I wasn't sure how much more power that a large language model used.
+From my own observations I know that AI and large language models are very energy hungry. We reach for
+specialized hardware to run them not because a CPU can't do the job. It can, and Ollama does it every
+day. But because a CPU is an order of magnitude too slow at it, we deem it not practical. What I wasn't sure about
+was how much more power a large language model actually used.
 
 I discovered that there's a library, `pynvml`, from NVIDIA that would help me measure energy consumption from 
-my laptop's GPU, a "value" product a few years ago, GeForce RTX 2050 with 4GB of VRAM. 
+my laptop's GPU, a "value" product a few years ago, GeForce RTX 2050 with 4GB of VRAM. The CPU side turned
+out to be measurable too, and more easily than I expected. Intel's chips carry RAPL energy counters, and
+Windows exposes them through the built-in `typeperf` utility as an "Energy Meter" performance counter.
+There was no kernel driver, no admin rights, and nothing to install.
+
 To have real data to illustrate the concept is extremely valuable. We might run it a 100 times and 
-get different answers. But with just a few runs, or a few hundred runs in this case, are probably 
+get different answers — and we do. Two identical runs of the language model at temperature zero gave me 98.3%
+and 97.0% accuracy, and two identical CPU runs measured 10.6 W and 9.7 W. But a few hundred runs are probably 
 directionally correct enough to draw attention to the importance of this decision.
 
 With all of this in mind I asked a powerful language model to build me a test to compare all three.
@@ -25,8 +31,8 @@ seconds that Fable produced it in!
 
 The task was to analyze text to identify the sentiment of the text. This is a classic machine learning and AI 
 play, because the variation in terminology that people can use to express the same sentiment is wide. But 
-bear with me, this was just a test that was designed to be able to run in three modes. The point is, there are 
-many use cases that fall in this category.
+bear with me, this was just a test that was designed to be able to run in three modes. I suspect quality differs
+between them but didn't measure that. The real point is, there are many use cases that fall in this category.
 
 ## CPU-only (VADER rules)
 
@@ -40,52 +46,65 @@ A transformer pre-trained on general text and fine-tuned on SST-2 sentiment data
 
 Each review gets wrapped in a natural-language instruction ("Classify this as POSITIVE or NEGATIVE") and fed to a general-purpose language model. I ran Ollama locally for this one.
 
+## Counting the CPU in the GPU tests
+
+This is where measuring both sides paid off. A "GPU" workload is never only a GPU workload — something has to
+tokenize the text, drive the driver, and in the language model's case run an HTTP client and the server's
+scheduling and sampling loops. My first pass reported GPU board power alone, and it undercounted badly.
+
+For DistilBERT the CPU turned out to be 31% of the total power draw. For the language model it was 73% — the
+CPU pulled 22 W against the GPU's 8 W. The reason is specific and worth knowing: a 3B model quantized to
+Q4_K_M needs about 2.9 GB, and on a 4 GB card that doesn't leave enough room, so Ollama split it 20% CPU /
+80% GPU. A fifth of the model was running on the processor the whole time. On a card with enough VRAM to hold
+the model outright, this row would look considerably better.
+
+So every number below counts both processors. Each figure is power *attributable* to the run. I sampled an
+idle baseline first and subtract it from both the CPU package and the GPU board, so the machine's resting
+draw isn't billed to whichever workload happened to be running. As a sanity check, the CPU-only run measures
+-0.1 W attributable on the GPU, which is what a correct subtraction should look like.
+
 ## Results
 
-All four rows below were measured on the same laptop, same seeded corpus, on
-2026-07-31. Power is sampled throughout each run — NVML at 5 Hz for the GPU,
-Intel RAPL at 1 Hz for the CPU. Nothing here is modeled or cited.
+Measured on one laptop, same seeded corpus, on 2026-07-31. Power is sampled throughout every run — NVML at
+5 Hz for the GPU, RAPL at 1 Hz for the CPU. Nothing here is modeled, estimated, or cited.
 
-| Approach | Throughput | Power | Energy/item | Per 1M items | vs CPU |
+| Approach | Throughput | Power (GPU + CPU) | Energy/item | Per 1M items | vs CPU |
 |---|---|---|---|---|---|
-| CPU rules (VADER, 1 core) | 25,260 items/s | 9.7 W | 0.384 mJ | 0.107 Wh | 1× |
-| GPU+ML (DistilBERT, batch 128) | 3,573 items/s | 35.9 W | 10.03 mJ | 2.79 Wh | 26× |
-| GPU+LLM (llama3.2:3b, sequential) | 2.22 items/s | 11.9 W | 5.348 J | 1.486 kWh | 13,913× |
-| GPU+LLM (llama3.2:3b, concurrency 4) | 6.60 items/s | 25.0 W | 3.786 J | 1.052 kWh | 9,849× |
+| CPU rules (VADER, 1 core) | 25,156 items/s | 0 + 9.5 W | 0.374 mJ | 0.104 Wh | 1× |
+| GPU+ML (DistilBERT, batch 128) | 3,555 items/s | 27.0 + 11.9 W | 10.96 mJ | 3.04 Wh | 29× |
+| GPU+LLM (llama3.2:3b, sequential) | 2.23 items/s | 8.1 + 22.0 W | 13.46 J | 3.74 kWh | 35,941× |
+| GPU+LLM (llama3.2:3b, concurrency 4) | 6.65 items/s | 19.7 + 43.4 W | 9.49 J | 2.64 kWh | 25,330× |
 
-Accuracy on an identical 300-review sample: VADER 88.0%, DistilBERT 92.7%,
-llama3.2:3b 97.0%.
+Accuracy on an identical 300-review sample: VADER 88.0%, DistilBERT 92.7%, llama3.2:3b 97.0%.
 
-Two caveats worth stating out loud. The CPU figure is power *attributable* to
-the work (package draw minus idle baseline); the GPU figures are total board
-power including idle. Using the CPU's un-subtracted package power instead
-would put the sequential LLM at 4,806× rather than 13,913× — a 2.9× swing from
-accounting choice alone. And this is one laptop: an RTX 2050 is not a
-datacenter GPU and a 3B quantized model is not a frontier model. The shape of
-the result travels; the magnitudes do not.
+One honest caveat about the accounting. Subtracting idle is an apprximation.
+If you instead take raw package-plus-board draw with idle included, the CPU row rises to 1.29 mJ and the
+sequential language model to 22.7 J, and the ratio between them drops to about 17,700×.
+Neither includes PSU losses, RAM, storage, or the screen, so both still understate what a wall
+meter would tell you.
+
+And this is one laptop. An RTX 2050 is not a datacenter GPU and a 3B quantized model is not a frontier model.
 
 ## Take-away
 
-Four orders of magnitude separate the cheapest option from the most expensive one, for the
-same job on the same machine. If you take one thing from this, take that: reaching for a
-language model by default is a real decision with a real bill attached.
+Four to five orders of magnitude separate the cheapest option from the most expensive one, for the same job on
+the same machine. If you take one thing from this, take reaching for a language model by default is a
+real decision with a real bill attached.
 
-But the more useful finding sits in the middle of the table. DistilBERT is a 67-million-parameter
-model fine-tuned for exactly this task, and it landed within about four accuracy points of a
-3-billion-parameter LLM while using 533 times less energy per review. So the choice isn't really
-rules versus AI. It's whether you need a general model that can do anything, or a small
-specialized one that does your one thing nearly as well for a rounding error of the cost.
+But the more useful finding sits in the middle of the table. DistilBERT is a 67-million-parameter model
+fine-tuned for exactly this task, and it landed within about four accuracy points of a 3-billion-parameter LLM
+while using more than 1,200 times less energy per review. So the choice isn't really rules versus AI. It's
+whether you need a general model that can do anything, or a small specialized one that does your one thing
+nearly as well for a rounding error of the cost.
 
-Some of that gap was my own doing, and it's worth admitting. Sending requests one at a time left
-the GPU idling between them. Running four in parallel cut energy per review by 29% and then
-stopped helping, because Ollama defaults to four parallel requests. If you self-host and haven't
-looked at batching, part of what looks like model cost is really serving cost.
+For one of the tests, sending requests one at a time left both
+processors idling between them. Running four in parallel cut energy per review by 30% and then stopped
+helping. If you self-host and haven't looked at batching,
+part of what looks like model cost is really serving cost.
 
-I'd stop short of drawing planetary conclusions from one laptop. This was a 3B model on a
-value-tier GPU running a small synthetic task; a frontier model in a datacenter is a different
-animal, and the published studies linked in the repo are better evidence for that argument than
-my numbers are. What my numbers do support is narrower and more immediate: you pay for
-electricity, for latency, and for hardware, and on this task the default choice was the most
-expensive one available by a factor of roughly ten thousand.
+I'd stop short of drawing universal conclusions from one laptop. What my numbers do support is narrower and
+more immediate. You pay for electricity, for latency, and for hardware, and on this task the default choice
+(use an LLM) was the most expensive one available by roughly four orders of magnitude. Taking time to measure and decide
+accordingly could save a scaled-up project a lot of electricity and money in the long run.
 
 See the full repo for this at [github.com/hoopdad/energy-comparison-experiment](https://github.com/hoopdad/energy-comparison-experiment){:target="_blank"}
