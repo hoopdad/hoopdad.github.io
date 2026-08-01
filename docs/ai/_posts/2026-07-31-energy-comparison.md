@@ -31,8 +31,8 @@ seconds that Fable produced it in!
 
 The task was to analyze text to identify the sentiment of the text. This is a classic machine learning and AI 
 play, because the variation in terminology that people can use to express the same sentiment is wide. But 
-bear with me, this was just a test that was designed to be able to run in three modes. I suspect quality differs
-between them but didn't measure that. The real point is, there are many use cases that fall in this category.
+bear with me, this was just a test that was designed to be able to run in three modes. The real point is, 
+there are many use cases that fall in this category.
 
 ## CPU-only (VADER rules)
 
@@ -59,7 +59,7 @@ Q4_K_M needs about 2.9 GB, and on a 4 GB card that doesn't leave enough room, so
 the model outright, this row would look considerably better.
 
 So every number below counts both processors. Each figure is power *attributable* to the run. I sampled an
-idle baseline first and subtract it from both the CPU package and the GPU board, so the machine's resting
+idle baseline first and subtracted it from both the CPU package and the GPU board, so the machine's resting
 draw isn't billed to whichever workload happened to be running. As a sanity check, the CPU-only run measures
 -0.1 W attributable on the GPU, which is what a correct subtraction should look like.
 
@@ -72,12 +72,12 @@ Measured on one laptop, same seeded corpus, on 2026-07-31. Power is sampled thro
 |---|---|---|---|---|---|
 | CPU rules (VADER, 1 core) | 25,156 items/s | 0 + 9.5 W | 0.374 mJ | 0.104 Wh | 1× |
 | GPU+ML (DistilBERT, batch 128) | 3,555 items/s | 27.0 + 11.9 W | 10.96 mJ | 3.04 Wh | 29× |
-| GPU+LLM (llama3.2:3b, sequential) | 2.23 items/s | 8.1 + 22.0 W | 13.46 J | 3.74 kWh | 35,941× |
-| GPU+LLM (llama3.2:3b, concurrency 4) | 6.65 items/s | 19.7 + 43.4 W | 9.49 J | 2.64 kWh | 25,330× |
+| GPU+LLM (llama3.2:3b, sequential) | 2.23 items/s | 8.1 + 22.0 W | 13.46 J | 3.74 kWh | ~36,000× |
+| GPU+LLM (llama3.2:3b, concurrency 4) | 6.65 items/s | 19.7 + 43.4 W | 9.49 J | 2.64 kWh | ~25,000× |
 
 Accuracy on an identical 300-review sample: VADER 88.0%, DistilBERT 92.7%, llama3.2:3b 97.0%.
 
-One honest caveat about the accounting. Subtracting idle is an apprximation.
+One honest caveat about the accounting. Subtracting idle is an approximation.
 If you instead take raw package-plus-board draw with idle included, the CPU row rises to 1.29 mJ and the
 sequential language model to 22.7 J, and the ratio between them drops to about 17,700×.
 Neither includes PSU losses, RAM, storage, or the screen, so both still understate what a wall
@@ -88,8 +88,8 @@ And this is one laptop. An RTX 2050 is not a datacenter GPU and a 3B quantized m
 ## Take-away
 
 Four to five orders of magnitude separate the cheapest option from the most expensive one, for the same job on
-the same machine. If you take one thing from this, take reaching for a language model by default is a
-real decision with a real bill attached.
+the same machine. If you take one thing from this, take reaching for a language model by default as a
+real decision comes with a real bill attached.
 
 But the more useful finding sits in the middle of the table. DistilBERT is a 67-million-parameter model
 fine-tuned for exactly this task, and it landed within about four accuracy points of a 3-billion-parameter LLM
