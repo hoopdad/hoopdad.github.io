@@ -3,6 +3,7 @@ layout: post
 title:  "Energy Comparison: CPU, GPU+ML, GPU+LLM"
 ---
 
+Scaling up automations that will run many times requires looking at total costs.
 Here's a way that may save you a fortune in computing costs: don't use AI for everything. Just because 
 it can do so much doesn't mean you should be using it for everything. There are limitations of other
 computing types, which is why AI exists, but the fallback option to use AI for everything is widespread,
