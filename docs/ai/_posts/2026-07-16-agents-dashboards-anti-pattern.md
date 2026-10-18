@@ -127,3 +127,4 @@ But letting the IC do the work the way that the IC knows best.
 I encourage you to start with this Chief of Staff Agent, then following along as we build out an
 Agentic Operating System, letting the agents do the work that lets you add the most value to
 your organization, your home, your society.
+
