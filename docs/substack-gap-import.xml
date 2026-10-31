@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>hoopdad dunks - for Substack import</title>
+  <link>https://hoopdad.github.io</link>
+  <description>Curated feed: blog posts selected for import into The Agent Operating Model.</description>
+  <item>
+    <title>AI Platform Hardening - Part 1 - Azure ML Workspace</title>
+    <link>https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part1-azure-ml-workspace.html</link>
+    <guid isPermaLink="true">https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part1-azure-ml-workspace.html</guid>
+    <pubDate>Sat, 31 Oct 2026 12:00:00 +0000</pubDate>
+    <description>The specific controls, why each one matters, and how to verify it. Part 1 of two.</description>
+    <content:encoded><![CDATA[<p>This is the first of two posts on hardening the Azure platforms that AI work runs on. Part 2 covers <a href="https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part2-foundry-deployments.html">Foundry deployments</a>.</p>
+<p>This post documents the <strong>specific controls</strong> we implemented in Azure Machine Learning (AML), why they matter, and how we verify them. We are sharing this externally so other teams can use it as a practical blueprint for deploying a more secure AML environment.</p>
+<blockquote>
+<p>Scope: AML workspace, associated storage/key vault/ACR, compute identities, private endpoint patterns, DNS resolution, and network boundary controls.</p>
+</blockquote>
+<h2 id="1-identity-first-workspace-access-model">1) Identity-first workspace access model</h2>
+<h3 id="11-control-objective">1.1 Control objective</h3>
+<p>Eliminate static credentials and enforce least privilege via Microsoft Entra identities and Azure RBAC.</p>
+<h3 id="12-what-we-configured">1.2 What we configured</h3>
+<ul>
+  <li>Enabled managed identity on workspace (system-assigned and/or user-assigned based on environment pattern).</li>
+  <li>Assigned RBAC at minimum required scope:
+<ul>
+  <li><code>Storage Blob Data Reader</code> or <code>Storage Blob Data Contributor</code> for data paths.</li>
+  <li><code>ACRPull</code> for compute that pulls curated container images.</li>
+  <li>Key Vault permissions via RBAC (or equivalent access policy model where required).</li>
+</ul></li>
+  <li>Added read-level access where needed for private endpoint-connected resource discovery and operational checks (for example, scoped <code>Reader</code> access on relevant networking/resource objects used by deployment validation and diagnostics).- Disabled the ACR admin user account on the workspace container registry; compute pulls images via managed identity (<code>ACRPull</code> role) rather than static registry credentials.- For storage file share paths, used tightly scoped file-plane access (for example, <code>Storage File Data Privileged Contributor</code> or an equivalent org-defined “File Privileged User” role).</li>
+</ul>
+<h3 id="13-why-it-matters">1.3 Why it matters</h3>
+<ul>
+  <li>Removes long-lived secrets from notebooks, jobs, and pipelines.</li>
+  <li>Reduces blast radius when one principal is compromised.</li>
+  <li>Improves traceability of who/what accessed data.</li>
+</ul>
+<h3 id="14-validation-steps">1.4 Validation steps</h3>
+<ul>
+  <li><code>az ml workspace show --name &lt;ws&gt; --resource-group &lt;rg&gt; --query identity</code></li>
+  <li><code>az role assignment list --assignee &lt;principalId&gt; --all</code></li>
+  <li>Confirm identity can perform required private endpoint-related discovery checks without granting broad network admin rights.</li>
+  <li>Confirm data access works with identity-based datastore auth and no embedded keys.</li>
+</ul>
+<hr />
+<h2 id="2-data-access-hardening-for-training-and-pipelines">2) Data access hardening for training and pipelines</h2>
+<h3 id="21-control-objective">2.1 Control objective</h3>
+<p>Ensure jobs access data using identities, not cached credentials.</p>
+<h3 id="22-what-we-configured">2.2 What we configured</h3>
+<ul>
+  <li>Datastores configured for identity-based auth where supported.</li>
+  <li>Compute identity permissions scoped to required storage containers/paths.</li>
+  <li>User identity mode used only where job-level accountability is required.</li>
+</ul>
+<h3 id="23-why-it-matters">2.3 Why it matters</h3>
+<ul>
+  <li>Prevents credential leakage from datastore definitions.</li>
+  <li>Keeps storage authorization centralized in RBAC.</li>
+  <li>Supports cleaner forensic trails for regulated workloads.</li>
+</ul>
+<h3 id="24-validation-steps">2.4 Validation steps</h3>
+<ul>
+  <li>Submit test job reading secured datastore path.</li>
+  <li>Verify storage logs show expected identity principal.</li>
+  <li>Negative test: unauthorized identity should fail with expected <code>403</code>.</li>
+</ul>
+<hr />
+<h2 id="3-network-isolation-and-exfiltration-reduction">3) Network isolation and exfiltration reduction</h2>
+<h3 id="31-control-objective">3.1 Control objective</h3>
+<p>Restrict ingress/egress and reduce accidental or malicious data exfiltration.</p>
+<h3 id="32-what-we-configured">3.2 What we configured</h3>
+<ul>
+  <li>Private endpoint strategy for workspace and dependent services where feasible.</li>
+  <li>Explicitly disabled public network access where service capabilities allowed it; where full disablement was not possible or not yet feasible, we implemented effective equivalent controls with strict firewall allowlists and trusted-path-only access.</li>
+  <li>Firewall/network rules on storage and registry to avoid broad public exposure.</li>
+  <li>Controlled outbound access pattern for compute.</li>
+  <li>DNS alignment for private resolution paths, including private DNS zones, VNet links, and custom DNS forwarder/conditional forwarding rules where required by enterprise DNS architecture.</li>
+  <li>Configured compute clusters and instances with <strong>no public IP address</strong> where platform support allowed; inbound job management traffic uses Azure Private Link Service rather than a public load balancer.</li>
+</ul>
+<h3 id="33-why-it-matters">3.3 Why it matters</h3>
+<ul>
+  <li>Cuts public attack surface significantly.</li>
+  <li>Prevents “shadow egress” from unmanaged routes.</li>
+  <li>Makes data flow paths explicit and governable.</li>
+</ul>
+<h3 id="34-validation-steps">3.4 Validation steps</h3>
+<ul>
+  <li>Resolve private FQDNs from approved subnets.</li>
+  <li>Verify blocked behavior from non-approved networks.</li>
+  <li>Validate public endpoint access is denied (or effectively denied by policy/firewall) for workspace-associated resources.</li>
+  <li>Validate private DNS resolution path end to end (<code>nslookup</code>/<code>dig</code> from approved network + successful private IP resolution + connectivity test).</li>
+  <li>Confirm job lifecycle operations still function under restricted outbound rules.</li>
+</ul>
+<hr />
+<h2 id="4-encryption-and-key-governance">4) Encryption and key governance</h2>
+<h3 id="41-control-objective">4.1 Control objective</h3>
+<p>Protect sensitive metadata and data-at-rest under enterprise key management expectations.</p>
+<h3 id="42-what-we-configured">4.2 What we configured</h3>
+<ul>
+  <li>Evaluated/implemented customer-managed key (CMK) pattern where policy required.</li>
+  <li>Key Vault configured with soft delete and purge protection.</li>
+  <li>Set <code>enable_data_isolation: true</code> at workspace creation time for environments where multiple workspaces share a storage account, Key Vault, or container registry. This prefixes all artifacts with the workspace GUID and applies Azure ABAC conditions so each workspace's managed identity can only access its own containers — preventing cross-workspace data leakage in shared-resource patterns.</li>
+  <li>Evaluated the <code>hbi_workspace</code> flag at workspace create time; enabled for workloads handling sensitive or regulated data. This reduces Microsoft diagnostic telemetry and encrypts local scratch disk on compute. The flag cannot be changed after creation.</li>
+  <li>Documented immutable decisions made at create-time (for example, isolation/HBI choices).</li>
+</ul>
+<h3 id="43-why-it-matters">4.3 Why it matters</h3>
+<ul>
+  <li>Strengthens regulatory and internal policy alignment.</li>
+  <li>Improves lifecycle control around key rotation and crypto governance.</li>
+  <li>Prevents late-stage redesign from immutable platform settings.</li>
+</ul>
+<h3 id="44-validation-steps">4.4 Validation steps</h3>
+<ul>
+  <li>Verify encryption mode and key references in workspace configuration.</li>
+  <li>Validate managed identity has required key permissions (<code>Get</code>, <code>WrapKey</code>, <code>UnwrapKey</code>) where applicable.</li>
+  <li>Test key rotation runbook in non-prod before prod rollout.</li>
+</ul>
+<hr />
+<h2 id="5-operational-governance-and-drift-prevention">5) Operational governance and drift prevention</h2>
+<h3 id="51-control-objective">5.1 Control objective</h3>
+<p>Keep hardening persistent over time, not just at deployment day.</p>
+<h3 id="52-what-we-configured">5.2 What we configured</h3>
+<ul>
+  <li>Azure Policy guardrails to audit/deny noncompliant workspace/network settings.</li>
+  <li>Monitoring and alerting for identity failures, image pull failures, and data access errors.</li>
+  <li>Standard verification playbook run after every significant infra or RBAC change.</li>
+</ul>
+<h3 id="53-why-it-matters">5.3 Why it matters</h3>
+<ul>
+  <li>Prevents configuration drift from eroding security posture.</li>
+  <li>Accelerates incident response with predictable checks.</li>
+  <li>Produces reusable evidence for internal audit and compliance reviews.</li>
+</ul>
+<h3 id="54-validation-steps">5.4 Validation steps</h3>
+<ul>
+  <li>Policy compliance snapshot per environment.</li>
+  <li>Weekly review of high-signal failures (<code>403</code>, auth token errors, ACR pull failures).</li>
+  <li>Quarterly access recertification for privileged identities.</li>
+</ul>
+<hr />
+<h2 id="lessons-learned">Lessons learned</h2>
+<ol>
+  <li><strong>Create-time decisions are critical</strong>: identity and isolation architecture must be decided early.</li>
+  <li><strong>Least privilege needs iteration</strong>: first pass is rarely perfect; tighten after telemetry.</li>
+  <li><strong>Public access hardening must be explicit</strong>: “assumed private” is not enough without confirming public network access settings and firewall behavior.</li>
+  <li><strong>DNS is part of security, not just connectivity</strong>: private endpoint architectures fail open operationally if name resolution is incomplete or inconsistent.</li>
+  <li><strong>Security + usability balance is real</strong>: private networking works best with documented developer paths.</li>
+</ol>
+<hr />
+<h2 id="references-microsoft-learn">References (Microsoft Learn)</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security">https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security</a></li>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/how-to-identity-based-service-authentication">https://learn.microsoft.com/azure/machine-learning/how-to-identity-based-service-authentication</a></li>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/how-to-network-security-overview">https://learn.microsoft.com/azure/machine-learning/how-to-network-security-overview</a></li>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/how-to-managed-network">https://learn.microsoft.com/azure/machine-learning/how-to-managed-network</a></li>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/concept-customer-managed-keys">https://learn.microsoft.com/azure/machine-learning/concept-customer-managed-keys</a></li>
+  <li><a href="https://learn.microsoft.com/azure/role-based-access-control/overview">https://learn.microsoft.com/azure/role-based-access-control/overview</a></li>
+</ul>
+<hr />
+<h2 id="security-configuration-reference-table">Security Configuration Reference Table</h2>
+<p>Every security-relevant configuration applied in this workspace. Names, resource groups, subscription IDs, and environment-specific identifiers are excluded.</p>
+<ul>
+  <li><strong>Workspace managed identity</strong> — Setting Applied: System-assigned or user-assigned, enabled at creation · Security Principle: No static credentials · Rationale: Keyless service-to-service authentication; credential lifecycle managed by Entra ID</li>
+  <li><strong>Storage Blob data access</strong> — Setting Applied: <code>Storage Blob Data Reader</code> or <code>Storage Blob Data Contributor</code> on workspace storage account · Security Principle: Least privilege · Rationale: Data-plane role only; broad control-plane (Contributor) rights not required for data operations</li>
+  <li><strong>Storage File access</strong> — Setting Applied: <code>Storage File Data Privileged Contributor</code> or equivalent file-plane role · Security Principle: Least privilege · Rationale: File shares require a separate file-plane permission from blob; scoped to required share only</li>
+  <li><strong>ACR image pull for compute</strong> — Setting Applied: <code>ACRPull</code> on workspace container registry · Security Principle: Least privilege · Rationale: Read-only image pull; no push credentials or admin account required on compute</li>
+  <li><strong>ACR admin user</strong> — Setting Applied: Disabled · Security Principle: Reduce static credential exposure · Rationale: Static registry admin credentials are a frequently exploited vector; managed identity replaces them</li>
+  <li><strong>Key Vault access (CMK operations)</strong> — Setting Applied: RBAC: <code>Get</code>, <code>WrapKey</code>, <code>UnwrapKey</code> · Security Principle: Least privilege · Rationale: Minimum permissions for customer-managed key operations; full secrets/certificates admin not required</li>
+  <li><strong>Private endpoint <code>Reader</code> access for identity</strong> — Setting Applied: Scoped <code>Reader</code> on required networking/resource objects · Security Principle: Least privilege · Rationale: Enables PE discovery and diagnostics without granting network admin or Contributor rights</li>
+  <li><strong>Key Vault soft delete</strong> — Setting Applied: Enabled · Security Principle: Data protection, recoverability · Rationale: Prevents accidental or malicious key deletion from immediately destroying data access</li>
+  <li><strong>Key Vault purge protection</strong> — Setting Applied: Enabled · Security Principle: Data protection · Rationale: Prevents permanent key purge during retention window even by authorized users</li>
+  <li><strong>Private endpoint — Workspace</strong> — Setting Applied: Enabled · Security Principle: Network isolation · Rationale: Removes public ingress to workspace control and data planes</li>
+  <li><strong>Private endpoint — Storage (blob, file)</strong> — Setting Applied: Enabled per required sub-resources · Security Principle: Network isolation · Rationale: Storage traffic on private IP; public storage endpoint not reachable</li>
+  <li><strong>Private endpoint — Key Vault</strong> — Setting Applied: Enabled · Security Principle: Network isolation · Rationale: Prevents key material access over public network paths</li>
+  <li><strong>Private endpoint — ACR</strong> — Setting Applied: Enabled · Security Principle: Network isolation · Rationale: Container image pulls over private path; no public ACR access required</li>
+  <li><strong>Public network access — Workspace</strong> — Setting Applied: Disabled, or allowlisted with strict policy enforcement · Security Principle: Defense in depth · Rationale: Explicit denial prevents accidental re-exposure via portal or ARM API</li>
+  <li><strong>Public network access — Storage</strong> — Setting Applied: Disabled + trusted Azure services exception where required for platform operations · Security Principle: Defense in depth · Rationale: Eliminates broad internet access; trusted-services exception preserves AML platform function</li>
+  <li><strong>Public network access — Key Vault</strong> — Setting Applied: Disabled (private endpoint + selected VNet access only) · Security Principle: Defense in depth · Rationale: Key material must not be reachable from the public internet</li>
+  <li><strong>Public network access — ACR</strong> — Setting Applied: Disabled · Security Principle: Defense in depth · Rationale: Image pulls use private endpoint only</li>
+  <li><strong>Private DNS zone — Workspace</strong> — Setting Applied: <code>privatelink.api.azureml.ms</code>, <code>privatelink.notebooks.azure.net</code> · Security Principle: DNS-level network control · Rationale: Without correct private DNS, private endpoint IPs are unresolvable and connections fall back to public</li>
+  <li><strong>Private DNS zone — Storage</strong> — Setting Applied: <code>privatelink.blob.core.windows.net</code>, <code>privatelink.file.core.windows.net</code> · Security Principle: DNS-level network control · Rationale: Ensures blob and file storage FQDNs resolve to private IPs inside the VNet</li>
+  <li><strong>Private DNS zone — Key Vault</strong> — Setting Applied: <code>privatelink.vaultcore.azure.net</code> · Security Principle: DNS-level network control · Rationale: Ensures key operations resolve to private IP</li>
+  <li><strong>Private DNS zone — ACR</strong> — Setting Applied: <code>privatelink.azurecr.io</code> · Security Principle: DNS-level network control · Rationale: Ensures image pulls resolve to private IP</li>
+  <li><strong>VNet link on all private DNS zones</strong> — Setting Applied: Linked to deployment VNet · Security Principle: DNS resolution · Rationale: Required for DNS zones to serve queries from VNet-resident resources</li>
+  <li><strong>Conditional DNS forwarding</strong> — Setting Applied: Configured on enterprise DNS servers for all <code>privatelink.*</code> zones · Security Principle: DNS resolution consistency · Rationale: Prevents public fallback for PE FQDNs in environments running custom DNS infrastructure</li>
+  <li><strong>No-public-IP compute</strong> — Setting Applied: Enabled on compute clusters and instances where platform supports it · Security Principle: Reduced attack surface · Rationale: Eliminates internet-accessible IP on compute nodes; job management uses Private Link Service</li>
+  <li><strong>Identity-based datastore auth</strong> — Setting Applied: Enabled on all datastores; no cached-credential datastores where avoidable · Security Principle: No embedded credentials · Rationale: Avoids SAS tokens or account keys being stored in datastore definitions readable by all workspace users</li>
+  <li><strong>Customer-managed keys (CMK)</strong> — Setting Applied: Enabled where policy requires; service-side encryption preferred · Security Principle: Encryption control · Rationale: Allows key lifecycle management independent of Microsoft; service-side reduces subscription complexity</li>
+  <li><strong>Data isolation at workspace creation</strong> — Setting Applied: <code>enable_data_isolation: true</code> for shared-resource workspace patterns · Security Principle: Tenant isolation · Rationale: Prefixes artifacts with workspace GUID and applies ABAC conditions; prevents cross-workspace data access in shared storage/KV/ACR</li>
+  <li><strong>HBI workspace flag</strong> — Setting Applied: Evaluated at create time; enabled for sensitive workloads · Security Principle: Data minimization, encryption · Rationale: Reduces Microsoft telemetry collection; encrypts local scratch disk; cannot change after creation</li>
+  <li><strong>Azure Policy guardrails</strong> — Setting Applied: Audit/deny for workspace network settings, private endpoint, and public access · Security Principle: Drift prevention · Rationale: Prevents manual portal changes from silently downgrading the secure baseline</li>
+  <li><strong>Monitoring and alerting</strong> — Setting Applied: Enabled for <code>403</code> errors, auth token failures, ACR pull failures, and data access anomalies · Security Principle: Operational security · Rationale: Provides early warning signal for misconfiguration and access control violations</li>
+</ul>]]></content:encoded>
+  </item>
+  <item>
+    <title>AI Platform Hardening - Part 2 - Foundry Deployments</title>
+    <link>https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part2-foundry-deployments.html</link>
+    <guid isPermaLink="true">https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part2-foundry-deployments.html</guid>
+    <pubDate>Sat, 31 Oct 2026 13:00:00 +0000</pubDate>
+    <description>Identity, model access control, runtime safety, and the governance that keeps them from drifting. Part 2 of two.</description>
+    <content:encoded><![CDATA[<p>This is the second of two posts on hardening the Azure platforms that AI work runs on. Part 1 covers the <a href="https://hoopdad.github.io/ai/2026/10/31/ai-platform-hardening-part1-azure-ml-workspace.html">Azure ML workspace</a>.</p>
+<p>This post captures how we hardened our Microsoft Foundry deployments with emphasis on identity, model access control, runtime safety, and operational governance. We are sharing this externally so other teams can use it as a practical blueprint for deploying a more secure Foundry environment.</p>
+<blockquote>
+<p>Scope: Foundry project/deployment security posture, Azure OpenAI/Foundry model access patterns, private endpoint and DNS controls, and production governance controls.</p>
+</blockquote>
+<h2 id="1-identity-based-access-for-model-invocation">1) Identity-based access for model invocation</h2>
+<h3 id="11-control-objective">1.1 Control objective</h3>
+<p>Remove key sprawl and force access through Entra identity + RBAC.</p>
+<h3 id="12-what-we-configured">1.2 What we configured</h3>
+<ul>
+  <li>Preferred Microsoft Entra authentication for model calls.</li>
+  <li>Assigned narrow roles such as:
+<ul>
+  <li><code>Cognitive Services OpenAI User</code> for inference-only consumers.</li>
+  <li><code>Cognitive Services OpenAI Contributor</code> only where deployment management is required.</li>
+</ul></li>
+  <li>Restricted role assignment scope to resource/resource group rather than broad subscription grants.</li>
+  <li>Enabled a <strong>custom subdomain</strong> on each Cognitive Services / Azure OpenAI resource. This is a hard prerequisite for Microsoft Entra ID authentication to function on the endpoint; without it, only key-based auth is available. The custom subdomain is set at resource creation and cannot be changed afterward.</li>
+  <li>Explicitly <strong>disabled local (key-based) authentication</strong> at the resource level where policy and tooling allowed, forcing all callers through the Entra ID path and eliminating key distribution and rotation debt.</li>
+  <li>Added read-level access where needed for private endpoint-connected resource discovery and operational diagnostics (for example, scoped <code>Reader</code> on required networking/resource objects rather than broad network administration roles).</li>
+</ul>
+<h3 id="13-why-it-matters">1.3 Why it matters</h3>
+<ul>
+  <li>Avoids long-lived API key distribution across services and repos.</li>
+  <li>Makes access revocation immediate via RBAC changes.</li>
+  <li>Improves auditability for who invoked and managed model endpoints.</li>
+</ul>
+<h3 id="14-validation-steps">1.4 Validation steps</h3>
+<ul>
+  <li>Test token-based inference path with <code>DefaultAzureCredential</code>.</li>
+  <li>Confirm key-based auth is disabled/restricted per environment policy where feasible.</li>
+  <li>Review role assignments per principal and environment.</li>
+  <li>Confirm principals can perform required private endpoint-related validation checks without over-privileging.</li>
+</ul>
+<hr />
+<h2 id="2-model-and-deployment-governance">2) Model and deployment governance</h2>
+<h3 id="21-control-objective">2.1 Control objective</h3>
+<p>Ensure only approved models/deployments are used in production workflows.</p>
+<h3 id="22-what-we-configured">2.2 What we configured</h3>
+<ul>
+  <li>Defined environment-specific deployment standards (naming/versioning/approval gates).</li>
+  <li>Limited deployment-change rights to a small operator group.</li>
+  <li>Added rollout controls (pre-prod validation before production promotion).</li>
+</ul>
+<h3 id="23-why-it-matters">2.3 Why it matters</h3>
+<ul>
+  <li>Prevents unreviewed model changes from reaching production.</li>
+  <li>Reduces operational variance across teams.</li>
+  <li>Improves rollback readiness during incidents.</li>
+</ul>
+<h3 id="24-validation-steps">2.4 Validation steps</h3>
+<ul>
+  <li>Confirm deployment operations require approved operator roles.</li>
+  <li>Verify promoted deployment has matching approved artifact/version metadata.</li>
+  <li>Execute rollback drill on non-prod cadence.</li>
+</ul>
+<hr />
+<h2 id="3-safety-and-responsible-ai-controls">3) Safety and responsible AI controls</h2>
+<h3 id="31-control-objective">3.1 Control objective</h3>
+<p>Reduce harmful output risk and maintain acceptable-use posture in production.</p>
+<h3 id="32-what-we-configured">3.2 What we configured</h3>
+<ul>
+  <li>Integrated responsible AI and safety expectations into release criteria.</li>
+  <li>Enabled content safety evaluation patterns for user input and model output.</li>
+  <li>Documented escalation paths for policy violations and abuse scenarios.</li>
+</ul>
+<h3 id="33-why-it-matters">3.3 Why it matters</h3>
+<ul>
+  <li>Turns safety from “best effort” into enforceable runtime behavior.</li>
+  <li>Improves consistency of user experience and trust outcomes.</li>
+  <li>Supports governance readiness for legal/compliance review.</li>
+</ul>
+<h3 id="34-validation-steps">3.4 Validation steps</h3>
+<ul>
+  <li>Run curated abuse/policy test prompts in pre-prod.</li>
+  <li>Track safety-related metrics and incident trends.</li>
+  <li>Verify blocked/flagged behaviors map to documented policy actions.</li>
+</ul>
+<hr />
+<h2 id="4-network-and-secret-hygiene-around-foundry-workloads">4) Network and secret hygiene around Foundry workloads</h2>
+<h3 id="41-control-objective">4.1 Control objective</h3>
+<p>Constrain data flow and protect sensitive connection points used by Foundry applications.</p>
+<h3 id="42-what-we-configured">4.2 What we configured</h3>
+<ul>
+  <li>Preferred private/restricted connectivity patterns where architecture supports it.</li>
+  <li>Explicitly disabled public network access where service capabilities allowed it; where full disablement was not possible or not yet feasible, we implemented effective equivalent controls through strict firewall allowlists and trusted-path-only access.</li>
+  <li>Applied private endpoint patterns for model-serving dependencies and associated data/services where applicable.</li>
+  <li>Configured DNS for private resolution paths (private DNS zones, VNet links, and custom DNS forwarding/conditional forwarding rules where required by enterprise DNS design).</li>
+  <li>Removed hardcoded credentials from app code and pipelines.</li>
+  <li>Shifted secret retrieval to managed identity + secure stores.</li>
+</ul>
+<h3 id="43-why-it-matters">4.3 Why it matters</h3>
+<ul>
+  <li>Reduces data leakage exposure from permissive networking.</li>
+  <li>Eliminates one of the most common compromise vectors: leaked keys.</li>
+  <li>Simplifies incident rotation/revocation procedures.</li>
+</ul>
+<h3 id="44-validation-steps">4.4 Validation steps</h3>
+<ul>
+  <li>Secret scanning across repositories/pipeline definitions.</li>
+  <li>Connectivity tests proving approved-only network paths.</li>
+  <li>Validate public endpoint access is denied (or effectively denied via policy/firewall) for Foundry-associated resources.</li>
+  <li>Validate private DNS resolution end to end (<code>nslookup</code>/<code>dig</code> from approved network + expected private IP results + successful connectivity checks).</li>
+  <li>App startup tests confirming managed identity token acquisition.</li>
+</ul>
+<hr />
+<h2 id="5-continuous-assurance-and-production-operations">5) Continuous assurance and production operations</h2>
+<h3 id="51-control-objective">5.1 Control objective</h3>
+<p>Keep deployments secure as models, prompts, and app behavior evolve.</p>
+<h3 id="52-what-we-configured">5.2 What we configured</h3>
+<ul>
+  <li>Policy and monitoring hooks for auth failures, unusual request patterns, and deployment drift.</li>
+  <li>Operational runbooks for credential compromise, model rollback, and access recertification.</li>
+  <li>Periodic control reviews tied to release cycles.</li>
+</ul>
+<h3 id="53-why-it-matters">5.3 Why it matters</h3>
+<ul>
+  <li>Catches drift before it becomes an incident.</li>
+  <li>Reduces MTTR with pre-defined response playbooks.</li>
+  <li>Creates evidence trails that auditors and security teams can consume quickly.</li>
+</ul>
+<h3 id="54-validation-steps">5.4 Validation steps</h3>
+<ul>
+  <li>Monthly RBAC hygiene review for Foundry resources.</li>
+  <li>Alert quality review (signal/noise tuning) for security events.</li>
+  <li>Quarterly tabletop incident simulation for model misuse and token compromise.</li>
+</ul>
+<hr />
+<h2 id="lessons-learned">Lessons learned</h2>
+<ol>
+  <li><strong>Identity-first architecture scales better</strong> than key-based exceptions.</li>
+  <li><strong>Public network hardening must be explicit</strong>: “private by design” needs active validation of network settings and deny paths.</li>
+  <li><strong>DNS is a security dependency</strong> in private endpoint architectures, not a post-deployment convenience.</li>
+  <li><strong>Safety controls must be tested like code</strong>, not documented only.</li>
+  <li><strong>Operational runbooks are part of security posture</strong>, not optional appendices.</li>
+</ol>
+<hr />
+<h2 id="references-microsoft-learn">References (Microsoft Learn)</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/azure/ai-foundry/">https://learn.microsoft.com/azure/ai-foundry/</a></li>
+  <li><a href="https://learn.microsoft.com/azure/ai-foundry/openai/how-to/managed-identity">https://learn.microsoft.com/azure/ai-foundry/openai/how-to/managed-identity</a></li>
+  <li><a href="https://learn.microsoft.com/azure/ai-foundry/responsible-use-of-ai-overview">https://learn.microsoft.com/azure/ai-foundry/responsible-use-of-ai-overview</a></li>
+  <li><a href="https://learn.microsoft.com/azure/ai-services/content-safety/overview">https://learn.microsoft.com/azure/ai-services/content-safety/overview</a></li>
+  <li><a href="https://learn.microsoft.com/azure/role-based-access-control/overview">https://learn.microsoft.com/azure/role-based-access-control/overview</a></li>
+  <li><a href="https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security">https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security</a></li>
+</ul>
+<hr />
+<h2 id="security-configuration-reference-table">Security Configuration Reference Table</h2>
+<p>Every security-relevant configuration applied in this Foundry deployment. Names, resource groups, subscription IDs, and environment-specific identifiers are excluded.</p>
+<ul>
+  <li><strong>Authentication method</strong> — Setting Applied: Microsoft Entra ID (token-based) as primary; key-based auth disabled or restricted · Security Principle: No static credentials · Rationale: Entra tokens are short-lived and revocable; API keys are long-lived secrets that accumulate in repos and pipelines</li>
+  <li><strong>Custom subdomain on Cognitive Services resource</strong> — Setting Applied: Enabled at resource creation · Security Principle: Prerequisite for Entra auth · Rationale: Entra ID authentication for Azure OpenAI / Cognitive Services requires a custom subdomain; cannot be retrofitted post-creation</li>
+  <li><strong>Local (key-based) authentication</strong> — Setting Applied: Disabled at the resource level where policy and tooling allow · Security Principle: Reduce static credential attack surface · Rationale: Disabling keys forces all callers through the Entra identity path; eliminates key-theft as a viable attack</li>
+  <li><strong>Inference role</strong> — Setting Applied: <code>Cognitive Services OpenAI User</code> · Security Principle: Least privilege · Rationale: Inference-only; cannot modify deployments, quotas, fine-tune models, or alter resource configuration</li>
+  <li><strong>Deployment management role</strong> — Setting Applied: <code>Cognitive Services OpenAI Contributor</code> · Security Principle: Least privilege, role separation · Rationale: Reserved for a small operator group only; completely segregated from inference consumer identities</li>
+  <li><strong>Role assignment scope</strong> — Setting Applied: Resource or resource group (not subscription-wide) · Security Principle: Least privilege · Rationale: Limits blast radius; a compromised identity cannot affect other Cognitive Services resources in the subscription</li>
+  <li><strong>Private endpoint <code>Reader</code> access for identity</strong> — Setting Applied: Scoped <code>Reader</code> on required networking/resource objects · Security Principle: Least privilege · Rationale: Enables PE validation and diagnostics without granting network admin or Contributor rights</li>
+  <li><strong>Managed identity for calling services/compute</strong> — Setting Applied: System-assigned or user-assigned enabled on all app services, functions, and compute invoking Foundry · Security Principle: No static credentials · Rationale: Removes API keys from application config, pipeline variables, and container images</li>
+  <li><strong>Private endpoint — Cognitive Services / OpenAI resource</strong> — Setting Applied: Enabled where architecture supports · Security Principle: Network isolation · Rationale: Removes public ingress to model inference endpoint; all traffic traverses private IP path</li>
+  <li><strong>Public network access — Cognitive Services resource</strong> — Setting Applied: Disabled, or strictly allowlisted via firewall rules as effective equivalent · Security Principle: Defense in depth · Rationale: Prevents model inference calls and management operations over public internet paths</li>
+  <li><strong>Private DNS zone — Cognitive Services</strong> — Setting Applied: <code>privatelink.cognitiveservices.azure.com</code> · Security Principle: DNS-level network control · Rationale: Without correct private DNS, private endpoint IPs are unresolvable and connections fall back to public</li>
+  <li><strong>Private DNS zone — OpenAI</strong> — Setting Applied: <code>privatelink.openai.azure.com</code> · Security Principle: DNS-level network control · Rationale: Ensures Azure OpenAI-specific FQDNs resolve to private IPs in Foundry deployments</li>
+  <li><strong>VNet link on all private DNS zones</strong> — Setting Applied: Linked to deployment VNet · Security Principle: DNS resolution · Rationale: Required for DNS zones to answer queries from VNet-resident resources</li>
+  <li><strong>Conditional DNS forwarding</strong> — Setting Applied: Configured on enterprise DNS servers for <code>privatelink.*</code> zones · Security Principle: DNS resolution consistency · Rationale: Prevents public fallback for PE FQDNs in environments with custom DNS infrastructure</li>
+  <li><strong>Secret management</strong> — Setting Applied: No hardcoded credentials in code, pipelines, or images; Key Vault integration for any non-identity secrets · Security Principle: Defense in depth · Rationale: Eliminates the most common credential-leak path; Key Vault provides audit log and rotation capabilities</li>
+  <li><strong>Deployment change rights</strong> — Setting Applied: Restricted to small operator group holding <code>Cognitive Services OpenAI Contributor</code> · Security Principle: Role separation, change control · Rationale: Prevents unauthorized production model changes without blocking developer inference workflows</li>
+  <li><strong>Content safety integration</strong> — Setting Applied: Enabled for input and output evaluation · Security Principle: Safety governance · Rationale: Provides runtime enforcement of acceptable-use policy; a security control as well as an AI governance one</li>
+  <li><strong>Responsible AI release criteria</strong> — Setting Applied: Safety evaluation integrated into pre-prod release gates · Security Principle: Safety governance · Rationale: Moves safety from aspirational to verifiable before each production promotion</li>
+  <li><strong>Azure Policy guardrails</strong> — Setting Applied: Audit/deny for network settings and public access on Cognitive Services and Foundry resources · Security Principle: Drift prevention · Rationale: Prevents manual configuration changes from silently downgrading the security baseline</li>
+  <li><strong>Monitoring and alerting</strong> — Setting Applied: Auth failures, unusual request volume, deployment configuration drift · Security Principle: Operational security · Rationale: Provides signal for both security incidents and model misuse patterns</li>
+</ul>]]></content:encoded>
+  </item>
+  <item>
+    <title>Energy Comparison: CPU, GPU+ML, GPU+LLM</title>
+    <link>https://hoopdad.github.io/ai/2026/07/31/energy-comparison.html</link>
+    <guid isPermaLink="true">https://hoopdad.github.io/ai/2026/07/31/energy-comparison.html</guid>
+    <pubDate>Fri, 31 Jul 2026 12:00:00 +0000</pubDate>
+    <description>Five orders of magnitude separate the cheapest option from the most expensive one, for the same job on the same machine.</description>
+    <content:encoded><![CDATA[<p>Scaling up automations that will run many times requires looking at total costs.
+Here's a way that may save you a fortune in computing costs: don't use AI for everything. Just because
+it can do so much doesn't mean you should be using it for everything. There are limitations of other
+computing types, which is why AI exists, but the fallback option to use AI for everything is widespread,
+and wasteful.</p>
+<p>From my own observations I know that AI and large language models are very energy hungry. We reach for
+specialized hardware to run them not because a CPU can't do the job. It can, and Ollama does it every
+day. But because a CPU is an order of magnitude too slow at it, we deem it not practical. What I wasn't sure about
+was how much more power a large language model actually used.</p>
+<p>I discovered that there's a library, <code>pynvml</code>, from NVIDIA that would help me measure energy consumption from
+my laptop's GPU, a "value" product a few years ago, GeForce RTX 2050 with 4GB of VRAM. The CPU side turned
+out to be measurable too, and more easily than I expected. Intel's chips carry RAPL energy counters, and
+Windows exposes them through the built-in <code>typeperf</code> utility as an "Energy Meter" performance counter.
+There was no kernel driver, no admin rights, and nothing to install.</p>
+<p>To have real data to illustrate the concept is extremely valuable. We might run it a 100 times and
+get different answers — and we do. Two identical runs of the language model at temperature zero gave me 98.3%
+and 97.0% accuracy, and two identical CPU runs measured 10.6 W and 9.7 W. But a few hundred runs are probably
+directionally correct enough to draw attention to the importance of this decision.</p>
+<p>With all of this in mind I asked a powerful language model to build me a test to compare all three.
+And I would note for the wise guys like me, generating 3 similar programs for purposes of experimentation
+is not a task that a CPU or even regular machine learning would be able to do for me. Definitely not in the 30
+seconds that Fable produced it in!</p>
+<p>The task was to analyze text to identify the sentiment of the text. This is a classic machine learning and AI
+play, because the variation in terminology that people can use to express the same sentiment is wide. But
+bear with me, this was just a test that was designed to be able to run in three modes. The real point is,
+there are many use cases that fall in this category.</p>
+<h2 id="cpu-only-vader-rules">CPU-only (VADER rules)</h2>
+<p>A hand-built lexicon scores each word for sentiment polarity, then heuristic rules adjust for negation, intensifiers, punctuation, and capitalization to produce a compound score.</p>
+<h2 id="gpuml-distilbert">GPU+ML (DistilBERT)</h2>
+<p>A transformer pre-trained on general text and fine-tuned on SST-2 sentiment data encodes each review into contextual embeddings, then a classification head reads out positive/negative. Batches of 128 sequences run through the GPU as dense matrix math.</p>
+<h2 id="gpullm-prompted-model">GPU+LLM (prompted model)</h2>
+<p>Each review gets wrapped in a natural-language instruction ("Classify this as POSITIVE or NEGATIVE") and fed to a general-purpose language model. I ran Ollama locally for this one.</p>
+<h2 id="counting-the-cpu-in-the-gpu-tests">Counting the CPU in the GPU tests</h2>
+<p>This is where measuring both sides paid off. A "GPU" workload is never only a GPU workload — something has to
+tokenize the text, drive the driver, and in the language model's case run an HTTP client and the server's
+scheduling and sampling loops. My first pass reported GPU board power alone, and it undercounted badly.</p>
+<p>For DistilBERT the CPU turned out to be 31% of the total power draw. For the language model it was 73% — the
+CPU pulled 22 W against the GPU's 8 W. The reason is specific and worth knowing: a 3B model quantized to
+Q4_K_M needs about 2.9 GB, and on a 4 GB card that doesn't leave enough room, so Ollama split it 20% CPU /
+80% GPU. A fifth of the model was running on the processor the whole time. On a card with enough VRAM to hold
+the model outright, this row would look considerably better.</p>
+<p>So every number below counts both processors. Each figure is power <em>attributable</em> to the run. I sampled an
+idle baseline first and subtracted it from both the CPU package and the GPU board, so the machine's resting
+draw isn't billed to whichever workload happened to be running. As a sanity check, the CPU-only run measures
+-0.1 W attributable on the GPU, which is what a correct subtraction should look like.</p>
+<h2 id="results">Results</h2>
+<p>Measured on one laptop, same seeded corpus, on 2026-07-31. Power is sampled throughout every run — NVML at
+5 Hz for the GPU, RAPL at 1 Hz for the CPU. Nothing here is modeled, estimated, or cited.</p>
+<p>Throughput, Power (GPU + CPU), Energy/item, Per 1M items, vs CPU, in order:</p>
+<ul>
+  <li><strong>CPU rules (VADER, 1 core)</strong> — 25,156 items/s · 0 + 9.5 W · 0.374 mJ · 0.104 Wh · 1×</li>
+  <li><strong>GPU+ML (DistilBERT, batch 128)</strong> — 3,555 items/s · 27.0 + 11.9 W · 10.96 mJ · 3.04 Wh · 29×</li>
+  <li><strong>GPU+LLM (llama3.2:3b, sequential)</strong> — 2.23 items/s · 8.1 + 22.0 W · 13.46 J · 3.74 kWh · ~36,000×</li>
+  <li><strong>GPU+LLM (llama3.2:3b, concurrency 4)</strong> — 6.65 items/s · 19.7 + 43.4 W · 9.49 J · 2.64 kWh · ~25,000×</li>
+  <li><strong>GPU+LLM (llama3.1:8b, sequential)</strong> — 0.84 items/s · 2.9 + 28.5 W · 37.52 J · 10.42 kWh · ~100,000×</li>
+</ul>
+<p>Accuracy on an identical 300-review sample: VADER 88.0%, DistilBERT 92.7%, llama3.2:3b 97.0%,
+llama3.1:8b 100%.</p>
+<p>One honest caveat about the accounting. Subtracting idle is an approximation.
+If you instead take raw package-plus-board draw with idle included, the CPU row rises to 1.29 mJ and the
+sequential language model to 22.7 J, and the ratio between them drops to about 17,700×.
+Neither includes PSU losses, RAM, storage, or the screen, so both still understate what a wall
+meter would tell you.</p>
+<p>And this is one laptop. An RTX 2050 is not a datacenter GPU and a quantized 3B or 8B is not a frontier model.</p>
+<h2 id="does-a-bigger-more-general-model-cost-more">Does a bigger, more general model cost more?</h2>
+<p>That was one hypothesis, so I tested it using the same task, llama3.1:8b instead of llama3.2:3b.
+It does — <strong>2.8 times more energy per review</strong>, 37.52 J against 13.46 J. It also got every one of the
+300 reviews right, where the 3B managed 97% and the specialized DistilBERT 92.7%. The last three
+accuracy points cost nearly three times the electricity, and roughly 3,400 times what the specialized
+model spent.</p>
+<p>But look at <em>where</em> the power went, because it isn't where you'd guess. The 8B's GPU draw <strong>fell</strong> to
+2.9 W, from the 3B's 8.1 W, while its CPU draw climbed to 28.5 W. A 3B at Q4_K_M occupies 2.9 GB and
+Ollama keeps 80% of it on the card; an 8B needs 5.6 GB, so 58% of it ends up on the CPU. Calling this
+row a "GPU" workload is generous. On this hardware, a bigger model doesn't mean more GPU work. It
+means the GPU stops being the thing doing the work. On a card with enough VRAM the 8B would look
+considerably better, so we might read the 2.8× as a fact about small cards, not a scaling law.</p>
+<p>The other surprise: batching stopped working. Running four requests in parallel cut the 3B's energy
+per review by 30%, but did nothing for the 8B — 3% <em>worse</em>, in fact. Batching recovers wasted GPU idle
+time, and the 8B has none to recover. It's CPU-bound, the CPU is already saturated, and concurrency
+just raises the draw in step with the throughput. Worth knowing before you reach for it as a fix.</p>
+<h2 id="take-away">Take-away</h2>
+<p>Five orders of magnitude separate the cheapest option from the most expensive one, for the same job on
+the same machine. If you take one thing from this, take reaching for a language model by default as a
+real decision comes with a real bill attached.</p>
+<p>But the more useful finding sits in the middle of the table. DistilBERT is a 67-million-parameter model
+fine-tuned for exactly this task, and it landed within about four accuracy points of a 3-billion-parameter LLM
+while using more than 1,200 times less energy per review. So the choice isn't really rules versus AI. It's
+whether you need a general model that can do anything, or a small specialized one that does your one thing
+nearly as well for a rounding error of the cost.</p>
+<p>For the smaller model, sending requests one at a time left both
+processors idling between them, and running four in parallel cut energy per review by 30%. For the
+larger one it did nothing at all. If you self-host and haven't looked at batching,
+part of what looks like model cost may be serving cost — but only if you're wasting idle time to begin with.</p>
+<p>I'd stop short of drawing universal conclusions from one laptop. What my numbers do support is narrower and
+more immediate. You pay for electricity, for latency, and for hardware, and on this task the default choice
+(use an LLM) was the most expensive one available by four to five orders of magnitude depending on which model
+you reach for. Taking time to measure and decide
+accordingly could save a scaled-up project a lot of electricity and money in the long run.</p>
+<p>See the full repo for this at <a href="https://github.com/hoopdad/energy-comparison-experiment">github.com/hoopdad/energy-comparison-experiment</a></p>]]></content:encoded>
+  </item>
+</channel>
+</rss>
