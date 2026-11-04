@@ -1,36 +1,60 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~
-        <time class="dt-modified" datetime="{{ page.modified_date | date_to_xmlschema }}" itemprop="dateModified">
-          {{ page.modified_date | date: date_format }}
-        </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span>
-          </span>
-          {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}
-    </p>
+{% assign post_topic = site.data.topics | where: "key", page.topic | first %}
+{% assign post_words = content | strip_html | number_of_words %}
+{% assign post_minutes = post_words | plus: 219 | divided_by: 220 | at_least: 1 %}
+<article class="reading-page">
+  <header class="reading-header">
+    <a class="back-link" href="{{ '/topics/' | append: post_topic.key | append: '/' | relative_url }}">&larr; {{ post_topic.title }}</a>
+    <p class="eyebrow">{{ post_topic.eyebrow }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="reading-description">{{ page.description | escape }}</p>{% endif %}
+    <div class="reading-meta">
+      <span>By <a href="{{ '/about/' | relative_url }}">{{ page.author | default: site.social.name }}</a></span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      <span>{{ post_minutes }} min read</span>
+      {% if page.modified_date %}<span>Updated {{ page.modified_date | date: "%b %-d, %Y" }}</span>{% endif %}
+    </div>
+    {% if page.series %}
+      {% assign current_series = site.data.series | where: "key", page.series | first %}
+      {% assign chapters = site.posts | where: "series", page.series | where_exp: "post", "post.hidden != true" | sort: "series_order" %}
+      <a class="series-banner" href="{{ '/series/' | append: page.series | append: '/' | relative_url }}"><span>{{ current_series.title }}</span>Part {{ page.series_order }} of {{ chapters.size }} <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
   </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+  <div class="reading-layout">
+    <div class="reading-body">
+      <div class="prose" id="article-content">{{ content }}</div>
+      {% if page.series %}
+        <nav class="chapter-navigation" aria-label="Series chapters">
+          {% assign previous_order = page.series_order | minus: 1 %}
+          {% assign next_order = page.series_order | plus: 1 %}
+          {% assign previous_chapter = chapters | where: "series_order", previous_order | first %}
+          {% assign next_chapter = chapters | where: "series_order", next_order | first %}
+          {% if previous_chapter %}<a href="{{ previous_chapter.url | relative_url }}"><span>&larr; Previous chapter</span>{{ previous_chapter.title | escape }}</a>{% endif %}
+          {% if next_chapter %}<a href="{{ next_chapter.url | relative_url }}"><span>Next chapter &rarr;</span>{{ next_chapter.title | escape }}</a>{% endif %}
+        </nav>
+      {% endif %}
+      {% if page.tags.size > 0 %}
+        <nav class="article-tags" aria-label="Related subjects">
+          {% for tag in page.tags %}<a href="{{ '/search/' | relative_url }}?q={{ tag | url_encode }}">{{ tag }}</a>{% endfor %}
+        </nav>
+      {% endif %}
+      {% include post-feedback.html %}
+    </div>
+    <aside class="reading-toc" aria-label="On this page" hidden>
+      <details open>
+        <summary>On this page</summary>
+        <nav id="article-toc" aria-label="Table of contents"></nav>
+      </details>
+      <a class="toc-back" href="#main-content">Back to top &uarr;</a>
+    </aside>
   </div>
-
-  {% include post-feedback.html %}
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  {% assign related = site.posts | where: "topic", page.topic | where_exp: "post", "post.url != page.url and post.hidden != true" %}
+  {% if related.size > 0 %}
+    <section class="related-section" aria-labelledby="related-title">
+      <div class="section-heading"><h2 id="related-title">Keep exploring {{ post_topic.title }}</h2></div>
+      <div class="article-grid">{% for post in related limit:3 %}{% include post-card.html post=post %}{% endfor %}</div>
+    </section>
+  {% endif %}
 </article>

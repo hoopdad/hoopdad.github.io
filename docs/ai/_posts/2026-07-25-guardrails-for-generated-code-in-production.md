@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Guardrails for AI-Generated Code in Production"
+tags: [agents, guardrails]
+description: Put production-grade checks around generated code without losing the productivity of agentic delivery.
 ---
 
 ## Agent Code Writers: awesome to some, huge risk for others

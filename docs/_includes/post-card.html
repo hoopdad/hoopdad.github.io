@@ -1,0 +1,16 @@
+{% assign card_post = include.post %}
+{% assign card_topic = site.data.topics | where: "key", card_post.topic | first %}
+{% assign card_words = card_post.content | strip_html | number_of_words %}
+{% assign card_minutes = card_words | plus: 219 | divided_by: 220 | at_least: 1 %}
+<article class="article-card">
+  <div class="card-meta">
+    <a class="topic-label" href="{{ '/topics/' | append: card_topic.key | append: '/' | relative_url }}">{{ card_topic.title }}</a>
+    <span>{{ card_minutes }} min read</span>
+  </div>
+  <h3><a href="{{ card_post.url | relative_url }}">{{ card_post.title | escape }}</a></h3>
+  <p>{{ card_post.description | default: card_post.excerpt | strip_html | normalize_whitespace | truncate: 155 | escape }}</p>
+  <div class="card-footer">
+    <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%b %-d, %Y" }}</time>
+    <a href="{{ card_post.url | relative_url }}" aria-label="Read {{ card_post.title | escape }}">Read essay <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</article>

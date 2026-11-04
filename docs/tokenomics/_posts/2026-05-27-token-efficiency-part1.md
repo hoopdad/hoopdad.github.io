@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "Token Efficiency - Part 1 - An Architectural Constraint"
+series: token-efficiency
+series_order: 1
+description: Why token usage is an architectural constraint, not merely a budgeting nuisance.
 ---
 
 This is the first post in a three-part series on token efficiency. It is aimed at engineering leaders and architects deciding whether token usage is a budgeting nuisance, an implementation detail, or something more structural.
@@ -76,5 +79,5 @@ For now, the main point is simple: usage-based billing did not create token effi
 
 ## Continue the Series
 
-- [Part 2: Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})
-- [Part 3: An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})
+- [Part 2: Design Patterns]({% post_url tokenomics/2026-05-27-token-efficiency-part2 %})
+- [Part 3: An Operational Playbook]({% post_url tokenomics/2026-05-27-token-efficiency-part3 %})

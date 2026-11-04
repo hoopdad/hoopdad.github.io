@@ -1,4 +1,10 @@
-# The Risk Surface
+---
+layout: post
+title: The Risk Surface
+topic: agents
+series: coding-agent-operating-model
+series_order: 5
+---
 
 ![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 

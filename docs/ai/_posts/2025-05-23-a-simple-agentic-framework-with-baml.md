@@ -1,6 +1,9 @@
 ---
 layout: post
 title:  "A Simple Agentic Framework with BAML"
+topic: agents
+tags: [ai-engineering, baml]
+description: A practical introduction to agents, with a small BAML framework for DevOps reliability and cost.
 ---
 
 This article gives practical, simplified definitions of AI Agents, Agentic Models, and an example of an application that might be useful for improving DevOps reliability and cost. If you're looking for example code, scroll down past the first few paragraphs.

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Token Efficiency - Part 3 - An Operational Playbook"
+series: token-efficiency
+series_order: 3
 ---
 
 ![Token Efficiency - Part 3 - An Operational Playbook](/assets/2026/token-efficiency/token-efficiency-operational-playbook-32x9-v1.png)
@@ -250,5 +252,5 @@ We spent years learning that reliable systems come from turning intent into arti
 
 ## Continue the Series
 
-- [Part 1: An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
-- [Part 2: Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})
+- [Part 1: An Architectural Constraint]({% post_url tokenomics/2026-05-27-token-efficiency-part1 %})
+- [Part 2: Design Patterns]({% post_url tokenomics/2026-05-27-token-efficiency-part2 %})

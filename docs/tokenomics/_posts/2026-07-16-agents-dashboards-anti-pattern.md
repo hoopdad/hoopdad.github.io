@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Don't Make Me Look: Agents, Outcomes, and the End of the Dashboard"
+topic: agents
+description: The surface has changed. Design agents to deliver outcomes, not another dashboard for a person to watch.
 ---
 
 I'll start with the provocative idea, then get into an example.

@@ -1,0 +1,10 @@
+---
+layout: default
+title: Reading paths
+permalink: /series/
+description: Ordered series on token efficiency, loop engineering, the agent operating model, and AI safety.
+---
+<div class="series-page">
+  <header class="page-heading"><p class="eyebrow">Connected ideas, in the right order</p><h1>Follow the thinking.</h1><p>Some ideas need more than one essay. These reading paths take you from the first principle to the practical details.</p></header>
+  <div class="series-grid">{% for series in site.data.series %}{% include series-card.html series=series %}{% endfor %}</div>
+</div>

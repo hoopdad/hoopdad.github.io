@@ -1,0 +1,7 @@
+---
+layout: default
+---
+<div class="standard-page">
+  <header class="page-heading"><p class="eyebrow">{{ page.eyebrow | default: "Behind the field notes" }}</p><h1>{{ page.title | escape }}</h1>{% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}</header>
+  <div class="prose">{{ content }}</div>
+</div>

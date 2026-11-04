@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Safe AI - Part 3 - Guardrails.ai and Detection of Secrets and PII"
+series: safe-ai
+series_order: 3
 ---
 
 This is the next post in a series of articles about AI Safety and ways to

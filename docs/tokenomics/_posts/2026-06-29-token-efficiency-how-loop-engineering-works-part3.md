@@ -1,6 +1,9 @@
 ---
 layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 3"
+series: loop-engineering
+series_order: 3
+tags: [agents]
 ---
 This is a deep-dive with plenty of screenshots. I'm writing to consolidate
 my knowledge on this topic and share with you what I am learning so we can collectively 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Energy Comparison: CPU, GPU+ML, GPU+LLM"
+description: Measure the energy behind automation and learn when not using AI is the better engineering decision.
 ---
 
 Scaling up automations that will run many times requires looking at total costs.

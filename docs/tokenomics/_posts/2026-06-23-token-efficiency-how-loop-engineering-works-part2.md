@@ -1,6 +1,9 @@
 ---
 layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 2"
+series: loop-engineering
+series_order: 2
+tags: [agents]
 ---
 *Updated after initial publish with GPT-5.3-Codex additional info - see below*
 

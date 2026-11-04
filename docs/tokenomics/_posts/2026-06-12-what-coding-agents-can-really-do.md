@@ -1,4 +1,10 @@
-# What These Agents Can Actually Do
+---
+layout: post
+title: What These Agents Can Actually Do
+topic: agents
+series: coding-agent-operating-model
+series_order: 2
+---
 
 ![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-assistants-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 

@@ -1,0 +1,24 @@
+---
+layout: default
+title: All writing
+permalink: /archive/
+description: The complete archive of agents, AI engineering, tokenomics, cloud, and data field notes.
+---
+{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+<div class="archive-page">
+  <header class="page-heading"><p class="eyebrow">The complete notebook</p><h1>All writing</h1><p>{{ visible_posts.size }} essays and field notes. Every topic, from the foundations to the agent era.</p></header>
+  <nav class="filter-links" aria-label="Browse by topic">
+    {% for topic in site.data.topics %}<a href="{{ '/topics/' | append: topic.key | append: '/' | relative_url }}">{{ topic.title }}</a>{% endfor %}
+    <a href="{{ '/search/' | relative_url }}">Search the archive &rarr;</a>
+  </nav>
+  {% assign years = visible_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for year in years %}
+    <section class="archive-year" aria-labelledby="year-{{ year.name }}">
+      <h2 id="year-{{ year.name }}">{{ year.name }}</h2>
+      {% for post in year.items %}
+        {% assign topic = site.data.topics | where: "key", post.topic | first %}
+        <article class="archive-row"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3><a class="topic-label" href="{{ '/topics/' | append: topic.key | append: '/' | relative_url }}">{{ topic.title }}</a></article>
+      {% endfor %}
+    </section>
+  {% endfor %}
+</div>

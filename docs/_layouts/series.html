@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{% assign series = site.data.series | where: "key", page.series | first %}
+{% assign chapters = site.posts | where: "series", page.series | where_exp: "post", "post.hidden != true" | sort: "series_order" %}
+<div class="series-page">
+  <header class="page-heading">
+    <a class="back-link" href="{{ '/series/' | relative_url }}">&larr; All series</a>
+    <p class="eyebrow">{{ chapters.size }}-part reading path</p>
+    <h1>{{ series.title }}</h1>
+    <p>{{ series.description }}</p>
+    {% assign first_chapter = chapters | first %}
+    {% if first_chapter %}<a class="button" href="{{ first_chapter.url | relative_url }}">Start with part one &rarr;</a>{% endif %}
+  </header>
+  <ol class="chapter-list">
+    {% for post in chapters %}
+      <li><span class="chapter-number" aria-hidden="true">0{{ post.series_order }}</span><div><h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2><p>{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 180 | escape }}</p><a class="text-link" href="{{ post.url | relative_url }}">Read chapter &rarr;</a></div></li>
+    {% endfor %}
+  </ol>
+</div>

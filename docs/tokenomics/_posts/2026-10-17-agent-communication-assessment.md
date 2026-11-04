@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Continuous Learning with Agent Communication Skills"
+topic: agents
+description: Build on your strengths and use agent feedback to sharpen the way you communicate, learn, and work.
 ---
 
 Getting ever better in communicating with agents is **the** skill. Tools are

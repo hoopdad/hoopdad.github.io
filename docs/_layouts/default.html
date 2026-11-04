@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+    {% feed_meta %}
+    <meta name="theme-color" content="#f7f7f2">
+    <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/editorial.css' | relative_url }}">
+    <script>
+      try {
+        const preference = localStorage.getItem('hoopdad-theme');
+        const theme = preference === 'light' || preference === 'dark' ? preference : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.bsTheme = theme;
+      } catch (_) {
+        document.documentElement.dataset.bsTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+    </script>
+    <script defer src="{{ '/assets/site.js' | relative_url }}"></script>
+    {% if jekyll.environment == "production" %}
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "304aa2ec47a54d91b61e35ff8c7ed1bb"}'></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-67DNYBWLZF"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-67DNYBWLZF');
+      </script>
+    {% endif %}
+  </head>
+  <body class="editorial-site">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {% include header.html %}
+    <main id="main-content" class="site-main" tabindex="-1">{{ content }}</main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <a class="footer-brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          <p>Original thinking. Practical engineering.</p>
+          <p class="disclaimer">Opinions are my own, not necessarily my employer's.</p>
+        </div>
+        <nav aria-label="Footer">
+          <a href="{{ '/archive/' | relative_url }}">All writing</a>
+          <a href="{{ '/about/' | relative_url }}">About Mike</a>
+          <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+          <a href="https://mikeolivieri.substack.com">Substack</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; {{ 'now' | date: "%Y" }} {{ site.social.name }}</span>
+        <span>Built with Jekyll &amp; <a href="https://chirpy.cotes.page/">Chirpy</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

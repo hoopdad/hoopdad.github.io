@@ -1,0 +1,21 @@
+---
+layout: null
+permalink: /search.json
+---
+{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+[
+{% for post in visible_posts %}
+  {% assign topic = site.data.topics | where: "key", post.topic | first %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "topic": {{ post.topic | jsonify }},
+    "topicTitle": {{ topic.title | jsonify }},
+    "topicUrl": {{ '/topics/' | append: topic.key | append: '/' | relative_url | jsonify }},
+    "tags": {{ post.tags | jsonify }},
+    "description": {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 180 | jsonify }},
+    "content": {{ post.content | strip_html | normalize_whitespace | jsonify }},
+    "date": {{ post.date | date: "%b %-d, %Y" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

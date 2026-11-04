@@ -1,4 +1,10 @@
-# The New Management Problem
+---
+layout: post
+title: The New Management Problem
+topic: agents
+series: coding-agent-operating-model
+series_order: 3
+---
 
 ![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 

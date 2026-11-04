@@ -1,6 +1,9 @@
 ---
 layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 1"
+series: loop-engineering
+series_order: 1
+tags: [agents]
 ---
 
 # Which Loops are you Engineering?
@@ -211,6 +214,6 @@ AI alone for your business or livelihood is perilous.
 
 ## Token Efficiency Series
 
-- [Token Efficiency - Part 1 - An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
-- [Token Efficiency - Part 2 - Design Patterns]({% post_url /ai/2026-05-27-token-efficiency-part2 %})
-- [Token Efficiency - Part 3 - An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})
+- [Token Efficiency - Part 1 - An Architectural Constraint]({% post_url tokenomics/2026-05-27-token-efficiency-part1 %})
+- [Token Efficiency - Part 2 - Design Patterns]({% post_url tokenomics/2026-05-27-token-efficiency-part2 %})
+- [Token Efficiency - Part 3 - An Operational Playbook]({% post_url tokenomics/2026-05-27-token-efficiency-part3 %})

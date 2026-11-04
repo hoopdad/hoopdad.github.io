@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign topic = site.data.topics | where: "key", page.topic | first %}
+{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+{% assign topic_posts = visible_posts | where_exp: "post", "post.topic == page.topic or post.tags contains page.topic" %}
+{% assign starter = visible_posts | where: "slug", topic.start | first %}
+<div class="topic-page">
+  <header class="page-heading">
+    <p class="eyebrow">{{ topic.eyebrow }}</p>
+    <h1>{{ topic.title }}</h1>
+    <p>{{ topic.description }}</p>
+    <span class="collection-count">{{ topic_posts.size }} essays &amp; field notes</span>
+  </header>
+  {% if starter %}
+    <section class="topic-starter" aria-labelledby="topic-start-title">
+      <div><p class="eyebrow">New to this topic?</p><h2 id="topic-start-title">A good place to start.</h2></div>
+      <a href="{{ starter.url | relative_url }}"><h3>{{ starter.title | escape }}</h3><p>{{ starter.description | default: starter.excerpt | strip_html | normalize_whitespace | truncate: 170 | escape }}</p><span class="text-link">Read the introduction &rarr;</span></a>
+    </section>
+  {% endif %}
+  {% assign topic_series = site.data.series | where: "topic", page.topic %}
+  {% if topic_series.size > 0 %}
+    <section class="home-section" aria-labelledby="topic-series-title">
+      <div class="section-heading"><h2 id="topic-series-title">Follow a reading path</h2></div>
+      <div class="series-grid">{% for series in topic_series %}{% include series-card.html series=series %}{% endfor %}</div>
+    </section>
+  {% endif %}
+  <section class="home-section" aria-labelledby="topic-posts-title">
+    <div class="section-heading"><h2 id="topic-posts-title">All {{ topic.title }} writing</h2><a class="text-link" href="{{ '/search/' | relative_url }}?topic={{ topic.key }}">Search this topic &rarr;</a></div>
+    <div class="article-grid">{% for post in topic_posts %}{% include post-card.html post=post %}{% endfor %}</div>
+  </section>
+</div>

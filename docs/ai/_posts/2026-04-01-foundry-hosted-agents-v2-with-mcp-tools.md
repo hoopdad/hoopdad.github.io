@@ -1,6 +1,9 @@
 ---
 layout: post
 title:  "Foundry Hosted Agents v2 with MCP Tools"
+topic: agents
+tags: [ai-engineering, mcp, azure]
+description: Connect hosted agents to MCP tools and turn emerging architecture patterns into a working implementation.
 ---
 
 Agents are becoming more mainstream and implementation patterns are starting

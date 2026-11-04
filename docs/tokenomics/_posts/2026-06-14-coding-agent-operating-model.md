@@ -1,4 +1,10 @@
-# The Operating Model: Rules, Agents, Critics, and Deployment
+---
+layout: post
+title: "The Operating Model: Rules, Agents, Critics, and Deployment"
+topic: agents
+series: coding-agent-operating-model
+series_order: 4
+---
 
 ![Managing AI Coding Agents in the Enterprise](/assets/2026/coding-agents-enterprise/managing-ai-coding-agents-in-the-enterprise.png)
 

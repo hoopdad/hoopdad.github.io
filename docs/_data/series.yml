@@ -1,0 +1,20 @@
+- key: token-efficiency
+  title: Token Efficiency
+  description: Treat tokens as an architectural constraint, not just a line on the bill.
+  topic: tokenomics
+  featured: true
+- key: loop-engineering
+  title: Loop Engineering
+  description: Inside the loops, feedback, and context that make agentic work more effective.
+  topic: tokenomics
+  featured: true
+- key: coding-agent-operating-model
+  title: The Agent Operating Model
+  description: A five-part guide to capabilities, management, operating models, and risk.
+  topic: agents
+  featured: true
+- key: safe-ai
+  title: Safe AI
+  description: Practical guardrails for model responses, sensitive data, and production use.
+  topic: ai-engineering
+  featured: false

@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Your Vision Matters"
+topic: agents
+description: Start with human ambition and useful outcomes, not with what the model can generate.
 ---
 
 ## Innovating for Outcomes with AI: Your Vision Matters

@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Safe AI - Part 2 - Guardrails.ai and OpenAI on Azure"
+series: safe-ai
+series_order: 2
 ---
 
 This is the next post in a series of articles about AI Safety and ways to

@@ -1,36 +1,88 @@
 ---
 layout: default
 ---
+{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+{% assign primary_posts = visible_posts | where_exp: "post", "post.topic != 'cloud' and post.topic != 'data'" %}
+<div class="home-page">
+  <section class="home-hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Field notes from the agent era</p>
+      <h1 id="hero-title">Building agents<br>that <em>work.</em><br>Understanding<br>what they <em>cost.</em></h1>
+      <p class="hero-description">Original thinking on agents, AI engineering, and token economics. Less hype. More architecture, experiments, and lessons from doing the work.</p>
+      <div class="hero-actions">
+        <a class="button" href="#start-here">Find your starting point <span aria-hidden="true">&rarr;</span></a>
+        <a class="quiet-link" href="{{ '/about/' | relative_url }}">By Mike Olivieri</a>
+      </div>
+    </div>
+    <aside class="hero-note" aria-label="The latest field note">
+      <div class="note-top"><span class="eyebrow">The latest field note</span><span class="note-number" aria-hidden="true">01 /</span></div>
+      {% assign latest = primary_posts | first %}
+      {% assign latest_topic = site.data.topics | where: "key", latest.topic | first %}
+      <div class="note-diagram" aria-hidden="true">
+        <span class="diagram-label">Intent</span><span class="diagram-line"></span><span class="diagram-node">Agent</span>
+        <div class="diagram-loop"><span>Context</span><span>Tools</span><span>Feedback</span></div>
+        <span class="diagram-line"></span><span class="diagram-label">Outcome</span>
+      </div>
+      <a class="topic-label" href="{{ '/topics/' | append: latest_topic.key | append: '/' | relative_url }}">{{ latest_topic.title }}</a>
+      <h2><a href="{{ latest.url | relative_url }}">{{ latest.title | escape }}</a></h2>
+      <p>{{ latest.description | default: latest.excerpt | strip_html | normalize_whitespace | truncate: 155 | escape }}</p>
+      <a class="text-link" href="{{ latest.url | relative_url }}">Read the field note <span aria-hidden="true">&rarr;</span></a>
+    </aside>
+  </section>
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+  <section id="start-here" class="home-section" aria-labelledby="start-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Three lenses. One connected system.</p><h2 id="start-title">Where do you want to go?</h2></div>
+      <span class="section-aside">Start with the question, not the tool.</span>
+    </div>
+    <div class="topic-grid">
+      {% for topic in site.data.topics %}
+        {% if topic.primary %}
+          {% assign starter = visible_posts | where: "slug", topic.start | first %}
+          <article class="topic-card">
+            <span class="topic-number" aria-hidden="true">0{{ forloop.index }}</span>
+            <p class="eyebrow">{{ topic.eyebrow }}</p>
+            <h3><a href="{{ '/topics/' | append: topic.key | append: '/' | relative_url }}">{{ topic.title }} <span aria-hidden="true">&nearr;</span></a></h3>
+            <p>{{ topic.description }}</p>
+            {% if starter %}<a class="starter-link" href="{{ starter.url | relative_url }}"><span>Start here</span>{{ starter.title | escape }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
 
+  <section class="home-section series-section" aria-labelledby="series-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Go beyond a single post</p><h2 id="series-title">Ideas worth following through.</h2></div>
+      <a class="text-link" href="{{ '/series/' | relative_url }}">All series <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="series-grid">
+      {% for series in site.data.series %}
+        {% if series.featured %}{% include series-card.html series=series %}{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="latest-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Architecture. Experiments. Perspective.</p><h2 id="latest-title">Latest thinking</h2></div>
+      <a class="text-link" href="{{ '/archive/' | relative_url }}">All writing <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="article-grid">
+      {% for post in primary_posts limit:6 %}{% include post-card.html post=post %}{% endfor %}
+    </div>
+  </section>
+
+  <section class="foundations home-section" aria-labelledby="foundations-title">
+    <div><p class="eyebrow">The foundations still matter</p><h2 id="foundations-title">Good AI needs good engineering.</h2><p>The cloud and data work behind the agents. Still here, still useful.</p></div>
+    <div class="foundation-links">
+      {% for topic in site.data.topics %}
+        {% unless topic.primary %}
+          {% assign topic_posts = visible_posts | where: "topic", topic.key %}
+          <a href="{{ '/topics/' | append: topic.key | append: '/' | relative_url }}"><span>{{ topic.title }}<small>{{ topic_posts.size }} field notes</small></span><span aria-hidden="true">&rarr;</span></a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
   {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      {%- unless post.hidden -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endunless -%}
-      {%- endfor -%}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
-
 </div>

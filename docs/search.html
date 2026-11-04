@@ -1,0 +1,18 @@
+---
+layout: default
+title: Search
+permalink: /search/
+description: Find original thinking across the full archive of agents, AI engineering, tokenomics, cloud, and data.
+---
+<div class="search-page">
+  <header class="page-heading"><p class="eyebrow">Find the useful part</p><h1>Search the field notes.</h1><p>Search titles, topics, and the full text. The foundations are here too.</p></header>
+  <form class="search-form" role="search" action="{{ '/search/' | relative_url }}" data-index="{{ '/search.json' | relative_url }}">
+    <label for="search-input">What are you working on?</label>
+    <div class="search-controls"><input id="search-input" name="q" type="search" placeholder="Try loop engineering, MCP, or private networking" autocomplete="off"><button class="button" type="submit">Search &rarr;</button></div>
+    <label for="search-topic">Topic</label>
+    <select id="search-topic" name="topic"><option value="">All topics</option>{% for topic in site.data.topics %}<option value="{{ topic.key }}">{{ topic.title }}</option>{% endfor %}</select>
+  </form>
+  <p id="search-status" class="search-status" role="status" aria-live="polite">Enter a phrase or choose a topic to explore the archive.</p>
+  <div id="search-results" class="article-grid"></div>
+  <noscript><p>Search needs JavaScript. You can still <a href="{{ '/archive/' | relative_url }}">browse every article in the archive</a>.</p></noscript>
+</div>

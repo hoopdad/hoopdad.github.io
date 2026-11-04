@@ -1,0 +1,30 @@
+- key: agents
+  title: Agents
+  eyebrow: Systems that do the work
+  description: Architecture, orchestration, and operating models for agents that deliver real outcomes.
+  primary: true
+  start: agents-dashboards-anti-pattern
+- key: ai-engineering
+  title: AI Engineering
+  eyebrow: From possibility to production
+  description: Practical implementations, grounded models, and guardrails for reliable AI.
+  primary: true
+  start: guardrails-for-generated-code-in-production
+- key: tokenomics
+  title: Tokenomics
+  eyebrow: AI cost & efficiency
+  description: Tokens, loops, energy, and the architectural choices that make AI sustainable.
+  primary: true
+  start: token-efficiency-part1
+- key: cloud
+  title: Cloud Architecture
+  eyebrow: The infrastructure underneath
+  description: Secure Azure platforms, private networking, managed identities, and composable infrastructure.
+  primary: false
+  start: Secure-PaaS-in-Azure-Terraform-Build-and-Deploy
+- key: data
+  title: Data Engineering
+  eyebrow: Reliable data, useful systems
+  description: Data pipelines, Snowflake, automation, and the engineering practices that keep them running.
+  primary: false
+  start: devops-data-engineering

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Token Efficiency - Part 2 - Design Patterns"
+series: token-efficiency
+series_order: 2
 ---
 
 ![Token Efficiency - Part 2 - Design Patterns](/assets/2026/token-efficiency/token-efficiency-design-patterns-32x9-v1.png)
@@ -218,5 +220,5 @@ Part 3 will move from patterns to operations: how to turn these ideas into a pra
 
 ## Continue the Series
 
-- [Part 1: An Architectural Constraint]({% post_url /ai/2026-05-27-token-efficiency-part1 %})
-- [Part 3: An Operational Playbook]({% post_url /ai/2026-05-27-token-efficiency-part3 %})
+- [Part 1: An Architectural Constraint]({% post_url tokenomics/2026-05-27-token-efficiency-part1 %})
+- [Part 3: An Operational Playbook]({% post_url tokenomics/2026-05-27-token-efficiency-part3 %})

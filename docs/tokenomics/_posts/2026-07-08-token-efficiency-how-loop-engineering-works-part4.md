@@ -1,6 +1,10 @@
 ---
 layout: post
 title:  "Token Efficiency Lessons From Loop Engineering Part 4"
+series: loop-engineering
+series_order: 4
+tags: [agents]
+description: How agents, skills, tools, and instructions fit together inside the Copilot CLI ecosystem.
 ---
 
 ![relationship between agents, skills, tools, instructions, and github copilot cli](/assets/2026/loop-engineering/github-copilot-cli-ecosystem-wide-32x9-v3-final-preview.jpg)

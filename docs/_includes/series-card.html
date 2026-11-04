@@ -1,0 +1,10 @@
+{% assign card_series = include.series %}
+{% assign chapters = site.posts | where: "series", card_series.key | where_exp: "post", "post.hidden != true" | sort: "series_order" %}
+{% if chapters.size > 0 %}
+<a class="series-card" href="{{ '/series/' | append: card_series.key | append: '/' | relative_url }}">
+  <span class="eyebrow">{{ chapters.size }}-part reading path</span>
+  <h3>{{ card_series.title }}</h3>
+  <p>{{ card_series.description }}</p>
+  <span class="text-link">Explore the series <span aria-hidden="true">&rarr;</span></span>
+</a>
+{% endif %}

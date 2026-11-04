@@ -1,5 +1,7 @@
-Gemfile.lock
 _site/
 .sass-cache/
+.jekyll-cache/
 docs/.bundle/
 docs/vendor/
+docs/node_modules/
+docs/test-results/

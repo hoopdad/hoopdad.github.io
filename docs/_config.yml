@@ -1,47 +1,70 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: hoopdad dunks
-description: >- # this means to ignore newlines until "baseurl:"
-  A dad who likes hoops (basketball) and coding. Most likely the topics will 
-  be about coding and dadding, not so much hooping anymore. Opinions are my own and not necessarily my employers'.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://hoopdad.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  hoopdad
+tagline: Building agents that work. Understanding what they cost.
+description: >-
+  Original thinking and practical field notes on agents, AI engineering, and
+  token economics. Built on a foundation of cloud architecture and data engineering.
+baseurl: ""
+url: "https://hoopdad.github.io"
+lang: en
+timezone: America/New_York
+github_username: hoopdad
+social:
+  name: Mike Olivieri
+  links:
+    - https://www.linkedin.com/in/mikeolivieri1/
+    - https://github.com/hoopdad
 feedback_repository: hoopdad/hoopdad.github.io
 feedback_discussion_category_helpful: helpful
 feedback_discussion_category_needs_clarity: needs-clarity
 feedback_discussion_category_found_issue: found-an-issue
 
-# Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-chirpy
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
-header_pages:
-  - about.md
+# Topic metadata must not alter categories: existing URLs include the directory category.
+permalink: /:categories/:year/:month/:day/:title:output_ext
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      topic: ai-engineering
+  - scope:
+      path: tokenomics
+      type: posts
+    values:
+      topic: tokenomics
+  - scope:
+      path: cloud
+      type: posts
+    values:
+      topic: cloud
+  - scope:
+      path: data
+      type: posts
+    values:
+      topic: data
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+sass:
+  style: compressed
+  sourcemap: never
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - substack-import.xml
+  - tests
+  - package.json
+  - package-lock.json
+  - playwright.config.cjs
