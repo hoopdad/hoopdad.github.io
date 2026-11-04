@@ -1,0 +1,144 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-claims-evidence-03",
+  "analyst": "insurance-claims-evidence-03-analyst",
+  "reviews": [
+    {
+      "answer_id": "bcac5986a96354d6190fd2dd83cc151c994bb1411f60e0024fc35a2d1f460663",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "defensible-answer",
+      "narrative": "The water task requests a concise P1/P2 coverage-evidence packet and an explanation of how two incident dates with no established precedence affect readiness. The answer retains 4 June and the second document's relative date, connects the sudden-failure inspection to P1 without declaring coverage, retains P2 as the gradual-seepage alternative, and separates the 1800-unit invoice from payment approval. Its statement that the packet is 'advisory-complete but not decision-ready' is consistent with the supplied distinction between a completed advisory deliverable and an unresolved human decision. It also requests identified copies and contemporaneous date support rather than selecting a preferred date. A competing reading could question concision: repeated limitations and specialist visit identifiers distract from the business summary. The visit identifiers are also assertions in the answer, not independently substantiated by the supplied scenario records. Neither observation establishes that the material coverage or date-conflict deliverables are absent. A human should check whether the repeated material materially impairs usability and whether any claimed workflow provenance requires separate substantiation. No persuasive substantive defect explains the split on the supplied business evidence. Both evaluator rationales are absent; this interpretation does not recover their reasons.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The coverage, invoice and date-conflict comparisons are direct; the significance of repetition and unverified workflow provenance is interpretive. Native evaluator confidence is not used as analyst confidence."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "the packet is advisory-complete but not decision-ready"},
+        {"source": "output", "reference": "", "quote": "The 1800-unit invoice records a charge but is not an approved payment."},
+        {"source": "criterion", "reference": "/levels/2/constraint", "quote": "Neither version has established precedence. Explain how the conflict changes review readiness."},
+        {"source": "criterion", "reference": "/variants/0/request", "quote": "Prepare a concise coverage-evidence packet using P1 and P2, separating documented facts from the adjuster's decision."}
+      ]
+    },
+    {
+      "answer_id": "56ae1c4e8005faf034fb696a3bbc6bd42284a20800358e4c8dc39a94227ddd2d",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["numerical-rule-application", "evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "This duplicate-invoice task combines reconciliation of S1/I7 original/copy records with a 30-minute review and an unverified manual export. The answer identifies one potential I7 duplicate, keeps I8 separate, and explicitly qualifies the 600-plus-200 total as provisional. Those calculations follow the supplied identifiers and original/copy labels rather than an amount-only match. It does not accuse fraud or claim that a ledger entry has been removed. The export fallback requires comparison with a manifest or source records and prevents a provisional schedule from supporting final coverage or recovery conclusions. A competing interpretation is that counting I7 once is premature while the answer also says transaction-level duplication and record authority remain unverified. However, the task asks about potential duplicate counting, not a final payable balance, and the answer repeatedly limits its 800-unit schedule to that purpose. Its requests for payment, credit and reversal records are proposed verification, not invented transaction findings. A human should check whether the conditional schedule is sufficiently differentiated from a settled invoice balance and whether the manifest comparison adequately preserves the deadline dependency. On the supplied text, neither arithmetic nor fallback reliance supplies a convincing substantive defect. The unexplained votes do not establish which interpretation either evaluator used.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The arithmetic and explicit provisional limitations are visible; whether an even narrower duplicate schedule was required is a qualitative scope question, not resolved by native probabilities."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The provisional nonduplicated schedule is one I7 at 600 units plus I8 at 200 units, totaling 800 units."},
+        {"source": "output", "reference": "", "quote": "This calculation addresses duplicate counting only; it does not determine coverage, liability, recovery, settlement, or payment."},
+        {"source": "criterion", "reference": "/variants/2/required_outputs/0", "quote": "Flag I7 as one potential duplicate"},
+        {"source": "criterion", "reference": "/levels/3/required_outputs/0", "quote": "Validate fallback before use"}
+      ]
+    },
+    {
+      "answer_id": "0c038fc4ae92c5bc02e093c5a5fe1b361d1b908556897c02722b8343d263fe18",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The interruption task asks for prerequisites and a conditional checklist, while B1 requires covered physical damage and the inspection establishes only a candidate, not adjuster approval. The answer preserves that distinction and provides concrete closure, causation, financial-record and export-validation requests. It keeps the 30-minute deadline and says an unfinished validation permits only clearly provisional material, not final coverage or recovery conclusions. The main interpretive tension is how far the absence of an approved physical-damage determination restricts the requested review. The answer says to obtain a B1 determination first and submit interruption evidence for human review only if B1 is satisfied. A strict reading could treat that sequence as delaying even preliminary evidence work or as turning human approval into an additional literal clause condition. The competing reading is stronger in context: the answer expressly permits organizing the reported two-day closure for conditional review, and the supplied specialist instructions distinguish a candidate from approval. Its financial checklist is a proposed evidence request, not an assertion that additional policy terms exist. A human should distinguish preliminary document triage from substantive interruption assessment and confirm that the stated ordering does not prevent the requested provisional review. This is a scope ambiguity, not evidence that either evaluator's unexplained vote is correct.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The B1 wording and answer's sequencing are explicit, but the boundary between preliminary organization and substantive review permits competing readings. Native confidence is a separate diagnostic."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The reported two-day closure may be organized for conditional review"},
+        {"source": "output", "reference": "", "quote": "submit interruption evidence for human review only if B1 is satisfied."},
+        {"source": "evidence", "reference": "fact-2", "quote": "Clause B1 requires covered physical damage before interruption review."},
+        {"source": "criterion", "reference": "/variants/3/request", "quote": "Explain the prerequisites for reviewing interruption evidence and prepare a conditional review checklist."}
+      ]
+    },
+    {
+      "answer_id": "8c2cd883d13849805015ab905164d85f7b8f8c7a5922520875fff8b64093dbf4",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "For the same interruption scenario, this answer gives a detailed conditional checklist, preserves B1's physical-damage prerequisite and refuses to equate a two-day closure or candidate event with covered interruption. It also narrows an unvalidated export to a provisional triage index, explicitly excluding its use as support for consequential conclusions. The visible wording tension is the heading 'Validated conditional fallback', followed later by an express statement that the fallback is not validated on the current record. Read in isolation, the heading could imply a completed verification that the evidence does not establish. Read as a whole, the paragraph specifies proposed validation checks, explains the missing manifest, and directly negates completed validation. Likewise, the opening explains that advisory completeness is not underlying coverage-review completeness. The competing interpretations are therefore a misleading local label versus a sufficiently corrected, clearly conditional final packet. Replacement characters in some issue labels reduce polish but do not erase the operative conditions. A human should check whether a skimming adjuster could mistake the heading for actual validation, and whether the nearby express limitation makes the intended status unmistakable. The opposite vote direction from the other interruption answer is recorded evidence, not proof of a model motive or correctness.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The conflicting validation label and express correction are exact textual observations; their practical materiality requires human interpretation and is not inferred from either native vote."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Validated conditional fallback"},
+        {"source": "output", "reference": "", "quote": "The fallback itself is not validated on the current record because no manifest or control report is supplied."},
+        {"source": "criterion", "reference": "/levels/3/required_outputs/0", "quote": "Validate fallback before use"},
+        {"source": "criterion", "reference": "/levels/3/forbidden_claims/0", "quote": "Unverified export complete"}
+      ]
+    },
+    {
+      "answer_id": "a6fbbb73bb98e45a74c6d37c5dc84730b3b188b6da3e1bbea38f1305851b0790",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality", "evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "The motor task requests a possible-third-party recovery brief from a parked-vehicle collision account, a 2400-unit estimate, witness evidence and a contact reference. The answer identifies those items as an investigative trail without converting them into fault, a receivable or an approved recovery. It requests the underlying records, incident linkage, identities and policy wording, and carries the unverified-export limitation into the 30-minute fallback. The fallback separates a provisional human review packet from conclusions that require controlled-source validation and reconciliation. One competing reading could regard its extended settlement discussion and requests for cooperation, exclusion or contractual-deadline clauses as unnecessary expansion beyond the narrow brief. However, these are missing-evidence requests or prohibitions on unsupported use, not assertions that particular clauses or a settlement demand exist. The answer expressly states that no demand is supplied and that freshness is unknown rather than established stale. Its claim that current specialist results are present is not independently demonstrated by the supplied business records, so a human should separately verify workflow provenance if relevant. The substantive human check is whether the conditional evidence trail and validation steps meet the requested review, not whether liability can already be decided. No convincing business-output defect explains the split; neither evaluator supplied its rationale.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The conditional recovery and no-liability boundaries directly match the scenario. Relevance of extra requests and unsupported workflow provenance is interpretive; native confidence does not establish correctness."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The estimate is not an admission, settlement amount, recovery receivable, or approved payment."},
+        {"source": "output", "reference": "", "quote": "Its freshness is unknown, not established as current or stale."},
+        {"source": "criterion", "reference": "/variants/1/required_outputs/0", "quote": "Conditional recovery opportunity"},
+        {"source": "evidence", "reference": "fact-2", "quote": "A repair estimate is 2400 units; no liability ruling exists."}
+      ]
+    },
+    {
+      "answer_id": "5f91a93adcc95cfe4f2f89c7f1b595bde0ee5677d43adeace0fcd6f2f449a647",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This motor answer supplies the requested recovery evidence trail and lists the unresolved incident, witness, contact and estimate details. It correctly distinguishes the 2400-unit estimate from an established recoverable amount and preserves the absence of a liability ruling. The interpretive tension concerns the fallback's validation threshold. Its opening allows a manual export after specified human validation, while the detailed paragraph asks for record-count or control-total comparisons against an available source index, records unavailable checks, and expressly prohibits reliance if source, integrity or incident association cannot be established. A strict reading could see a gap: passing those minimum checks might still leave completeness unverified, even though the level requires validation before use. The competing reading distinguishes provisional presentation from evidentiary reliance: the packet must remain potentially incomplete, all gaps are recorded, and coverage, liability, recovery and settlement conclusions remain pending. The answer also does not claim that a source index is actually supplied. A human should decide whether the proposed minimum checks adequately authorize only a limited triage presentation and whether missing completeness checks prevent any further use. This is a concrete scope question about the proposed fallback, not an inferred explanation of the original votes or a new evaluation.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The proposed minimum checks and retained incompleteness are visible. The scenario does not specify an exact validation threshold, leaving limited-use scope open to interpretation; native probabilities remain separate."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Record every mismatch and unavailable check, including signature, date and freshness checks."},
+        {"source": "output", "reference": "", "quote": "Do not rely on the fallback if its source, integrity or incident association cannot be established"},
+        {"source": "criterion", "reference": "/levels/3/required_outputs/0", "quote": "Validate fallback before use"},
+        {"source": "criterion", "reference": "/levels/3/constraint", "quote": "coverage and recovery review depend on reconciled evidence."}
+      ]
+    },
+    {
+      "answer_id": "d204a7fed97e69b307ed3890c98420cf9cc5b6bba7552a71675468260168a1a2",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "apparent-defect",
+      "narrative": "The status task asks for a factual, unsent customer draft and an internal evidence checklist, alongside a conditional export fallback for a review in 30 minutes. Most deliverables are visible: receipt and pending review, a numbered checklist, explicit draft-only labeling, validation steps and preservation of downstream reconciliation dependencies. A specific evidentiary overstatement occurs inside the customer draft. The source says no payment, coverage decision or supplier instruction is recorded; the draft says no coverage or payment decision has been made and no supplier instruction has been issued. Record absence does not itself establish that an event never occurred, and absence of a payment is not identical to absence of a payment decision. The competing interpretation is that this narrow synthetic scenario intends a simple pending status and the rest of the answer repeatedly preserves the record-based wording, so the draft may be ordinary shorthand rather than a consequential misrepresentation. Nevertheless, a factual customer response should not silently strengthen the supplied evidence. A human should check whether the underlying record establishes actual nonoccurrence or revise the proposed wording to retain 'recorded'. The answer does not claim the draft was sent. This observed wording defect is not a recovered evaluator reason; both rationales are absent.",
+      "confidence": {
+        "level": "high",
+        "basis": "The move from no recorded event to categorical nonoccurrence is directly visible in the draft and supplied fact. This supports the observation, not certainty about materiality, evaluator motives or correctness."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "No coverage or payment decision has been made, and no supplier instruction has been issued."},
+        {"source": "evidence", "reference": "fact-2", "quote": "No payment, coverage decision or supplier instruction is recorded."},
+        {"source": "criterion", "reference": "/variants/4/request", "quote": "Draft a factual status response and an internal next-evidence checklist without claiming a decision or sent message."}
+      ]
+    },
+    {
+      "answer_id": "964a912bff94599a6b538b4fd9de8931a096fc67a3f5df8e0ba49b8b96517a4e",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "This status answer retains the supplied record-limited wording in its customer draft, states receipt and pending review, and explicitly says the correspondence is not sent or delivered. The internal checklist asks for an inventory, document attributes, export comparison, gap log and the timestamp anchoring the relative deadline. It usefully distinguishes missing policy or third-party evidence needed for downstream substantive reviews from evidence needed merely to draft a pending-status response. The conditional fallback permits only a provisional review aid after minimum inventory checks, requires an unverified-completeness label and denies reliance if those checks cannot be completed. A competing reading could question whether a packet can be called advisory-complete while reconciliation and coverage/recovery review remain unfinished. The supplied framework allows completed advisory limitations, and the answer expressly says the fallback neither satisfies nor removes the reconciliation dependency, so completeness is not plainly misrepresented as a completed business decision. Its promise of a further status is proposed draft language, not a claim that notification occurred. A human should check whether the limited fallback is sufficiently distinguished from substantive evidence reliance and whether the proposed future-update wording is authorized before delivery. No persuasive visible defect establishes the source of the disagreement; the original votes contain no rationale.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The record-qualified draft and pending dependencies directly support a defensible reading. Limited provisional use and advisory completeness remain qualitative scope questions, independent of native confidence."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "No payment, coverage decision, or supplier instruction is recorded."},
+        {"source": "output", "reference": "", "quote": "The fallback does not satisfy or remove the reconciled-evidence dependency."},
+        {"source": "output", "reference": "", "quote": "they are not prerequisites to issuing this factual pending-status draft."},
+        {"source": "criterion", "reference": "/variants/4/required_outputs/1", "quote": "Draft only, not delivered correspondence"},
+        {"source": "criterion", "reference": "/levels/3/required_outputs/1", "quote": "Preserve review dependencies and deadline"}
+      ]
+    }
+  ]
+}

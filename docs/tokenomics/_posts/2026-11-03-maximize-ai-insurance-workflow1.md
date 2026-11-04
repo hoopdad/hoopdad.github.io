@@ -55,7 +55,7 @@ I built nine workflows: eight insurance/reinsurance cases and customer support. 
 
 The intended comparison holds the GPT-5.6 Sol workers, prompts, evidence, tools and completion rules fixed while changing the router. The saved collection includes recovered runs and different recorded versions/settings; it is not one pristine campaign. The dashboard's matched native cohort contains 156 pairs, excluding mixed-version and offline-revalidated pairs. Claims has 25 pairs, of which 19 have matched recorded settings and six do not.
 
-The claims evidence & coverage pack ranges from level 1 (simplest) to level 5 (hardest). Each saved answer was independently evaluated by GPT-5.6 Sol and Decision-1 using [`scenario-acceptability-v2`](https://github.com/hoopdad/think-fast-tests/blob/main/src/think_fast_tests/agent_workflows/scenario_evaluation.py){:target="_blank"}. The rubric prioritizes accuracy and material completeness, requires enough clarity for human review, and checks the selected scenario's evidence, deliverables, arithmetic and human-authority boundary. It requests a binary accept/reject judgment, not a rationale or confidence score.
+The claims evidence & coverage pack ranges from level 1 (simplest) to level 5 (hardest). Each saved answer was independently evaluated by GPT-5.6 Sol and Decision-1 using [`scenario-acceptability-v2`](/assets/2026/tokenomics/think-fast-tests/src/think_fast_tests/agent_workflows/scenario_evaluation.py){:target="_blank"}. The rubric prioritizes accuracy and material completeness, requires enough clarity for human review, and checks the selected scenario's evidence, deliverables, arithmetic and human-authority boundary. It requests a binary accept/reject judgment, not a rationale or confidence score.
 
 Repeatability was a separate, post-hoc study: the 90 originally disagreeing answers across all workflows were evaluated twice more, with the original answers and votes preserved. That tests evaluator consistency; it is not pre-validation of accuracy.
 
@@ -75,7 +75,7 @@ Across the 25 claims pairs, Decision-1's median run was 140.98 seconds and $0.44
 
 The quality rows show each evaluator separately. Originally agreeing answers retain their initial votes. For originally disagreeing answers, each evaluator's result is its own majority across the original vote and two post-hoc repeats. This does not mean every answer was evaluated three times. In claims, 31 of the 50 saved answers received repeats; the other 19 retain their original agreeing votes.
 
-Under that aggregation, evaluator agreement across all nine workflows is **376/450 (83.56%)**, supporting the observation that overall agreement exceeded 80% after repeated evaluation. The claims-only figure is **22/50 (44%)**. Those agreement percentages include shared accepts and shared rejects; they are not the acceptance rates in the table, an accuracy measure or proof that either router preserved or reduced answer quality. The [three-pass record](https://github.com/hoopdad/think-fast-tests/blob/main/assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/three-pass-pairs.csv){:target="_blank"} retains the original and repeated votes.
+Under that aggregation, evaluator agreement across all nine workflows is **376/450 (83.56%)**, supporting the observation that overall agreement exceeded 80% after repeated evaluation. The claims-only figure is **22/50 (44%)**. Those agreement percentages include shared accepts and shared rejects; they are not the acceptance rates in the table, an accuracy measure or proof that either router preserved or reduced answer quality. The [three-pass record](/assets/2026/tokenomics/think-fast-tests/assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/three-pass-pairs.csv){:target="_blank"} retains the original and repeated votes.
 
 On the 19 matched-settings claims pairs, the reductions are 13.32% in inference cost and 3.65% in elapsed time. The dashboard reports uncertainty separately; these are observations from selected synthetic runs, not guaranteed production savings.
 
@@ -83,9 +83,9 @@ Inference cost includes all recorded internal model calls and repairs in each se
 
 The fixed study rate card uses USD per million tokens: GPT input $4.00, cached input $0.40 and output $20.00; Decision-1 input and cached input $0.042, output $0. Cached tokens are already included in the input count. These are recorded operator assumptions, not independently verified current Azure prices.
 
-Every test, with its run time, tokens, cost and saved votes, is in the [results report](https://github.com/hoopdad/think-fast-tests/blob/main/assets/runs/analysis-h2-r6-wus3-20261029-v2/index.html){:target="_blank"} and its [workflow CSV](https://github.com/hoopdad/think-fast-tests/blob/main/assets/runs/analysis-h2-r6-wus3-20261029-v2/workflows.csv){:target="_blank"}. The HTML file is a downloadable report; GitHub's file view is not the interactive dashboard.
+Every test, with its run time, tokens, cost and saved votes, is in the [results report](/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2/index.html){:target="_blank"} and its [workflow CSV](/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2/workflows.csv){:target="_blank"}. The report opens directly here, with its evaluation page and linked downloads hosted alongside it.
 
-<!-- PUBLICATION: Source links use the reference checkout's configured remote, https://github.com/hoopdad/think-fast-tests. Local files were verified, but that repository could not be resolved through authenticated gh and returned HTTP 404 without authentication. Make the source/export accessible or replace these URLs before publishing. -->
+These are static source and evidence snapshots. The [bundle manifest](/assets/2026/tokenomics/think-fast-tests/bundle-manifest.json){:target="_blank"} records original and hosted file hashes. Three report links to an unavailable private runtime page now point to the saved evaluation CSV; those HTML-only adaptations are recorded separately from the original exports' manifests. No private runtime journals or authentication state are included.
 
 <!-- SCREENSHOT 3: Cost versus run time for all 25 claims scenarios, one point per orchestrator run: 50 points in 25 pairs. -->
 ![Cost and run time for each of the 25 claims tests, by orchestrator](/assets/2026/tokenomics/claims-03-cost-vs-time.png)
@@ -120,7 +120,7 @@ This panel is reconstructed from one fresh `l1-water` comparison captured for ro
 
 I built both versions with [Microsoft Agent Framework](https://github.com/microsoft/agent-framework){:target="_blank"} and Foundry. The workflow wires an orchestrator to the five agents. The only thing that changes between versions is which model answers "what's next?"
 
-The [claims workflow module](https://github.com/hoopdad/think-fast-tests/blob/main/src/think-fast-insurance-claims-evidence/workflow.py){:target="_blank"} constructs the five actual framework agents. This is its wiring, not an invented `router.choose` API:
+The [claims workflow module](/assets/2026/tokenomics/think-fast-tests/src/think-fast-insurance-claims-evidence/workflow.py){:target="_blank"} constructs the five actual framework agents. This is its wiring, not an invented `router.choose` API:
 
 ```python
 from . import (
@@ -143,7 +143,7 @@ def create_agents(client_factory, tools_factory):
     return agents
 ```
 
-The [shared execution service](https://github.com/hoopdad/think-fast-tests/blob/main/src/think_fast_tests/agent_workflows/execution.py){:target="_blank"} gives every worker a GPT `DomainAccountedClient`. It changes only the routing client's model:
+The [shared execution service](/assets/2026/tokenomics/think-fast-tests/src/think_fast_tests/agent_workflows/execution.py){:target="_blank"} gives every worker a GPT `DomainAccountedClient`. It changes only the routing client's model:
 
 ```python
 router = DomainAccountedClient(
@@ -153,13 +153,13 @@ router = DomainAccountedClient(
 )
 ```
 
-That is an excerpt inside the service, where `options` binds the provider/accounting context and `gpt` and `decision` are its model identities. The loop computes legal choices, validates each selected route, attaches evidence tools to the authorized visit and calls the selected agent's `run`. The [native runtime adapter](https://github.com/hoopdad/think-fast-tests/blob/main/src/think_fast_tests/agent_workflows/native_runtime.py){:target="_blank"} supplies live providers; the base service's synthetic-only adapter is not itself a live model test.
+That is an excerpt inside the service, where `options` binds the provider/accounting context and `gpt` and `decision` are its model identities. The loop computes legal choices, validates each selected route, attaches evidence tools to the authorized visit and calls the selected agent's `run`. The [native runtime adapter](/assets/2026/tokenomics/think-fast-tests/src/think_fast_tests/agent_workflows/native_runtime.py){:target="_blank"} supplies live providers; the base service's synthetic-only adapter is not itself a live model test.
 
 The GPT router asks the model to pick the next step and parses its answer. The Decision-1 router asks a structured question instead.
 
 ### Asking Decision-1 a question
 
-A decision model doesn't take a chat-message list on this endpoint. It takes the state (the evidence), the instructions (what's being decided) and the criteria (the allowed choices and what each one means). The [native compiler](https://github.com/hoopdad/think-fast-tests/blob/main/src/think-fast-usecase-one/native.py){:target="_blank"} builds those from the case and current workflow state. These are the exact compiled claims criteria and instructions from the captured `l1-water` request:
+A decision model doesn't take a chat-message list on this endpoint. It takes the state (the evidence), the instructions (what's being decided) and the criteria (the allowed choices and what each one means). The [native compiler](/assets/2026/tokenomics/think-fast-tests/src/think-fast-usecase-one/native.py){:target="_blank"} builds those from the case and current workflow state. These are the exact compiled claims criteria and instructions from the captured `l1-water` request:
 
 ```python
 import json
@@ -316,7 +316,7 @@ In the fresh claims capture, the first Decision-1 routing step assigned **99.760
 <!-- SCREENSHOT 7: The Selected evidence panel from a claims run: Decision-1's option and probability table for one routing step, with the selected option highlighted. -->
 ![Decision-1 option probabilities for one routing step in a claims run](/assets/2026/tokenomics/claims-07-probabilities.png)
 
-The code is in the [think-fast-tests repo](https://github.com/hoopdad/think-fast-tests){:target="_blank"}. For more prompt and agent examples, see my [decision-maker repo](https://github.com/hoopdad/decision-maker){:target="_blank"}, and Bart Czernicki's [System One Decisions Console](https://github.com/bartczernicki/SystemOneDecisionsConsole){:target="_blank"} for a wide range of decision use cases. Microsoft's [introduction to Decision-1](https://commandline.microsoft.com/microsoft-decision-1-model-foundry/){:target="_blank"} and the [Foundry model pricing page](https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/microsoft/){:target="_blank"} fill in the rest.
+The linked implementation files are downloadable source snapshots, not a standalone installation of think-fast-tests. For more prompt and agent examples, see my [decision-maker repo](https://github.com/hoopdad/decision-maker){:target="_blank"}, and Bart Czernicki's [System One Decisions Console](https://github.com/bartczernicki/SystemOneDecisionsConsole){:target="_blank"} for a wide range of decision use cases. Microsoft's [introduction to Decision-1](https://commandline.microsoft.com/microsoft-decision-1-model-foundry/){:target="_blank"} and the [Foundry model pricing page](https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/microsoft/){:target="_blank"} fill in the rest.
 
 ## Why Would this be "Responsible"?
 

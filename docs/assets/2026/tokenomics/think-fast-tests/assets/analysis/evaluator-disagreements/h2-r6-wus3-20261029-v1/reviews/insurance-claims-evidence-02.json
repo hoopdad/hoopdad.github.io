@@ -1,0 +1,150 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-claims-evidence-02",
+  "analyst": "claims-evidence-02",
+  "reviews": [
+    {
+      "answer_id": "76095ba1f739f016622dea33e209b6bf25b10210df4c35f2ad3971e15d14eb5d",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "apparent-defect",
+      "narrative": "The task is to flag potential double counting of supplier S1's original/copy I7 pair, retain I8 separately, and identify verification needed for an unavailable signature page. The business reconciliation is careful: the answer says to count I7 once provisionally, allows reassessment if separate charges are established, does not allege fraud, and requests actual execution and source verification. The narrower visible defect is the asserted workflow account: \"The required specialist union is claim-intake, document-verification, and adjuster-review.\" The supplied SOP instead names evidence-reconciliation as the required worker, including for the signature-gap branch; it does not register document-verification as a separate worker. The answer also asserts specific current dependency visits that the supplied scenario records do not corroborate. This matters against the requirement that every finding cite present frozen records, rather than because the invoice interpretation is visibly wrong. A competing reading is that document-verification is an informal functional label, immediately clarified by the reference to evidence-reconciliation, and that workflow metadata is incidental to the requested advisory output. A human should check the actual dependency record and whether such role aliases are permitted before treating that supporting finding as established. Neither evaluator supplied a rationale, so this observable mismatch is not an explanation of either actual vote.",
+      "confidence": {
+        "level": "high",
+        "basis": "The supplied worker registry and the answer's literal required-union label differ directly; the materiality of this metadata defect to business acceptance remains interpretive."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The required specialist union is claim-intake, document-verification, and adjuster-review."},
+        {"source": "output", "reference": "", "quote": "For provisional reconciliation only, retain one I7 record and exclude the copy from duplicate counting unless verified source records establish two separate underlying charges."},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."},
+        {"source": "task", "reference": "", "quote": "Reconcile the evidence pack and identify potential duplicate counting without accusing anyone of fraud."}
+      ]
+    },
+    {
+      "answer_id": "fe489b49a18daf633483ca89137a336140699e68e6fb8bb480ec68b312ba9a9d",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["scope-conditionality", "clarity-consistency"],
+      "assessment": "apparent-defect",
+      "narrative": "This answer must explain B1's covered-physical-damage prerequisite, distinguish the inspection's candidate event from adjuster approval, provide a conditional interruption checklist, and withhold reliance pending signature verification. Those substantive outputs are present: the checklist requests operational and financial records without claiming they exist, and no loss amount or coverage promise is invented. The significant tension is the assertion that an \"accepted upstream proposal\" requires claim-intake, coverage-analysis, forensic-accounting, document-verification, and adjuster-review. The supplied SOP instead specifies claim-intake, evidence-reconciliation, coverage-review, and adjuster-review for this variant and level; forensic-accounting is not a registered required worker. The answer then reports missing separate forensic-accounting and document-verification results as outstanding specialist work. This creates a potentially misleading account of what remains mandatory, despite a usable checklist. It also labels an upstream proposal accepted without supplied upstream result evidence. A competing interpretation is that those terms describe business functions rather than executable workers and that their absence is being disclosed conservatively, not used to conceal missing work. A human should reconcile the stated union with the actual registry and current accepted dependency results, and determine whether outstanding financial evidence has been confused with a mandatory worker result. Neither evaluator returned reasons; the mismatch is an analyst observation, not an attribution of their motives.",
+      "confidence": {
+        "level": "high",
+        "basis": "The named five-role union and claimed missing specialist results can be compared directly with the supplied four-worker registry; the substantive checklist remains independently defensible."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The accepted upstream proposal identifies the necessary specialist union as claim-intake, coverage-analysis, forensic-accounting, document-verification, and adjuster-review."},
+        {"source": "output", "reference": "", "quote": "No separate current forensic-accounting or document-verification result is supplied"},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."},
+        {"source": "criterion", "reference": "/variants/3/required_outputs/0", "quote": "Preserve physical-damage prerequisite"},
+        {"source": "task", "reference": "", "quote": "Explain the prerequisites for reviewing interruption evidence and prepare a conditional review checklist."}
+      ]
+    },
+    {
+      "answer_id": "d2a4c1212760e64af905d7c9deae9742109676149a8394a10695aef3042bb3a3",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "defensible-answer",
+      "narrative": "The requested recovery brief must identify why the delivery-vehicle collision, witness statement, and third-party reference support investigation, without turning a 2400-unit repair estimate into liability or a receivable. It must also request verification of the unavailable signature page. The answer addresses each point, keeps the recovery route conditional, distinguishes estimated damage from recoverable loss, and lists concrete human checks on identity, causation, credibility, legal basis, and source authenticity. The statement \"No liability ruling or recovery entitlement exists\" is less precise than the rest of the answer: the facts establish no liability ruling, but do not prove the absence of a possible legal entitlement. A competing reading is that this means no entitlement is established in this packet, which is reinforced by the later, narrower sentence \"No recovery entitlement or outcome is established.\" The output does not actually reject a possible claim or assert a completed action. On balance, that contextual reading makes the substantive advisory brief defensible rather than a persuasive visible failure. A human should check whether the categorical opening could mislead a business reader, and independently verify the separately asserted dependency metadata if it is material. No evaluator rationale was supplied, so the recorded disagreement remains unexplained rather than evidence that either model's judgment is correct.",
+      "confidence": {
+        "level": "medium",
+        "basis": "All requested business and signature-verification outputs are visible, but the opening entitlement wording admits both a categorical and a contextual reading."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "No liability ruling or recovery entitlement exists"},
+        {"source": "output", "reference": "", "quote": "No recovery entitlement or outcome is established."},
+        {"source": "output", "reference": "", "quote": "The 2400-unit repair estimate is evidence of estimated damage only; it does not establish liability or a recoverable amount."},
+        {"source": "criterion", "reference": "/variants/1/required_outputs/0", "quote": "Conditional recovery opportunity"},
+        {"source": "evidence", "reference": "fact-2", "quote": "A repair estimate is 2400 units; no liability ruling exists."}
+      ]
+    },
+    {
+      "answer_id": "f0a5660c33d3bee175ce2afed958fda51cd0af5d228bdfda1885bce3af14ce36",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "Here the deliverable is an unsent factual status draft plus an internal next-evidence checklist, not a coverage assessment. The answer preserves the supplied received/pending status and the bounded observation that no payment, coverage decision, or supplier instruction is recorded. It explicitly says \"The proposed correspondence has not been approved or sent\" and supplies a usable draft rather than merely claiming one exists. The signature-gap requirement is addressed with requests for the actual page, document/version linkage, signatory authority, execution date, and completeness; reliance remains conditional. The extensive verification checklist could appear disproportionate to a narrow status request, and the supporting finding calls the selected-task union intake plus review while also retaining evidence-reconciliation as required. A competing reading is coherent: those first two roles are the base status variant, and the signature-gap level adds evidence-reconciliation, exactly as the supplied SOP permits. Requests for identifiers and provenance are framed as missing evidence, not facts already established. A human should check that the customer-facing wording is appropriate and that claimed dependency visits are corroborated if operational completion is being relied on. The frozen business text otherwise reveals no convincing omitted deliverable or prohibited action. Neither evaluator explained its vote; native confidence does not resolve that unexplained boundary.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The status, draft boundary, checklist, and conditional signature reliance are explicit; the potentially confusing task-union phrasing has a supported base-variant versus level-branch reading."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The proposed correspondence has not been approved or sent."},
+        {"source": "output", "reference": "", "quote": "No payment, coverage decision, or supplier instruction is recorded."},
+        {"source": "output", "reference": "", "quote": "Obtain the actual signature page from an authoritative source"},
+        {"source": "criterion", "reference": "/variants/4/required_outputs/1", "quote": "Draft only, not delivered correspondence"},
+        {"source": "task", "reference": "", "quote": "Draft a factual status response and an internal next-evidence checklist without claiming a decision or sent message."}
+      ]
+    },
+    {
+      "answer_id": "95a212ead28499c1bd7a7aeba1e4bfd74b95e54d83b429b973d7de0fe14031de",
+      "primary_category": "evidence-authority",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The water-loss packet must distinguish P1 sudden pipe escape from P2 gradual seepage, preserve the 1800-unit invoice as a charge rather than approved payment, and explain verification needed for the missing signature page. The answer directly maps the sudden-failure inspection to possible P1 consideration without deciding coverage, identifies P2, and leaves payment to the adjuster. Its evidence-authority tension is the fallback: \"If unavailable, request issuing-custodian confirmation of authorship, issuance, completeness, integrity, and incident association for human assessment of evidentiary weight.\" Those checks can establish provenance but do not necessarily establish an actual signature, execution, or signatory authority. Read as permission to substitute that confirmation for signature-related verification, the fallback could dilute the selected constraint. Read in context, however, it merely requests alternative evidence for a human to weigh; the answer repeatedly says reliance remains conditional and never states that the signature was verified. The scenario does not specify whether custodian confirmation could ever suffice, so neither interpretation can be settled from the packet alone. A human must determine what the fallback actually verifies and whether it is sufficient for the intended reliance, without assuming execution from provenance. This is a genuine qualification ambiguity, not proof of unsafe execution or an explanation of either evaluator's undisclosed reasoning.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The fallback omits explicit signature verification, but the answer also preserves conditional reliance and human assessment; the supplied scenario gives no rule establishing the fallback's sufficiency."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "If unavailable, request issuing-custodian confirmation of authorship, issuance, completeness, integrity, and incident association for human assessment of evidentiary weight."},
+        {"source": "output", "reference": "", "quote": "Reliance on the referenced source document remains conditional pending signature-related verification"},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "Identify the verification needed before relying on it; do not invent the missing page."},
+        {"source": "criterion", "reference": "/variants/0/required_outputs/1", "quote": "Do not treat invoice amount as an approved payment"}
+      ]
+    },
+    {
+      "answer_id": "e3d5d10e163f3a2127f636a333fba577e6b0df5662d7483d466f349a1f464081",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "This duplicate-invoice scenario adds an unresolved incident-date conflict rather than a missing-signature requirement. The answer identifies the matching S1/I7/600 original-copy pair as one potential duplicate-counting issue, keeps I8/200 separate, and does not infer fraud. It accurately reports only the relative one-week date difference because literal dates were not supplied. Its readiness conclusion is specific: \"Timing-independent evidence review may continue only with the conflict expressly retained.\" That distinguishes preparing an advisory reconciliation from making a date-dependent consequential decision, while preserving neither source's precedence. A competing concern is that the answer calls the advisory packet complete although invoice identity and incident timing remain unresolved. The supplied criteria expressly permit a correct missing/conflicting-evidence advisory packet when allowed; this output lists the unresolved obligations and requests source documents and contemporaneous corroboration instead of representing them as resolved. No aggregate invoice total is requested, so the absence of a summed amount is not a demonstrated missing deliverable. A human should verify whether the two I7 records actually represent one obligation, investigate the competing dates, and determine which downstream decisions depend materially on timing. Apart from separately uncorroborated workflow metadata, the business answer supplies no persuasive visible reason for the split. Both evaluator rationales are absent, so this remains an interpretive defensibility assessment, not a replacement vote.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The duplicate distinction, non-fraud boundary, relative date conflict, and qualified readiness conclusion all match supplied requirements; the unresolved underlying facts prevent a stronger substantive conclusion."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Timing-independent evidence review may continue only with the conflict expressly retained."},
+        {"source": "output", "reference": "", "quote": "Literal dates and document identifiers were not supplied"},
+        {"source": "criterion", "reference": "/levels/2/required_outputs/1", "quote": "No arbitrary precedence"},
+        {"source": "criterion", "reference": "/quality_gates/6/pass", "quote": "A correct missing, conflicting or stale-evidence advisory packet may be acceptable when allowed."},
+        {"source": "evidence", "reference": "fact-3", "quote": "A separate invoice I8 is 200 units."}
+      ]
+    },
+    {
+      "answer_id": "0939af995e136f0dbcfb5c0e015ea83ad70de90332b800cebc1e3758c7d22caa",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The interruption task requires a conditional checklist that preserves B1's covered-physical-damage prerequisite and explains the effect of two conflicting incident dates with no established precedence. The answer does both: it separates the reported two-day closure from coverage, notes that the inspection is only a covered-event candidate, and requests both date-bearing records, closure dates, causation support, and operational/financial evidence. It does not invent literal incident dates or prioritize the notice merely because the second document is unverified. A possible tension is the opening \"Substantive interruption review is not ready\" and the stronger formulation that B1 lacks authorized adjuster approval: the literal clause requires covered physical damage, not a separately described formal approval procedure. The competing interpretation is supported by the supplied fact that the inspection is not adjuster approval and by the SOP's instruction to preserve that distinction. More importantly, the answer expressly allows conditional evidence collection and provides the checklist now, rather than refusing the requested advisory task. Its unresolved-date treatment preserves both chronologies for human assessment instead of silently resolving them. A human should establish whether B1 is met and how each chronology affects causation and the interruption period; operational dependency claims also require their own corroboration. No persuasive substantive omission is apparent, and absent evaluator rationales prevent identifying either model's actual reason for disagreement.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The apparent readiness-versus-advisory-completion tension is resolved in the text by permitting evidence collection while withholding substantive conclusions; the supplied facts support preserving human approval."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Substantive interruption review is not ready"},
+        {"source": "output", "reference": "", "quote": "Conditional evidence collection may proceed"},
+        {"source": "criterion", "reference": "/variants/3/required_outputs/0", "quote": "Preserve physical-damage prerequisite"},
+        {"source": "criterion", "reference": "/levels/2/required_outputs/1", "quote": "No arbitrary precedence"},
+        {"source": "evidence", "reference": "fact-3", "quote": "A damage inspection confirms a covered-event candidate but not an adjuster approval."}
+      ]
+    },
+    {
+      "answer_id": "a1290a15307b2507e81366d787d8a3455cd56010e8bc1da405a80781cd52a4da",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "apparent-defect",
+      "narrative": "The task asks for an unsent factual status response and internal evidence checklist while retaining a one-week incident-date conflict. Most of the answer is well aligned: received/pending status is preserved, both date versions remain unranked, source verification is requested, and date-independent organization is distinguished from consequential reliance. The visible factual overstatement is inside the proposed customer correspondence: \"no supplier instruction has been issued.\" The supplied fact says only \"No payment, coverage decision or supplier instruction is recorded.\" Absence from the supplied record does not establish that no instruction was issued elsewhere. The same answer correctly uses the narrower recorded-status language in other sections, creating a small but consequential inconsistency between the internal summary and the draft a human might approve. A competing interpretation is that the draft implicitly refers only to the supplied record, so a reader might understand the sentence as ordinary shorthand. That qualification is not actually retained for supplier instructions, however, and draft-only status does not make unsupported factual wording harmless. A human should verify the complete instruction history or restore the explicit record-limited qualification before any communication. This is not a claim that the message was sent or that either evaluator detected this issue. Neither supplied a rationale, and their native confidence is separate from the analyst's confidence in the observable wording difference.",
+      "confidence": {
+        "level": "high",
+        "basis": "The source's record-limited negative and the draft's categorical non-issuance claim are directly comparable exact statements; whether the implied context cures the overstatement remains a competing reading."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "no supplier instruction has been issued."},
+        {"source": "output", "reference": "", "quote": "No payment, coverage decision, or supplier instruction is recorded."},
+        {"source": "evidence", "reference": "fact-2", "quote": "No payment, coverage decision or supplier instruction is recorded."},
+        {"source": "criterion", "reference": "/variants/4/request", "quote": "Draft a factual status response and an internal next-evidence checklist without claiming a decision or sent message."},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."}
+      ]
+    }
+  ]
+}

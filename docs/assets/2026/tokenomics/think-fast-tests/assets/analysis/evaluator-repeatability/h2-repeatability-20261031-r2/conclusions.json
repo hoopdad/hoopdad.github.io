@@ -1,0 +1,77 @@
+{
+  "version": "three-pass-conclusions-v1",
+  "run_id": "h2-repeatability-20261031-r2",
+  "status": "complete",
+  "scope": "All90 originally disagreeing saved answers; both evaluators once more; no additional controls or business executions.",
+  "third_pass_completed_judgments": 180,
+  "completed_three_pass_judgments": 540,
+  "unknown_third_pass_judgments": 0,
+  "majority_rule": "For each evaluator independently, take the binary verdict appearing in at least2 of its3 completed judgments. Keep all3 recorded votes; do not replace originals or treat a majority as ground truth.",
+  "majority_outcomes": {
+    "both_accept": 15,
+    "both_do_not_accept": 1,
+    "opposing_majorities": 74
+  },
+  "stability": {
+    "decision-1": {
+      "unanimous_3_of3": 87,
+      "split_2_of3": 3,
+      "majority_differs_from_original": 1,
+      "third_differs_from_second": 2
+    },
+    "gpt-5.6-sol": {
+      "unanimous_3_of3": 54,
+      "split_2_of3": 36,
+      "majority_differs_from_original": 15,
+      "third_differs_from_second": 21
+    },
+    "both_models_unanimous_but_opposed": 51,
+    "pair_agreed_in_at_least2_of3_passes": 16,
+    "opposite_consensus_directions_on_agreeing_passes": 0
+  },
+  "interpretation": [
+    "Decision-1 is the clear repeatability winner in this selected sample:87/90 unanimous triples versus GPT54/90. This does not establish an accuracy winner.",
+    "The per-evaluator majorities agree on only16/90 answers and remain opposed on74/90. Three runs do not resolve most of the original evaluator disagreements.",
+    "51 answers have fully stable, opposite verdicts: each model returned the same vote in all3 passes, but the models disagree. Sampling variability alone does not explain these persistent judgments; their actual reasons and correctness remain unknown.",
+    "Every complete binary triple necessarily produces a2-of3 majority. The existence of that majority is not itself evidence of a clear or correct decision.",
+    "Round2 alone produced27 agreeing pairs and round3 alone28; only16 match after majority aggregation. Single-pass agreement was not consistently reproduced.",
+    "Agreement in at least2 of3 paired passes also occurs on16 answers here, with consistent consensus direction. That pair-level metric is conceptually distinct from matching model-majority verdicts."
+  ],
+  "accounting": {
+    "basis": "Existing fixed token-rate accounting, not an Azure invoice. Each pass is kept separate, with all recorded physical attempts and unknown original costs preserved.",
+    "third_pass": {
+      "physical_attempts": 180,
+      "gpt_usd": "2.909572",
+      "decision_usd": "0.029237880",
+      "combined_usd": "2.938809880",
+      "unknown_cost_calls": 0,
+      "gpt_summed_physical_elapsed_ms": 3421197.5651,
+      "decision_summed_physical_elapsed_ms": 2234440.3801
+    },
+    "comparison_limit": "Prior original costs and GPT elapsed totals have unknown/missing records. Model-call elapsed sums include admission effects and are not parallel wall time. No preserved-quality or savings claim follows from this study."
+  },
+  "verification": {
+    "unchanged_prepared_native_request_body_hashes_checked": 180,
+    "each_matches_both_earlier_passes": true,
+    "fresh_state_and_invocation_identities": true,
+    "pinned_model_deployments_and_settings_unchanged": true,
+    "original_answers_votes_reports_and_second_pass_artifacts_unchanged": true,
+    "ambiguous_sends_reposted": false,
+    "execution_controller_revision": "108430b7ec62180c23c0a684092a95a8e1db9d14",
+    "provenance_captured_after_clean_source_commit": true
+  },
+  "recommendation": "Treat Decision-1's stability advantage as repeatability evidence only. Preserve the original votes and derived majority separately. To determine which evaluator is correct on the74 opposing majorities, use independent reference adjudication rather than more unbounded repeats or declaring the more stable judge the accuracy winner. No additional execution or report change is authorized by this recommendation.",
+  "evidence": [
+    "three-pass-comparison.json",
+    "three-pass-pairs.csv",
+    "baseline-judgments.json",
+    "second-pass-judgments.json",
+    "judgments.json",
+    "comparison.json",
+    "selection.json",
+    "report-snapshots.json",
+    "readiness.json",
+    "provenance.json",
+    "execution-note.json"
+  ]
+}

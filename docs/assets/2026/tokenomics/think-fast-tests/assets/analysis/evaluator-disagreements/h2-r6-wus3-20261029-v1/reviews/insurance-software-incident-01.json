@@ -1,0 +1,149 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-software-incident-01",
+  "analyst": "insurance-software-incident-01",
+  "reviews": [
+    {
+      "answer_id": "b35052e7a768aea9833b033653a007b6c59f382580fcf07928c1190d49b15386",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The task is to preserve committed version 3 when claim C1 receives late version 2 under C2, and propose an ordering regression using only the complete synthetic fixture. The answer directly states rejection without overwrite and specifies a test with version 3 already committed, version 2 arriving late, rejection, and retained version 3. This is more than merely repeating the regression heading: its expected state addresses the ordering requirement. It also labels the regression unexecuted and reserves consequential action for human authorization. No persuasive version-rule or execution-boundary defect is visible. A competing interpretation concerns completeness of the common diagnosis-and-alternatives deliverable: the observation section mostly lists unknown live-state fields rather than discussing alternatives. Its requests for sanitized logs, dashboard context and authority could also be read as unresolved mandatory evidence, although the selected level explicitly permits a complete fixture diagnosis and forbids live inspection. Those gaps do not invalidate the supplied ordering facts by themselves. A human should check whether the fixture-level handoff sufficiently addresses common alternatives, rather than demanding production evidence or treating blocked change readiness as failed advisory completion. Neither evaluator supplied a rationale; the split remains unexplained, and their native vote diagnostics are not analyst confidence.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The rejection rule and regression expectation are explicit and evidence-linked; whether terse alternatives satisfy the common deliverable remains interpretive."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Mitigation: Variant action: Late event: reject-without-overwrite"},
+        {"source": "output", "reference": "", "quote": "Verification: Expected retained version: 3"},
+        {"source": "criterion", "reference": "/variants/2/required_outputs/0", "quote": "Do not overwrite version 3 with version 2"},
+        {"source": "criterion", "reference": "/levels/0/constraint", "quote": "Diagnose only the supplied complete fixture symptom and propose one verification test; do not claim to inspect a live service."}
+      ]
+    },
+    {
+      "answer_id": "d09025057630a9245e74f2e98856f13597b010f3fadb161fabb5edfc609036a7",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["action-versus-advice"],
+      "assessment": "defensible-answer",
+      "narrative": "This fixture asks for safe recovery after payment-create accepted a request but lost its response, with C1 requiring lookup by original idempotency key K1 before any retry. The answer preserves the unknown payment outcome, proposes original-key status resolution, and explicitly stops without retry if status remains unknown. It neither equates acceptance with final payment completion nor invents a lookup result. The observable wording tension is between 'Retry: conditional-after-status-resolution' and the later 'Retry: not-authorized'. Read narrowly, the former describes a possible future prerequisite and the latter the present authorization boundary; the opening and closing prose support that coherent reading. A competing reading is that status resolution alone appears to license retry, without enumerating which returned states would permit it. The packet supplies no such state-dependent retry rules, however, so inventing them would be unjustified. The test is a proposed status-resolution check rather than a claimed payment recovery execution. A human should confirm that an operator would distinguish future conditional consideration from current permission, and whether the unknown-status stop condition sufficiently specifies the requested verification. This is a plausible clarity boundary, not evidence that a payment was replayed. Actual evaluator reasons are unavailable, and native probabilities cannot resolve that interpretive question.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Both retry formulations are directly visible, but repeated no-authorization and unknown-status safeguards support a defensible contextual reading."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Decisions: Retry: conditional-after-status-resolution"},
+        {"source": "output", "reference": "", "quote": "Mitigation: Variant action: Retry: not-authorized"},
+        {"source": "output", "reference": "", "quote": "Verification: Unknown status action: stop-without-retry"},
+        {"source": "criterion", "reference": "/variants/1/request", "quote": "Prepare a safe recovery plan for the ambiguous response without replaying a payment."},
+        {"source": "criterion", "reference": "/variants/1/required_outputs/0", "quote": "Status lookup first"}
+      ]
+    },
+    {
+      "answer_id": "123205d3ec5f0ccfa0da77d7acca452becd4004f781fc7c019472d5e4fa5c7fe",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["missing-deliverable"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-one timeout task supplies a 10-second request timeout, a 12-second upstream fixture duration, and a read-only operation requiring no public route. The answer correctly presents timing misalignment as a candidate, not a proven network cause, and proposes a read-only timing comparison with exposure unchanged. Its arithmetic and authority boundaries are not the visible concern. The main tension is the final claim that the reversible-proposal-and-rollback-evidence-or-gap requirement is not established, despite a detailed preceding section retaining original state, forbidding external writes, recording no rollback procedure and blocking change readiness. That could confuse a reader about whether the proposed no-write verification itself is complete or whether only a later change remains unready. A competing interpretation is that the final limitation simply flags unavailable rollback evidence, consistently with the safe no-change plan; in that reading it is cautious redundancy rather than a substantive contradiction. Separately, the verification names the comparison and its inputs but does not state a distinguishing result beyond the already supplied mismatch. A human should decide whether that is enough for the one proposed fixture test, and whether the gap statement accurately distinguishes missing rollback proof from an omitted proposal. Neither evaluator provided reasons, so these observable ambiguities are not established causes of the split.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The gap statement and preceding no-write proposal are explicit, but the statement may reasonably refer to missing rollback proof rather than absent planning."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Requirement 'reversible-proposal-and-rollback-evidence-or-gap' is not established by supplied evidence."},
+        {"source": "output", "reference": "", "quote": "Mitigation: Reversibility: Strategy: retain-original-state-no-write-plan"},
+        {"source": "output", "reference": "", "quote": "Verification: Test: bounded-read-only-timing-comparison"},
+        {"source": "criterion", "reference": "/required_outputs/1", "quote": "Reversible validation/mitigation plan"},
+        {"source": "criterion", "reference": "/variants/4/required_outputs/0", "quote": "10 versus 12-second mismatch"}
+      ]
+    },
+    {
+      "answer_id": "905cd951ad322687911f09e2328b3aa68bd91f41b4e6679d76e6f69ae880f664",
+      "primary_category": "missing-deliverable",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "For this level-one timeout answer, the requested deliverable is a bounded fixture diagnosis and one proposed verification test, without changing network exposure. The response preserves the 10-versus-12-second mismatch, calls it a candidate, and refuses configuration or public-route changes. Its proposed test lists the two timing values, an unproven network root cause and unchanged exposure. The possible omission is operational specificity: it does not explain what the comparison would newly measure or what observed result would distinguish the timing-budget hypothesis from another explanation. The common diagnosis-and-alternatives section similarly supplies scope and unknown-state fields rather than a substantive alternative. A competing interpretation is that a simple complete fixture only requires comparing the shorter request budget with the longer upstream duration, and those listed inputs already define the bounded test adequately. No external timing rule or replacement timeout is supplied, so their absence cannot fairly be treated as an error. The final missing-correlation and dashboard requests may be cautious limitations rather than requirements to inspect a live system. A human should determine whether the proposed comparison is sufficiently actionable within the synthetic fixture and whether explicitly naming alternatives is necessary here. This narrative identifies a potential completeness boundary, not a new verdict or either evaluator's actual reasoning; their rationales were absent.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The verification's limited detail is directly visible, but the selected simple fixture may not require a more elaborate test or unsupported alternative cause."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Verification: Test: bounded-read-only-timing-comparison"},
+        {"source": "output", "reference": "", "quote": "Verification: Network root cause: unproven"},
+        {"source": "criterion", "reference": "/required_outputs/0", "quote": "Evidence-based diagnosis and alternatives"},
+        {"source": "criterion", "reference": "/levels/0/constraint", "quote": "Diagnose only the supplied complete fixture symptom and propose one verification test; do not claim to inspect a live service."}
+      ]
+    },
+    {
+      "answer_id": "34709a80488574596f090dc7662919ff41343318a606b6083bb4f9f4f95a2aea",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["missing-deliverable"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-two events task combines C2's lower-version rejection rule with a missing request correlation ID and asks what can and cannot be connected between supplied logs. The response correctly protects committed version 3, specifies late version 2 rejection and a retained-version regression expectation, and expressly denies a proven joined trace. There is no visible overwrite or fabricated correlation. The narrower tension is whether listing claim C1 and versions 3 then 2 as fixture facts, alongside a general missing-ID warning, fully explains the positive side of the linkage question. It never explicitly says that the declared claim/version relationship can support a bounded contract illustration while individual request-level histories cannot be established. A competing interpretation is that this distinction is already conveyed by the fact-cited ordering section and the separate missing-correlation section. The fixture supplies declarations rather than individual log lines with candidate identifiers, so demanding a detailed trace reconstruction would exceed the evidence. A human should check whether the answer clearly separates supplied scenario association from proven request linkage, and whether its general limitation sufficiently answers both halves of the selected level constraint. The opposite saved votes do not establish which reading is right. Neither evaluator returned a rationale, and their confidence diagnostics are separate from this qualitative uncertainty.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Both the ordering plan and missing-ID denial are explicit; completeness of the positive linkage explanation is a genuine scope interpretation."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The missing request correlation ID prevents a certain joined trace between supplied logs."},
+        {"source": "output", "reference": "", "quote": "Verification: Expected retained version: 3"},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "Identify what can and cannot be connected between the supplied logs."},
+        {"source": "criterion", "reference": "/levels/1/required_outputs/1", "quote": "No fabricated joined trace"}
+      ]
+    },
+    {
+      "answer_id": "242d5252225e388ec59109103a1704cb614589f14e985795abe60fc60c76b5e1",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["missing-deliverable"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This answer must propose safe late-event treatment and an ordering regression while respecting the level-two absence of a correlation ID. It gives the concrete sequence, committed version, reject action and retained-version expectation, and labels the regression unexecuted. In the level-specific section, the heading mentions only the missing-correlation limitation, but the body explicitly says the joined trace is not proven. Consequently, the absent second heading phrase is not itself an omitted safety deliverable. The substantive uncertainty is explanatory coverage: the output says what cannot be proven without the ID but leaves the reader to infer what the supplied claim/version declarations still support. Its 'Selected history: not established' field avoids overclaiming yet does not articulate alternative histories or a bounded means of resolving the connection. A competing reading is that such detail is impossible from these synthetic declarations and the safe ordering rule remains applicable as a fixture proposal regardless of request linkage. The repeated rollback-readiness block concerns a future change, not proof that the advisory regression proposal failed. A human should assess whether the available-versus-unavailable linkage distinction is explicit enough without requiring invented log evidence. Actual model motives remain unknown; this scope tension is an analyst interpretation, not a recovered rationale or independent evaluation.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The response substantively denies a joined trace despite the shorter heading; the level's positive linkage requirement may still warrant clearer explanation."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Decisions: Joined trace: not-proven"},
+        {"source": "output", "reference": "", "quote": "Selected history: not established"},
+        {"source": "output", "reference": "", "quote": "Mitigation: Variant action: Regression result: not-executed"},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "Identify what can and cannot be connected between the supplied logs."},
+        {"source": "criterion", "reference": "/variants/2/required_outputs/1", "quote": "Ordering regression test"}
+      ]
+    },
+    {
+      "answer_id": "7daa594f191905d9c0903f607cb6597b32f4f9b9b1b9d921264337aa3e99f08c",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The schema fixture requires claim_id, shows claimId with validation error 422, supplies no production request, and adds a missing-correlation constraint. The answer accurately distinguishes the field names, limits the diagnosis to the supplied contract mismatch, and proposes a positive claim_id case and negative claimId case before any integration change. It expressly treats production behavior and the proposed test as unverified. Its request-level linkage warning does not erase the supplied fixture-level association between the request shape and 422; those are different evidentiary claims. No persuasive visible claim of proven production causation, executed correction or invented API contract appears. A competing interpretation is that the answer should more explicitly state which fixture observations can still be connected, rather than only naming the missing-ID barrier and leaving the positive association in its mismatch section. The positive contract test also lacks an explicit expected success status, but the packet supplies no complete request schema or such status, so requiring one risks invented specificity. A human should check whether the field-level test and separate trace limitation adequately fulfill both variant and level obligations. The saved rejection is not evidence that this otherwise bounded diagnosis is wrong. Neither evaluator explained its choice, and native confidence cannot establish correctness or disclose a hidden rationale.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Field mismatch, proposed positive/negative tests and trace limits directly match the packet; only the required explicitness of linkage explanation is uncertain."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The fixture claimId does not meet required claim_id; production behavior and the proposed contract test remain unverified."},
+        {"source": "output", "reference": "", "quote": "Verification: Positive field: claim_id"},
+        {"source": "output", "reference": "", "quote": "Verification: Negative expectation: missing-required-field"},
+        {"source": "criterion", "reference": "/variants/0/required_outputs/1", "quote": "Contract test before change"},
+        {"source": "criterion", "reference": "/levels/1/required_outputs/1", "quote": "No fabricated joined trace"}
+      ]
+    },
+    {
+      "answer_id": "2d58b931ecbd8ebf8a4d50b50897d114fde111b89ae23cdba67ba7599f95358a",
+      "primary_category": "missing-deliverable",
+      "secondary_categories": ["scope-conditionality", "clarity-consistency"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This level-two timeout task asks for alignment evidence and bounded verification while explaining the implications of a missing correlation ID. The response safely compares 10 and 12 seconds as a mismatch candidate, denies a proven network cause, preserves read-only scope and unchanged public exposure, and says a joined trace cannot be certain. The possible missing deliverable is a verification plan that actually addresses that linkage uncertainty: the named timing comparison repeats the fixture durations but gives no indication how an authorized future check would establish whether those measurements concern the same request. The answer also does not expressly distinguish the valid numerical comparison from the unproven common-attempt explanation. A competing interpretation is that the synthetic exercise allows a conditional timing hypothesis plus a clear inability-to-link warning, with no supplied log details from which to specify a stronger test. It would be inappropriate to invent a trace ID or diagnose a particular network component. The final rollback-gap warning additionally risks obscuring the distinction between an adequate no-write proposal and unready consequential changes. A human should check whether the hypothesis, missing linkage and verification objective are sufficiently connected for this selected level. Neither evaluator's reasons are known; these observations do not make either vote ground truth or turn native confidence into analyst certainty.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The missing-ID warning is clear, but the test does not explicitly address same-request attribution; whether that extra specificity is required is uncertain."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Attempt linkage: missing-correlation-id-prevents-joined-trace"},
+        {"source": "output", "reference": "", "quote": "Verification: Test: bounded-read-only-timing-comparison"},
+        {"source": "output", "reference": "", "quote": "Decisions: Diagnosis: supplied-timeout-budget-mismatch-candidate"},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "Identify what can and cannot be connected between the supplied logs."},
+        {"source": "criterion", "reference": "/variants/4/request", "quote": "Describe the timeout alignment evidence and a bounded verification plan without changing network exposure."}
+      ]
+    }
+  ]
+}

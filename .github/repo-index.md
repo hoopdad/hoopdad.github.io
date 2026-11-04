@@ -1,7 +1,7 @@
 # Repository index
 
 ## Freshness
-- Baseline: `ec06645` (`restructuring`).
+- Baseline: `211a900` (`publishing first decision model post`).
 - Considered the Chirpy migration, custom layouts/assets, topic and series pages,
   content metadata, local browser tooling, README, and Pages workflow.
 - Added topic/series data and hubs, archive/search, layout/card overrides, the
@@ -9,9 +9,13 @@
   `docs\assets\main.scss` with `editorial.scss`. Article illustrations also live
   under `docs\assets\2026\tokenomics`; draft content may be concurrent user work.
 - Added claims screenshots 3, 4, 5, and 7 under that asset directory and linked
-  them from the insurance-workflow draft. Its measured results/source examples
+  them   from the published insurance-workflow post. Its measured results/source examples
   are filled; quality uses separately labeled evaluator post-hoc majorities.
-  Source-link publication remains pending.
+- Copied its referenced implementation/report snapshots and linked report
+  dependencies into `docs\assets\2026\tokenomics\think-fast-tests`. Relative
+  folders preserve report navigation; `bundle-manifest.json` records source/
+  hosted hashes and replacements for three missing private-runtime links.
+  Its scoped `.gitattributes` preserves bytes across checkouts for those hashes.
 
 ## Functional areas
 - `docs` is the Jekyll site source, using Chirpy's Sass with a custom editorial shell.
@@ -46,6 +50,8 @@
 - Branding and navigation: `docs\_config.yml`, `docs\_includes\header.html`, `docs\about.md`.
 - Article reading experience: `docs\_layouts\post.html`, `editorial.scss`, `site.js`, feedback include.
 - Search: `search.html`, `search.json`, and `site.js`.
+- Claims article evidence/source downloads: `docs\assets\2026\tokenomics\think-fast-tests`;
+  copied static snapshots, not an executable package or private runtime export.
 - Build/deployment: README, Gemfile/lockfile, `_config.yml`, plugin, `.github\workflows\pages.yml`.
 
 ## Conventions and validation

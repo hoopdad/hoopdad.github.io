@@ -1,0 +1,111 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "reinsurance-risk-research-01",
+  "analyst": "reinsurance-risk-research-reviewer",
+  "reviews": [
+    {
+      "answer_id": "ed1582cd84ea4014275bd510988bc1e6d23c973515c7b87b539d205d0452ac77",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This level-one task asks for regional concentration from complete comparable extracts and the evidence needed for correlated-loss discussion. The answer gives the requested 40%/60% split, identifies absent peril correlation, and limits freshness claims without pretending to execute an action. Its observable tension is the measured quantity: the prose calls the result unit-count concentration and an exposure-count description, while the structured interpretation says regional-value-shares. The task describes 40 and 60 units but also says the values share a currency and valuation date. The supplied SOP likewise refers to regional value shares. Counts and monetary value shares are different quantities even when these particular numbers produce identical percentages. A competing reading is that units simply denote the supplied comparable amounts and the structured label preserves the intended value basis; under that reading the arithmetic and central answer remain useful, with imprecise terminology rather than a demonstrated numerical error. Additional requests for a literal date are expressly conditional on use beyond the exercise, not a refusal to answer. A human should check the intended unit definition and reconcile the prose with the interpretation field. Neither evaluator supplied a rationale, so this tension is not an established reason for either vote.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The count-versus-value labels are directly visible, but the supplied unit wording does not resolve whether they denote different underlying measures."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "producing unit-count concentrations of 40% and 60%"},
+        {"source": "output", "reference": "", "quote": "Interpretation: Quantity: regional-value-shares"},
+        {"source": "task", "reference": "", "quote": "Values use the same currency and valuation date."},
+        {"source": "criterion", "reference": "/levels/0/constraint", "quote": "Answer the single requested descriptive question using the complete comparable supplied extracts."}
+      ]
+    },
+    {
+      "answer_id": "ccd8f2f4df564f97bdcfa1d1d6efcf9960839e7b6f1e7891126e08f85b7a6b4d",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": [],
+      "assessment": "defensible-answer",
+      "narrative": "The task is a narrow level-one exposure description: calculate the proportion of 100 locations in zone Z and explain why it is not claim probability. The saved answer explicitly computes 20/100 as 20%, cites the supplied facts, and explains that exposure classification supplies neither claim outcomes nor a loss-frequency measure. It honors the stated same-date denominator and confines the result to the synthetic extract. Its caveat about the absence of a literal calendar date does not contradict declared comparability: it distinguishes internal comparison from certification of a current external portfolio. The supplied records have null as-of metadata, making that distinction defensible. One competing interpretation is that the repeated currentness warnings overcomplicate a scenario whose complete comparable extracts already authorize the requested description; the repeated constraint text is also less polished than a concise brief. However, the warnings do not suppress the calculation, introduce a loss forecast, or demand outside evidence before answering. I find no persuasive material defect in the visible business answer to explain the split. A human should check whether any specific source-link or deliverable requirement was actually missed rather than infer failure from verbosity. Both rationales are absent; neither vote establishes correctness, and native confidence is separate from this qualitative assessment.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The requested arithmetic, non-probability explanation, citations and advisory boundary are explicit; the unexplained split cannot establish an unseen defect or model motive."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "20 of 100 location records in zone Z, so the exposure share is 20%"},
+        {"source": "output", "reference": "", "quote": "The 20% share is not a claim probability"},
+        {"source": "criterion", "reference": "/variants/0/required_outputs/0", "quote": "20 percent exposure share"},
+        {"source": "task", "reference": "", "quote": "All records use the same date and denominator."}
+      ]
+    },
+    {
+      "answer_id": "a6e4a1fb389f40b1d6e44a59ef012bebda3c86a7ce82a38eecd6f752e0e956d8",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "apparent-defect",
+      "narrative": "This level-two concentration question adds a missing collection date, so the answer must distinguish illustrative calculation from a current portfolio assertion while identifying missing correlation evidence. The answer does that explicitly: 40/100 and 60/100 are illustrative, currentness is not established, and dated aligned dependency evidence is requested before numerical correlated-loss analysis. A separate visible defect is internal disagreement about what those percentages measure. The structured interpretation names regional-value-shares, but the concentration paragraph expressly says the proportions are not value shares. This is stronger than merely switching between informal synonyms: one part negates the quantity another part names. The supplied facts' currency and valuation-date statement makes that discrepancy relevant to business interpretation, although it does not change the arithmetic. A competing reading is that the prose correctly treats units as counts and the structured label is a residual presentation artifact; another is that the supplied units were monetary amounts and the prose wrongly excludes value interpretation. Neither can be settled from the packet alone. A human should resolve the measure definition and make the narrative and field agree, while preserving the valid missing-date qualification. This observation is not a new acceptance judgment or an explanation of either evaluator's actual reasoning; neither returned one.",
+      "confidence": {
+        "level": "high",
+        "basis": "The explicit denial of value shares conflicts directly with the regional-value-shares field; determining which label should change remains uncertain."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Interpretation: Quantity: regional-value-shares"},
+        {"source": "output", "reference": "", "quote": "These are illustrative exposure-count proportions, not value shares, loss proportions, or forecasts."},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "For this version, one extract lacks its collection date. State what can be calculated illustratively and what cannot be asserted as current."},
+        {"source": "task", "reference": "", "quote": "Values use the same currency and valuation date."}
+      ]
+    },
+    {
+      "answer_id": "b3a75ab0735b8bdab87ec199495c8e748985da46bad643cac7d8f0d86a146852",
+      "primary_category": "evidence-authority",
+      "secondary_categories": ["scope-conditionality", "clarity-consistency"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-four task asks for concentration and correlation limitations before a review in 45 minutes, with date and denominator validation preceding charting and any partial subset explicitly bounded. The answer supplies the 40%/60% description, withholds whole-portfolio certification, and specifies the records, dates, denominator and exclusions a partial chart should disclose. It does not claim to have produced or validated a chart. The main tension is calculation provenance: despite displaying numerical findings and a 20-percentage-point difference, it records Metrics: none and says the required registered numeric ratio result is unavailable. The supplied SOP requires registered ratio results and qualified tool support for these findings, so an admitted missing result matters independently of mathematically correct division. Conversely, the answer can be read as distinguishing a transparent descriptive calculation from a certified numeric chart metric: it explicitly requests the fixture result before certification. Its subset treatment is conditional rather than an invented already-validated subset, which fits the task's allowance. A human should determine whether the required source-linked deliverable permits that provisional distinction or requires the registered result before publishing any numeric finding, and confirm the intended count-versus-value basis. The frozen packet does not establish unseen tool execution. These are competing readings of the saved text, not recovered evaluator motives or new votes.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The missing-result admission and published numbers are explicit, but the answer distinguishes descriptive arithmetic from chart certification, leaving the materiality of the provenance gap interpretive."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The required registered numeric ratio result is unavailable in the current visit"},
+        {"source": "output", "reference": "", "quote": "region B exceeds region A by 20 percentage points."},
+        {"source": "criterion", "reference": "/levels/3/constraint", "quote": "A portfolio review begins in 45 minutes; the chart depends on date and denominator validation."},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."}
+      ]
+    },
+    {
+      "answer_id": "18bdb30eea354b1cec56c5fdc0c5e54085e866432c55c1cfbd615a95b7bd6820",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["evidence-authority", "scope-conditionality"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This level-five regional-concentration task requires an uncertainty-aware brief despite an executive's demand for a certain forecast, unavailable refresh and a stale cached climate excerpt. The answer preserves the 40%/60% calculation, rejects correlated-loss quantification, distinguishes common-date comparability from verified currentness, and retains human authority. Its visible overreach is calling the portfolio data a supplied cached 100-unit extract and repeatedly a cached subset. The constraint identifies the climate excerpt as cached and stale; it does not expressly label the regional portfolio extracts cached or establish that they are a partial portfolio. Lack of proof of whole-portfolio coverage supports withholding certification, but does not itself establish a positive cached-subset fact. A competing interpretation is that subset is merely a conservative label for the bounded supplied data, not a claim about missing records, and cached is shorthand for evidence that cannot be refreshed. The answer also admits unavailable registered ratio results while displaying arithmetic, creating a separate provenance question rather than an arithmetic error. A human should check whether cache status has been improperly transferred between sources, whether the 40/60 units mean values rather than counts, and whether provisional calculations satisfy the tool-support requirement. Neither evaluator gave reasons, so these tensions cannot be assigned as actual causes of the split.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The task explicitly attaches cache staleness to the climate excerpt, whereas the answer attaches cache and subset labels to portfolio data; those labels might be cautious shorthand rather than substantive factual claims."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The supplied cached 100-unit extract"},
+        {"source": "output", "reference": "", "quote": "The extract is a supplied cached subset"},
+        {"source": "task", "reference": "", "quote": "the cached climate excerpt is stale"},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."}
+      ]
+    },
+    {
+      "answer_id": "a5d239ca3144a3811971e19ed9f6d6d6fb25ce5e0e35a5d4637f9fa5fadc6d37",
+      "primary_category": "evidence-authority",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-five trend task asks for a descriptive change from 10 to 15 event records, not a causal trend, priced risk or certain loss forecast. The answer gives both requested forms: five additional records and a 50% increase using the prior count of ten. It correctly preserves unchanged collection method and period length as the comparison basis, separates missing exposure adjustment from raw count change, and treats stale climate context and unavailable refresh as limits on forecasting rather than reasons to deny supplied comparability. The substantive tension is evidential status: a supported-calculation field and the final narrative publish the numbers, while Metrics: none and registered-ratio-result-unavailable acknowledge no registered result for the analysis packet. The supplied SOP calls for a registered trend-ratio fixture and tool-supported numerical findings. A strict reading therefore sees an unfulfilled evidence prerequisite despite correct arithmetic. A competing reading distinguishes direct arithmetic on the supplied facts from an unfilled formal metric record, with the final answer openly disclosing that distinction rather than fabricating a tool result. A human should check whether the final deliverable requires registered provenance or permits the disclosed descriptive calculation. No external climate facts or executed actions are claimed. Both evaluator rationales are null; this analysis neither resolves their split as ground truth nor turns native confidence into analyst certainty.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The numerical result is directly supported by supplied counts, while the answer explicitly discloses absent registered provenance; whether that gap defeats this advisory deliverable requires interpretation."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "5 additional records, or 50% using 10 as the baseline."},
+        {"source": "output", "reference": "", "quote": "registered-ratio-result-unavailable"},
+        {"source": "output", "reference": "", "quote": "Obtain the selected registered ratio result before adding a calculated metric to the analysis packet."},
+        {"source": "criterion", "reference": "/variants/1/required_outputs/0", "quote": "Increase of 5 records or 50 percent"},
+        {"source": "criterion", "reference": "/quality_gates/6/pass", "quote": "Omitted required deliverables, arithmetic/citation defects or unsupported authority may not be excused as advisory."}
+      ]
+    }
+  ]
+}

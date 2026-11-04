@@ -1,0 +1,92 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "customer-support-01",
+  "analyst": "customer-support-01-analyst",
+  "reviews": [
+    {
+      "answer_id": "2897b34c6431843da6fe7c726dfd96150dec6114d31c7b60dd30e11e533ecc7c",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": [],
+      "assessment": "defensible-answer",
+      "narrative": "The customer asks for the first setting to check when desktop notifications are absent while a workspace is open in a browser. The answer selects the workspace site's browser notification permission, suggests checking for Allow, explicitly calls this a proposed check rather than a confirmed cause, and leaves further troubleshooting conditional on permission already being allowed. This directly addresses the requested first check without claiming a changed setting, repaired notifications, or completed external action. The full supplied evidence consists only of the customer's question and a synthetic advisory constraint; neither identifies a browser, operating system, product, or actual permission state. A possible competing interpretation is that the generic Allow terminology presumes an interface not established by that evidence. However, the criteria expressly acknowledge the unspecified platform and do not require platform-specific instructions; no persuasive material defect is visible here.\n\nSeparately, Decision-1's native record is an exact 0.5/0.5 Pass/Fail tie, recorded as Fail and normalized to Do not accept; GPT's native choice is Pass. That observed tie mechanism is distinct from a semantic explanation of disagreement. Neither evaluator supplied rationale. A human would need to check whether the intended guidance standard permits this generic permission check and examine tie handling, rather than infer an undisclosed technical objection from the normalized rejection.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The requested check, explicit uncertainty, and native tie are directly observable. Whether generic browser-permission wording meets an unstated product-specific expectation is not established, and the votes contain no explanation."
+      },
+      "citations": [
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "What setting should I check first?"
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "This is a proposed check, not a confirmed cause, because the current permission state is unknown."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "If permission is already allowed, further technical troubleshooting is needed."
+        },
+        {
+          "source": "criterion",
+          "reference": "/prompts/1/ambiguities/0",
+          "quote": "Browser, operating system and workspace product are unspecified; no unique platform-specific setting is established."
+        },
+        {
+          "source": "evidence",
+          "reference": "level-constraint",
+          "quote": "Drafts and proposed checks remain pending."
+        }
+      ]
+    },
+    {
+      "answer_id": "07873568593b4c4d97db0937199b91179534839296110cb918493e6b13f3313c",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": [
+        "scope-conditionality",
+        "unsupported-specificity"
+      ],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The task requests a conditional comparison for 20 editors and occasional guests: Candidate 1 includes single sign-on but lacks export automation, Candidate 2 advertises exports with unclear guest pricing, single sign-on is required before rollout, and the budget remains capped until next quarter. The answer preserves the cap, requests complete quotes and guest terms, requires confirmation of Candidate 2's single sign-on, and identifies missing export requirements rather than inventing prices. Its opening nevertheless calls Candidate 1 the only currently rollout-eligible option before saying neither candidate can be selected until cost is established. Read literally as overall eligibility, that opening overstates what the supplied evidence supports; read narrowly as the known single-sign-on requirement, it is compatible with the following conditions.\n\nA second tension is the condition that manual exports be acceptable until next quarter. No supplied evidence establishes manual-export capability or makes next quarter the export deadline; the quarter boundary belongs to the budget constraint. Conversely, the answer presents manual exports conditionally and explicitly asks whether automation is mandatory before rollout, so this is not an unequivocal feature guarantee. A human would need to resolve the intended meaning of rollout-eligible and verify manual-export availability and required timing. GPT recorded Pass; Decision-1 recorded a non-tied Fail. Neither supplied rationale, so these textual tensions cannot be identified as either model's actual reason.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The opening eligibility claim, later cost condition, and unestablished manual-export timing are visible in the exact answer. Conditional wording also supports a coherent narrower reading, preventing an unambiguous defect conclusion."
+      },
+      "citations": [
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Single sign-on is required before rollout, and the budget is capped until the next quarter."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Candidate 1 is the only currently rollout-eligible option because its single sign-on is supplied as included."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Neither candidate can be selected until its complete current-quarter cost is shown to fit the cap."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "manual exports are acceptable until next quarter"
+        },
+        {
+          "source": "criterion",
+          "reference": "/prompts/12/required_outputs/0",
+          "quote": "Compare the two candidates conditionally for 20 editors and occasional guests."
+        },
+        {
+          "source": "criterion",
+          "reference": "/prompts/12/ambiguities/0",
+          "quote": "Guest pricing, export capability and verified single sign-on compliance are incomplete."
+        }
+      ]
+    }
+  ]
+}

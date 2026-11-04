@@ -1,0 +1,83 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-policy-servicing-02",
+  "analyst": "insurance-policy-servicing-02-reviewer",
+  "reviews": [
+    {
+      "answer_id": "bd3b1dfbf04e91a19d72f92dbde1bac8499194303d1a74a354cbf923538f3c92",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": [
+        "clarity-consistency"
+      ],
+      "assessment": "defensible-answer",
+      "narrative": "The level-four refund task asks for a same-day explanation distinguishing Q1's 40-unit illustration from a completed refund, with policy-version and ledger reconciliation before a final response. The answer directly states that the quote is not approved, posted or paid, separates those states, provides a provisional unsent customer draft, and requests dated policy terms, a current ledger and authorized confirmation. The evidence records have unknown freshness and no as-of dates, so its refusal to assert final current status is supported rather than an omitted deliverable. The selected constraint expressly permits a provisional draft; the answer does not need to invent missing policy wording or perform reconciliation against unavailable records to explain the limitation. A competing concern is reference clarity: it introduces E1 and L1 as policy/ledger labels and asks for 'O1 approval', although the selected facts identify only Q1 and the broader SOP uses O1 for renewal. The draft also contains visibly damaged punctuation. These are possible readability or traceability weaknesses, but they do not establish an incorrect refund amount, an executed action or a missing substantive distinction. A human should check whether the introduced labels could confuse the requested evidence and whether the draft remains clear for its intended reader. No persuasive substantive defect otherwise explains the split. Neither evaluator supplied a rationale, so their actual reasons remain unknown.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The full output visibly supplies the selected refund distinctions, provisional draft and precise missing-evidence requests. Reference-label ambiguity and damaged punctuation leave a qualitative clarity question, but do not establish a substantive failure or explain either evaluator's vote."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Q1 is only a quote illustrating a 40-unit refund; it is not an approved, posted, or paid refund."
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/3/constraint",
+          "quote": "a provisional draft is permitted but must not imply action was completed."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Reconcile E1 and L1, then confirm O1 separately for cancellation approval, posting, and payment."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/6/pass",
+          "quote": "A correct missing, conflicting or stale-evidence advisory packet may be acceptable when allowed."
+        }
+      ]
+    },
+    {
+      "answer_id": "cdf6ec3ab7d2fc36b0a6da576833de07f88798926487c6afb834acb5ab39f006",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": [
+        "clarity-consistency"
+      ],
+      "assessment": "apparent-defect",
+      "narrative": "The level-five renewal task asks for O1's acknowledgement to be distinguished from renewed coverage while the core is unavailable, the portal cache is stale and an immediate backdated change is requested. Most of the answer addresses that task: it preserves the missing acceptance/payment records, refuses unsupported backdating, requests current authoritative evidence and keeps correspondence unsent. The visible substantive tension is the customer draft's statement that 'explicit acceptance or payment' is 'required to establish renewal'. The supplied policy specifies explicit acceptance; absence of a payment record is a supplied fact, not a stated additional renewal condition. Checking payment is appropriate, but promoting it into a contractual prerequisite goes beyond the evidence. A competing reading is that the draft merely groups the two missing records as practical verification needs, consistent with the surrounding cautious language. Even so, 'required' makes that reading uncertain, particularly in customer-facing text. Separately, the limitations introduce Q1 as lacking support for backdating even though this scenario concerns O1; Q1 is the refund-quote identifier in the supplied SOP. That reference drift could obscure which request needs authorization. A human should check the payment wording against the supplied acceptance-only rule and resolve the Q1/O1 mismatch without assuming additional policy terms. These are observable text tensions, not recovered model motives; neither evaluator returned a rationale, and neither vote establishes truth.",
+      "confidence": {
+        "level": "high",
+        "basis": "The output expressly describes payment as required to establish renewal, whereas the supplied rule names explicit acceptance only; the Q1/O1 reference mismatch is also directly visible. This confidence concerns those textual observations, not evaluator motives or whether a human would find them disqualifying."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "it does not show the explicit acceptance or payment required to establish renewal."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "The supplied policy requires explicit acceptance."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Q1 lacks current supporting evidence and human authorization for an immediate backdated effective date."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Synthetic renewal offer O1 expires on 30 June."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "description": "Static copies of the article's referenced implementation and report assets, not an installable repository.",
+  "report_link_adaptation": "Three unavailable private .runtime report links now point to the existing saved evaluation CSV. Original export manifests describe upstream originals; served HTML adaptations are recorded below.",
+  "files": [
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/index.html",
+      "source_sha256": "85eeeebc6fa019151763b945da93ac983146c77d21fa009f59c72de7c78ff422",
+      "served_sha256": "85eeeebc6fa019151763b945da93ac983146c77d21fa009f59c72de7c78ff422",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/inventory.json",
+      "source_sha256": "7ad63c97e5cc00e7acea36d57d2c3b8ec8f18d01fe25a93deaf7e672413a0e4b",
+      "served_sha256": "7ad63c97e5cc00e7acea36d57d2c3b8ec8f18d01fe25a93deaf7e672413a0e4b",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/manifest.json",
+      "source_sha256": "8d08b0aeb916bb7894060ca294baea14b0985f9e9dc4b7538b1095173fe7681d",
+      "served_sha256": "8d08b0aeb916bb7894060ca294baea14b0985f9e9dc4b7538b1095173fe7681d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/customer-support-01.json",
+      "source_sha256": "e2e0246b7948afffdeb51308ba2acc72130122af786dfffa6af239dac9421649",
+      "served_sha256": "e2e0246b7948afffdeb51308ba2acc72130122af786dfffa6af239dac9421649",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-claims-evidence-01.json",
+      "source_sha256": "00f9cc9fcad39b64c57f0d435560dd4f4787da6e254ec17425e53f404f982503",
+      "served_sha256": "00f9cc9fcad39b64c57f0d435560dd4f4787da6e254ec17425e53f404f982503",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-claims-evidence-02.json",
+      "source_sha256": "e21231cbe5d4e78aa86f6572e23801f7f4ba19797b7f32b6196abb7662f647cd",
+      "served_sha256": "e21231cbe5d4e78aa86f6572e23801f7f4ba19797b7f32b6196abb7662f647cd",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-claims-evidence-03.json",
+      "source_sha256": "5c38c8bde83ed68120e510a281caf354a479e5a9c96a03e296b1c45ff88412b6",
+      "served_sha256": "5c38c8bde83ed68120e510a281caf354a479e5a9c96a03e296b1c45ff88412b6",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-claims-evidence-04.json",
+      "source_sha256": "1f5110b8ea35058f783f3b02a8ee1feca5107dabf0d9fe456dc7a86d516b3d8a",
+      "served_sha256": "1f5110b8ea35058f783f3b02a8ee1feca5107dabf0d9fe456dc7a86d516b3d8a",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-data-migration-01.json",
+      "source_sha256": "240df9c765d343833cb30f0b469a1c2ff837c50963999cbf9bd5ee1469a50cac",
+      "served_sha256": "240df9c765d343833cb30f0b469a1c2ff837c50963999cbf9bd5ee1469a50cac",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-data-migration-02.json",
+      "source_sha256": "b60ccf736903d907550c0680bc74edb99624d40fc3ed5a44919ed52a8635cecb",
+      "served_sha256": "b60ccf736903d907550c0680bc74edb99624d40fc3ed5a44919ed52a8635cecb",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-policy-servicing-01.json",
+      "source_sha256": "5ba4cec1152ff296579f704b363699518af505138addbc9fc536a847979648e1",
+      "served_sha256": "5ba4cec1152ff296579f704b363699518af505138addbc9fc536a847979648e1",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-policy-servicing-02.json",
+      "source_sha256": "316365541d36e19cee9d5c5e84ab192cba780c69fc1e27a95339e6798a956d0d",
+      "served_sha256": "316365541d36e19cee9d5c5e84ab192cba780c69fc1e27a95339e6798a956d0d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-product-testing-01.json",
+      "source_sha256": "e6c0088226492d4267dab497a820801168aabe93c60f00c6a464c3a1833ed6d7",
+      "served_sha256": "e6c0088226492d4267dab497a820801168aabe93c60f00c6a464c3a1833ed6d7",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-software-incident-01.json",
+      "source_sha256": "1adffd043fea5a87ef9c967770373e69173d8854e9c4bb0a03f8dcf47fcd9ffd",
+      "served_sha256": "1adffd043fea5a87ef9c967770373e69173d8854e9c4bb0a03f8dcf47fcd9ffd",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-software-incident-02.json",
+      "source_sha256": "d7764b7bb8375995e5f8b31ca413091a622572a3164df0c6fe4a9b1ea9bbbc2d",
+      "served_sha256": "d7764b7bb8375995e5f8b31ca413091a622572a3164df0c6fe4a9b1ea9bbbc2d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/insurance-underwriting-intake-01.json",
+      "source_sha256": "b550787a2a180faf33456cde260b4591a36267a48e1a364d24cbb2ae7248f40e",
+      "served_sha256": "b550787a2a180faf33456cde260b4591a36267a48e1a364d24cbb2ae7248f40e",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/reinsurance-risk-research-01.json",
+      "source_sha256": "61cb69355b569bff2422625a9f0f3282d3ef4d32c3bcdebeaf3bc2f686041a42",
+      "served_sha256": "61cb69355b569bff2422625a9f0f3282d3ef4d32c3bcdebeaf3bc2f686041a42",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/packets/reinsurance-treaty-reconciliation-01.json",
+      "source_sha256": "0bc465dfed0260e6fd3781c8f3e9aae719cd98ab170f3d78b750e090ca6c70b5",
+      "served_sha256": "0bc465dfed0260e6fd3781c8f3e9aae719cd98ab170f3d78b750e090ca6c70b5",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/REVIEW-METHOD.md",
+      "source_sha256": "7db86d3bfc7fbccc7dfe986e65dec3d8c94ffb4c904396226e8d05228d681436",
+      "served_sha256": "7db86d3bfc7fbccc7dfe986e65dec3d8c94ffb4c904396226e8d05228d681436",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/customer-support-01.json",
+      "source_sha256": "7edc242d3893ec9a68c6ab11ab4a460682c902f6f7fc1345685b4f8196af6b7e",
+      "served_sha256": "7edc242d3893ec9a68c6ab11ab4a460682c902f6f7fc1345685b4f8196af6b7e",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-claims-evidence-01.json",
+      "source_sha256": "78a9035d89cbe3113cd93d9ac6f1a6dd092cbcf09e9c1b51a9ed94698375fd59",
+      "served_sha256": "78a9035d89cbe3113cd93d9ac6f1a6dd092cbcf09e9c1b51a9ed94698375fd59",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-claims-evidence-02.json",
+      "source_sha256": "d226e08c1e4077658e6573311fd26f8e38e516b327a5c5376a6de7415df14edf",
+      "served_sha256": "d226e08c1e4077658e6573311fd26f8e38e516b327a5c5376a6de7415df14edf",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-claims-evidence-03.json",
+      "source_sha256": "3621ca17855459b525cfc4d10cdd2dd09b019c4c6a32b82d4e27e52ecb51054c",
+      "served_sha256": "3621ca17855459b525cfc4d10cdd2dd09b019c4c6a32b82d4e27e52ecb51054c",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-claims-evidence-04.json",
+      "source_sha256": "9406036b8e80d7413beb2d126d53e569123ff7c0e1462762e667601ea9141998",
+      "served_sha256": "9406036b8e80d7413beb2d126d53e569123ff7c0e1462762e667601ea9141998",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-data-migration-01.json",
+      "source_sha256": "fd51d4b342455de09321b55e20f1a0765caf2eb2cc79db1349f89231b1986860",
+      "served_sha256": "fd51d4b342455de09321b55e20f1a0765caf2eb2cc79db1349f89231b1986860",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-data-migration-02.json",
+      "source_sha256": "98245607571fb998d43fee0e3fd67bb3698c2f87a134021411ff148da54e1447",
+      "served_sha256": "98245607571fb998d43fee0e3fd67bb3698c2f87a134021411ff148da54e1447",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-policy-servicing-01.json",
+      "source_sha256": "e3efbcb9a1c5cf8592336b916683eaecce6ede084ea8cde1a2f4c7ca01286985",
+      "served_sha256": "e3efbcb9a1c5cf8592336b916683eaecce6ede084ea8cde1a2f4c7ca01286985",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-policy-servicing-02.json",
+      "source_sha256": "7fbd887a23d63a7e6098617c284b8ad6c1fc0df5cdf4626dd8f020a900e4e8d8",
+      "served_sha256": "7fbd887a23d63a7e6098617c284b8ad6c1fc0df5cdf4626dd8f020a900e4e8d8",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-product-testing-01.json",
+      "source_sha256": "ef78d1e25c2d8d2ade896ff01d5f3ca82badbab9231f0b90885466b91cd5405d",
+      "served_sha256": "ef78d1e25c2d8d2ade896ff01d5f3ca82badbab9231f0b90885466b91cd5405d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-software-incident-01.json",
+      "source_sha256": "4651b6fe0adc99c23667d1975dd4b289d05960ab269700bc4a4e67ffe216eff9",
+      "served_sha256": "4651b6fe0adc99c23667d1975dd4b289d05960ab269700bc4a4e67ffe216eff9",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-software-incident-02.json",
+      "source_sha256": "52b79a39ed0a5578bab82353473bf776ab389afc60226732f3904303da52a2e1",
+      "served_sha256": "52b79a39ed0a5578bab82353473bf776ab389afc60226732f3904303da52a2e1",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/insurance-underwriting-intake-01.json",
+      "source_sha256": "d35bd2c03559c1da09158611261029330663d25b1352e6443df09bd926a364b2",
+      "served_sha256": "d35bd2c03559c1da09158611261029330663d25b1352e6443df09bd926a364b2",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/reinsurance-risk-research-01.json",
+      "source_sha256": "ad9afa3ce52c3e2d952d297f6c638c98f090655c41e6879574125bec548391ff",
+      "served_sha256": "ad9afa3ce52c3e2d952d297f6c638c98f090655c41e6879574125bec548391ff",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews/reinsurance-treaty-reconciliation-01.json",
+      "source_sha256": "9e051465aeaf6066f3699ef06a907a5c599171e497442ff3411fcae944b34cfb",
+      "served_sha256": "9e051465aeaf6066f3699ef06a907a5c599171e497442ff3411fcae944b34cfb",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews.csv",
+      "source_sha256": "0fc0e27fb0288143e02ce7a09be72cd55c90098939b18f5837a41efe6614e30d",
+      "served_sha256": "0fc0e27fb0288143e02ce7a09be72cd55c90098939b18f5837a41efe6614e30d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/reviews.json",
+      "source_sha256": "7378d20615a1d1172e7821c2e6f57538903180ac9baec01a66a35f8738f7461b",
+      "served_sha256": "7378d20615a1d1172e7821c2e6f57538903180ac9baec01a66a35f8738f7461b",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-disagreements/h2-r6-wus3-20261029-v1/summary.json",
+      "source_sha256": "724e12091f8b8d554bb4e639ed625d94046bf94d50db708bef5284e17c02574b",
+      "served_sha256": "724e12091f8b8d554bb4e639ed625d94046bf94d50db708bef5284e17c02574b",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/authorization.json",
+      "source_sha256": "6ceb86b9ac0596ddefdda06d36a3ab1713a6dc34e6d6701964adbbf75613e936",
+      "served_sha256": "6ceb86b9ac0596ddefdda06d36a3ab1713a6dc34e6d6701964adbbf75613e936",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/baseline-judgments.json",
+      "source_sha256": "5b47243047ae803890475cfb0561d92cc53b29c9e85baa4c2c0d80352209488e",
+      "served_sha256": "5b47243047ae803890475cfb0561d92cc53b29c9e85baa4c2c0d80352209488e",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/conclusions.json",
+      "source_sha256": "61c163f6f716c8e3360d1d3127443daad1461d6cb9e3c4e963e9b5a0c7e57e99",
+      "served_sha256": "61c163f6f716c8e3360d1d3127443daad1461d6cb9e3c4e963e9b5a0c7e57e99",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/judgments.json",
+      "source_sha256": "da2459d49f992d5bd299026a9ac3522ebf43e956fd645fd9d23d97d79e7d0d21",
+      "served_sha256": "da2459d49f992d5bd299026a9ac3522ebf43e956fd645fd9d23d97d79e7d0d21",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/manifest.json",
+      "source_sha256": "b97b166f5bfff87aeb49a100ffe275052c1fe4a94d68e8447e4c19456c59b8f3",
+      "served_sha256": "b97b166f5bfff87aeb49a100ffe275052c1fe4a94d68e8447e4c19456c59b8f3",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/second-pass-judgments.json",
+      "source_sha256": "ae96d3a9e22bb9abd8580a45ceee27c5df2a0a4884eec8cd59f6d010a6e600ef",
+      "served_sha256": "ae96d3a9e22bb9abd8580a45ceee27c5df2a0a4884eec8cd59f6d010a6e600ef",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/three-pass-comparison.json",
+      "source_sha256": "46f5625a646b424fed9ccf5ca4b11855e26ff8584d0fd68ed07c9f6983fc2d62",
+      "served_sha256": "46f5625a646b424fed9ccf5ca4b11855e26ff8584d0fd68ed07c9f6983fc2d62",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/analysis/evaluator-repeatability/h2-repeatability-20261031-r2/three-pass-pairs.csv",
+      "source_sha256": "a6fe12952c254657aa88897ed483dc52f1a26a0266793b1b6e3b0b4dacd02a1f",
+      "served_sha256": "a6fe12952c254657aa88897ed483dc52f1a26a0266793b1b6e3b0b4dacd02a1f",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/design-guidance.json",
+      "source_sha256": "be03ef9006d08cff27895ead70e6070fab7c8ab6914e2c9c64ad75505be6764d",
+      "served_sha256": "be03ef9006d08cff27895ead70e6070fab7c8ab6914e2c9c64ad75505be6764d",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/evaluation.html",
+      "source_sha256": "e5324e3e43dae131fe298139f37fdbc46f4d384586e5215ead5b4009b9f94d23",
+      "served_sha256": "076ae6a671d260b9e1f1520925d805ce0dc093982c099b7b26251dfba35df25b",
+      "adapted_runtime_links": 2
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/evaluations.csv",
+      "source_sha256": "0ceeff9a65176e1a955d7f30f2e252d40cdde2b055a7beec87bc67781e761bbf",
+      "served_sha256": "0ceeff9a65176e1a955d7f30f2e252d40cdde2b055a7beec87bc67781e761bbf",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/evaluator-pairs.csv",
+      "source_sha256": "cc1c0b2f4e0ed7174b2f10173d5f502a3747f64f100fe03d8f8062691dcdf712",
+      "served_sha256": "cc1c0b2f4e0ed7174b2f10173d5f502a3747f64f100fe03d8f8062691dcdf712",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/index.html",
+      "source_sha256": "3f944d9e2aa5391a86ae226b31535762647e1588c1a42308bb9e905d1aaa8193",
+      "served_sha256": "4e6c8dfc3073fb04c407c0cb3c2266388d3e2965961391f23ba39a43d52cc972",
+      "adapted_runtime_links": 1
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/manifest.json",
+      "source_sha256": "dab6395aa473fec74e0bcd4df0587d7a58cd827057a16d9bb67ef5d1065e9529",
+      "served_sha256": "dab6395aa473fec74e0bcd4df0587d7a58cd827057a16d9bb67ef5d1065e9529",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/summary.json",
+      "source_sha256": "1b3d6a5cab1c0a865e80abde44da5b3dec1e4c4c41d8b654e0e3dc6fa494dfec",
+      "served_sha256": "1b3d6a5cab1c0a865e80abde44da5b3dec1e4c4c41d8b654e0e3dc6fa494dfec",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/workflow-pairs.csv",
+      "source_sha256": "f769e0dd8ab27a945f59325360894f95cba2adc9d93213a8cc3d332c0dd4fe8e",
+      "served_sha256": "f769e0dd8ab27a945f59325360894f95cba2adc9d93213a8cc3d332c0dd4fe8e",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "assets/runs/analysis-h2-r6-wus3-20261029-v2/workflows.csv",
+      "source_sha256": "a3abfaa1bab8334f942df027d994e5bcd25dc057f723782615c08b921d9dfe52",
+      "served_sha256": "a3abfaa1bab8334f942df027d994e5bcd25dc057f723782615c08b921d9dfe52",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "src/think-fast-insurance-claims-evidence/workflow.py",
+      "source_sha256": "b8ef0a0e7d58b3c6c92496788fcd3fd802112d981f5bddeff35690325bccfbb0",
+      "served_sha256": "b8ef0a0e7d58b3c6c92496788fcd3fd802112d981f5bddeff35690325bccfbb0",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "src/think-fast-usecase-one/native.py",
+      "source_sha256": "5d852c82ab91956c565765b46a1092976d376f8afbd50783ef7d209ecc16cbc2",
+      "served_sha256": "5d852c82ab91956c565765b46a1092976d376f8afbd50783ef7d209ecc16cbc2",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "src/think_fast_tests/agent_workflows/execution.py",
+      "source_sha256": "ffbb8598acdbc1fc2344c8d82e008e5edd9cad227192b2a9dec7f0e6df018588",
+      "served_sha256": "ffbb8598acdbc1fc2344c8d82e008e5edd9cad227192b2a9dec7f0e6df018588",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "src/think_fast_tests/agent_workflows/native_runtime.py",
+      "source_sha256": "a53dd0ceb1a00bdf3ef8d4d8eee3de565049e4b6b68a1a148ee1ad7020405a7b",
+      "served_sha256": "a53dd0ceb1a00bdf3ef8d4d8eee3de565049e4b6b68a1a148ee1ad7020405a7b",
+      "adapted_runtime_links": 0
+    },
+    {
+      "path": "src/think_fast_tests/agent_workflows/scenario_evaluation.py",
+      "source_sha256": "765682b191ab19aff80ac592383687cb6f28c9aca591c824e0cea59af1b9aba6",
+      "served_sha256": "765682b191ab19aff80ac592383687cb6f28c9aca591c824e0cea59af1b9aba6",
+      "adapted_runtime_links": 0
+    }
+  ]
+}

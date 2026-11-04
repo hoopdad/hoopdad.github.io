@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { createHash } = require('node:crypto');
 
 const topicKeys = ['agents', 'ai-engineering', 'tokenomics', 'cloud', 'data'];
 const screenshot = async (page, testInfo, name, fullPage = false) => {
@@ -183,4 +184,42 @@ test('navigation and reading remain available without JavaScript', async ({ brow
   await expect(page.locator('.archive-row')).toHaveCount(35);
   await noOverflow(page);
   await context.close();
+});
+
+test('claims reference assets are local, intact, and browsable', async ({ page, request }) => {
+  const assetBase = '/assets/2026/tokenomics/think-fast-tests/';
+  await page.goto('/tokenomics/2026/11/03/maximize-ai-insurance-workflow1.html');
+  await expect(page.locator('.prose a[href*="github.com/hoopdad/think-fast-tests"]')).toHaveCount(0);
+  const references = await page.locator(`.prose a[href^="${assetBase}"]`).evaluateAll(
+    (nodes) => [...new Set(nodes.map((node) => node.getAttribute('href')))]
+  );
+  expect(references).toContain(`${assetBase}bundle-manifest.json`);
+  const manifestResponse = await request.get(`${assetBase}bundle-manifest.json`);
+  expect(manifestResponse.ok()).toBe(true);
+  const manifest = await manifestResponse.json();
+  const available = new Set([`${assetBase}bundle-manifest.json`]);
+  for (const file of manifest.files) {
+    const url = `${assetBase}${file.path}`;
+    available.add(url);
+    const response = await request.get(url);
+    expect(response.ok(), url).toBe(true);
+    const hash = createHash('sha256').update(await response.body()).digest('hex');
+    expect(hash, url).toBe(file.served_sha256);
+  }
+  for (const reference of references) expect(available.has(reference), reference).toBe(true);
+  for (const file of manifest.files.filter((file) => file.path.endsWith('.html'))) {
+    await page.goto(`${assetBase}${file.path}`);
+    await expect(page.locator('h1')).toBeVisible();
+    const links = await page.locator('a[href]').evaluateAll((nodes) =>
+      nodes.map((node) => new URL(node.getAttribute('href'), location.href))
+        .filter((url) => url.origin === location.origin)
+        .map((url) => url.pathname)
+    );
+    for (const link of links) expect(available.has(link), link).toBe(true);
+  }
+  await page.goto(`${assetBase}assets/runs/analysis-h2-r6-wus3-20261029-v2/index.html`);
+  await expect(page.locator('svg').first()).toBeVisible();
+  await page.locator('a[href="evaluation.html"]').first().click();
+  await expect(page).toHaveURL(/\/evaluation\.html$/);
+  await expect(page.locator('#repeatability')).toBeVisible();
 });

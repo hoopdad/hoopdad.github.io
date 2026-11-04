@@ -1,0 +1,173 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-product-testing-01",
+  "analyst": "insurance-product-testing-reviewer",
+  "reviews": [
+    {
+      "answer_id": "f6225289ba2f1fa521dec4f5b9cca6dd27fc97b54e4abc2730e569be4a1136bb",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "apparent-defect",
+      "narrative": "The task asks for proposed effective-date regressions, using V1 on 30 June and V2 on 1 July without inferred time zones. The answer supplies exactly those two tests, inverse-version negative assertions, requirement links and an explicit distinction between expected outcomes and execution. Missing release proof does not prevent this level-1 design task from being addressed. The narrower visible concern is evidentiary specificity: the final answer asserts that a registered fixture has verified_final=false and lists four current dependency visit identifiers, although the supplied frozen evidence contains synthetic declarations and the SOP, not that fixture result or those visit records. The citation gate requires findings to cite present frozen records. The caution that synthetic design is not production proof is sensible, but a precise verification flag is not established by that general limitation. A competing interpretation is that the identifiers and flag describe genuine intermediate tool results omitted from this packet; their absence here does not prove fabrication, and the requested date tests remain defensible. A human would check the provenance of those specific metadata claims and whether they materially affect the final advisory packet. Neither evaluator supplied a rationale, so this is not an explanation of either actual vote. Native probabilities and confidence are separate diagnostics, not analyst confidence or correctness evidence.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The requested date outcomes are directly supported, while the named verification flag and dependency visits are absent from the supplied records; omitted intermediate provenance remains possible."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The registered fixture is conditional synthetic evidence with verified_final=false"
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Current dependency references are visit-7b45a5f514e843a292115e04150fd0d9"
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Propose effective-date regression cases for 30 June and 1 July and state required source versions."
+        }
+      ]
+    },
+    {
+      "answer_id": "ed24260e871de92f7a7c6f78cb9de93afab88b03e1afb2a0a1d659a5bec54ebc",
+      "primary_category": "numerical-rule-application",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "apparent-defect",
+      "narrative": "This field-testing task requires a nonempty string location_code, rejection of missing or empty values, and continued acceptance of an existing optional comment without schema changes. The answer gives a useful four-case set: a positive nonempty string, missing field, empty string and valid string with comment. It also checks omission of the optional comment and keeps every result proposed rather than executed. The visible rule-application defect is in its limitation sentence: it groups other non-string values with unspecified whitespace handling, comment types and exact error text, then says no outcomes are inferred for them. The supplied requirement already states that location_code must be a string, so values of a different type are not genuinely unspecified in the same way as whitespace-only strings or error wording. This is a contradiction in the stated scope of known validation behavior, not merely a demand for additional test coverage. A competing interpretation is that the writer intended only to exclude extra test cases from a deliberately small deterministic set; the four requested core cases are still present and correct. A human should distinguish that benign coverage choice from the literal assertion that type outcomes are unknown. Neither model returned a rationale, and the saved votes do not establish which interpretation either model adopted. Native confidence is not the qualitative confidence assigned here.",
+      "confidence": {
+        "level": "high",
+        "basis": "The nonempty-string requirement and the answer's statement that other non-string outcomes are unspecified are directly comparable; the materiality of this defect to acceptance remains a human question."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Whitespace-only values, other non-string values, comment types, and exact error text are unspecified, so no outcomes are inferred for them."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Synthetic product schema requires location_code as a nonempty string."
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/2/required_outputs/0",
+          "quote": "Missing/empty location_code rejected"
+        }
+      ]
+    },
+    {
+      "answer_id": "ec976c82f76813e5698e448e8ba93c718ff11fb62290a7c8ba5aa00434d79c3b",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "apparent-defect",
+      "narrative": "The selected level-3 task combines the V1/V2 calendar boundary with a contradictory configuration comment that cannot replace the signed requirement. The answer correctly preserves signed precedence, proposes V1 for 30 June and V2 for 1 July, and makes conflict testing conditional on identifying the affected path. It does not invent the comment's literal alternative date or claim that tests ran. However, proposed T0 adds a specific rejection rule for timestamps, offsets, time zones, years and environment-specific conversions. Calendar-date comparison without inferred time zones defines the test oracle; it does not establish that the product must reject every richer input representation or any input containing a year. No supplied schema specifies those rejection behaviors. This is an observable addition to requirements even though framed as a proposed test. A competing interpretation is that T0 is only a guard on the test designer's input fixtures, intended to keep the exercise date-only rather than to prescribe product validation. The repeated instruction not to add a year makes that reading plausible, but the wording 'reject' leaves the target unclear. A human should determine whether T0 constrains the harness or asserts new application behavior and inspect the literal comment before implementing T4. The saved models supplied no rationales; this tension is not a recovered motive, and native confidence does not establish correctness.",
+      "confidence": {
+        "level": "high",
+        "basis": "The added rejection list is explicit and no supplied task, criterion or evidence specifies such an input-validation rule; its intended target remains ambiguous."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "reject added timestamps, offsets, time zones, years or environment-specific conversions."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "The date comparison uses calendar dates, not inferred time zones."
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/2/constraint",
+          "quote": "A configuration comment contradicts the signed requirement. No approved change replaces that requirement."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The exact contradictory configuration-comment wording and affected configuration mapping are not supplied"
+        }
+      ]
+    },
+    {
+      "answer_id": "ac3f142c6c49f577c39b45035bb95ca32d6c042811d1be99da8230d30a991bb3",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["clarity-consistency", "unsupported-specificity"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This answer must demonstrate the approved reduction order on 100 units, contrast reversed order, and expose an unapproved comment's conflict with the signed requirement. It correctly calculates 72 for subtracting 10 before multiplying by 0.8 and 70 for reversing those operations, retains arithmetic-only status and stops short of execution or release. The interpretive tension is whether the reversed-order negative case is also the specific comment discrepancy. The traceability section maps the contradictory comment directly to T2's reversed order, while later limitations acknowledge that the literal comment and implementation are unavailable. The prompt requires a reversed-order test independently; it does not say that the comment necessarily advocates reversal. T3 can expose a deviation from the signed sequence, but its relationship to the actual comment remains conditional. Likewise, calling the 100-unit input a 'strict' fixture boundary risks implying threshold semantics absent from this arithmetic variant. A competing reading is that all of this is proposed diagnostic coverage rather than a factual allegation about the comment, with the limitations adequately preserving uncertainty. A human should inspect the exact comment and map its actual divergence to a regression, while retaining the already-correct arithmetic examples. Neither evaluator gave reasons, so no actual motive or correct evaluator can be inferred. Native probabilities are separate from this qualitative assessment.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The arithmetic is explicit and correct, but the missing literal comment prevents determining whether reversal is the actual discrepancy or merely a proposed diagnostic example."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "R2 contradictory configuration comment maps to proposed T2 reversed-order negative, expected diagnostic 70 and rejection."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "T1 uses the supplied strict 100-unit fixture boundary"
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Show a rule-order test and expected illustrative value, with a negative test for reversed order."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Request missing evidence precisely; do not fabricate unspecified conflicting values."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "(100 - 10) × 0.8 = 72 synthetic units."
+        }
+      ]
+    },
+    {
+      "answer_id": "4278de86b9757a8829f0def9ce6e5974863721e140d3d6567de7f7242b7202c2",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": [],
+      "assessment": "defensible-answer",
+      "narrative": "The level-4 threshold task asks for proposed 99, 100 and 101-unit cases while preserving validation and approval dependencies under a one-hour release window and previous-version-only reports. The answer gives the required no-referral, no-referral, referral outcomes and explicitly uses the exact-100 case to detect an erroneous inclusive comparator. It avoids pricing conclusions, requires current-version schema evidence before regression, refuses to treat old reports as current proof and leaves business approval and release with a human. Its repeated proof requests are verbose, but the concrete requested test set and stop/go conditions remain visible. Calling 101 the first whole-unit value above the threshold is appropriately qualified; it does not assert that fractional inputs are impossible. A competing interpretation could question whether labeling old reports 'compatibility-evidence' gives them excessive authority, or whether the approval checklist adds unnecessary formality. The answer immediately marks those reports stale and says compatibility remains unproved, while the supplied SOP itself requires explicit human/operator approval and current-test proof requests. On this packet, those concerns do not supply a persuasive substantive defect explaining the split. A human should verify current-version evidence and authority if operational use is contemplated, not infer execution from this design. Neither evaluator supplied a rationale; the disagreement remains unexplained, and native confidence does not make either vote ground truth.",
+      "confidence": {
+        "level": "medium",
+        "basis": "All selected deliverables are visibly addressed with supported threshold outcomes and preserved authority boundaries; concluding that no persuasive defect explains the split is necessarily interpretive."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "TC-100 verifies the strict-100 boundary and detects an incorrect >=100 implementation."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Compatibility with the current version remains unproved; previous-version reports cannot supply it."
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/0/required_outputs/0",
+          "quote": "99 and 100 not referred, 101 referred"
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/3/constraint",
+          "quote": "schema validation precedes regression and business approval precedes release. Existing test reports cover the previous version only."
+        }
+      ]
+    }
+  ]
+}

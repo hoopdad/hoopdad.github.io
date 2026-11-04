@@ -1,0 +1,272 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-policy-servicing-01",
+  "analyst": "insurance-policy-servicing-01-reviewer",
+  "reviews": [
+    {
+      "answer_id": "8cac5cb08b4f8a02c92b4ec9ff78de78d2353643027c3a5daff1efe84e4e52d1",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The level-one document task asks for checks and an unsent service response concerning D1, its V3 draft certificate, and the authorized-signature prerequisite. The answer explicitly says that the record does not establish signature completion or issuance, lists version and signature checks, and supplies a draft rather than claiming issuance. These are substantive responses to both document-specific deliverables, not merely safe boundary labels. Its repeated requests for a dated authoritative record go beyond the narrow complete-excerpt explanation, but are conditional human checks rather than invented evidence. A competing reading is that this repetition overstates an evidentiary gap in a scenario explicitly permitting reliance on the complete supplied excerpt. That concern does not visibly invalidate the answer's actual explanation of draft versus issued status. A human should check whether the extra freshness language materially obscures the requested checks and whether any sentence incorrectly asserts an unsigned state; the answer instead preserves unknown signature completion. Decision-1's saved native vote is an exact 0.5/0.5 tie, recorded separately from the semantic analysis. Neither evaluator supplied a rationale, so the tie is a diagnostic mechanism, not evidence of either model's reasoning or of correctness.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The version, draft and signature distinctions directly match the task; the possible objection concerns how much freshness qualification the narrow level-one explanation needs. The native tie does not calibrate this analyst confidence."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "It does not establish signature completion or issuance."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Draft service response"
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/4/request",
+          "quote": "List the document checks and draft a service response without claiming the certificate was issued."
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/0/constraint",
+          "quote": "Use the supplied complete ledger or policy excerpt for the one requested explanation."
+        }
+      ]
+    },
+    {
+      "answer_id": "1f3faadb680eea73646e4d5b73854dd39e3d3dea0563c180cae98ecfe18744da",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "apparent-defect",
+      "narrative": "This level-one endorsement task concerns E1's proposed storage location, E2's underwriter-approval prerequisite, and the absence of recorded approval. Most of the answer addresses that task accurately: its checklist preserves pending status, its acknowledgement disclaims coverage, and proposed issuance or system activity remains conditional on human review. The visible defect is the limitations statement introducing a 'Draft acknowledgement D1' as though that identified document already exists. Neither the selected task nor its evidence records identify an acknowledgement as D1. The shared SOP uses D1 for the distinct certificate-document scenario, not this endorsement acknowledgement. The answer's generated draft can legitimately be described as unsent, but assigning it an unexplained pre-existing-looking reference creates an unsupported document association. A competing interpretation is that D1 is simply a local label for the draft written in this answer, making the error minor rather than a false servicing action. That label is not introduced as newly assigned, however, and the evidence-citation requirement makes the ambiguity relevant. A human should check whether readers could mistake it for a supplied case record and whether the unsupported identifier compromises traceability. This observation does not establish why GPT rejected or Decision-1 accepted; neither returned a rationale.",
+      "confidence": {
+        "level": "high",
+        "basis": "The D1 acknowledgement assertion is directly visible, while the selected records name E1 and E2 and supply no D1 acknowledgement. The significance of the label is debatable, but its unsupported association is observable."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Draft acknowledgement D1 remains unissued and requires human review before any external use."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Synthetic request E1 asks to add a storage location."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "This is an unsent advisory draft for human review."
+        }
+      ]
+    },
+    {
+      "answer_id": "f30015194f43a3440aa92e62ef8972eed5474cba8e0f6391d2fed5974c0c5445",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The instalment task requests a paid-versus-scheduled explanation from L1's three 100-unit instalments, with the first paid and no supplied late fee. The answer performs the necessary reconciliation: 300 units total, 100 recorded paid and 200 scheduled rather than paid or collected. It adds no charge, does not call the scheduled balance overdue, and presents the customer wording as an unsent explanation. Its conditional next step concerns later payment verification or schedule changes, not collection during this exercise. A possible competing interpretation focuses on the missing posting date: the shared servicing guidance warns that absent dates block verified final status. Here, however, the selected level explicitly permits the complete ledger's narrow explanation, and the answer distinguishes recorded synthetic status from externally verified final payment status. The reference to future payment is a plain-language reading of scheduled instalments, not a supplied maturity date or claim that a collection occurred. A human should check whether that wording implies a timing assertion beyond the fixture and whether the date caveat adequately limits current operational reliance. No persuasive arithmetic or action-boundary defect is visible. The split remains unexplained semantically; neither evaluator supplied a rationale, and its native vote probabilities are not analyst confidence or correctness evidence.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The amounts and lack of invented fees are directly supported. Residual uncertainty concerns interpretation of scheduled timing and the boundary between the complete synthetic explanation and current payment verification."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "100 units are paid and 200 units remain scheduled, not paid or collected."
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/0/required_outputs/0",
+          "quote": "100 paid and 200 scheduled"
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "No posting date is supplied; this does not affect the requested synthetic-ledger explanation, but it prevents any claim of externally verified final payment status."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "No late fee is supplied."
+        }
+      ]
+    },
+    {
+      "answer_id": "72e1caf862fc5d82787ae561607f2415470054e092e0d4daa166b2935ebfe16d",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["action-versus-advice", "scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The level-one refund task requires a clear explanation of Q1's illustrative 40-unit refund and the next evidence needed, given unapproved, unposted cancellation and no ledger payment. This answer distinguishes approval, posting and disbursement explicitly, retains 40 units as a quote only, and requests dated posting confirmation followed by updated ledger or payment evidence. Its complete-excerpt explanation is separated from final current operational status, which remains conditional because the records lack as-of dates. The draft itself does not approve, pay, cancel or send anything. One possible competing interpretation is that 'a human must first approve the cancellation' directs approval as an inevitable next step, rather than requesting a human decision or evidence of any decision. Read with the conditional heading, approval prerequisite and repeated no-action statements, it is reasonably understood as a sequencing condition, not an instruction to grant approval regardless of merits. Another possible concern is that the draft paragraph omits some next-evidence detail, but that detail is expressly supplied elsewhere in the final packet. A human should check whether the whole packet, rather than only the quoted customer draft, satisfies the requested explanation and next-evidence deliverable. Neither evaluator returned a rationale; the saved disagreement does not establish which interpretation it used.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The quote/approval/posting/payment distinctions and evidence requests are explicit. The competing concern is a contextual reading of prescriptive wording, not evidence of an executed or authorized refund."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Approval would authorize the cancellation, posting would record the transaction, and payment evidence would establish disbursement; none is interchangeable."
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/2/request",
+          "quote": "Draft a clear explanation of quote versus completed refund and the evidence needed next."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Conditional next steps: a human must first approve the cancellation."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/5/pass",
+          "quote": "Draft, test, mitigation, migration and release actions remain proposed."
+        }
+      ]
+    },
+    {
+      "answer_id": "faf790c07b5efc432adb2bdb3212601d08fa66d6045ca2a8cf8c548409636681",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality", "evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "This separate answer to the level-one Q1 refund prompt supplies a shorter explanation than the other refund answer. It states the 40-unit amount is illustrative, preserves unapproved and unposted cancellation, and distinguishes missing ledger payment from a completed refund. The requested next evidence is concrete: human approval, posting evidence, then a ledger payment entry or separate payment confirmation. Nothing claims that these steps occurred, and the customer wording remains an unsent draft. The main plausible tension is evidence freshness: this answer has no separate limitations section or explicit as-of-date caveat, although the supplied records have unknown freshness and the common quality gate requires respecting qualifiers. A competing reading is that the level-one complete-excerpt instruction permits precisely this bounded factual explanation; the answer repeatedly refers to supplied evidence and never asserts externally verified current status. Missing a heading or generic date warning is not itself a missing requested deliverable. A human should decide whether the wording can reasonably be mistaken for a current operational certification and whether the selected level requires an explicit freshness warning despite its complete-excerpt scope. On the visible packet, no convincing substantive failure is established. Neither evaluator supplied a rationale, and the native rejection confidence does not establish a defect or calibrate this review.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The substantive refund distinctions and next-evidence deliverable are directly present. Whether omission of an explicit date caveat matters depends on applying the narrow level-one scope alongside common freshness guidance."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Q1 alone does not establish any of these stages."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "finally, confirm payment through a ledger refund-payment entry or separate payment confirmation."
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/0/constraint",
+          "quote": "Use the supplied complete ledger or policy excerpt for the one requested explanation."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."
+        }
+      ]
+    },
+    {
+      "answer_id": "62eeeed981e6a560db4de066d1f2d2c952f25524e8c2f291ecc9b5a7747ff97c",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "For the level-one renewal task, the answer must explain why O1's recorded acknowledgement is not the explicit acceptance required for renewed coverage. It makes that distinction throughout, reports no recorded acceptance or payment, and avoids saying either that coverage renewed or that the yearless 30 June deadline has already passed. It also correctly avoids turning absent payment into an additional policy acceptance requirement: payment status is a separate check, while explicit acceptance is the supplied rule. The draft and any consequential action remain subject to human review. A possible competing interpretation concerns calling the acknowledgement record a 'ledger': the supplied facts do not separately identify a ledger artifact, so this is more specific source wording than the task itself provides. However, the common reconciliation output and complete ledger-or-policy scope allow a reasonable shorthand reading; no fabricated amount, transaction or acceptance follows from that noun. The extra year and as-of-date caveats are also defensible limits rather than a refusal to answer. A human should check source attribution and whether those caveats obscure the narrow acceptance explanation. No persuasive business-rule violation is apparent. Neither evaluator returned a rationale; the native confidence is a separate diagnostic and does not resolve the interpretation.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The acknowledgement/acceptance distinction and year limitation are directly grounded. Uncertainty remains about whether generic ledger attribution exceeds the supplied record's specificity, not about any known evaluator motive."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Payment status should also be checked, without assuming payment is the policy's stated acceptance requirement."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "The supplied policy requires explicit acceptance."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The year associated with 30 June is not supplied, so whether O1's expiry date has passed is unresolved."
+        },
+        {
+          "source": "criterion",
+          "reference": "/variants/3/required_outputs/0",
+          "quote": "Acknowledgement is not acceptance"
+        }
+      ]
+    },
+    {
+      "answer_id": "10c1f899fe37933915c822473690077bb956f983b01c917c13cb81f507a26284",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-three endorsement task adds an untimestamped screenshot conflict to E1, E2 and absent recorded approval. Much of the answer is substantive: it prioritizes the authoritative ledger or signed policy, requests version, effective-date and screenshot-provenance checks, preserves absent billing evidence rather than inventing premiums, and provides an unsent acknowledgement. The visible tension is the opening categorical assertion that the endorsement 'is not effective' contrasted with the later statement that final current endorsement status cannot be established because the applicable policy record and date remain unidentified. Absence of recorded approval supports not representing the location as covered; it does not necessarily establish externally current non-effectiveness when the answer itself recognizes unresolved authoritative records. A competing interpretation is that the opening refers only to the supplied scenario's approval prerequisite, while the later caveat concerns operational current status. On that reading the two statements have different scopes and the practical advice remains safe. A human should check whether an ordinary reader can reliably distinguish those scopes, and whether the headline should remain conditional until reconciliation. The screenshot's actual conflicting values are not supplied, so no additional coverage fact can be inferred. This is an observable ambiguity, not proof of either evaluator's reason; neither returned a rationale.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Both the categorical opening and the later unknown-current-status statement are explicit. Their material inconsistency depends on whether readers distinguish supplied-scenario status from externally current status."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The endorsement is not effective under E2 because required underwriter approval is not recorded"
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "Final current endorsement status therefore cannot be established."
+        },
+        {
+          "source": "criterion",
+          "reference": "/levels/2/constraint",
+          "quote": "A portal screenshot conflicts with the authoritative ledger or signed policy. The screenshot has no timestamp. Explain what can be relied on and what needs reconciliation."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "No approval is recorded."
+        }
+      ]
+    },
+    {
+      "answer_id": "3d3eb96ca1ddd934ca284d3d44a75aae340042e807f1e4d2bfceb16d32b46bd1",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "apparent-defect",
+      "narrative": "The level-three renewal answer correctly preserves O1's acknowledgement-versus-acceptance distinction, the unknown year of 30 June, and the rule that an untimestamped screenshot cannot override the authoritative source. It proposes human reconciliation and includes an unsent draft without claiming renewal or payment. The substantive defect lies in the limitations section, which suddenly identifies the screenshot as D1, the authoritative ledger as L1 and the signed-policy requirement as Q1. The selected renewal facts and screenshot constraint supply none of those mappings. Moreover, the shared SOP uses D1 for the certificate request and Q1 for the cancellation quote, not for renewal screenshot and policy identifiers. This creates a misleading evidence trail even though the generic reconciliation advice is appropriate. A competing interpretation is that these are convenient locally assigned labels and the reader can still understand the intended source types. They are not introduced as invented labels, however, and the answer repeatedly treats them as established records. A human should trace every identifier to the supplied renewal evidence and determine whether those associations could misdirect reconciliation. The unsupported references are directly observable but do not establish why GPT rejected or Decision-1 accepted. Neither evaluator supplied a rationale, and their native judgments or confidence cannot substitute for that missing explanation.",
+      "confidence": {
+        "level": "high",
+        "basis": "The output explicitly maps D1, L1 and Q1 to renewal sources absent from the selected records; the shared SOP gives D1 and Q1 different scenario meanings. This confidence concerns the visible source-association defect, not model motives."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The untimestamped portal screenshot D1 remains inconsistent with the authoritative ledger L1 or signed-policy requirement Q1"
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "D1 conflicts with L1 or Q1 and has no timestamp."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "Synthetic renewal offer O1 expires on 30 June."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/1/pass",
+          "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."
+        }
+      ]
+    }
+  ]
+}

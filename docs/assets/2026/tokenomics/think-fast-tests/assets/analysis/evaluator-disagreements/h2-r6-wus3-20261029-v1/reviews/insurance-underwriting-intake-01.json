@@ -1,0 +1,49 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-underwriting-intake-01",
+  "analyst": "underwriting-intake-reviewer",
+  "reviews": [
+    {
+      "answer_id": "71382c93e39479bc2fd9fe00b786542c89ba61041c5a719c92e1648a9cd909a0",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": [
+        "scope-conditionality",
+        "evidence-authority"
+      ],
+      "assessment": "defensible-answer",
+      "narrative": "The task asks for B1's administrative-account MFA evidence to be compared with M4's attestation and dated recovery-test prerequisites, without guaranteeing coverage. Its apparent contradiction is specific: the base facts say both documents are current and signed, while the selected level says the key supporting attestation or inspection is missing. The answer explicitly preserves that conflict, treats the attestation as missing, and describes the recovery test as declared current and signed rather than independently verified. This is defensible under the supplied evidence qualification that the selected constraint governs reliance, reinforced by the SOP's instruction to mark level-2 supporting evidence missing even when base facts describe it. It checks both documents, requests B1's current signed MFA attestation, cites the relevant records, and retains human authority without claiming an action or coverage outcome. A competing reading might treat the base document-presence statement as sufficient, or regard checking a recovery test without its actual contents or date as incomplete. However, the answer discloses those limitations, and the criteria expressly permit a correctly scoped missing-evidence advisory packet. Repetition and two garbled separators do not obscure its conclusion. A human should check the intended constraint precedence and whether declaration-level review satisfies the two-document deliverable. No persuasive visible defect establishes why the votes split; neither evaluator supplied a rationale.",
+      "confidence": {
+        "level": "high",
+        "basis": "The full output directly addresses each selected deliverable, and the supplied qualification and SOP explicitly resolve the base-fact/level-2 conflict. Confidence concerns this textual comparison, not evaluator motives or independently established correctness."
+      },
+      "citations": [
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "The exact missing prerequisite evidence is B1's current, signed attestation supporting MFA on all administrative accounts."
+        },
+        {
+          "source": "output",
+          "reference": "",
+          "quote": "its contents, test date, and execution are not independently verified."
+        },
+        {
+          "source": "task",
+          "reference": "",
+          "quote": "For this version, the current attestation or inspection supporting the key prerequisite is missing."
+        },
+        {
+          "source": "evidence",
+          "reference": "fact-3",
+          "quote": "Both supplied documents are current and signed."
+        },
+        {
+          "source": "criterion",
+          "reference": "/quality_gates/6/pass",
+          "quote": "A correct missing, conflicting or stale-evidence advisory packet may be acceptable when allowed."
+        }
+      ]
+    }
+  ]
+}

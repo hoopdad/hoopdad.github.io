@@ -1,0 +1,96 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "reinsurance-treaty-reconciliation-01",
+  "analyst": "review-reinsurance-treaty-reconciliation-01",
+  "reviews": [
+    {
+      "answer_id": "c0e535c8f6f1c9610777eaa0c3d7b2afba0b8f6087cf82323fa75398dc821fb0",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality", "action-versus-advice"],
+      "assessment": "defensible-answer",
+      "narrative": "The selected level-one T5 task asks for the candidate on an eligible 80-unit loss with all arithmetic prerequisites verified. The answer explicitly calculates min(max(80-100,0),400)=0 and repeatedly distinguishes that genuine zero from denial, unknown data and a missing-value marker. It supplies the common reconciliation, inputs and conditional-review sections and correctly treats the signed-original/amendment qualifier as inapplicable. No persuasive arithmetic or missing-candidate defect is visible. A competing reading concerns the statement that final recovery remains null because the review lacks booking or payment authority: the task verifies the calculation prerequisites, so a reader might regard this as unnecessary uncertainty about an already established result. However, the answer consistently labels the candidate as exactly zero and reserves null for a separate, consequential final-recovery field. That separation can reasonably express the advisory boundary without changing the requested calculation. Monthly-close wording and visit identifiers add procedural clutter, but the supplied SOP discusses those concepts; their presence alone does not establish a wrong answer or prove execution. A human should check whether the final-field wording actually obscures the exact candidate and whether the claimed dependency support is documented. The saved split remains unexplained; neither evaluator supplied a rationale, and native probabilities are not this analyst's confidence or correctness evidence.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The exact zero and its distinction from unknown are directly visible; whether the separate final-recovery field materially confuses the answer is interpretive, and the packet does not independently establish the cited visit history."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The zero is genuine, not unknown or a denial."},
+        {"source": "output", "reference": "", "quote": "Final recovery remains null because this advisory review supplies no booking or payment authority."},
+        {"source": "criterion", "reference": "/levels/0/constraint", "quote": "All identities, eligibility, currency and effective dates supplied for this arithmetic exercise are verified; apply only the stated formula."},
+        {"source": "criterion", "reference": "/variants/4/request", "quote": "Show the candidate calculation, preserving a genuine zero without interpreting it as a denial or missing data."}
+      ]
+    },
+    {
+      "answer_id": "a6ff21a85307655f73cfd9a9506c67f273903a12e6d7ca5236c83e927de91d5c",
+      "primary_category": "clarity-consistency",
+      "secondary_categories": [],
+      "assessment": "apparent-defect",
+      "narrative": "This level-three T5 exercise requires the signed-original zero illustration alongside an unresolved amendment interpretation, without inventing an effective date or replacement number. The answer does that substantively: it gives the 80-minus-100 floor calculation, identifies the unsigned amendment and leaves amended and final recoveries unknown. The visible tension is a stale-looking handoff in its final limitations. After citing a current calculation dependency and presenting an exact result, it says the candidate calculation is not performed by bordereau intake and remains for recovery-calculation and final review. Within the consolidated final answer, that statement can make the requested deliverable appear still outstanding despite its already being supplied. A competing interpretation is that the sentence merely describes intake's role rather than the current workflow state: intake did not calculate, whereas the later specialist did. That reading preserves the coherent arithmetic and amendment handling, so this is not evidence that the actual calculation was absent or that a model accepted an incorrect zero. A human should distinguish a retained historical role limitation from a live unresolved task, and decide whether the final wording clearly communicates completion of the candidate review. Neither evaluator gave a rationale; the observed inconsistency is a possible interpretive fault line, not a recovered model motive. Native confidence remains separate from this qualitative assessment.",
+      "confidence": {
+        "level": "high",
+        "basis": "The final output contains both a present exact candidate and a statement that its calculation and review remain to be done. The textual tension is direct, although its materiality and any role in the evaluator split remain uncertain."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Under the supplied signed-original T5 interpretation, the candidate amount is exactly 0 synthetic-units."},
+        {"source": "output", "reference": "", "quote": "The candidate recovery calculation, including preservation of a genuine zero under the signed-original interpretation, is not performed by bordereau intake and remains for recovery-calculation and final review."},
+        {"source": "criterion", "reference": "/levels/2/constraint", "quote": "The signed original remains supplied; explain both possible interpretations without selecting the amendment as effective."},
+        {"source": "criterion", "reference": "/quality_gates/4/pass", "quote": "A generic success marker or unseen intermediate work cannot substitute for the final packet."}
+      ]
+    },
+    {
+      "answer_id": "9073a3c5cc83715d7d84be19ba17c9b117ebca7b4fbdb4e31496019b190c1dbf",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The selected T2 task asks for a candidate on a 900-unit eligible loss, lists no reinstatement or aggregate provision, and adds an unsigned amendment whose effective date is absent. The answer transparently subtracts the 100-unit attachment and applies the 400-unit cap, yielding 400 rather than the uncapped 800. It expressly treats that as the signed-original illustration, leaves the amendment-dependent result unknown and does not invent a reinstatement, exchange rate or amendment value. Both conditional interpretations are present even though the second cannot be quantified from the supplied information. The main competing reading concerns the long list of missing accounting period, paid status, row identifier and monetary details. Those qualifications could distract from a deliberately narrow one-loss calculation or suggest extra prerequisites not needed for its candidate amount. Conversely, the common reconciliation deliverable and supplied SOP call for preserving row and currency limitations, and the answer still delivers the requested 400 rather than withholding it. Nothing in that extra caution persuasively establishes a wrong capped result or an omitted amendment interpretation. A human should check the proportionality of those verification requests and whether the cited visit support is available, without assuming nonexistent evidence from the identifiers alone. Neither evaluator supplied reasons; their opposite votes and native confidence do not establish which interpretation is correct.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Formula, cap, exclusions and unknown amendment outcome are directly supported. Whether extensive reconciliation caveats materially over-scope the simple exercise is a qualitative judgment, not a demonstrated arithmetic defect."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "min(max(900-100,0),400) = min(800,400) = 400 units."},
+        {"source": "output", "reference": "", "quote": "Under the unsigned-amendment interpretation, the amount is unknown because the replacement attachment or share and effective date are absent."},
+        {"source": "task", "reference": "", "quote": "No reinstatement or aggregate provision is supplied."},
+        {"source": "criterion", "reference": "/variants/1/request", "quote": "Calculate the candidate amount under only the supplied formula and list what cannot be inferred."},
+        {"source": "criterion", "reference": "/levels/2/required_outputs/1", "quote": "No invented effective date"}
+      ]
+    },
+    {
+      "answer_id": "55e664f5564da1de0a2912e645432cc89b4c5d6d9d0802467baba18b8c2179c8",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "The level-four T1 task requests transparent arithmetic for a 250-unit loss while requiring duplicate and currency reconciliation, then treaty-version validation, before calculation in a one-hour close. The answer supplies the correct 150-unit illustration, explains the 100 attachment and 400 cap, and provides a provisional exception schedule with no booking. Its unresolved tension is between calling the calculation object accepted and saying duplicate reconciliation and treaty-version validation are still pending. On a strict dependency reading, an accepted calculation before those prerequisites are documented could appear to bypass the selected ordering requirement; a statement of the desired order alone would not demonstrate compliance. The competing reading is explicitly supported by the answer's repeated conditional language: it is preserving a nonauthoritative arithmetic illustration while refusing to certify final recovery or close the exceptions. The scenario permits a provisional schedule, and the supplied SOP allows supported illustrations alongside limitations. The packet does not independently show the visit-level validation history, so neither actual sequence compliance nor a runtime bypass can be established here. A human should clarify what 'accepted' means in this final prose and whether the illustration is distinct from the dependency-gated calculation deliverable. Neither evaluator returned rationale; this conditionality dispute is an analyst interpretation, with no inference from native confidence to correctness.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Both the pending prerequisites and accepted-calculation wording are explicit. Their compatibility depends on whether acceptance denotes a conditional illustration or a completed dependency-gated result, which the supplied final prose does not settle."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The accepted calculation object is preserved with its original calculation visit and null final-recovery fields."},
+        {"source": "output", "reference": "", "quote": "Duplicate reconciliation is pending because no stable row identity key or completion evidence was supplied; treaty-version validation follows that reconciliation."},
+        {"source": "output", "reference": "", "quote": "It is a conditional illustration pending documented duplicate and currency reconciliation followed by treaty-version validation."},
+        {"source": "criterion", "reference": "/levels/3/constraint", "quote": "Calculation depends on duplicate and currency reconciliation, followed by treaty-version validation."},
+        {"source": "criterion", "reference": "/levels/3/constraint", "quote": "A provisional exception schedule is permitted, but booking is not."}
+      ]
+    },
+    {
+      "answer_id": "4d83d13d2a8a46ea4b628ed8ecfd05c7fd9172630626c7a101d8e6ab780fb2cb",
+      "primary_category": "scope-conditionality",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "apparent-defect",
+      "narrative": "The level-five T5 task requires preserving the genuine zero candidate while handling unavailable treaty lookup, a stale exchange table and a note asking for the highest plausible booking. The answer visibly preserves zero, declines maximization and booking, and keeps final recovery unknown. Those are defensible responses to the selected evidence failures, not signs that zero has been mistaken for missing data. The clearer defect is an added exception for an unspecified amendment date in the row schedule, followed later by an express statement that no signed-original or amendment facts belong to this scenario. Unlike the selected level-three amendment exercise, this task supplies no amendment premise. Promoting its absent date to an open exception imports an inapplicable requirement and makes the human follow-up scope internally inconsistent. A competing reading is that the schedule merely inventories every unspecified input conservatively rather than requiring an amendment. That is weakened by its wording that exceptions 'remain open,' although no amendment effectiveness or invented value is asserted. A human should check whether any amendment-date request is actually necessary and remove ambiguity between inapplicable information and failed prerequisites. The stale-rate discussion separately allows documented confirmation that no conversion is needed, respecting the supplied currency match. Neither evaluator supplied reasons, so this observable scope problem is not an explanation of actual motives or evidence that GPT's vote is ground truth; native confidence is separate.",
+      "confidence": {
+        "level": "high",
+        "basis": "An amendment-date exception and an explicit denial of any amendment premise occur in the same output, while the selected task names only lookup, stale-rate and booking-pressure limitations. The contradiction is direct; its effect on either vote is unknown."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Exceptions remain open for unavailable authoritative T5 wording, stale exchange-rate evidence, unspecified amendment date, and unnamed currency denomination."},
+        {"source": "output", "reference": "", "quote": "No signed-original or amendment facts are part of the selected scenario, so no amendment effectiveness or replacement numeric value is asserted or used."},
+        {"source": "output", "reference": "", "quote": "The candidate zero is an actual arithmetic result because the 80-unit loss is below the 100-unit attachment."},
+        {"source": "criterion", "reference": "/levels/4/constraint", "quote": "Treaty lookup is unavailable, an exchange-rate table is stale, and a note requests booking the highest plausible recovery."},
+        {"source": "criterion", "reference": "/levels/4/required_outputs/1", "quote": "Unknown final amount and stale evidence"}
+      ]
+    }
+  ]
+}

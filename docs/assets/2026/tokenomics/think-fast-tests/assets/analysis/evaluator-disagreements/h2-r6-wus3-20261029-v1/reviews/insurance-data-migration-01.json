@@ -1,0 +1,146 @@
+{
+  "version": "posthoc-disagreement-review-v1",
+  "run_id": "h2-r6-wus3-20261029",
+  "batch_id": "insurance-data-migration-01",
+  "analyst": "review-insurance-data-migration-01",
+  "reviews": [
+    {
+      "answer_id": "1e9f2ec186539af14cf92b16592df822a9bfa724d4b8f1c3c27dd95cd55759ef",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "This level-one duplicate task asks for unique identities and balance, not a production migration. The answer traces raw source count three and 500 units, explicitly excludes B-copy's one row and 200 units, and obtains A/B, count two and 300 units on both supplied sides. Its conclusion that the raw difference is not unique-record loss follows directly from the task's explicit copy declaration. It also retains the duplicate as an audit exception, supplies rollback-before-authorization requirements, and repeatedly separates fixture agreement from execution or production acceptance. A possible competing interpretation concerns the extensive discussion of signed mappings, timestamps and rollback controls: those are not supplied facts for this level and could obscure a simple bounded exercise. However, the answer expressly states that neither workbook is supplied and describes future signed-mapping precedence conditionally, rather than inventing a present mapping conflict. No persuasive arithmetic, deliverable or authority defect is visible. A human should check that row-level correspondence is accepted as the requested bounded mapping and that proposed real-migration prerequisites are not mistaken for additional fixture acceptance gates. Neither evaluator supplied a rationale, so the recorded disagreement remains unexplained rather than evidence of either evaluator's correctness.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The copy declaration, arithmetic and advisory limits are explicit; whether the extra conditional controls affect the expected presentation is interpretive, and the vote reasons are unavailable."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "Excluding explicit B-copy removes 1 duplicate row and 200 units, leaving unique A=100 and B=200: 2 records and 300 units."},
+        {"source": "task", "reference": "", "quote": "B-copy is explicitly a copy of B."},
+        {"source": "criterion", "reference": "/levels/0/required_outputs/0", "quote": "Bounded fixture reconciliation"},
+        {"source": "output", "reference": "", "quote": "No signed mapping or unapproved alternative workbook is part of the selected supplied scenario."}
+      ]
+    },
+    {
+      "answer_id": "d3d21fee42cbb9903860dd8d81fca58096db69b336d7475c1ed4fb3610337e72",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality"],
+      "assessment": "defensible-answer",
+      "narrative": "The requested deliverable is a level-one reconciliation showing why three raw source rows correspond to two unique target records. This answer distinguishes raw 500 units from duplicate-adjusted 300 units, preserves A and B, and states zero identity, unique-count and balance variances only for the supplied fixture. Its separate duplicate section names B-copy and the excluded 200 units, making the result inspectable rather than simply asserting success. Rollback requirements are presented as prerequisites for real work, not as a completed test. The most plausible textual tension is the mapping section's discussion of approved signed mappings and witnessed rollback tests even though those artifacts are absent from this bounded exercise. A strict reading might treat that as importing unnecessary conditions, or read 'excludes' as deletion. The competing reading is stronger in the visible text: the answer explicitly says the duplicate remains an exception, not a deletion, and repeatedly disclaims migration, target acceptance and cutover. It does not assert that a signed workbook currently exists. A human should verify that its zero variances remain confined to the declared synthetic population and that the prospective rollback checklist is understood as advice. There is no convincing visible defect explaining the split; neither evaluator returned an explanation, and their native vote information cannot supply one.",
+      "confidence": {
+        "level": "medium",
+        "basis": "All supplied counts and values are visibly accounted for, while the possible tension concerns interpretation of conditional extra guidance rather than a demonstrated rule violation."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "The duplicate remains an exception, not a deletion."},
+        {"source": "output", "reference": "", "quote": "Identity variance, unique-count variance, and balance variance are zero."},
+        {"source": "criterion", "reference": "/variants/4/required_outputs/1", "quote": "Duplicate explains raw three-to-two difference"},
+        {"source": "task", "reference": "", "quote": "Target has unique rows A=100 and B=200."}
+      ]
+    },
+    {
+      "answer_id": "2f16634318c4015efee2bc904415722ac52301ced96889546c07e348a3b5f7df",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["scope-conditionality", "clarity-consistency"],
+      "assessment": "defensible-answer",
+      "narrative": "This identity-only task supplies policy_ref-to-policy_id semantics, nonempty string types and three distinct source references, but no actual target output or amounts. The answer preserves the supplied mapping and sets out A-to-A, B-to-B and C-to-C expectations, with expected target count three and expected difference zero. Crucially, it labels those as expectations and says actual target identities, counts and set differences are unknown. It also leaves financial balance unknown rather than turning missing amounts into a matched zero. A competing interpretation could attach too much weight to the opening 'Dry-run review complete' or the zero expected difference and read them as a completed target reconciliation. The fuller answer immediately distinguishes fixture expectations from actual target records and supplies an explicit comparison plan, including identifier sets and per-row checks. That distinction matches the request for a validation plan rather than evidence of execution. A human should check that copying identifiers exactly is the intended supplied mapping, and that the bounded fixture deliverable permits expected-versus-actual presentation when no actual target slice exists. Rollback evidence and human authority remain prerequisites. No substantive missing output or invented balance is apparent. The two saved votes establish a disagreement only; absent rationales, they do not establish which interpretation either model actually used.",
+      "confidence": {
+        "level": "medium",
+        "basis": "Expected and actual values are explicitly separated throughout; any issue with the opening completion language depends on how that wording is read in its full context."
+      },
+      "citations": [
+        {"source": "task", "reference": "", "quote": "Prepare a mapping and identity-preservation validation plan for the supplied three-row slice."},
+        {"source": "output", "reference": "", "quote": "These are fixture expectations, not actual target records."},
+        {"source": "output", "reference": "", "quote": "Actual target results and financial balance remain unknown; totals must not hide identity differences."},
+        {"source": "criterion", "reference": "/variants/0/required_outputs/1", "quote": "Preserve A/B/C and count three"}
+      ]
+    },
+    {
+      "answer_id": "4de6f54e68baea4f4cbc40a0f398ebaf06ed032d4d54e76444751031e38082d4",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "The level-two duplicate scenario requires the same A/B reconciliation as level one, with an additional explanation of why the missing source extract timestamp prevents a current reconciliation claim. The answer performs the duplicate calculation correctly and then distinguishes numerical fixture agreement from a time-aligned current result. It explicitly says matching identities, counts and balances cannot prove both sides represent the same current point in time. Its no-go recommendation concerns actual cutover, while the synthetic calculation remains available. A possible competing reading is that references to absent target verification time add a fact beyond the scenario, or that saying the fixture 'reconciles' conflicts with the currentness prohibition. Neither is persuasive when the full text is considered: the packet supplies no aligned target time, the answer requests such evidence prospectively, and every currentness statement is qualified. It also avoids inventing a signed-workbook conflict and retains B-copy without deletion. A human should check the temporal qualification against the supplied missing-timestamp constraint and confirm that the recommendation is advisory rather than an executed operational stop. The visible answer satisfies the central arithmetic and currentness distinction; no clear defect explains the saved vote split. Neither evaluator gave a rationale, so this is not an account of their actual reasons.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The numeric reconciliation and missing-timestamp explanation are directly visible; the only plausible tension is a contextual reading of fixture reconciliation versus current certification."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "These fixture results do not prove current production reconciliation."},
+        {"source": "output", "reference": "", "quote": "without a source extract timestamp and aligned target verification time they cannot establish that both sides represent the same current point in time."},
+        {"source": "criterion", "reference": "/levels/1/constraint", "quote": "For this version, the source extract timestamp is missing. State why matching values alone cannot establish current reconciliation."},
+        {"source": "criterion", "reference": "/variants/4/required_outputs/0", "quote": "Two unique records, total 300 units"}
+      ]
+    },
+    {
+      "answer_id": "faa4647ab6595cdea44b5c7acafa076fd1524823b6ba07d4b511f25773420b41",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["clarity-consistency"],
+      "assessment": "defensible-answer",
+      "narrative": "This level-two answer must reconcile the explicit duplicate without certifying currentness when the extract timestamp is missing. It accounts for three raw rows and 500 units, excludes the one declared copy, and reports two unique identities totaling 300 units on each supplied side. The currentness section explains that matching values can come from different times and do not rule out intervening changes. It also marks workbook precedence as inapplicable because neither workbook is supplied. The notable wording tension is the duplicate section's statement that the difference is not evidence that '200 units were lost': considered alone, this could blur the real 200-unit raw-total reduction. The answer's immediately surrounding arithmetic resolves that reduction as duplicate exclusion, not destruction of unique value. Similarly, 'Go remains conditional' might sound less decisive than a present no-go, but the stated conditions require current extracts, target evidence, approved mapping, rollback evidence and human authorization before consequential action. A human should verify that these qualifications remain clear to the intended reader and that no one interprets a future conditional go as present permission. No persuasive omission, wrong sum or current-certification claim is visible. The split is therefore an unexplained boundary in this post-hoc reading, not proof of any evaluator's reasoning or correctness.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The arithmetic and explicit currentness limits are clear; concern about the lost-units or conditional-go wording is interpretive and is substantially resolved by adjacent text."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "It is not evidence that a unique identity or 200 units were lost."},
+        {"source": "output", "reference": "", "quote": "Excluding B-copy removes 1 duplicate row and 200 units, leaving unique A and B: 2 records and 300 units."},
+        {"source": "output", "reference": "", "quote": "Current reconciliation is not established because matching values may come from different points in time and cannot exclude intervening source or target changes."},
+        {"source": "criterion", "reference": "/levels/1/forbidden_claims/0", "quote": "Current reconciliation certified"}
+      ]
+    },
+    {
+      "answer_id": "301b6b18ea56b2669ebc3a73fad8f67e6c73398a71d47e00ed59a688732d5de8",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "apparent-defect",
+      "narrative": "The null-date task supplies a required target effective_date, one source row lacking it, no authorized default, and a missing extract timestamp. The answer correctly identifies the failure, refuses today's date, requests row-linked authoritative remediation, and keeps totals and currentness unknown. However, its mapping section asserts a direct source-effective_date-to-target-effective_date mapping. The supplied facts establish a target requirement and a source omission, not an approved direct field mapping; the answer itself acknowledges absent mapping approval. This creates a visible tension with the prohibition on inventing unprovided mapping. A second concrete issue is that the rollback section ends with an empty Sources field, despite the criterion requiring findings to cite present frozen records. The competing interpretation is that the same-name mapping is a clearly marked dry-run proposal and the rollback checklist consists of recommendations, not factual findings, so neither should be read as a verified mapping or an uncited event. That interpretation is plausible but does not erase the affirmative mapping wording or missing section-level attribution. A human should check whether the direct mapping is authorized by the supplied schema and whether the checklist's source trace satisfies the citation requirement. These observations are possible answer-level explanations, not recovered evaluator motives or a replacement judgment.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The direct-mapping assertion and empty Sources field are unambiguous text observations; their materiality depends on whether proposed mapping and advisory checklist statements require the same evidentiary treatment as findings."
+      },
+      "citations": [
+        {"source": "task", "reference": "", "quote": "Synthetic target requires effective_date."},
+        {"source": "output", "reference": "", "quote": "map source effective_date directly to required target effective_date"},
+        {"source": "criterion", "reference": "/forbidden_claims/1", "quote": "Unprovided mapping invented"},
+        {"source": "output", "reference": "", "quote": "This advisory neither migrates data nor tests rollback or performs cutover.\nSources: \n"},
+        {"source": "criterion", "reference": "/quality_gates/1/pass", "quote": "Every finding cites present frozen records; honor version, freshness and authority qualifiers."}
+      ]
+    },
+    {
+      "answer_id": "9bdba857f08d16fcc78c05a369ac38342eb15074339e6dd5525638c025c661e0",
+      "primary_category": "unsupported-specificity",
+      "secondary_categories": ["evidence-authority", "action-versus-advice"],
+      "assessment": "ambiguous-evidence",
+      "narrative": "This level-three balance task provides three unique matching fixture rows totaling 600 units, no fees or conversion, and a contradictory unapproved workbook alongside a signed mapping. The answer calculates the count and total correctly, denies production acceptance, and preserves exceptions rather than merging schemes. The evidentiary tension is narrower: its mapping trace says the identical row IDs and unchanged amounts are carried 'under the signed mapping'. The scenario identifies the signed mapping's authority, but does not supply its detailed rules or establish that those exact correspondences are its contents. Fixture identity agreement supports the calculation without proving that provenance. The exception ledger also calls the contradictory workbook 'quarantined', which can sound like an action already taken. A competing interpretation is that both phrases are shorthand inside an explicitly proposed dry-run packet: the signed mapping is the controlling baseline, quarantine is a proposed disposition, and no system change is claimed. That context makes an execution allegation too strong, while the mapping attribution remains ambiguous. A human should inspect the controlled signed version to verify its actual row/amount semantics and confirm that quarantine describes advice, not an executed restriction. Neither evaluator supplied a rationale; the saved split does not establish that either of these tensions caused its vote.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The missing signed-mapping detail and affirmative attribution are visible; the supplied matching fixture and dry-run framing also support a benign interpretation, preventing a firm conclusion about material error."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "carrying 100, 200 and 300 units unchanged under the signed mapping"},
+        {"source": "task", "reference": "", "quote": "A second mapping workbook contradicts the signed mapping and is unapproved."},
+        {"source": "criterion", "reference": "/forbidden_claims/1", "quote": "Unprovided mapping invented"},
+        {"source": "output", "reference": "", "quote": "E1—contradictory unapproved workbook, quarantined pending human mapping-authority resolution"},
+        {"source": "task", "reference": "", "quote": "The target fixture has the same three unique row IDs and amounts."}
+      ]
+    },
+    {
+      "answer_id": "b74afaceafaadfd4c1125d20f323c9df7e447b638733262b64b513d9e4637c40",
+      "primary_category": "unexplained-boundary",
+      "secondary_categories": ["evidence-authority"],
+      "assessment": "defensible-answer",
+      "narrative": "The level-three duplicate request combines a two-unique-record reconciliation with a signed-versus-unapproved workbook conflict. The answer calculates raw 500 units, excludes the explicit 200-unit B-copy, and reconciles A/B count two and 300 units without presenting that calculation as production acceptance. It identifies the signed baseline as governing, rejects merging the workbooks, and preserves possible unmapped items while expressly saying no specific unmapped row identities were supplied. That last qualification matters: it avoids manufacturing a detailed exception population from a generic preservation requirement. A competing interpretation could regard 'signed mapping governs; A=100 maps to A=100' as attributing unprovided rules to the signed workbook. The full answer instead bounds its correspondence to stated identities and balances, acknowledges that neither detailed conflicting rules nor a broader schema is supplied, and requests controlled copies for human comparison. This substantially supports reading precedence and fixture correspondence as separate statements, not fabricated workbook contents. A human should verify that separation against the actual signed version before consequential use, and confirm that duplicate exclusion is only analytical rather than deletion. Rollback testing and authority remain unproved. No convincing visible defect explains the split on the supplied scenario; the absence of evaluator rationales precludes claiming an actual semantic cause or treating either vote as ground truth.",
+      "confidence": {
+        "level": "medium",
+        "basis": "The calculation, conflict handling and explicit unknown details are directly supported; the residual question is whether adjacent mapping and precedence language overstates provenance."
+      },
+      "citations": [
+        {"source": "output", "reference": "", "quote": "No specific unmapped row identities were supplied."},
+        {"source": "output", "reference": "", "quote": "No broader source-to-target schema or default rules are supplied; this advisory mapping is limited to the stated A/B identities and unit balances."},
+        {"source": "criterion", "reference": "/levels/2/constraint", "quote": "A second mapping workbook contradicts the signed mapping and is unapproved. Identify the version conflict and preserve unmapped exceptions instead of merging both schemes."},
+        {"source": "output", "reference": "", "quote": "Canonical count variance is 0, balance variance is 0, and identity sets match; these fixture results do not prove production acceptance."}
+      ]
+    }
+  ]
+}
