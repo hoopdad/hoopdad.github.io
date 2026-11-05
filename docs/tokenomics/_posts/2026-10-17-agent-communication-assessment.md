@@ -6,20 +6,20 @@ description: Build on your strengths and use agent feedback to sharpen the way y
 ---
 
 Getting ever better in communicating with agents is **the** skill. Tools are
-changing even as we gain work experience wiht agents. Intentionally asking
+changing even as we gain work experience with agents. Intentionally asking
 your agents for ways to improve is one angle and that is a great way to learn
 that I have posted about in the past.
 
 Since we challenge **everything** in this new era, I'm also challenging the
 premise that I need to work on the things where someone else says I need to
-improve. WHile that's still important, it can take me of course from the skills
+improve. While that's still important, it can take me off course from the skills
 that I have developed through my life. Meaning, don't throw away the good things
 that I have done in the past and learn a totally new system. Build on what I've done.
 
 ## Set it up with a prompt
 
-I prompted GitHub Copilot which is the agent workspace I use thorugh
-GitHub Copiot CLI or Microsoft Scout to do many tasks in my day job. It is
+I prompted GitHub Copilot which is the agent workspace I use through
+GitHub Copilot CLI or Microsoft Scout to do many tasks in my day job. It is
 similar in ways that I have prompted in the past asking for opportunities to
 learn, but you'll see the different tack.
 
@@ -27,7 +27,7 @@ learn, but you'll see the different tack.
 > communication, analyze all my sessions with you in github copilot and scout
 > and score me on those attributes. give me a table with scores, sorted with
 > best at top. and below include a narrative about that output. I am doing this
-> to encourage the continued use of skilsl I have developed that are effective
+> to encourage the continued use of skills I have developed that are effective
 
 ## Spend time reviewing the output
 
