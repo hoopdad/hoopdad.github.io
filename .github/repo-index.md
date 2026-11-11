@@ -2,6 +2,11 @@
 
 ## Freshness
 - Baseline: `211a900` (`publishing first decision model post`).
+- Reviewed through `c8fd83a`; the copied policy-servicing draft is now
+  `docs\tokenomics\_posts\2026-11-10-stop-paying-an-llm-to-route-every-request.md`.
+  Completed its evidence-grounded text and screenshot plans; added the curated
+  `docs\assets\2026\tokenomics\think-fast-policy-servicing` source/fixture bundle
+  with exact-byte hashes and current-source versus historical-results provenance.
 - Considered the Chirpy migration, custom layouts/assets, topic and series pages,
   content metadata, local browser tooling, README, and Pages workflow.
 - Added topic/series data and hubs, archive/search, layout/card overrides, the
@@ -52,6 +57,13 @@
 - Search: `search.html`, `search.json`, and `site.js`.
 - Claims article evidence/source downloads: `docs\assets\2026\tokenomics\think-fast-tests`;
   copied static snapshots, not an executable package or private runtime export.
+- Policy-servicing article: `docs\tokenomics\_posts\2026-11-10-stop-paying-an-llm-to-route-every-request.md`;
+  matched/native versus all-selected cohorts and original evaluator votes are
+  separate. Screenshot placeholders require an actual verified servicing run.
+- Servicing implementation/fixture downloads: `docs\assets\2026\tokenomics\think-fast-policy-servicing`;
+  its manifest records current local source (including later execution hooks),
+  not exact historical installed benchmark code. Reuses unchanged shared reports
+  under the older `think-fast-tests` bundle.
 - Build/deployment: README, Gemfile/lockfile, `_config.yml`, plugin, `.github\workflows\pages.yml`.
 
 ## Conventions and validation
