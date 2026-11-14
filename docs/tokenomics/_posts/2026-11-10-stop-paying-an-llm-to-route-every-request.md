@@ -32,8 +32,14 @@ Complexity grows from a straightforward explanation to missing dates, conflictin
 
 This is where **human-agent collaboration** comes into the design. The principle is **Concepts Defined by People**: I need to explain what paid, scheduled, approved and issued mean before asking agents to work with them. In my separate Azure support-triage test, writing a complete brief as the prompt made the difference betweeen being able to deliver a result and not. The study refers to this as a gate-pass and it moved from **0% to 92%** on the moderately specified task. On the underspecified task, the vaguer control was slightly cheaper. My takeaway: spend time defining the work, and measure how much that helps on your own prompts.
 
-<!-- SCREENSHOT 1 PLAN: Think Fast application, verified policy-servicing selection and a completed l1-instalment comparison. Frame the exact synthetic request and both routing lanes; keep the same run for screenshots 3-5. Proposed asset: policy-servicing-01-two-lanes.png. Do not reuse the currently open failed customer-support demo or imply that it is policy servicing. No Run/Retry or deployment changes during screenshot planning. -->
-> **Screenshot 1 placeholder - One servicing request, two routers.** Think Fast showing the selected policy-servicing request and both observed worker sequences.
+![Think Fast selects Policy Servicing and Billing Exception Review and the l1-refund preset, with an illustrative 40-unit quote, no cancellation approval or posting, and no refund payment.](/assets/2026/tokenomics/policy-servicing-01-request.jpeg)
+
+*The refund prompt in Think Fast. These application screenshots come from one new servicing comparison, captured November 13, rather than the preserved October benchmark below.*
+
+<!-- UI demonstration run: 78df101a594a41ff8b3a336103301389; workflow revision 2563bf213c4066d537f3b7f7e64997c8d6f1561fbeaa312f2db66b5f61c6c761. -->
+![Both servicing lanes show Execution Complete: GPT processes 103,097 tokens in 105,126 milliseconds, while Decision-1 processes 158,179 tokens in 122,922 milliseconds.](/assets/2026/tokenomics/policy-servicing-01-comparison.jpeg)
+
+*Keeping it real: this example cost $0.38 with GPT routing and $0.41 with Decision-1, taking 105.13 and 122.92 seconds respectively. The Decision-1 lane made an extra correspondence-repair visit. Both processed-token totals are measured; Decision-1's partial usage status reflects an unavailable full cache breakdown. The screen retains the application's unrounded inference estimates and operator-supplied prices; this single example is separate from the 19-pair savings.*
 
 ### Give each agent a job
 
@@ -92,8 +98,9 @@ This applies **Token Resources Management**, the principle behind the **cost** o
 
 Each worker has its own instructions, structured result and authorized tools. Billing reconciliation uses the registered balance calculation for the [three 100-unit instalments](/assets/2026/tokenomics/think-fast-policy-servicing/assets/corpus/artifacts/insurance-policy-servicing/l1-instalment.fixture.json). Correspondence prepares an unsent draft. Those boundaries let me use generation where it adds value and code for arithmetic.
 
-<!-- SCREENSHOT 2 PLAN: Foundry, exact think-fast-tests-insurance-policy-servicing-gpt and think-fast-tests-insurance-policy-servicing-decision-1 Hosted definitions/version details, if available. Show names and version/provenance needed to identify the two wrappers. The five business workers are constructed inside the service; do not imply five separately deployed Foundry workers. Crop account, tenant, subscription, resource identifiers and endpoint details. Configuration evidence only, not a screenshot of benchmark performance. No start, redeploy, permission change or inference. Proposed asset: policy-servicing-02-foundry-definitions.png. -->
-> **Screenshot 2 placeholder - The Foundry deployment boundary.** The exact policy-servicing Hosted agent definitions and versions, with identifying infrastructure details excluded.
+![Foundry lists the two policy-servicing Hosted definitions: Decision-1 version 8 and GPT version 9, both disabled.](/assets/2026/tokenomics/policy-servicing-02-foundry-definitions.jpeg)
+
+*The Foundry deployment boundary: two servicing Hosted wrappers, with the five business workers constructed inside the service. This is a configuration screenshot captured after testing, with both definitions disabled; it does not show benchmark performance or establish the version used by every historical run.*
 
 ### The model proposes; the application checks
 
@@ -110,8 +117,9 @@ That's **Acceptance Criteria**, one of the principles for managing a **quality**
 
 I also cap the loop: **seven worker visits, including two repairs, and eight routing occurrences**, with a terminal route reserved. A four-worker path plus `complete` uses five routing calls and four worker calls, before internal tool round trips or retries. That gives the workflow room to repair a result and a clear point to stop.
 
-<!-- SCREENSHOT 3 PLAN: Think Fast Selected evidence on a Decision-1 routing step from the same verified policy-servicing run as screenshot 1. Show all seven option scores, selected route and available prerequisite/state evidence. Do not invent a confidence threshold or describe scores as final-answer accuracy. If the current UI does not expose a field, omit it from the eventual caption. Proposed asset: policy-servicing-03-routing-evidence.png. -->
-> **Screenshot 3 placeholder - A bounded routing decision.** Think Fast's selected-step evidence showing the actual Decision-1 choice and option scores.
+![The refund flow advances from service-intake to billing-reconciliation; the Decision-1 evidence panel shows billing-reconciliation selected with a reported probability of 0.9988 and correspondence-draft at 0.000626.](/assets/2026/tokenomics/policy-servicing-03-routing-evidence.jpeg)
+
+*A routing decision from that same refund run: GPT's observed flow is on the left; Decision-1's selected-event panel is on the right, showing the leading option scores. The explanation is application-supplied, and those scores describe the routing choice, not the accuracy of the final business answer.*
 
 ### Keep the evidence current through the handoffs
 
@@ -121,8 +129,9 @@ Why fuss over freshness? In my separate Azure test, a stale saved index passed t
 
 A completed packet can still contain an unresolved date or missing approval. The person reviewing it decides how to proceed. The tools in this exercise can prepare the work; actual payment, policy changes and delivery require a separately authorized production integration.
 
-<!-- SCREENSHOT 4 PLAN: Think Fast service-review output and correspondence from the same verified servicing run. Show the selected scenario's exact distinction and unsent/advisory limitation; for l1-instalment, 100 paid versus 200 scheduled and no invented fee. Use actual exposed output rather than a reconstructed success packet. If using a refund instead, switch the whole screenshot sequence consistently and disclose its actual outcome. Proposed asset: policy-servicing-04-review-packet.png. -->
-> **Screenshot 4 placeholder - A useful answer with a hard boundary.** The final review packet and unsent correspondence, showing what is known, what remains conditional and what has not been executed.
+![GPT's unsent refund draft on the left and Decision-1's final review on the right distinguish the illustrative 40-unit quote from approval, posting and payment, requiring human review and dated evidence.](/assets/2026/tokenomics/policy-servicing-04-review-packet.jpeg)
+
+*The human-review boundary in the completed refund run. Both lanes preserve the distinction between a quote and a paid refund, identify the evidence needed next, and keep the correspondence advisory and unsent. The workflow's complete status means the explanation is ready, not that anyone approved or paid a refund.*
 
 Those are four Agent Design Best Practices applied to the work itself. The Azure support tests used GPT-5.4-mini (compared it with GPT-5.4); the coding test used Claude Haiku 4.5. Their results help me choose what to try here. The [Azure test notes](https://github.com/hoopdad/turingteamengineering/blob/7dd1cb07b0b8c448489b68fb5521563c3ba0f945/analysis/agent-operations/EVIDENCE-STATE.md) and [coding test results](https://github.com/hoopdad/turingteamengineering/blob/7dd1cb07b0b8c448489b68fb5521563c3ba0f945/resources/token-efficiency-tests/RESULTS.md#t07-deterministic-tool--deterministic-verification-tool-vs-llm-reasoning) cover those separate experiments.
 
@@ -132,7 +141,7 @@ The [source bundle manifest](/assets/2026/tokenomics/think-fast-policy-servicing
 
 ### Cost and time
 
-The larger study for this series covers nine workflows and 225 prompt pairs. For policy servicing, **19 of the 25 pairs have matched recorded settings and native completion**. Meaning, 19 out of 25 times both evals agreed on the outcome (essentially, both were "pass" or both were "fail"). The other six mix recorded versions, so I'm leading with the 19.
+The larger study for this series covers nine workflows and 225 prompt pairs. For policy servicing, **19 of the 25 pairs have matched recorded settings and native completion**. To be clear, that means matching recorded execution settings and completion during live execution, rather than later revalidation of saved output. Evaluator agreement is a separate measure. The other six mix recorded versions, so I'm leading with the 19.
 
 | Matched policy-servicing runs, 19 pairs | GPT router | Decision-1 router |
 |---|---:|---:|
@@ -150,8 +159,9 @@ The mean time difference was only 1.57 seconds per run, with a 95% bootstrap int
 
 The routing component itself was much cheaper: **98.64% lower inference spend** and **80.35% less physical call time** in the matched cohort. The GPT workers still account for most of the workflow cost.
 
-<!-- SCREENSHOT 5 PLAN: Think Fast final observed comparison and expanded inference-cost breakdown for the same verified servicing pair. Include the run-original price revision and complete/partial status. Caption the actual run's values and label it a single demonstration, not the 19- or 25-pair aggregate. Never use the currently failed run's known subtotals as complete costs. Proposed asset: policy-servicing-05-cost-breakdown.png. -->
-> **Screenshot 5 placeholder - Where the money went.** One verified servicing comparison, with router/worker cost attribution and the applied price assumptions visible.
+![For 19 matched servicing pairs, total workflow inference cost falls from $9.19 to $7.91 while mean elapsed time rises from 122.94 to 124.51 seconds.](/assets/2026/tokenomics/policy-servicing-05-cost-breakdown.svg)
+
+*Where the money went: a figure drawn from the preserved [paired results](/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2/workflow-pairs.csv), not an application screenshot. The workers cost $0.46 more across the Decision-1 runs, offsetting part of the routing saving. Amounts are rounded independently to cents.*
 
 ### How did the answers hold up?
 
@@ -168,7 +178,7 @@ They agreed on 40 of the 50 answers. To be clear, agreement tells me about consi
 
 At **100,000 eligible requests a year**, the matched-run means would imply **$48,386.87 versus $41,606.85 in inference**, a difference of **$6,780.02**. Your mileage may vary, of course, but at scale that's worth looking into.
 
-These are model-inference estimates, including internal calls and repairs in the selected completed runs. Hosted compute, networking, storage, tools, evaluation and replaced historical attempts are outside those totals. The dollar amounts came from prices that were in effect as of the day of testing, and might change when you get your hands on it.
+These are model-inference estimates, including internal calls and repairs in the selected completed runs. Hosted compute, networking, storage, tools, evaluation and replaced historical attempts are outside those totals. The dollar amounts use the study's recorded pricing assumptions; I haven't independently verified them against an Azure bill. Check your own rates when you try it.
 
 The bigger business opportunity is the service representative's time and the quality of the response. I'd measure handling time, rework and repeat contacts alongside operating cost in a pilot. This experiment gives me a reason to try that, learning from where this experiment may have gone wrong with prompting perhaps.
 
@@ -176,7 +186,8 @@ The [results dashboard](/assets/2026/tokenomics/think-fast-tests/assets/runs/ana
 
 ## What's next
 
-Seven workflows remain in this series: 
+Seven workflows remain in this series:
+
 - commercial submission intake and triage
 - product, rate and rule change testing
 - core-system incident triage

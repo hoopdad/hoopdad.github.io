@@ -2,11 +2,19 @@
 
 ## Freshness
 - Baseline: `211a900` (`publishing first decision model post`).
-- Reviewed through `c8fd83a`; the copied policy-servicing draft is now
+- Reviewed through `56fcbe1`; the copied policy-servicing draft is now
   `docs\tokenomics\_posts\2026-11-10-stop-paying-an-llm-to-route-every-request.md`.
   Completed its evidence-grounded text and screenshot plans; added the curated
   `docs\assets\2026\tokenomics\think-fast-policy-servicing` source/fixture bundle
   with exact-byte hashes and current-source versus historical-results provenance.
+- Added `policy-servicing-02-foundry-definitions.jpeg` (cropped configuration
+  screenshot) and `policy-servicing-05-cost-breakdown.svg` (saved-results figure).
+  Added four Browser Use captures: `policy-servicing-01-request.jpeg`,
+  `policy-servicing-01-comparison.jpeg`, `policy-servicing-03-routing-evidence.jpeg`
+  and `policy-servicing-04-review-packet.jpeg`. Think Fast now supports servicing;
+  these show one completed `l1-refund` comparison, separate from the October cohort.
+  The new Decision-1 lane used an extra repair and cost more; its processed-token
+  total is measured while the full cache breakdown remains unavailable.
 - Considered the Chirpy migration, custom layouts/assets, topic and series pages,
   content metadata, local browser tooling, README, and Pages workflow.
 - Added topic/series data and hubs, archive/search, layout/card overrides, the
@@ -59,7 +67,10 @@
   copied static snapshots, not an executable package or private runtime export.
 - Policy-servicing article: `docs\tokenomics\_posts\2026-11-10-stop-paying-an-llm-to-route-every-request.md`;
   matched/native versus all-selected cohorts and original evaluator votes are
-  separate. Screenshot placeholders require an actual verified servicing run.
+  separate. Foundry screenshot shows current disabled wrappers, not run provenance.
+  Think Fast images show an actual servicing refund run, including its costlier
+  Decision-1 outcome, routing scores and advisory output; no placeholders remain.
+  Aggregate servicing cost attribution is a separately labeled saved-results figure.
 - Servicing implementation/fixture downloads: `docs\assets\2026\tokenomics\think-fast-policy-servicing`;
   its manifest records current local source (including later execution hooks),
   not exact historical installed benchmark code. Reuses unchanged shared reports
