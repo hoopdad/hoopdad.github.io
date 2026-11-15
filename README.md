@@ -49,6 +49,16 @@ layouts, local JavaScript, and assets replace the stock sidebar and scripts.
 `docs\_plugins\editorial-assets.rb` prevents unused theme assets from competing
 with the existing RSS feed, 404 page, and local search index.
 
+## Think Fast editorial work
+
+The [Think Fast method](editorial/think-fast/method.md) and
+[topic queue](editorial/think-fast/queue.yml) support a desktop agent preparing
+one evidence-backed article and its visuals per invocation. Use the
+[repository prompt](.github/prompts/think-fast-post.prompt.md) with the
+[desktop scheduling instructions](editorial/think-fast/schedule.md) for a
+three-day cadence. No schedule is installed by these files. New articles stay
+in `docs/tokenomics/_drafts` until separately approved for publication.
+
 ## Publishing
 
 The workflow in `.github\workflows\pages.yml` builds `docs` with Jekyll 4.

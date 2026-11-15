@@ -43,6 +43,10 @@
 - `docs\_site` and `docs\vendor` are generated output and installed dependencies, not authoring targets.
 
 ## Navigation
+- Think Fast scheduled desktop authoring: `editorial/think-fast/method.md`,
+  `queue.yml`, `schedule.md`, and `.github/prompts/think-fast-post.prompt.md`.
+  These define one-topic draft PRs and evidence/visual standards; they do not
+  install a schedule or authorize publication. New pages stay in `_drafts`.
 - Homepage discovery and topic hierarchy: `docs\_layouts\home.html`, `_data\topics.yml`,
   `docs\topics`, and post `topic`/`tags` metadata.
 - Reading series: `_data\series.yml`, `docs\series`, and post `series`/`series_order`.

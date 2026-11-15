@@ -1,0 +1,250 @@
+schema_version: 1
+repository: hoopdad/hoopdad.github.io
+method: editorial/think-fast/method.md
+schedule: editorial/think-fast/schedule.md
+selection: ordered-one-topic-per-run
+implementation_reference:
+  repository: hoopdad/think-fast-tests
+  discovery_revision: 1819f86190441a9ce0c5f79447884f690dd5f981
+  access: author-supplied-read-only
+  publication: no-new-private-source-export-without-approval
+historical_evidence:
+  report_root: docs/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2
+  provenance: docs/assets/2026/tokenomics/think-fast-tests/bundle-manifest.json
+  pair_data: workflow-pairs.csv
+  run_data: workflows.csv
+  summary: summary.json
+  guidance: design-guidance.json
+  interpretation: exploratory-synthetic-selected-runs-not-production-proof
+topics:
+  - id: insurance-underwriting-intake
+    attempt: 1
+    enabled: true
+    working_title: "A Complete Submission Is Not an Underwriting Decision"
+    reader_question: "How do agents prepare a useful commercial submission without treating a declaration as verified evidence?"
+    technical_angle: "Carry missing, conflicting and stale evidence through prerequisite-gated specialist handoffs."
+    business_deliverable: "An evidence-linked advisory packet for an underwriter, not a quote, risk score or bind."
+    outline:
+      - "Follow one commercial submission from declared facts to exact evidence requests."
+      - "Show how manual references, risk evidence and authority review depend on one another."
+      - "Inspect a missing-evidence or stale-manual scenario alongside the simplest case."
+      - "Explain routing economics without treating completion or evaluator agreement as acceptance of the applicant."
+    implementation_paths:
+      - src/think-fast-insurance-underwriting-intake/definition.py
+      - src/think-fast-insurance-underwriting-intake/workflow.py
+      - src/think-fast-insurance-underwriting-intake/manual_knowledge.py
+      - src/think-fast-insurance-underwriting-intake/risk_evidence.py
+      - src/think-fast-insurance-underwriting-intake/authority_compliance.py
+    corpus_root: assets/corpus/artifacts/insurance-underwriting-intake
+    historical_filter: insurance-underwriting-intake
+    evidence_tasks:
+      - "Reproduce the matched/native cohort from paired rows; guidance reports 22 pairs, not all 25."
+      - "Verify conditional manual reliance and the final review's current-result gate against source."
+      - "Choose actual preset IDs from the corpus; do not invent a representative submission."
+    visuals:
+      - "Source-derived prerequisite graph with the human underwriting boundary."
+      - "Matched workflow-versus-router cost/time figure."
+      - "Actual intake selection and evidence-linked final packet screenshots."
+    unresolved:
+      - "Verify approved implementation access and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: insurance-product-testing
+    attempt: 1
+    enabled: true
+    working_title: "Designing a Regression Pack Is Not Running the Tests"
+    reader_question: "Which parts of product, rate and rule change review should be calculated, generated or checked?"
+    technical_angle: "Separate deterministic fixture checks, generated regression design and release-readiness evidence."
+    business_deliverable: "A proposed change-validation and regression pack for human release review."
+    outline:
+      - "Walk a supplied product or rule change through requirements and configuration review."
+      - "Trace a fixture calculation and distinguish its result from an unexecuted proposed test."
+      - "Explain why release review needs current results from all required specialists."
+      - "Report workflow results and distinguish model grading from real release validation."
+    implementation_paths:
+      - src/think-fast-insurance-product-testing/definition.py
+      - src/think-fast-insurance-product-testing/workflow.py
+      - src/think-fast-insurance-product-testing/requirement_review.py
+      - src/think-fast-insurance-product-testing/configuration_review.py
+      - src/think-fast-insurance-product-testing/regression_design.py
+      - src/think-fast-insurance-product-testing/release_review.py
+    corpus_root: assets/corpus/artifacts/insurance-product-testing
+    historical_filter: insurance-product-testing
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports 17 workflow pairs."
+      - "Keep evaluator pricing coverage separate: guidance reports only five fully priced matched evaluator pairs."
+      - "Identify actual registered calculation/check tools before choosing the example."
+    visuals:
+      - "Diagram separating calculation, test proposal and release authority."
+      - "Reproducible workflow cost/time figure with explicit coverage."
+      - "Actual change request and proposed regression/review packet screenshots."
+    unresolved:
+      - "Verify tool implementation and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: insurance-software-incident
+    attempt: 1
+    enabled: true
+    working_title: "An Incident Agent Should Explain the Next Step, Not Take Production Down"
+    reader_question: "How can agents investigate a core-system incident without turning a hypothesis into an authorized fix?"
+    technical_angle: "Bound diagnostic work, preserve log/contract evidence and require current specialist findings before mitigation review."
+    business_deliverable: "A diagnostic and mitigation proposal for an operator, not an applied production change."
+    outline:
+      - "Introduce a supplied incident and the observable symptoms."
+      - "Follow log diagnosis and integration-contract review without inventing root cause."
+      - "Show the boundary between a mitigation proposal and an operational action."
+      - "Discuss the small matched cohort and what repeated controlled runs would clarify."
+    implementation_paths:
+      - src/think-fast-insurance-software-incident/definition.py
+      - src/think-fast-insurance-software-incident/workflow.py
+      - src/think-fast-insurance-software-incident/log_diagnosis.py
+      - src/think-fast-insurance-software-incident/integration_contract.py
+      - src/think-fast-insurance-software-incident/mitigation_plan.py
+      - src/think-fast-insurance-software-incident/operator_review.py
+    corpus_root: assets/corpus/artifacts/insurance-software-incident
+    historical_filter: insurance-software-incident
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports nine pairs, not 25."
+      - "Inspect actual visit/repair limits; do not reuse policy-servicing budgets without checking."
+      - "Separate supplied symptoms, supported diagnosis and untested mitigation."
+    visuals:
+      - "Bounded diagnostic flow with an explicit operator approval boundary."
+      - "Small-cohort paired results figure, showing uncertainty and exclusions."
+      - "Actual supplied incident and operator-review packet screenshots."
+    unresolved:
+      - "Verify workflow limits and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: insurance-data-migration
+    attempt: 1
+    enabled: true
+    working_title: "A Reconciled Total Does Not Prove a Migration Is Correct"
+    reader_question: "How do agents combine schema interpretation, row validation and numerical reconciliation?"
+    technical_angle: "Keep deterministic balance checks distinct from row-level evidence and a human migration decision."
+    business_deliverable: "A migration-validation and exception pack, not a completed migration."
+    outline:
+      - "Introduce the supplied legacy-to-target mapping problem."
+      - "Trace schema mapping, row validation and balance reconciliation."
+      - "Show why a total, a valid row and a complete review prove different things."
+      - "Report the observed trade-offs without claiming a production migration succeeded."
+    implementation_paths:
+      - src/think-fast-insurance-data-migration/definition.py
+      - src/think-fast-insurance-data-migration/workflow.py
+      - src/think-fast-insurance-data-migration/schema_mapping.py
+      - src/think-fast-insurance-data-migration/row_validation.py
+      - src/think-fast-insurance-data-migration/balance_reconciliation.py
+      - src/think-fast-insurance-data-migration/migration_review.py
+    corpus_root: assets/corpus/artifacts/insurance-data-migration
+    historical_filter: insurance-data-migration
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports 19 workflow pairs."
+      - "Choose a supplied fixture that genuinely illustrates row-versus-balance evidence."
+      - "Reproduce the relevant arithmetic and state remaining validation gaps."
+    visuals:
+      - "Diagram of mapping, row and aggregate evidence dependencies."
+      - "Reproducible paired results figure and a small source-backed reconciliation example."
+      - "Actual migration request and exception/review packet screenshots."
+    unresolved:
+      - "Verify a suitable fixture and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: reinsurance-risk-research
+    attempt: 1
+    enabled: true
+    working_title: "A Research Agent Needs a Source Boundary"
+    reader_question: "How do retrieval, source validation and analysis stay distinct when evidence is incomplete?"
+    technical_angle: "Carry source provenance and limitations into synthesis instead of making a fluent answer sound verified."
+    business_deliverable: "A source-grounded risk research brief for human review, not a binding risk decision."
+    outline:
+      - "Start with a bounded research question and its supplied source set."
+      - "Trace retrieval, validation and analysis as separate responsibilities."
+      - "Explain unsupported or stale evidence without filling gaps with confident prose."
+      - "Investigate the observed cost/latency trade-off without asserting its cause."
+    implementation_paths:
+      - src/think-fast-reinsurance-risk-research/definition.py
+      - src/think-fast-reinsurance-risk-research/workflow.py
+      - src/think-fast-reinsurance-risk-research/source_retrieval.py
+      - src/think-fast-reinsurance-risk-research/source_validation.py
+      - src/think-fast-reinsurance-risk-research/risk_analysis.py
+      - src/think-fast-reinsurance-risk-research/research_review.py
+    corpus_root: assets/corpus/artifacts/reinsurance-risk-research
+    historical_filter: reinsurance-risk-research
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports 13 workflow pairs."
+      - "Check the reported lower mean cost but not lower mean elapsed time; preserve the counterexample."
+      - "Distinguish retrieval over supplied fixtures from live web research."
+    visuals:
+      - "Evidence-to-claim diagram showing validation and unknowns."
+      - "Separate cost and elapsed-time comparisons rather than a single savings badge."
+      - "Actual source-linked research and final-review packet screenshots."
+    unresolved:
+      - "Verify source-tool behavior and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: reinsurance-treaty-reconciliation
+    attempt: 1
+    enabled: true
+    working_title: "Let Code Calculate; Make the Treaty Interpretation Reviewable"
+    reader_question: "How do agents connect treaty terms, bordereaux rows and recoverable calculations without booking a recovery?"
+    technical_angle: "Separate interpreting supplied terms from deterministic arithmetic and unresolved reconciliation exceptions."
+    business_deliverable: "A treaty/bordereaux reconciliation and recovery-review pack, not a booked recovery."
+    outline:
+      - "Walk one supplied bordereau through the applicable treaty terms."
+      - "Separate row discrepancies from recoverable calculations."
+      - "Show exactly which inputs and assumptions support a numerical result."
+      - "Relate routing economics to the whole advisory workflow, not financial settlement."
+    implementation_paths:
+      - src/think-fast-reinsurance-treaty-reconciliation/definition.py
+      - src/think-fast-reinsurance-treaty-reconciliation/workflow.py
+      - src/think-fast-reinsurance-treaty-reconciliation/treaty_terms.py
+      - src/think-fast-reinsurance-treaty-reconciliation/row_reconciliation.py
+      - src/think-fast-reinsurance-treaty-reconciliation/recovery_calculation.py
+      - src/think-fast-reinsurance-treaty-reconciliation/reinsurance_review.py
+    corpus_root: assets/corpus/artifacts/reinsurance-treaty-reconciliation
+    historical_filter: reinsurance-treaty-reconciliation
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports 16 workflow pairs."
+      - "Identify and reproduce the actual registered calculation before explaining the formula."
+      - "Retain disputed rows, unsupported terms and human review in the example."
+    visuals:
+      - "Treaty-term, row-evidence and calculation dependency diagram."
+      - "Source-backed calculation illustration plus paired workflow results."
+      - "Actual reconciliation exceptions and final-review packet screenshots."
+    unresolved:
+      - "Verify calculation inputs and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for this use case."
+
+  - id: customer-support
+    attempt: 1
+    enabled: true
+    working_title: "When Does Customer Support Need a Specialist Workflow?"
+    reader_question: "What does specialist routing buy, and what would a single-agent baseline still need to establish?"
+    technical_angle: "Use category handoffs and escalation to explain the scope of the router experiment, not to assume multi-agent superiority."
+    business_deliverable: "An evidence-grounded advisory response with appropriate review/escalation."
+    outline:
+      - "Return to the customer-support origins of Think Fast."
+      - "Walk the registered workflow's actual category routing and review."
+      - "Separate the historical experiment from the five-role application demo."
+      - "Explain what a fair single-agent comparison would require without claiming it was run."
+    implementation_paths:
+      - src/think-fast-usecase-one/workflow.py
+      - src/think-fast-usecase-one/intake.py
+      - src/think-fast-usecase-one/technical.py
+      - src/think-fast-usecase-one/billing.py
+      - src/think-fast-usecase-one/escalation.py
+      - src/think-fast-usecase-one/review.py
+      - src/think_fast_tests/agent_workflows/registered.py
+    corpus_root: assets/corpus/artifacts/use-case-one
+    historical_filter: customer-support
+    evidence_tasks:
+      - "Verify the matched/native cohort; guidance reports 22 workflow pairs."
+      - "Confirm the six-role registered customer-support workflow versus the separate five-role customer-support-demo."
+      - "Check corpus, role count and scenario binding before using any application screenshot."
+      - "State explicitly that this router comparison is not a single-agent-versus-multi-agent experiment."
+    visuals:
+      - "Actual category routing and escalation diagram with role-count provenance."
+      - "Paired workflow cost/time figure, labeled as a router-only comparison."
+      - "Actual matching registered-workflow screenshots, not silently substituted demo output."
+    unresolved:
+      - "Verify historical/runtime alignment and permission for any new public excerpts."
+      - "Locate an explicitly authorized retained application run for the registered workflow."
