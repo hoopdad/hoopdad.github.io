@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" role="img" aria-labelledby="title desc" style="font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive">
+  <title id="title">Current evidence before an underwriter referral</title>
+  <desc id="desc">Design dependencies, not an execution trace. Intake precedes manual knowledge and risk evidence. Authority compliance is conditional. Final review requires every selected role's accepted current result. The human retains underwriting authority.</desc>
+  <defs>
+    <filter id="squiggle" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5"/>
+    </filter>
+    <marker id="ah-ink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5,1 L7.5,4.5 L1.5,8" fill="none" stroke="#37474f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="ah-orange" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1.5,1 L7.5,4.5 L1.5,8" fill="none" stroke="#ea580c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="600" height="700" fill="#fefdf8"/>
+  <g filter="url(#squiggle)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="45" y="85" width="300" height="68" rx="6" fill="#eaf2fd" stroke="#2563eb"/>
+    <rect x="45" y="192" width="300" height="68" rx="6" fill="#eaf2fd" stroke="#2563eb"/>
+    <rect x="45" y="299" width="300" height="68" rx="6" fill="#eaf2fd" stroke="#2563eb"/>
+    <rect x="380" y="391" width="195" height="82" rx="6" fill="#fdf0e3" stroke="#ea580c"/>
+    <rect x="45" y="488" width="300" height="82" rx="6" fill="#f3ecfd" stroke="#7c3aed"/>
+    <rect x="120" y="613" width="360" height="62" rx="6" fill="#eaf7ec" stroke="#16a34a"/>
+    <path d="M195 159 Q195 170 195 184" fill="none" stroke="#37474f" marker-end="url(#ah-ink)"/>
+    <path d="M195 266 Q195 277 195 291" fill="none" stroke="#37474f" marker-end="url(#ah-ink)"/>
+    <path d="M195 373 Q195 426 195 480" fill="none" stroke="#37474f" marker-end="url(#ah-ink)"/>
+    <path d="M351 333 Q477 333 477 383" fill="none" stroke="#ea580c" stroke-dasharray="6 5" marker-end="url(#ah-orange)"/>
+    <path d="M477 479 Q477 529 353 529" fill="none" stroke="#ea580c" stroke-dasharray="6 5" marker-end="url(#ah-orange)"/>
+    <path d="M195 576 Q195 592 235 605" fill="none" stroke="#37474f" marker-end="url(#ah-ink)"/>
+    <path d="M115 53 Q300 59 485 53" fill="none" stroke="#37474f"/>
+  </g>
+  <g fill="#263238" text-anchor="middle">
+    <text x="300" y="32" font-size="18" font-weight="bold">Current evidence before a referral</text>
+    <text x="300" y="72" font-size="11">Design gates, not a trace of a measured run</text>
+    <text x="195" y="111" font-size="14" font-weight="bold" fill="#1e3a8a">Submission intake</text>
+    <text x="195" y="135" font-size="11">Declarations, documents, missing items</text>
+    <text x="195" y="218" font-size="14" font-weight="bold" fill="#1e3a8a">Manual knowledge</text>
+    <text x="195" y="242" font-size="11">Which supplied rule can be relied on?</text>
+    <text x="195" y="325" font-size="14" font-weight="bold" fill="#1e3a8a">Risk evidence</text>
+    <text x="195" y="349" font-size="11">Check that rule's prerequisites only</text>
+    <text x="477" y="414" font-size="12" font-weight="bold" fill="#7c2d12">Authority compliance</text>
+    <text x="477" y="437" font-size="10">Required for contractor,</text>
+    <text x="477" y="455" font-size="10">or level 3-5 branches</text>
+    <text x="95" y="415" font-size="10">Direct path only</text>
+    <text x="95" y="434" font-size="10">when authority</text>
+    <text x="95" y="453" font-size="10">is not required</text>
+    <text x="195" y="515" font-size="14" font-weight="bold" fill="#4c1d95">Underwriter review</text>
+    <text x="195" y="539" font-size="11">All required current results accepted</text>
+    <text x="195" y="557" font-size="11">Evidence requests and limits stay visible</text>
+    <text x="402" y="586" font-size="10">Changed upstream evidence?</text>
+    <text x="402" y="601" font-size="10">Dependent results become stale.</text>
+    <text x="300" y="638" font-size="14" font-weight="bold" fill="#14532d">Human underwriter</text>
+    <text x="300" y="661" font-size="11">Advice complete does not mean insurance accepted</text>
+    <text x="300" y="693" font-size="9">Transitive intake/manual gates omitted for clarity. No pricing, quote or bind.</text>
+  </g>
+</svg>

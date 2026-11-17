@@ -1,6 +1,12 @@
 # Repository index
 
 ## Freshness
+- At baseline `95f3f9e`, copied the author-editing underwriting intake draft to
+  `docs\tokenomics\_posts\2026-11-16-think-fast-insurance-underwriting-intake.md`
+  and its three SVGs to
+  `docs\assets\2026\tokenomics\think-fast-insurance-underwriting-intake`.
+  Existing shared report/source assets are reused without changes. Two
+  application screenshots remain blocked; this local copy is not publication.
 - Baseline: `211a900` (`publishing first decision model post`).
 - Considered the Chirpy migration, custom layouts/assets, topic and series pages,
   content metadata, local browser tooling, README, and Pages workflow.
