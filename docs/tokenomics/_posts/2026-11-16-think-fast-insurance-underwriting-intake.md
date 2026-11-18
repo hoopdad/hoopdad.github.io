@@ -13,7 +13,7 @@ A commercial submission can contain every field on the form and still leave an u
 
 That is useful work for an agent workflow. Gather the supplied facts, connect them to the relevant manual excerpt, identify the missing or conflicting evidence, and prepare a referral someone can review. The useful deliverable is a better starting point for the underwriter, not an automated decision to accept the risk.
 
-Think Fast compares two ways of routing that work. One uses GPT-5.6 Sol to select the next specialist; the other uses Microsoft Decision-1 to score fixed choices. Both retain GPT workers. The [first article](/tokenomics/2026/11/03/maximize-ai-insurance-workflow1.html) explains the broader routing experiment through claims. Underwriting intake adds a different engineering problem: making sure uncertainty survives the handoffs.
+Think Fast compares two ways of routing that work. One uses GPT-5.6 Sol to select the next specialist; the other uses Microsoft Decision-1 to score fixed choices. Both retain GPT workers. This is the second article in the decision-model series. The [first article](/tokenomics/2026/11/03/maximize-ai-insurance-workflow1.html) explains the broader routing experiment through claims. Underwriting intake adds a different engineering problem: making sure uncertainty survives the handoffs.
 
 ## What the underwriter should receive
 
@@ -188,3 +188,5 @@ The [historical report](/assets/2026/tokenomics/think-fast-tests/assets/runs/ana
 For a practical review, start with the missing-inspection and conflicting-activity cases. Ask an underwriter to trace one conclusion back to its supplied evidence, identify what remains unresolved, and explain the next authorized action. Then change an upstream fact and check whether the dependent findings are still valid.
 
 That would test the usefulness of the handoff rather than just its fluency. Measure review and correction time separately from inference cost. If the packet sends a person back through every document to discover what the agents assumed, cheaper routing has solved only a small part of the problem.
+
+The [third article, A Cheaper Router Was Only the Beginning](/tokenomics/2026/11/17/stop-paying-an-llm-to-route-every-request.html), follows that problem through five rounds of policy-servicing tests: refining the task, tracing unnecessary assumptions through handoffs, and making the evaluators' acceptance criteria explicit.

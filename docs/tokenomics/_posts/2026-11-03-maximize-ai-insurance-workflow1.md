@@ -13,6 +13,8 @@ Here's the question that started it. We use GPT-style models for almost everythi
 This is the first post in a series. I tested 9 insurance and reinsurance industry common workflows.
 I'll post about them all and my best-practices Tokenomics design principles behind them.
 
+Continue with [A Complete Submission Is Not an Underwriting Decision](/tokenomics/2026/11/16/think-fast-insurance-underwriting-intake.html), the second article, then [A Cheaper Router Was Only the Beginning](/tokenomics/2026/11/17/stop-paying-an-llm-to-route-every-request.html), the third.
+
 ## About the Workflow
 
 ### The use case

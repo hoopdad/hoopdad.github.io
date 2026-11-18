@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 620"
+ role="img" aria-labelledby="title desc" style="font-family:'Segoe UI',Arial,sans-serif">
+<title id="title">Define the task in the workers, not just in the evaluator</title>
+<desc id="desc">Round four: original instructions have 19 shared acceptances, 4 shared rejections
+and 7 disagreements; third instructions have 28 shared acceptances and 2 disagreements.
+Round five: controls have 28 shared acceptances and 2 unknown pairs; refined roles have
+29 shared acceptances and 1 unknown pair. Each group has 30 allocated workflows.
+Round five changes the workers' scope and reference rules, not the evaluator.
+Every available control also passes, so an added acceptance gain is not demonstrated.
+Agreement is not correctness; these are separate cohorts, not a causal trend.</desc>
+<rect width="680" height="620" fill="#fefdf8"/>
+<text x="28" y="35" font-size="25" fill="#263238" font-weight="bold" text-anchor="start">Define the task, then test the benefit</text>
+<text x="28" y="61" font-size="15" fill="#263238" font-weight="normal" text-anchor="start">One synthetic refund task; each bar = 30 allocated workflows.</text>
+<rect x="28" y="82" width="13" height="13" fill="#167344"/>
+<text x="47" y="94" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Both accept</text>
+<rect x="191" y="82" width="13" height="13" fill="#884c9e"/>
+<text x="210" y="94" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Both reject</text>
+<rect x="354" y="82" width="13" height="13" fill="#b74a05"/>
+<text x="373" y="94" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Disagree</text>
+<rect x="517" y="82" width="13" height="13" fill="#697586"/>
+<text x="536" y="94" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Unknown pair</text>
+<text x="28" y="130" font-size="17" fill="#263238" font-weight="bold" text-anchor="start">Round 4: make acceptance criteria explicit</text>
+<text x="28" y="166" font-size="15" fill="#263238" font-weight="normal" text-anchor="start">Original instructions</text>
+<rect x="245" y="147" width="228" height="28" fill="#167344"/>
+<text x="359.0" y="167" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">19</text>
+<rect x="473" y="147" width="48" height="28" fill="#884c9e"/>
+<text x="497.0" y="167" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">4</text>
+<rect x="521" y="147" width="84" height="28" fill="#b74a05"/>
+<text x="563.0" y="167" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">7</text>
+<text x="245" y="196" font-size="12" fill="#263238" font-weight="normal" text-anchor="start">19/30 fully judged outputs accepted by both</text>
+<text x="28" y="235" font-size="15" fill="#263238" font-weight="normal" text-anchor="start">Third instructions</text>
+<rect x="245" y="216" width="336" height="28" fill="#167344"/>
+<text x="413.0" y="236" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">28</text>
+<rect x="581" y="216" width="24" height="28" fill="#b74a05"/>
+<text x="593.0" y="236" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+<text x="245" y="265" font-size="12" fill="#263238" font-weight="normal" text-anchor="start">28/30 fully judged outputs accepted by both</text>
+<text x="28" y="309" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Changed evaluator: do not compare this as an accuracy gain over earlier rounds.</text>
+<text x="28" y="352" font-size="17" fill="#263238" font-weight="bold" text-anchor="start">Round 5: fix scope and reference rules in the workers</text>
+<text x="28" y="388" font-size="15" fill="#263238" font-weight="normal" text-anchor="start">Prior-third control</text>
+<rect x="245" y="369" width="336" height="28" fill="#167344"/>
+<text x="413.0" y="389" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">28</text>
+<rect x="581" y="369" width="24" height="28" fill="#697586"/>
+<text x="593.0" y="389" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+<text x="245" y="418" font-size="12" fill="#263238" font-weight="normal" text-anchor="start">28/28 fully judged outputs accepted by both</text>
+<text x="28" y="457" font-size="15" fill="#263238" font-weight="normal" text-anchor="start">Explicit role contracts</text>
+<rect x="245" y="438" width="348" height="28" fill="#167344"/>
+<text x="419.0" y="458" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">29</text>
+<rect x="593" y="438" width="12" height="28" fill="#697586"/>
+<text x="599.0" y="458" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">1</text>
+<text x="245" y="487" font-size="12" fill="#263238" font-weight="normal" text-anchor="start">29/29 fully judged outputs accepted by both</text>
+<text x="28" y="531" font-size="14" fill="#263238" font-weight="bold" text-anchor="start">Same evaluator; fresh controls all passed. No acceptance gain shown.</text>
+<text x="28" y="584" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Counts from original saved reports. Unknowns stay in the allocated denominator.</text>
+<text x="28" y="606" font-size="13" fill="#263238" font-weight="normal" text-anchor="start">Model agreement is not a human correctness label or a quality-equivalence result.</text>
+</svg>

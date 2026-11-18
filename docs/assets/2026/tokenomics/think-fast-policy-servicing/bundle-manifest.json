@@ -1,0 +1,118 @@
+{
+  "description": "Policy-servicing article source and synthetic fixture snapshots; not an installable repository or a new experiment. No private runtime or raw provider records copied.",
+  "source_repository": "hoopdad/think-fast-tests",
+  "source_revision": "a26fd2a6d689d72edef811304f6e969209627d9e",
+  "captured_date": "2026-11-10",
+  "implementation_scope": "Current local source, including later registered-workflow observation hooks in execution.py; not proof of the exact source installed in October benchmark runs. Historical metrics remain in the separately hosted analysis-h2-r6-wus3-20261029-v2 report.",
+  "design_reference": {
+    "local_repository": "turingteamengineering",
+    "revision": "7dd1cb07b0b8c448489b68fb5521563c3ba0f945",
+    "path": "principles.md",
+    "article_label": "Agent Design Best Practices",
+    "note": "Design guidance only; its separate experimental results are not policy-servicing measurements."
+  },
+  "files": [
+    {
+      "path": "src/think-fast-insurance-policy-servicing/definition.py",
+      "source_sha256": "d7a6167b58f0bcd515e5d359005749911ef83ef5bf2aea666bdb84f3f5bbd32a",
+      "served_sha256": "d7a6167b58f0bcd515e5d359005749911ef83ef5bf2aea666bdb84f3f5bbd32a",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/workflow.py",
+      "source_sha256": "2949100f18bb3d355b196c67c47023c55d02e1dd6f4ac84b9bb13bf31e649830",
+      "served_sha256": "2949100f18bb3d355b196c67c47023c55d02e1dd6f4ac84b9bb13bf31e649830",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/service_intake.py",
+      "source_sha256": "b1e2140fbc02ec0500ffb36de24c674b952839cf31469021473f3c1f667e68b5",
+      "served_sha256": "b1e2140fbc02ec0500ffb36de24c674b952839cf31469021473f3c1f667e68b5",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/policy_terms.py",
+      "source_sha256": "798d35c0b5b1c26482303c4949a0a8d7cfc8a32952a8dd8a6ea81022f0773be7",
+      "served_sha256": "798d35c0b5b1c26482303c4949a0a8d7cfc8a32952a8dd8a6ea81022f0773be7",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/billing_reconciliation.py",
+      "source_sha256": "60365486d0a4650e8545dd490f0378d37be165378b69dcf479cd47163cb0e31e",
+      "served_sha256": "60365486d0a4650e8545dd490f0378d37be165378b69dcf479cd47163cb0e31e",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/correspondence_draft.py",
+      "source_sha256": "e717144ea19e743b507b3e65058939113f735d18272ec2a5f6c9e01a81c8f4b1",
+      "served_sha256": "e717144ea19e743b507b3e65058939113f735d18272ec2a5f6c9e01a81c8f4b1",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think-fast-insurance-policy-servicing/service_review.py",
+      "source_sha256": "12b919c9c0db439d485fbfaf8a7822afe65df876945c6dc59ec890ee4e73f693",
+      "served_sha256": "12b919c9c0db439d485fbfaf8a7822afe65df876945c6dc59ec890ee4e73f693",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think_fast_tests/agent_workflows/execution.py",
+      "source_sha256": "ffbb8598acdbc1fc2344c8d82e008e5edd9cad227192b2a9dec7f0e6df018588",
+      "served_sha256": "ffbb8598acdbc1fc2344c8d82e008e5edd9cad227192b2a9dec7f0e6df018588",
+      "source_worktree_modified": true
+    },
+    {
+      "path": "src/think_fast_tests/agent_workflows/native_runtime.py",
+      "source_sha256": "a53dd0ceb1a00bdf3ef8d4d8eee3de565049e4b6b68a1a148ee1ad7020405a7b",
+      "served_sha256": "a53dd0ceb1a00bdf3ef8d4d8eee3de565049e4b6b68a1a148ee1ad7020405a7b",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "src/think_fast_tests/workflows/guards.py",
+      "source_sha256": "ff155a7e87acf464553ec5a01b1a811f882ddc20f4dea67fb6333714b6601f2c",
+      "served_sha256": "ff155a7e87acf464553ec5a01b1a811f882ddc20f4dea67fb6333714b6601f2c",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/sop.json",
+      "source_sha256": "f3dd2a6b527398952d927387abdfc20bec0acf5194a84cf19a830c64f335639a",
+      "served_sha256": "f3dd2a6b527398952d927387abdfc20bec0acf5194a84cf19a830c64f335639a",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/rubric.json",
+      "source_sha256": "6a3d8dc923fb33cf212f81991d2286e989c4461dfe6198235b67162a6c9d36d3",
+      "served_sha256": "6a3d8dc923fb33cf212f81991d2286e989c4461dfe6198235b67162a6c9d36d3",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/l1-refund.input.json",
+      "source_sha256": "de1f104c82ad527dfedbc217de92d84b7884a55c02b8aac9b25e090ffb277ccd",
+      "served_sha256": "de1f104c82ad527dfedbc217de92d84b7884a55c02b8aac9b25e090ffb277ccd",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/l1-refund.evidence.json",
+      "source_sha256": "6598a8f27489adb5cfe78d0abd1b5bc3b822523507fd645c7f7792b42ea6f5f2",
+      "served_sha256": "6598a8f27489adb5cfe78d0abd1b5bc3b822523507fd645c7f7792b42ea6f5f2",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/l1-instalment.fixture.json",
+      "source_sha256": "6ebc1a8223001fb2303912eccf963b96d0080b8812c9380ce77adb27c18d467e",
+      "served_sha256": "6ebc1a8223001fb2303912eccf963b96d0080b8812c9380ce77adb27c18d467e",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/l3-refund.input.json",
+      "source_sha256": "a96f8da02583b5417fa8eb2330bdd854fd6d23aae21ce750850b3fd2828c2398",
+      "served_sha256": "a96f8da02583b5417fa8eb2330bdd854fd6d23aae21ce750850b3fd2828c2398",
+      "source_worktree_modified": false
+    },
+    {
+      "path": "assets/corpus/artifacts/insurance-policy-servicing/l5-endorsement.input.json",
+      "source_sha256": "c915131da7424ab6c53cea41062f70a3324dafe1653e9719d1d0e7d1af08f375",
+      "served_sha256": "c915131da7424ab6c53cea41062f70a3324dafe1653e9719d1d0e7d1af08f375",
+      "source_worktree_modified": false
+    }
+  ]
+}

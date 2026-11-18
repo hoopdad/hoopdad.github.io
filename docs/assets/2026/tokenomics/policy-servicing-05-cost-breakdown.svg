@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">Policy servicing: cheaper routing, slightly longer workflows</title>
+  <desc id="description">Saved benchmark evidence, not a live application screenshot. Nineteen matched-settings, native-completed prompt pairs. Total inference costs: GPT routing 9.19 dollars, Decision-1 routing 7.91 dollars, a 14.01 percent reduction. Worker costs were 7.42 and 7.88 dollars; router costs were 1.77 and 0.02 dollars. Mean workflow wall time was 122.94 and 124.51 seconds, a 1.28 percent increase. Amounts rounded independently to cents; changes use unrounded data.</desc>
+  <rect width="1200" height="760" rx="20" fill="#f3f6fb"/>
+  <path d="M20 0H1180Q1200 0 1200 20V158H0V20Q0 0 20 0" fill="#14263e"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="44" y="40" fill="#a5e3d5" font-size="15" letter-spacing="2">POLICY SERVICING / SAVED BENCHMARK EVIDENCE</text>
+    <text x="44" y="88" fill="#ffffff" font-size="34" font-weight="700">A cheaper router is only part of the saving</text>
+    <text x="44" y="126" fill="#d3deec" font-size="20">19 matched-settings, native-completed prompt pairs / October 2026 export</text>
+    <rect x="28" y="182" width="1144" height="330" rx="16" fill="#ffffff" stroke="#d7e0ec"/>
+    <text x="52" y="223" fill="#14263e" font-size="24" font-weight="700">Total workflow inference cost</text>
+    <rect x="691" y="209" width="18" height="18" rx="3" fill="#334e73"/>
+    <text x="720" y="225" fill="#40536c" font-size="17">GPT workers</text>
+    <rect x="886" y="209" width="18" height="18" rx="3" fill="#08836c"/>
+    <text x="915" y="225" fill="#40536c" font-size="17">Routing</text>
+    <g fill="#e8eef5">
+      <rect x="254" y="265" width="720" height="72" rx="6"/>
+      <rect x="254" y="379" width="720" height="72" rx="6"/>
+    </g>
+    <text x="52" y="305" fill="#14263e" font-size="22" font-weight="600">GPT router</text>
+    <rect x="254" y="265" width="581.14" height="72" fill="#334e73"/>
+    <rect x="835.14" y="265" width="138.86" height="72" fill="#08836c"/>
+    <text x="282" y="309" fill="#ffffff" font-size="23">Workers $7.42</text>
+    <text x="846" y="309" fill="#ffffff" font-size="23">$1.77</text>
+    <text x="1000" y="309" fill="#14263e" font-size="30" font-weight="700">$9.19</text>
+    <text x="52" y="419" fill="#14263e" font-size="22" font-weight="600">Decision-1 router</text>
+    <rect x="254" y="379" width="617.22" height="72" fill="#334e73"/>
+    <rect x="871.22" y="379" width="1.89" height="72" fill="#08836c"/>
+    <text x="282" y="423" fill="#ffffff" font-size="23">Workers $7.88</text>
+    <path d="M873 387L907 362H960" fill="none" stroke="#08836c" stroke-width="2"/>
+    <text x="916" y="354" fill="#08745f" font-size="19">Router $0.02</text>
+    <text x="1000" y="423" fill="#14263e" font-size="30" font-weight="700">$7.91</text>
+    <text x="52" y="486" fill="#40536c" font-size="17">Same cost scale. Totals and components rounded independently; percentages use unrounded data.</text>
+    <rect x="28" y="534" width="552" height="112" rx="16" fill="#e1f3ed" stroke="#b5dace"/>
+    <text x="52" y="575" fill="#075b49" font-size="31" font-weight="700">14.01% lower inference cost</text>
+    <text x="52" y="614" fill="#275f54" font-size="19">Router spend down 98.64%; worker spend up $0.46.</text>
+    <rect x="600" y="534" width="572" height="112" rx="16" fill="#fff1df" stroke="#e8cfaa"/>
+    <text x="624" y="575" fill="#824b12" font-size="31" font-weight="700">1.28% more elapsed time</text>
+    <text x="624" y="614" fill="#795630" font-size="19">Mean workflow wall time: 122.94 s versus 124.51 s.</text>
+    <text x="44" y="685" fill="#40536c" font-size="17">Source: workflow-pairs.csv / analysis-h2-r6-wus3-20261029-v2 / insurance-policy-servicing</text>
+    <text x="44" y="715" fill="#40536c" font-size="17">Selected completed runs include internal calls and repairs. Inference estimates exclude hosting and evaluation.</text>
+    <text x="44" y="742" fill="#40536c" font-size="16">Matched settings describe execution provenance, not evaluator agreement or proven equivalent answer quality.</text>
+  </g>
+</svg>
