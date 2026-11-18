@@ -1,6 +1,13 @@
 # Repository index
 
 ## Freshness
+- At baseline `d385f49`, copied the author-requested November 17 policy-servicing
+  article to `docs\tokenomics\_posts\2026-11-17-stop-paying-an-llm-to-route-every-request.md`,
+  its dedicated `think-fast-policy-servicing` resource tree and three named
+  shared servicing visuals. Linked the series claims (November 3),
+  underwriting intake (November 16), policy servicing (November 17).
+  Verified source/destination hashes and isolated development Jekyll output.
+  Local uncommitted handoff only; no push, production build or publication.
 - At baseline `95f3f9e`, copied the author-editing underwriting intake draft to
   `docs\tokenomics\_posts\2026-11-16-think-fast-insurance-underwriting-intake.md`
   and its three SVGs to
