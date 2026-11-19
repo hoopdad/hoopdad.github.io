@@ -1,6 +1,14 @@
 # Repository index
 
 ## Freshness
+- November 19 local author-editing handoff: added only
+  `docs\tokenomics\_posts\2026-11-19-think-fast-evaluator-methodology.md`
+  and four SVGs under `docs\assets\2026\tokenomics\think-fast-evaluator-methodology`
+  from writings. All five hashes match; existing public source/report assets
+  are reused without changes. An isolated development Jekyll build includes
+  the revised prose and resolves all nine local article references. The
+  missing retained evaluator screenshot and revised-page visual review remain
+  draft limitations. Existing articles were untouched; no commit or push.
 - At baseline `d385f49`, copied the author-requested November 17 policy-servicing
   article to `docs\tokenomics\_posts\2026-11-17-stop-paying-an-llm-to-route-every-request.md`,
   its dedicated `think-fast-policy-servicing` resource tree and three named
