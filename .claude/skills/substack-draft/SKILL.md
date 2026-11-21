@@ -15,6 +15,13 @@ Copies posts from `hoopdad.github.io` into **The Agent Operating Model**
 this skill does not use it. Verify after every run that the published count is
 unchanged.
 
+**But leave the email setting on.** That rule governs what this skill does, not
+how the draft is configured. Substack's newsletter default —
+`should_send_email: true`, `audience: everyone` — is what the author wants, so
+do not turn it off to make the draft "safer". Backfilled posts go to the list
+like any other post when the author publishes them. The author publishes; the
+skill never does.
+
 ## What you need
 
 A browser tab signed in to the Substack dashboard. The built-in browser pane
@@ -102,10 +109,15 @@ Learned the hard way; do not retry them.
 
 ## Known content quirks
 
-- **HTML comments are authoring notes.** Posts carry `<!-- SCREENSHOT 3: ... -->`
-  markers. They do not render, so `.prose` never contains them — but any
-  markdown-level converter must strip them, and must not let them swallow the
-  image that follows on the next line.
+- **HTML comments are authoring notes, and they do reach the public page.**
+  Posts carry `<!-- SCREENSHOT 3: ... -->` markers, and sometimes a leading
+  author-status note. Kramdown passes them straight through, so they sit inside
+  `.prose` in the live HTML — invisible in the rendered page, but plain to
+  anyone who views source. They stay out of the Substack draft only because
+  ProseMirror discards comment nodes when it parses pasted HTML; that is a
+  side effect, not a filter, so do not rely on it to keep notes private.
+  A markdown-level converter must strip them explicitly, and must not let them
+  swallow the image that follows on the next line.
 - **Long posts warn about email truncation.** Expected past roughly 3,000 words
   with images. Web readers are unaffected; mention it, do not act on it.
 - **Do not silently fix typos.** Flag them and fix at the blog source, so the
