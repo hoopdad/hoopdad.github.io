@@ -7,7 +7,6 @@ My testing shows potential for massive value add with agentic AI workflows. I ra
 
 Here's the question that started it. We use GPT-style models for almost everything in an agent. But agents make a lot of narrow decisions: which specialist goes next, whether the work is done, whether a person needs to look. Those decisions may not need a generative model at all.
 
-<!-- SCREENSHOT 1: Think Fast side by side on a workflow. GPT routing on the left, Microsoft Decision-1 on the right, the same request on both. -->
 ![Think Fast running a workflow with a GPT orchestrator on the left and a Microsoft Decision-1 orchestrator on the right](/assets/2026/tokenomics/claims-01-side-by-side.png)
 
 This is the first post in a series. I tested 9 insurance and reinsurance industry common workflows.
@@ -45,9 +44,6 @@ runtime, and ultimately the value of this workflow. In one version of the workfl
 Those are the literal routing IDs; the Python modules use underscores. Required workers and prerequisites depend on the scenario. Five available specialists doesn't mean every claim visits all five. The simplest water-loss scenario, `l1-water`, requires intake, evidence reconciliation, coverage review and adjuster review, but not recovery review.
 
 Because each orchestrator chooses as it goes, the two versions don't always take the same path through the agents. In the 25 claims pairs, 12 took identical ordered paths, counting repeats and the terminal choice.
-
-<!-- SCREENSHOT 2: The route view for one claims test, both orchestrators: the orchestrator and five agent cards in the observed sequence, with the point where the two paths diverge visible. -->
-
 
 ## Stats from my Tests
 
@@ -89,10 +85,8 @@ Every test, with its run time, tokens, cost and saved votes, is in the [results 
 
 These are static source and evidence snapshots. The [bundle manifest](/assets/2026/tokenomics/think-fast-tests/bundle-manifest.json){:target="_blank"} records original and hosted file hashes. Three report links to an unavailable private runtime page now point to the saved evaluation CSV; those HTML-only adaptations are recorded separately from the original exports' manifests. No private runtime journals or authentication state are included.
 
-<!-- SCREENSHOT 3: Cost versus run time for all 25 claims scenarios, one point per orchestrator run: 50 points in 25 pairs. -->
 ![Cost and run time for each of the 25 claims tests, by orchestrator](/assets/2026/tokenomics/claims-03-cost-vs-time.png)
 
-<!-- SCREENSHOT 4: Both evaluators' post-hoc majority acceptance rates and median inference cost by complexity level (1 to 5), for each orchestrator. -->
 ![Both evaluators' post-hoc majority acceptance rates and median inference cost by complexity level for each orchestrator](/assets/2026/tokenomics/claims-04-by-complexity.png)
 
 Each complexity bar summarizes five answers per router. With only five scenarios, one changed judgment moves an acceptance rate by 20 percentage points. This figure uses the same explicitly labeled repeat aggregation as the table; it does not average the two evaluators into a single quality score.
@@ -113,7 +107,6 @@ At 100,000 eligible claims a year, assuming the same workload mix, the observed 
 
 The lesson I keep relearning: the workflow you pick decides the value. How you build it decides the cost.
 
-<!-- SCREENSHOT 5: The results panel for one claims run: elapsed time and estimated inference cost for each route, with the token price settings visible. -->
 ![Elapsed time and estimated inference cost for one claims run, GPT versus Decision-1](/assets/2026/tokenomics/claims-05-run-results.png)
 
 This panel is reconstructed from one fresh `l1-water` comparison captured for routing evidence, not included in the 25-pair benchmark. GPT took 110.58 seconds and $0.4282 in estimated inference; Decision-1 took 117.58 seconds and $0.3451. Both followed intake, evidence reconciliation, coverage review, adjuster review, then `complete`. No evaluators were called for this capture. Screenshots 3, 4, 5 and 7 are labeled saved-evidence renderings, not screenshots of the live application's UI.
@@ -134,7 +127,6 @@ MODULES = (
     claim_intake, evidence_reconciliation, coverage_review,
     recovery_review, adjuster_review,
 )
-
 
 def create_agents(client_factory, tools_factory):
     agents = {}
@@ -250,7 +242,6 @@ import os
 import httpx
 from azure.identity import ManagedIdentityCredential
 
-
 def call_decision(payload: dict) -> dict:
     # https://<account>.services.ai.azure.com/providers/microsoft/v1/systemone
     endpoint = os.environ["DECISION_ENDPOINT"]
@@ -274,7 +265,6 @@ def call_decision(payload: dict) -> dict:
 
 This is a single-call managed-identity example, not the benchmark's full transport/accounting implementation. It never automatically retries. A retrying caller must honor `Retry-After` and preserve the outcome of the original attempt. The native harness records a Decision-1 allowance of at most 17 requests per 60 seconds for this deployment; that observed allowance is not a universal model limit.
 
-<!-- SCREENSHOT 6: Foundry portal with Microsoft Decision-1 selected in the model catalog, or its deployment details page. -->
 ![Microsoft Decision-1 in the Foundry model catalog](/assets/2026/tokenomics/claims-06-foundry-decision-1.png)
 
 ### Turning probabilities into a route
@@ -283,7 +273,6 @@ Decision-1 returns a probability for every option. The benchmark's policy valida
 
 ```python
 import math
-
 
 def choose_next(answer: dict, choices: tuple[str, ...], legal_choices: list[str]) -> str:
     scores = answer["probabilities"]
@@ -306,7 +295,6 @@ def choose_next(answer: dict, choices: tuple[str, ...], legal_choices: list[str]
         raise ValueError("Selected route violates workflow prerequisites")
     return best
 
-
 answer = call_decision(payload)["answers"]["next"]
 next_step = choose_next(answer, tuple(criteria), context["legal_choices"])
 ```
@@ -315,7 +303,6 @@ This is a compact illustration of the tested guards; the repository also validat
 
 In the fresh claims capture, the first Decision-1 routing step assigned **99.7604% to `claim-intake`**, spreading approximately 0.2396% across the other six options. Its reported confidence was a separate field (0.9972048), not a measure of the final answer's quality. The selected route and all seven probabilities were checked against the original provider request/response hashes.
 
-<!-- SCREENSHOT 7: The Selected evidence panel from a claims run: Decision-1's option and probability table for one routing step, with the selected option highlighted. -->
 ![Decision-1 option probabilities for one routing step in a claims run](/assets/2026/tokenomics/claims-07-probabilities.png)
 
 The linked implementation files are downloadable source snapshots, not a standalone installation of think-fast-tests. For more prompt and agent examples, see my [decision-maker repo](https://github.com/hoopdad/decision-maker){:target="_blank"}, and Bart Czernicki's [System One Decisions Console](https://github.com/bartczernicki/SystemOneDecisionsConsole){:target="_blank"} for a wide range of decision use cases. Microsoft's [introduction to Decision-1](https://commandline.microsoft.com/microsoft-decision-1-model-foundry/){:target="_blank"} and the [Foundry model pricing page](https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/microsoft/){:target="_blank"} fill in the rest.

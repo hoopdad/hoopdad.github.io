@@ -5,10 +5,6 @@ topic: tokenomics
 description: "How an evidence-linked underwriting referral keeps missing documents, conflicting activities and stale rules visible, with measured routing trade-offs."
 ---
 
-<!-- Author-editing draft. Staging filename date is not a publication date.
-Required matching application screenshots and refreshed page-level review remain blocked.
-Evidence: blog-assistant/editorial/think-fast/posts/insurance-underwriting-intake/evidence.md -->
-
 A commercial submission can contain every field on the form and still leave an underwriter with the important question unanswered. Does the supporting evidence establish what the submission says? And which rule applies if the documents disagree?
 
 That is useful work for an agent workflow. Gather the supplied facts, connect them to the relevant manual excerpt, identify the missing or conflicting evidence, and prepare a referral someone can review. The useful deliverable is a better starting point for the underwriter, not an automated decision to accept the risk.
@@ -22,13 +18,6 @@ The supplied commercial-underwriting scenario asks for three things: a submissio
 For a technical team, the potential benefit is concrete. Instead of asking a reviewer to reconstruct the same document trail, the workflow could put the finding, its supporting evidence and its limitation together. A missing-document request could identify what is needed and why, rather than send the file around for another general review.
 
 Those are intended benefits. This experiment did not measure underwriters' working time, broker turnaround, premium, loss experience or production savings.
-
-<!-- SCREENSHOT 04: Actual insurance-underwriting-intake workflow with original
-l1-warehouse or l3-warehouse preset selected and its request readable.
-Status: blocked. On this revision's connection attempt a native Edge profile-sync
-confirmation prevented application inspection. It was not accepted; the owned
-browser and connection were closed. No matching selection or new comparison
-was established. -->
 
 ### Start with one warehouse submission
 
@@ -122,13 +111,6 @@ If the inspection is missing, a useful completed deliverable may be an exact evi
 That is different from allowing a missing specialist result or an invalid packet to count as complete. Required work still has to be present, current and accepted by the application's checks. A model saying it is done is insufficient.
 
 The same boundary applies to the deadline scenario. A preliminary referral can be useful today without granting authority to waive the rule or issue a quote. The human underwriter retains that decision.
-
-<!-- SCREENSHOT 05: Actual matching retained underwriting comparison, both
-orchestrator identities and completed states verified, with final evidence-linked
-packet and readable totals. Status: blocked. Native Edge profile-sync confirmation
-prevented inspection; no matching retained run ID or final packet was established.
-Do not submit a fresh run or
-substitute another workflow, reconstructed panel or design diagram. -->
 
 ## What the saved routing results show
 

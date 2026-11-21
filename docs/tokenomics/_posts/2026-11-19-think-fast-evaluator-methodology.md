@@ -169,8 +169,3 @@ The next step is to inspect the failed or disputed answers and decide what needs
 
 Decision-1 is worth trying for that judging step. It had substantially lower estimated evaluation cost on the fully priced subset and more consistent votes in the repeat study. A sample of accepted and rejected answers still needs an independent check: matching votes tell us that the judges agree, not that the answers are correct.
 
-<!-- APPLICATION SCREENSHOT: Matching authorized retained evaluator-result view.
-Status: blocked. The verified Think Fast page exposes an idle customer-support
-request, not this saved-answer judge experiment. No new inference is authorized.
-The four embedded SVGs are design/data renderings, not application captures. -->
-
