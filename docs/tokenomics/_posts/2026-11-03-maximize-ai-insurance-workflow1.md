@@ -7,7 +7,9 @@ My testing shows potential for massive value add with agentic AI workflows. I ra
 
 Here's the question that started it. We use GPT-style models for almost everything in an agent. But agents make a lot of narrow decisions: which specialist goes next, whether the work is done, whether a person needs to look. Those decisions may not need a generative model at all.
 
-![Think Fast running a workflow with a GPT orchestrator on the left and a Microsoft Decision-1 orchestrator on the right](/assets/2026/tokenomics/claims-01-side-by-side.png)
+![Think Fast claims setup for l1-water with GPT-5.6 Sol as the left orchestrator, Decision-1 as the right orchestrator, and GPT-5.6 Sol workers in both lanes.](/assets/2026/tokenomics/claims-model-selection.png)
+
+In the current Think Fast app, you can choose the orchestrator and worker deployments separately for each lane. To match the model choice in the claims tests, select `gpt-5.6-sol` for the left orchestrator and both workers, and `decision-1` for the right orchestrator. That is the original Decision-1, not Decision-1.1. This November 23 setup shows the synthetic `l1-water` preset before submission. It does not show a completed route or recreate the October benchmark. [Open the setup at full size](/assets/2026/tokenomics/claims-model-selection.png).
 
 This is the first post in a series. I tested 9 insurance and reinsurance industry common workflows.
 I'll post about them all and my best-practices Tokenomics design principles behind them.
@@ -92,6 +94,10 @@ These are static source and evidence snapshots. The [bundle manifest](/assets/20
 Each complexity bar summarizes five answers per router. With only five scenarios, one changed judgment moves an acceptance rate by 20 percentage points. This figure uses the same explicitly labeled repeat aggregation as the table; it does not average the two evaluators into a single quality score.
 
 This started with a customer-support demo. The comparisons here come from the saved 225-pair experiment, not a selected demo run. One run isn't a benchmark.
+
+![In the original customer-support demo, GPT routed from intake to billing while Decision-1 routed straight to escalation.](/assets/2026/tokenomics/claims-01-side-by-side.png)
+
+Customer-support demo, not a claims run. After intake, GPT sent the request to billing before escalation; Decision-1 went straight to escalation. The cards show the order in which the work ran, not a time scale.
 
 ### The value added
 

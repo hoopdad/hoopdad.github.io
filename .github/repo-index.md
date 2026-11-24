@@ -1,6 +1,17 @@
 # Repository index
 
 ## Freshness
+- November 24 author-approved local revision handoff at baseline `adbe89fd`:
+  replaced only the claims (November 3), underwriting (November 16) and
+  evaluator (November 19) articles from writings using blog-post.ps1's guarded
+  update mode. Article and selected asset hashes match. Added
+  `docs\assets\2026\tokenomics\claims-model-selection.png` and four existing
+  staged PNGs in `think-fast-insurance-underwriting-intake`:
+  `04-intake-model-selection.png`, `04-intake-selection.png`,
+  `05-final-packet.png`, `06-run-totals.png`. Existing assets were verified,
+  not replaced. All 31 article asset references resolve; an isolated
+  development Jekyll build in writings passed. Missing matching retained
+  screenshots remain editorial blockers. No commit, push or publication.
 - November 19 local author-editing handoff: added only
   `docs\tokenomics\_posts\2026-11-19-think-fast-evaluator-methodology.md`
   and four SVGs under `docs\assets\2026\tokenomics\think-fast-evaluator-methodology`

@@ -19,6 +19,10 @@ For a technical team, the potential benefit is concrete. Instead of asking a rev
 
 Those are intended benefits. This experiment did not measure underwriters' working time, broker turnaround, premium, loss experience or production savings.
 
+![Think Fast underwriting setup showing the l1-warehouse preset and its supplied sprinkler-inspection facts, with GPT-5.6 Sol and Decision-1 as the two orchestrators.](/assets/2026/tokenomics/think-fast-insurance-underwriting-intake/04-intake-model-selection.png)
+
+The November 23 Think Fast setup shows the supplied warehouse facts and how to match the study's model choices: `gpt-5.6-sol` routes on the left and runs the workers on both sides; the original `decision-1` routes on the right. No comparison was submitted for this screenshot. [Open the setup at full size](/assets/2026/tokenomics/think-fast-insurance-underwriting-intake/04-intake-model-selection.png).
+
 ### Start with one warehouse submission
 
 The corpus includes a synthetic warehouse scenario, `l1-warehouse`. It supplies a storage description, a manual excerpt labeled M1 requiring a current sprinkler inspection, and an inspection described as current with all zones operational. The request is a narrow readiness note.

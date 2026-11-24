@@ -5,14 +5,14 @@ topic: tokenomics
 description: "GPT and Decision-1 judged the same 450 saved answers. Their costs, timing and repeated disagreements show what consensus can screen, and what it alone cannot prove."
 ---
 
-My experiment was to find out if a decision model can evaluate results 
-cheaper and faster with the same quality of results. I used a GPT model and 
-Microsoft Decision-1 to judge the same 450 answers. They agreed on **360, or 80%**. 
-Decision-1's estimated evaluation inference cost was much lower on the fully 
+My experiment was to find out if a decision model can evaluate results
+cheaper and faster with the same quality of results. I used a GPT model and
+Microsoft Decision-1 to judge the same 450 answers. They agreed on **360, or 80%**.
+Decision-1's estimated evaluation inference cost was much lower on the fully
 priced comparison, and a separate repeat study found it more consistent.
 
-That makes it useful to look at what the judges agreed about, where they 
-differed, and what it cost to get those judgments. Agreement alone does not 
+That makes it useful to look at what the judges agreed about, where they
+differed, and what it cost to get those judgments. Agreement alone does not
 tell us which judge was right, but, lacking the time to personally review
 450 results, consistency may be a good enough answer depending on the situation.
 
@@ -137,7 +137,7 @@ Of the 450 answers, both judges accepted 353 and both rejected seven. The remain
 
 The aggregate also hides substantial variation. Underwriting has 49 agreements out of 50 answers; claims has 19 out of 50. That difference makes a single all-case agreement percentage a poor substitute for looking at the work being judged.
 
-For a concrete record, take the Decision-routed servicing answer for `l3-endorsement`, answer ID beginning `10c1f899fe37`. GPT returned Do not accept; Decision-1 returned Accept. The [retained evaluation report](/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2/evaluation.html) and its paired CSV preserve that identity and both votes.
+For a concrete record, take the Decision-routed servicing answer for `l3-endorsement`, answer ID beginning `10c1f899fe37`. GPT-5.6 Sol returned Do not accept; Decision-1 returned Accept. In the [retained report's original votes table](/assets/2026/tokenomics/think-fast-tests/assets/runs/analysis-h2-r6-wus3-20261029-v2/evaluation.html#inspect), find that answer ID and read across the two judge columns. The routing arm identifies how the answer was produced, not which judge cast either vote. The paired CSV preserves the same record.
 
 That row gives us an item to inspect. It does not tell us which criterion caused the disagreement, or which judge was correct. Neither original binary vote supplies an explanation.
 
